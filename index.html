@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="./images/favicon.png" type="image/png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RetroGameTracker — My Collection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="min-h-screen bg-[#0e0e22] text-white">
+    <div class="app-shell">
+      <aside id="sidebar" class="sidebar" aria-label="Main navigation">
+        <div class="brand">
+          <div class="brand-icon" aria-hidden="true">🎮</div>
+          <div class="brand-title">RETRO<span>GAME</span></div>
+          <div class="brand-subtitle">TRACKER</div>
+          <p>My personal retro<br />game collection</p>
+        </div>
+        <div class="sidebar-controls">
+          <label class="sr-only" for="language">Language</label>
+          <select id="language" class="language-select">
+            <option value="en">🌐 English</option>
+            <option value="hu">🇭🇺 Magyar</option>
+          </select>
+          <label class="search-wrap" for="game-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m16 16 5 5" />
+            </svg>
+            <input
+              id="game-search"
+              type="search"
+              placeholder="Search games..."
+              autocomplete="off"
+            />
+          </label>
+        </div>
+        <nav id="main-nav" class="nav-list" aria-label="Sections">
+          <button class="nav-item active" data-page="home" aria-current="page">
+            <span class="nav-icon">⌂</span><span>Home</span>
+          </button>
+          <button class="nav-item" data-page="games">
+            <span class="nav-icon">♧</span><span>Games</span>
+          </button>
+          <button class="nav-item" data-page="platforms">
+            <span class="nav-icon">▣</span><span>Platforms</span>
+          </button>
+          <button class="nav-item" data-page="series">
+            <span class="nav-icon">▤</span><span>Game Series</span>
+          </button>
+          <button class="nav-item" data-page="developers">
+            <span class="nav-icon">♙</span><span>Developers</span>
+          </button>
+          <button class="nav-item" data-page="genres">
+            <span class="nav-icon">◇</span><span>Genres</span>
+          </button>
+          <button class="nav-item" data-page="statistics">
+            <span class="nav-icon">▥</span><span>Statistics</span>
+          </button>
+        </nav>
+        <div class="sidebar-footer">COLLECTION ARCHIVE <span>v0.1</span></div>
+      </aside>
+
+      <div class="main-area">
+        <header class="mobile-header">
+          <button
+            id="menu-toggle"
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+          <strong>RETRO<span>GAME</span>TRACKER</strong>
+        </header>
+        <main class="content" id="main-content">
+          <div id="page-content"></div>
+        </main>
+      </div>
+    </div>
+    <div id="mobile-overlay" class="mobile-overlay" hidden></div>
+    <script type="module" src="./scripts/main.js"></script>
+  </body>
+</html>

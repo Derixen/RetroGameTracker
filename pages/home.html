@@ -1,0 +1,50 @@
+<div class="page-heading">
+  <div>
+    <p class="eyebrow">COLLECTION OVERVIEW</p>
+    <h1>Dashboard</h1>
+    <p>Your retro gaming collection at a glance</p>
+  </div>
+</div>
+
+<section class="grid grid-cols-1 gap-5 md:grid-cols-3">
+  <article class="game-card p-5">
+    <p class="text-sm text-slate-400">Total Games</p>
+    <h2 id="total-games" class="mt-2 text-3xl font-bold">—</h2>
+  </article>
+
+  <article class="game-card p-5">
+    <p class="text-sm text-slate-400">Platforms</p>
+    <h2 id="total-platforms" class="mt-2 text-3xl font-bold">—</h2>
+  </article>
+
+  <article class="game-card p-5">
+    <p class="text-sm text-slate-400">Developers</p>
+    <h2 id="total-developers" class="mt-2 text-3xl font-bold">—</h2>
+  </article>
+</section>
+
+<section class="mt-8">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">COLLECTION BREAKDOWN</p>
+      <h2 class="text-xl font-bold">Games by Platform</h2>
+      <p>How your collection is distributed across platforms</p>
+    </div>
+  </div>
+
+  <div id="platform-distribution" class="space-y-5">
+    <p class="text-slate-400">Loading platforms...</p>
+  </div>
+</section>
+
+<section class="mt-10">
+  <div class="page-heading">
+    <div>
+      <p class="eyebrow">LATEST ADDITIONS</p>
+      <h2 class="text-xl font-bold">Recently Added Games</h2>
+      <p>The latest games added to your collection</p>
+    </div>
+  </div>
+
+  <div id="recent-games" class="game-grid"></div>
+</section>
