@@ -1,16 +1,25 @@
 import { getGames } from "../api/games.js";
 import { createGameCard } from "../components/gameCard.js";
 
-export async function initGames() {
+export async function initGames(params = new URLSearchParams()) {
   const controller = new AbortController();
   const signal = controller.signal;
   let games = [];
   let currentFilter = "all";
+  const selectedPlatform = params.get("platform");
 
   const grid = document.getElementById("game-grid");
   const empty = document.getElementById("empty-state");
   const count = document.getElementById("game-count");
   const search = document.getElementById("game-search");
+
+  if (selectedPlatform) {
+    document.getElementById("page-title").textContent =
+      `${selectedPlatform} Games`;
+
+    document.getElementById("page-subtitle").textContent =
+      `Showing games for ${selectedPlatform}`;
+  }
 
   function renderGames() {
     const query = search.value.trim().toLowerCase();
@@ -26,7 +35,10 @@ export async function initGames() {
         (currentFilter === "favorites" && game.favorite) ||
         (currentFilter === "completed" && game.completed);
 
-      return matchesSearch && matchesFilter;
+      const matchesPlatform =
+        !selectedPlatform || game.platform === selectedPlatform;
+
+      return matchesSearch && matchesFilter && matchesPlatform;
     });
 
     grid.replaceChildren();

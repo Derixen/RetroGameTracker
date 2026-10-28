@@ -18,7 +18,10 @@ let navigationId = 0;
 export async function navigate() {
   const id = ++navigationId;
 
-  const page = window.location.hash.replace(/^#\/?/, "") || "home";
+  const hash = window.location.hash.replace(/^#\/?/, "") || "home";
+  const [page, queryString = ""] = hash.split("?");
+
+  const params = new URLSearchParams(queryString);
   const route = routes[page] ?? "games";
 
   try {
@@ -56,7 +59,7 @@ export async function navigate() {
 
     // Initialize page-specific JavaScript
     if (route === "games") {
-      const cleanup = await initGames();
+      const cleanup = await initGames(params);
 
       // Navigation may have changed while Supabase was loading
       if (id !== navigationId) {

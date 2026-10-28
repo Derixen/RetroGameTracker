@@ -1,4 +1,5 @@
 import { getPlatforms } from "../api/platforms.js";
+import { getGames } from "../api/games.js";
 
 export async function initPlatforms() {
   const grid = document.getElementById("platform-grid");
@@ -6,7 +7,17 @@ export async function initPlatforms() {
   const empty = document.getElementById("platform-empty");
 
   try {
-    const platforms = await getPlatforms();
+    const [platforms, games] = await Promise.all([getPlatforms(), getGames()]);
+
+    const gameCounts = {};
+
+    for (const game of games) {
+      const platformName = game.platforms?.name;
+
+      if (platformName) {
+        gameCounts[platformName] = (gameCounts[platformName] || 0) + 1;
+      }
+    }
 
     count.textContent = `${platforms.length} PLATFORMS`;
     empty.hidden = platforms.length > 0;
@@ -14,8 +25,9 @@ export async function initPlatforms() {
     grid.replaceChildren();
 
     for (const platform of platforms) {
-      const card = document.createElement("article");
-      card.className = "game-card p-5";
+      const card = document.createElement("a");
+      card.className = "game-card p-5 block cursor-pointer";
+      card.href = `#/games?platform=${encodeURIComponent(platform.name)}`;
 
       const manufacturer = document.createElement("p");
       manufacturer.className = "eyebrow";
@@ -31,7 +43,14 @@ export async function initPlatforms() {
         ? `Released in ${platform.release_year}`
         : "Release year unknown";
 
-      card.append(manufacturer, name, year);
+      const gameCount = document.createElement("p");
+      gameCount.className = "mt-4 text-sm font-semibold text-pink-400";
+
+      const amount = gameCounts[platform.name] || 0;
+
+      gameCount.textContent = `${amount} ${amount === 1 ? "game" : "games"}`;
+
+      card.append(manufacturer, name, year, gameCount);
       grid.append(card);
     }
   } catch (error) {
