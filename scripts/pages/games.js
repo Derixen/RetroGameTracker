@@ -13,12 +13,18 @@ export async function initGames(params = new URLSearchParams()) {
   const count = document.getElementById("game-count");
   const search = document.getElementById("game-search");
 
+  const platformFilter = document.getElementById("active-platform-filter");
+  const platformName = document.getElementById("active-platform-name");
+
   if (selectedPlatform) {
     document.getElementById("page-title").textContent =
       `${selectedPlatform} Games`;
 
     document.getElementById("page-subtitle").textContent =
       `Showing games for ${selectedPlatform}`;
+
+    platformName.textContent = selectedPlatform;
+    platformFilter.hidden = false;
   }
 
   function renderGames() {

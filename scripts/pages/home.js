@@ -46,10 +46,15 @@ export async function initHome() {
     for (const [platform, amount] of sortedPlatforms) {
       const percentage = games.length ? (amount / games.length) * 100 : 0;
 
-      const item = document.createElement("div");
+      const item = document.createElement("a");
+
+      item.href = `#/games?platform=${encodeURIComponent(platform)}`;
+      item.className = "block cursor-pointer group";
+      item.setAttribute("aria-label", `View ${platform} games`);
 
       const header = document.createElement("div");
-      header.className = "flex justify-between text-sm mb-2";
+      header.className =
+        "flex justify-between text-sm mb-2 transition-colors group-hover:text-pink-400";
 
       const name = document.createElement("span");
       name.textContent = platform;
