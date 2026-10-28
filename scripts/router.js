@@ -1,6 +1,7 @@
 import { initGames } from "./pages/games.js";
 import { initHome } from "./pages/home.js";
 import { initPlatforms } from "./pages/platforms.js";
+import { initSeries } from "./pages/series.js";
 
 const routes = {
   home: "home",
@@ -42,6 +43,13 @@ export async function navigate() {
       cleanupPage = null;
     }
 
+    // Reset the global search when navigating
+    const search = document.getElementById("game-search");
+
+    if (search) {
+      search.value = "";
+    }
+
     document.getElementById("page-content").innerHTML = html;
 
     // Update active navigation
@@ -69,11 +77,17 @@ export async function navigate() {
 
       cleanupPage = cleanup;
     }
+
     if (route === "home") {
       await initHome();
     }
+
     if (route === "platforms") {
       await initPlatforms();
+    }
+
+    if (route === "series") {
+      await initSeries();
     }
   } catch (error) {
     if (id === navigationId) {

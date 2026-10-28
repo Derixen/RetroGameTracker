@@ -12,10 +12,12 @@ export async function getGames() {
     developer,
     cover_url,
     created_at,
+    series_id,
     platforms (
         name,
         manufacturer
     )
+    
 `,
     )
     .order("title");
