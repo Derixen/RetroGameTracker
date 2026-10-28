@@ -13,6 +13,9 @@ export async function getGames() {
     cover_url,
     created_at,
     series_id,
+    series (
+        name
+    ),
     platforms (
         name,
         manufacturer

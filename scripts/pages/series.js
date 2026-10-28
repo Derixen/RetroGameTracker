@@ -16,8 +16,9 @@ export async function initSeries() {
     for (const item of series) {
       const amount = games.filter((game) => game.series_id === item.id).length;
 
-      const card = document.createElement("article");
-      card.className = "game-card p-5";
+      const card = document.createElement("a");
+      card.className = "game-card p-5 block cursor-pointer";
+      card.href = `#/games?series=${item.id}`;
 
       const name = document.createElement("h2");
       name.className = "text-xl font-bold";

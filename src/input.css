@@ -411,3 +411,7 @@ button {
 .filter-bar[hidden] {
   display: none;
 }
+#active-platform-filter[hidden],
+#active-series-filter[hidden] {
+  display: none;
+}

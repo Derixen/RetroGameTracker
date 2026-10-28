@@ -7,6 +7,21 @@ export async function initGames(params = new URLSearchParams()) {
   let games = [];
   let currentFilter = "all";
   const selectedPlatform = params.get("platform");
+  const selectedSeries = params.get("series");
+
+  const platformParams = new URLSearchParams(params);
+  platformParams.delete("platform");
+
+  const seriesParams = new URLSearchParams(params);
+  seriesParams.delete("series");
+
+  const platformClearUrl = platformParams.toString()
+    ? `#/games?${platformParams}`
+    : "#/games";
+
+  const seriesClearUrl = seriesParams.toString()
+    ? `#/games?${seriesParams}`
+    : "#/games";
 
   const grid = document.getElementById("game-grid");
   const empty = document.getElementById("empty-state");
@@ -17,6 +32,7 @@ export async function initGames(params = new URLSearchParams()) {
   const platformName = document.getElementById("active-platform-name");
 
   if (selectedPlatform) {
+    platformFilter.querySelector("a").href = platformClearUrl;
     document.getElementById("page-title").textContent =
       `${selectedPlatform} Games`;
 
@@ -25,6 +41,19 @@ export async function initGames(params = new URLSearchParams()) {
 
     platformName.textContent = selectedPlatform;
     platformFilter.hidden = false;
+  }
+
+  if (selectedSeries) {
+    document.getElementById("clear-series-filter").href = seriesClearUrl;
+    const seriesFilter = document.getElementById("active-series-filter");
+    const seriesName = document.getElementById("active-series-name");
+
+    seriesFilter.hidden = false;
+    seriesName.textContent = "Series";
+
+    document.getElementById("page-title").textContent = "Series Games";
+    document.getElementById("page-subtitle").textContent =
+      "Showing games from the selected franchise";
   }
 
   function renderGames() {
@@ -44,7 +73,10 @@ export async function initGames(params = new URLSearchParams()) {
       const matchesPlatform =
         !selectedPlatform || game.platform === selectedPlatform;
 
-      return matchesSearch && matchesFilter && matchesPlatform;
+      const matchesSeries =
+        !selectedSeries || String(game.series_id) === selectedSeries;
+
+      return matchesSearch && matchesFilter && matchesPlatform && matchesSeries;
     });
 
     grid.replaceChildren();
@@ -97,6 +129,17 @@ export async function initGames(params = new URLSearchParams()) {
       favorite: false,
       completed: false,
     }));
+
+    if (selectedSeries) {
+      const selectedGame = games.find(
+        (game) => String(game.series_id) === selectedSeries,
+      );
+
+      const name = selectedGame?.series?.name || "Unknown Series";
+
+      document.getElementById("active-series-name").textContent = name;
+      document.getElementById("page-title").textContent = `${name} Games`;
+    }
 
     renderGames();
   } catch (error) {
