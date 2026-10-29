@@ -412,6 +412,8 @@ button {
   display: none;
 }
 #active-platform-filter[hidden],
-#active-series-filter[hidden] {
+#active-series-filter[hidden],
+#active-developer-filter[hidden],
+#active-genre-filter[hidden] {
   display: none;
 }

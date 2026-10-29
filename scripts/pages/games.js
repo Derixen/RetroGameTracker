@@ -8,6 +8,8 @@ export async function initGames(params = new URLSearchParams()) {
   let currentFilter = "all";
   const selectedPlatform = params.get("platform");
   const selectedSeries = params.get("series");
+  const selectedDeveloper = params.get("developer");
+  const selectedGenre = params.get("genre");
 
   const platformParams = new URLSearchParams(params);
   platformParams.delete("platform");
@@ -56,6 +58,24 @@ export async function initGames(params = new URLSearchParams()) {
       "Showing games from the selected franchise";
   }
 
+  if (selectedDeveloper) {
+    const developerFilter = document.getElementById("active-developer-filter");
+
+    developerFilter.hidden = false;
+
+    document.getElementById("active-developer-name").textContent =
+      selectedDeveloper;
+
+    document.getElementById("page-title").textContent =
+      `${selectedDeveloper} Games`;
+
+    const clearParams = new URLSearchParams(params);
+    clearParams.delete("developer");
+
+    document.getElementById("clear-developer-filter").href =
+      clearParams.toString() ? `#/games?${clearParams}` : "#/games";
+  }
+
   function renderGames() {
     const query = search.value.trim().toLowerCase();
 
@@ -76,7 +96,19 @@ export async function initGames(params = new URLSearchParams()) {
       const matchesSeries =
         !selectedSeries || String(game.series_id) === selectedSeries;
 
-      return matchesSearch && matchesFilter && matchesPlatform && matchesSeries;
+      const matchesDeveloper =
+        !selectedDeveloper || game.developer === selectedDeveloper;
+
+      const matchesGenre = !selectedGenre || game.genre === selectedGenre;
+
+      return (
+        matchesSearch &&
+        matchesFilter &&
+        matchesPlatform &&
+        matchesSeries &&
+        matchesDeveloper &&
+        matchesGenre
+      );
     });
 
     grid.replaceChildren();
@@ -139,6 +171,21 @@ export async function initGames(params = new URLSearchParams()) {
 
       document.getElementById("active-series-name").textContent = name;
       document.getElementById("page-title").textContent = `${name} Games`;
+    }
+
+    if (selectedGenre) {
+      document.getElementById("active-genre-filter").hidden = false;
+
+      document.getElementById("active-genre-name").textContent = selectedGenre;
+
+      document.getElementById("page-title").textContent =
+        `${selectedGenre} Games`;
+
+      const clearParams = new URLSearchParams(params);
+      clearParams.delete("genre");
+
+      document.getElementById("clear-genre-filter").href =
+        clearParams.toString() ? `#/games?${clearParams}` : "#/games";
     }
 
     renderGames();

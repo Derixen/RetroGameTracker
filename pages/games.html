@@ -1,5 +1,17 @@
 <div class="page-heading">
   <div id="active-filters" class="flex flex-wrap items-center gap-3 mb-5">
+    <div id="active-genre-filter" hidden>
+      <a
+        id="clear-genre-filter"
+        href="#/games"
+        class="inline-flex items-center gap-2 rounded-lg border border-pink-500/30 bg-pink-500/10 px-4 py-2 text-sm text-pink-400 hover:bg-pink-500/20"
+      >
+        <span id="active-genre-name"></span>
+        <span aria-hidden="true">×</span>
+        <span class="sr-only">Clear genre filter</span>
+      </a>
+    </div>
+
     <div id="active-platform-filter" hidden>
       <a
         href="#/games"
@@ -11,6 +23,18 @@
     </div>
 
     <div id="active-series-filter" hidden>
+      <div id="active-developer-filter" hidden>
+        <a
+          id="clear-developer-filter"
+          href="#/games"
+          class="inline-flex items-center gap-2 rounded-lg border border-pink-500/30 bg-pink-500/10 px-4 py-2 text-sm text-pink-400 hover:bg-pink-500/20"
+        >
+          <span id="active-developer-name"></span>
+          <span aria-hidden="true">×</span>
+          <span class="sr-only">Clear developer filter</span>
+        </a>
+      </div>
+
       <a
         id="clear-series-filter"
         href="#/games"

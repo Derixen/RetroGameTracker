@@ -2,6 +2,8 @@ import { initGames } from "./pages/games.js";
 import { initHome } from "./pages/home.js";
 import { initPlatforms } from "./pages/platforms.js";
 import { initSeries } from "./pages/series.js";
+import { initDevelopers } from "./pages/developers.js";
+import { initGenres } from "./pages/genres.js";
 
 const routes = {
   home: "home",
@@ -88,6 +90,14 @@ export async function navigate() {
 
     if (route === "series") {
       await initSeries();
+    }
+
+    if (route === "developers") {
+      await initDevelopers();
+    }
+
+    if (route === "genres") {
+      await initGenres();
     }
   } catch (error) {
     if (id === navigationId) {
