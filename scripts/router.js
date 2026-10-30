@@ -14,6 +14,7 @@ import { initAdminAddPlatform } from "./pages/adminAddPlatform.js";
 import { initAdminSeries } from "./pages/adminSeries.js";
 import { initAdminAddSeries } from "./pages/adminAddSeries.js";
 import { initGameDetails } from "./pages/gameDetails.js";
+import { createPageHeading } from "./components/pageHeading.js";
 
 const routes = {
   home: "home",
@@ -35,6 +36,58 @@ const routes = {
   "admin/add-series": "admin-add-series",
   "admin/edit-series": "admin-add-series",
   game: "game-details",
+};
+
+const pageHeadings = {
+  home: {
+    eyebrow: "COLLECTION OVERVIEW",
+    title: "Dashboard",
+    subtitle: "Your retro gaming collection at a glance",
+    countId: "",
+    countLabel: "",
+  },
+  games: {
+    eyebrow: "THE COLLECTION",
+    title: "My Games",
+    subtitle: "Browse my retro game collection",
+    countId: "game-count",
+    countLabel: "GAMES",
+  },
+  platforms: {
+    eyebrow: "THE HARDWARE",
+    title: "Platforms",
+    subtitle: "Explore the consoles and handhelds in the archive",
+    countId: "platform-count",
+    countLabel: "PLATFORMS",
+  },
+  series: {
+    eyebrow: "THE FRANCHISES",
+    title: "Game Series",
+    subtitle: "Explore the franchises in my retro game collection",
+    countId: "series-count",
+    countLabel: "SERIES",
+  },
+  developers: {
+    eyebrow: "THE FRANCHISES",
+    title: "Game Series",
+    subtitle: "Explore the studios behind my retro game collection",
+    countId: "developer-count",
+    countLabel: "DEVELOPER",
+  },
+  genres: {
+    eyebrow: "EXPLORE BY CATEGORY",
+    title: "Genres",
+    subtitle: "Browse my retro game collection by genre",
+    countId: "genre-count",
+    countLabel: "GENRES",
+  },
+  statistics: {
+    eyebrow: "PROGRESS OVERVIEW",
+    title: "Statistics",
+    subtitle: "Your retro gaming Progress at a glance",
+    countId: "",
+    countLabel: "",
+  },
 };
 
 let cleanupPage = null;
@@ -85,8 +138,29 @@ export async function navigate() {
     if (search) {
       search.value = "";
     }
+    const pageContent = document.getElementById("page-content");
 
-    document.getElementById("page-content").innerHTML = html;
+    // Fade out the current page
+    pageContent.classList.add("page-fading");
+
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
+    // Stop if another navigation started
+    if (id !== navigationId) return;
+
+    // Load the new page
+    pageContent.innerHTML = html;
+
+    const headingConfig = pageHeadings[route];
+
+    if (headingConfig) {
+      pageContent.prepend(createPageHeading(headingConfig));
+    }
+
+    // Fade in the new page
+    requestAnimationFrame(() => {
+      pageContent.classList.remove("page-fading");
+    });
 
     // Update active navigation
     document.querySelectorAll("[data-page]").forEach((button) => {
