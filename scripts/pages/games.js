@@ -11,6 +11,15 @@ export async function initGames(params = new URLSearchParams()) {
   const selectedDeveloper = params.get("developer");
   const selectedGenre = params.get("genre");
 
+  const activeFilters = document.getElementById("active-filters");
+
+  activeFilters.hidden = !(
+    selectedPlatform ||
+    selectedSeries ||
+    selectedDeveloper ||
+    selectedGenre
+  );
+
   const platformParams = new URLSearchParams(params);
   platformParams.delete("platform");
 
