@@ -1149,6 +1149,8 @@ button {
   cursor: pointer;
 }
 
+/* App shell and sidebar */
+
 .app-shell {
   min-height: 100vh;
   display: flex;
@@ -1315,6 +1317,8 @@ button {
   justify-content: space-between;
 }
 
+/* Main content and headings */
+
 .main-area {
   margin-left: 252px;
   width: calc(100% - 252px);
@@ -1368,6 +1372,36 @@ button {
   white-space: nowrap;
 }
 
+/* Games page: left-aligned title, subtitle and count */
+
+#page-content .page-heading:has(#page-title) {
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+}
+
+#page-content .page-heading:has(#page-title) > div {
+  margin: 0;
+  width: 100%;
+  text-align: left;
+}
+
+#page-content .page-heading #game-count {
+  display: block;
+  width: auto;
+  margin: 8px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #f472b6;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Filters */
+
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
@@ -1396,6 +1430,8 @@ button {
   background: #48283e;
   border-color: #ff456c66;
 }
+
+/* Game cards */
 
 .game-grid {
   display: grid;
@@ -1490,6 +1526,8 @@ button {
   margin-top: 7px;
 }
 
+/* Empty states */
+
 .empty-state {
   text-align: center;
   padding: 85px 20px;
@@ -1521,13 +1559,82 @@ button {
   line-height: 1.7;
 }
 
+/* Related games: compact cards */
+
+#related-games-list {
+  grid-template-columns: repeat(auto-fill, minmax(175px, 215px));
+  align-items: start;
+}
+
+#related-games-list .game-card {
+  width: 100%;
+  height: auto;
+}
+
+#related-games-list .cover-area {
+  width: 100%;
+  height: 220px;
+  min-height: 0;
+  flex: none;
+}
+
+#related-games-list .card-info {
+  height: auto;
+}
+
+#related-games-list .cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Static admin tables and game details panels */
+
+#page-content .game-card:has(table):hover,
+#game-details-content .game-card:hover {
+  transform: none;
+}
+
+/* Active Game Details status buttons */
+
+#detail-favorite.text-red-500 {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+#detail-in-progress.text-amber-400 {
+  color: #fbbf24;
+  border-color: #fbbf24;
+}
+
+#detail-completed.text-green-400 {
+  color: #4ade80;
+  border-color: #4ade80;
+}
+
+/* Hidden elements */
+
 .mobile-header {
   display: none;
 }
 
-.mobile-overlay[hidden] {
+.mobile-overlay[hidden],
+.game-grid[hidden],
+.filter-bar[hidden],
+#active-platform-filter[hidden],
+#active-series-filter[hidden],
+#active-developer-filter[hidden],
+#active-genre-filter[hidden],
+#auth-login[hidden],
+#auth-logout[hidden],
+#auth-admin[hidden] {
   display: none;
 }
+
+/* Responsive layout */
 
 @media (max-width: 850px) {
   .sidebar {
@@ -1602,99 +1709,6 @@ button {
   .card-info {
     padding: 10px;
   }
-}
-
-.game-grid[hidden],
-.filter-bar[hidden] {
-  display: none;
-}
-
-#active-platform-filter[hidden],
-#active-series-filter[hidden],
-#active-developer-filter[hidden],
-#active-genre-filter[hidden],
-#auth-login[hidden],
-#auth-logout[hidden],
-#auth-admin[hidden] {
-  display: none;
-}
-
-/* Related Games: compact cards */
-
-#related-games-list {
-  grid-template-columns: repeat(auto-fill, minmax(175px, 215px));
-  align-items: start;
-}
-
-#related-games-list .game-card {
-  width: 100%;
-  height: auto;
-}
-
-#related-games-list .cover-area {
-  height: 220px;
-  min-height: 0;
-  flex: none;
-}
-
-#related-games-list .card-info {
-  height: auto;
-}
-
-#related-games-list .cover-area {
-  width: 100%;
-  height: 220px;
-  min-height: 0;
-  flex: none;
-}
-
-#related-games-list .cover-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Prevent admin tables from moving on hover */
-
-#page-content .game-card:has(table):hover {
-  transform: none;
-}
-
-#game-details-content .game-card:hover {
-  transform: none;
-}
-
-/* Game Details status button colors */
-
-#detail-favorite.text-red-500 {
-  color: #ef4444;
-  border-color: #ef4444;
-}
-
-#detail-in-progress.text-amber-400 {
-  color: #fbbf24;
-  border-color: #fbbf24;
-}
-
-#detail-completed.text-green-400 {
-  color: #4ade80;
-  border-color: #4ade80;
-}
-
-/* Games page heading */
-
-#page-content .page-heading:has(#page-title) {
-  justify-content: flex-start;
-  text-align: left;
-}
-
-#page-content .page-heading:has(#page-title) > div {
-  margin-left: 0;
-  margin-right: auto;
-  text-align: left;
 }
 
 .file\:mr-4::file-selector-button {
