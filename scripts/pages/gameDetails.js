@@ -74,6 +74,14 @@ export async function initGameDetails(params = new URLSearchParams()) {
     const adminUser = await getAdminUser();
 
     if (adminUser) {
+      // Show Edit Game button
+      const editButton = document.getElementById("detail-edit");
+
+      if (editButton) {
+        editButton.href = `#/admin/edit-game?id=${game.id}`;
+        editButton.classList.remove("hidden");
+      }
+
       favoriteButton.disabled = false;
       completedButton.disabled = false;
 

@@ -872,6 +872,10 @@ video {
   border-color: rgb(51 65 85 / 0.5);
 }
 
+.border-pink-500\/40 {
+  border-color: rgb(236 72 153 / 0.4);
+}
+
 .bg-\[\#0e0e22\] {
   --tw-bg-opacity: 1;
   background-color: rgb(14 14 34 / var(--tw-bg-opacity, 1));
@@ -1758,6 +1762,13 @@ button {
   }
 }
 
+/* Disable hover animations for static cards */
+
+.game-card.static-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 .file\:mr-4::file-selector-button {
   margin-right: 1rem;
 }
@@ -1826,6 +1837,10 @@ button {
 
 .hover\:bg-slate-800\/40:hover {
   background-color: rgb(30 41 59 / 0.4);
+}
+
+.hover\:bg-pink-500\/10:hover {
+  background-color: rgb(236 72 153 / 0.1);
 }
 
 .hover\:text-pink-300:hover {

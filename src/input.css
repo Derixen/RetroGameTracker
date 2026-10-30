@@ -545,3 +545,8 @@ button {
     transition: none;
   }
 }
+/* Disable hover animations for static cards */
+.game-card.static-card:hover {
+  transform: none;
+  box-shadow: none;
+}
