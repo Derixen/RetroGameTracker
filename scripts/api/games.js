@@ -21,6 +21,7 @@ export async function getGames() {
         manufacturer
     ),
     favorite,
+    in_progress,
     completed
     
 `,

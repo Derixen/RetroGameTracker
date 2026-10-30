@@ -40,6 +40,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
                 platforms (name),
                 series (name),
                 favorite,
+                in_progress,
                 completed
             `,
       )
@@ -50,17 +51,22 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
     const favoriteButton = document.getElementById("detail-favorite");
     const completedButton = document.getElementById("detail-completed");
+    const progressButton = document.getElementById("detail-in-progress");
 
     let favorite = game.favorite;
     let completed = game.completed;
+    let inProgress = game.in_progress;
 
     function updateButtons() {
       favoriteButton.textContent = favorite ? "♥ Favorite" : "♡ Favorite";
-
       completedButton.textContent = completed ? "✓ Completed" : "○ Completed";
+      progressButton.textContent = inProgress
+        ? "◷ In Progress"
+        : "○ In Progress";
 
       favoriteButton.classList.toggle("text-red-500", favorite);
       completedButton.classList.toggle("text-green-400", completed);
+      progressButton.classList.toggle("text-amber-400", inProgress);
     }
 
     updateButtons();
@@ -71,13 +77,16 @@ export async function initGameDetails(params = new URLSearchParams()) {
       favoriteButton.disabled = false;
       completedButton.disabled = false;
 
+      progressButton.disabled = false;
+      progressButton.classList.add("cursor-pointer");
+
       favoriteButton.classList.add("cursor-pointer");
       completedButton.classList.add("cursor-pointer");
 
-      async function saveStatus(column, value) {
+      async function saveStatus(changes) {
         const { data, error } = await supabase
           .from("games")
-          .update({ [column]: value })
+          .update(changes)
           .eq("id", game.id)
           .select("id")
           .single();
@@ -90,7 +99,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
         favoriteButton.disabled = true;
 
         try {
-          await saveStatus("favorite", !favorite);
+          await saveStatus({ favorite: !favorite });
           favorite = !favorite;
           updateButtons();
         } catch (error) {
@@ -103,16 +112,57 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
       completedButton.addEventListener("click", async () => {
         completedButton.disabled = true;
+        progressButton.disabled = true;
 
         try {
-          await saveStatus("completed", !completed);
-          completed = !completed;
+          const nextCompleted = !completed;
+
+          await saveStatus({
+            completed: nextCompleted,
+            in_progress: nextCompleted ? false : inProgress,
+          });
+
+          completed = nextCompleted;
+
+          if (completed) {
+            inProgress = false;
+          }
+
           updateButtons();
         } catch (error) {
           console.error("Failed to update completed:", error);
           alert(error.message);
         } finally {
           completedButton.disabled = false;
+          progressButton.disabled = false;
+        }
+      });
+
+      progressButton.addEventListener("click", async () => {
+        completedButton.disabled = true;
+        progressButton.disabled = true;
+
+        try {
+          const nextProgress = !inProgress;
+
+          await saveStatus({
+            in_progress: nextProgress,
+            completed: nextProgress ? false : completed,
+          });
+
+          inProgress = nextProgress;
+
+          if (inProgress) {
+            completed = false;
+          }
+
+          updateButtons();
+        } catch (error) {
+          console.error("Failed to update progress:", error);
+          alert(error.message);
+        } finally {
+          completedButton.disabled = false;
+          progressButton.disabled = false;
         }
       });
     }
@@ -142,20 +192,32 @@ export async function initGameDetails(params = new URLSearchParams()) {
     const cover = document.getElementById("detail-cover");
     const placeholder = document.getElementById("detail-cover-placeholder");
 
-    if (game.cover_url) {
-      cover.src = game.cover_url;
-      cover.alt = `${game.title} cover`;
+    function showPlaceholder() {
+      cover.hidden = true;
+      cover.classList.add("hidden");
+      cover.classList.remove("block");
+      cover.removeAttribute("src");
+
+      placeholder.hidden = false;
+      placeholder.classList.remove("hidden");
+      placeholder.classList.add("flex");
+    }
+
+    function showCover() {
       cover.hidden = false;
+      cover.classList.remove("hidden");
+      cover.classList.add("block");
+
       placeholder.hidden = true;
       placeholder.classList.remove("flex");
       placeholder.classList.add("hidden");
+    }
 
-      cover.onerror = () => {
-        cover.hidden = true;
-        placeholder.hidden = false;
-        placeholder.classList.remove("hidden");
-        placeholder.classList.add("flex");
-      };
+    if (game.cover_url) {
+      cover.onload = showCover;
+      cover.src = game.cover_url;
+    } else {
+      showPlaceholder();
     }
 
     // Load other games from the same series

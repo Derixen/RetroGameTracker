@@ -29,9 +29,13 @@
       />
       <div
         id="detail-cover-placeholder"
-        class="hidden aspect-[3/4] items-center justify-center rounded-lg bg-slate-800 text-slate-500"
+        class="flex aspect-[3/4] w-full flex-col items-center justify-center gap-3 rounded-xl bg-slate-900/60 text-slate-400"
+        hidden
       >
-        No Cover
+        <span class="text-5xl">🎮</span>
+        <span class="text-xs font-semibold uppercase tracking-widest">
+          No Cover
+        </span>
       </div>
     </div>
 
@@ -76,6 +80,15 @@
           class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition disabled:cursor-default"
         >
           ♡ Favorite
+        </button>
+
+        <button
+          id="detail-in-progress"
+          type="button"
+          class="rounded-lg border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-400 transition hover:border-amber-400/50"
+          disabled
+        >
+          ◷ In Progress
         </button>
 
         <button

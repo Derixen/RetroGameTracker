@@ -173,8 +173,9 @@ button {
   min-height: 100vh;
 }
 .content {
-  max-width: 1700px;
-  margin: auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding: 44px 52px 90px;
 }
 .page-heading {
@@ -182,6 +183,7 @@ button {
   justify-content: space-between;
   align-items: center;
   gap: 18px;
+  margin-bottom: 24px;
 }
 .eyebrow {
   font-size: 10px;
@@ -419,4 +421,78 @@ button {
 #auth-logout[hidden],
 #auth-admin[hidden] {
   display: none;
+}
+
+/* Related Games: compact cards */
+#related-games-list {
+  grid-template-columns: repeat(auto-fill, minmax(175px, 215px));
+  align-items: start;
+}
+
+#related-games-list .game-card {
+  width: 100%;
+  height: auto;
+}
+
+#related-games-list .cover-area {
+  height: 220px;
+  min-height: 0;
+  flex: none;
+}
+
+#related-games-list .card-info {
+  height: auto;
+}
+
+#related-games-list .cover-area {
+  width: 100%;
+  height: 220px;
+  min-height: 0;
+  flex: none;
+}
+
+#related-games-list .cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Prevent admin tables from moving on hover */
+#page-content .game-card:has(table):hover {
+  transform: none;
+}
+
+#game-details-content .game-card:hover {
+  transform: none;
+}
+
+/* Game Details status button colors */
+#detail-favorite.text-red-500 {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+#detail-in-progress.text-amber-400 {
+  color: #fbbf24;
+  border-color: #fbbf24;
+}
+
+#detail-completed.text-green-400 {
+  color: #4ade80;
+  border-color: #4ade80;
+}
+
+/* Games page heading */
+#page-content .page-heading:has(#page-title) {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+#page-content .page-heading:has(#page-title) > div {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
 }

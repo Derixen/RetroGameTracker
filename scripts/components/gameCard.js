@@ -56,11 +56,18 @@ export function createGameCard(game) {
     status.append(completed);
   }
 
-  if (status.children.length > 0) {
-    info.append(status);
+  if (game.in_progress) {
+    const inProgress = document.createElement("span");
+    inProgress.className = "text-amber-400 text-sm font-semibold";
+    inProgress.textContent = "◷ In Progress";
+    status.append(inProgress);
   }
 
   info.append(title, genre);
+
+  if (status.children.length > 0) {
+    info.append(status);
+  }
   card.append(cover, info);
 
   card.classList.add(

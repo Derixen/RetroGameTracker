@@ -689,12 +689,20 @@ video {
   height: 0.5rem;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
 .h-auto {
   height: auto;
 }
 
 .h-full {
   height: 100%;
+}
+
+.max-h-48 {
+  max-height: 12rem;
 }
 
 .max-h-64 {
@@ -705,8 +713,16 @@ video {
   min-height: 100vh;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
 .w-full {
   width: 100%;
+}
+
+.min-w-0 {
+  min-width: 0px;
 }
 
 .max-w-2xl {
@@ -721,6 +737,14 @@ video {
   max-width: 28rem;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -731,6 +755,10 @@ video {
 
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .flex-wrap {
@@ -811,6 +839,10 @@ video {
   border-radius: 0.5rem;
 }
 
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -863,19 +895,22 @@ video {
   background-color: rgb(51 65 85 / 0.6);
 }
 
-.bg-slate-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(30 41 59 / var(--tw-bg-opacity, 1));
-}
-
 .bg-slate-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1));
 }
 
+.bg-slate-900\/60 {
+  background-color: rgb(15 23 42 / 0.6);
+}
+
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .p-5 {
@@ -956,6 +991,15 @@ video {
   line-height: 2.25rem;
 }
 
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-\[10px\] {
+  font-size: 10px;
+}
+
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -994,6 +1038,19 @@ video {
 
 .leading-relaxed {
   line-height: 1.625;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+.tracking-widest {
+  letter-spacing: 0.1em;
+}
+
+.text-amber-400 {
+  --tw-text-opacity: 1;
+  color: rgb(251 191 36 / var(--tw-text-opacity, 1));
 }
 
 .text-green-400 {
@@ -1265,8 +1322,9 @@ button {
 }
 
 .content {
-  max-width: 1700px;
-  margin: auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
   padding: 44px 52px 90px;
 }
 
@@ -1275,6 +1333,7 @@ button {
   justify-content: space-between;
   align-items: center;
   gap: 18px;
+  margin-bottom: 24px;
 }
 
 .eyebrow {
@@ -1560,6 +1619,84 @@ button {
   display: none;
 }
 
+/* Related Games: compact cards */
+
+#related-games-list {
+  grid-template-columns: repeat(auto-fill, minmax(175px, 215px));
+  align-items: start;
+}
+
+#related-games-list .game-card {
+  width: 100%;
+  height: auto;
+}
+
+#related-games-list .cover-area {
+  height: 220px;
+  min-height: 0;
+  flex: none;
+}
+
+#related-games-list .card-info {
+  height: auto;
+}
+
+#related-games-list .cover-area {
+  width: 100%;
+  height: 220px;
+  min-height: 0;
+  flex: none;
+}
+
+#related-games-list .cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Prevent admin tables from moving on hover */
+
+#page-content .game-card:has(table):hover {
+  transform: none;
+}
+
+#game-details-content .game-card:hover {
+  transform: none;
+}
+
+/* Game Details status button colors */
+
+#detail-favorite.text-red-500 {
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+#detail-in-progress.text-amber-400 {
+  color: #fbbf24;
+  border-color: #fbbf24;
+}
+
+#detail-completed.text-green-400 {
+  color: #4ade80;
+  border-color: #4ade80;
+}
+
+/* Games page heading */
+
+#page-content .page-heading:has(#page-title) {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+#page-content .page-heading:has(#page-title) > div {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+}
+
 .file\:mr-4::file-selector-button {
   margin-right: 1rem;
 }
@@ -1598,6 +1735,10 @@ button {
 .file\:text-white::file-selector-button {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.hover\:border-amber-400\/50:hover {
+  border-color: rgb(251 191 36 / 0.5);
 }
 
 .hover\:border-pink-500\/50:hover {
