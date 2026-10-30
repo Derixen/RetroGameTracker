@@ -1,6 +1,13 @@
 import { supabase } from "../supabase.js";
 import { createGameCard } from "../components/gameCard.js";
 import { getAdminUser } from "../admin.js";
+import {
+  getGameCompletions,
+  addGameCompletion,
+  updateGameCompletion,
+  deleteGameCompletion,
+} from "../api/completions.js";
+import { confirmDialog } from "../components/confirmDialog.js";
 
 export async function initGameDetails(params = new URLSearchParams()) {
   const loading = document.getElementById("game-details-loading");
@@ -8,6 +15,8 @@ export async function initGameDetails(params = new URLSearchParams()) {
   const errorMessage = document.getElementById("game-details-error");
 
   const gameId = params.get("id");
+
+  let editingCompletionId = null;
 
   if (!gameId || !/^\d+$/.test(gameId)) {
     loading.hidden = true;
@@ -73,6 +82,111 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
     const adminUser = await getAdminUser();
 
+    const completionDialogTitle = document.getElementById(
+      "completion-dialog-title",
+    );
+
+    const addCompletionButton = document.getElementById(
+      "history-add-completion",
+    );
+    const completionDialog = document.getElementById("completion-dialog");
+    const completionForm = document.getElementById("completion-form");
+    const completionCancel = document.getElementById("completion-cancel");
+    const completionError = document.getElementById("completion-form-error");
+    const completionSave = document.getElementById("completion-save");
+
+    if (adminUser) {
+      document
+        .getElementById("history-add-completion")
+        .classList.remove("hidden");
+
+      // Add Completion dialog
+
+      addCompletionButton.addEventListener("click", () => {
+        editingCompletionId = null;
+
+        completionForm.reset();
+        completionError.hidden = true;
+
+        completionDialogTitle.textContent = "Add Completion";
+        completionSave.textContent = "Save Completion";
+
+        completionDialog.showModal();
+      });
+
+      completionCancel.addEventListener("click", () => {
+        completionDialog.close();
+      });
+
+      completionForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const year = Number(document.getElementById("completion-year").value);
+        const monthValue = document.getElementById("completion-month").value;
+        const dayValue = document.getElementById("completion-day").value;
+        const notes = document.getElementById("completion-notes").value.trim();
+
+        const month = monthValue ? Number(monthValue) : null;
+        const day = dayValue ? Number(dayValue) : null;
+
+        completionError.hidden = true;
+
+        if (day !== null && month === null) {
+          completionError.textContent = "Select a month when entering a day.";
+          completionError.hidden = false;
+          return;
+        }
+
+        if (month !== null && day !== null) {
+          const validDate = new Date(Date.UTC(year, month - 1, day));
+
+          if (
+            validDate.getUTCFullYear() !== year ||
+            validDate.getUTCMonth() !== month - 1 ||
+            validDate.getUTCDate() !== day
+          ) {
+            completionError.textContent = "Please enter a valid date.";
+            completionError.hidden = false;
+            return;
+          }
+        }
+
+        completionSave.disabled = true;
+        completionSave.textContent = "Saving...";
+
+        try {
+          const completionData = {
+            game_id: game.id,
+            completed_year: year,
+            completed_month: month,
+            completed_day: day,
+            notes: notes || null,
+          };
+
+          if (editingCompletionId !== null) {
+            await updateGameCompletion(editingCompletionId, completionData);
+          } else {
+            await addGameCompletion(completionData);
+          }
+
+          completionDialog.close();
+
+          // Reload the details page to display the new completion
+          window.dispatchEvent(new HashChangeEvent("hashchange"));
+        } catch (error) {
+          console.error("Failed to save completion:", error);
+          completionError.textContent = error.message;
+          completionError.hidden = false;
+        } finally {
+          completionSave.disabled = false;
+          completionSave.textContent =
+            editingCompletionId !== null
+              ? "Update Completion"
+              : "Save Completion";
+        }
+      });
+    }
+
     if (adminUser) {
       // Show Edit Game button
       const editButton = document.getElementById("detail-edit");
@@ -112,7 +226,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
           updateButtons();
         } catch (error) {
           console.error("Failed to update favorite:", error);
-          alert(error.message);
+          await confirmDialog({
+            title: "Failed to Update",
+            message: "Failed to update favorite.",
+            alertOnly: true,
+          });
         } finally {
           favoriteButton.disabled = false;
         }
@@ -139,7 +257,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
           updateButtons();
         } catch (error) {
           console.error("Failed to update completed:", error);
-          alert(error.message);
+          await confirmDialog({
+            title: "Failed to Update",
+            message: "Failed to update completed.",
+            alertOnly: true,
+          });
         } finally {
           completedButton.disabled = false;
           progressButton.disabled = false;
@@ -167,7 +289,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
           updateButtons();
         } catch (error) {
           console.error("Failed to update progress:", error);
-          alert(error.message);
+          await confirmDialog({
+            title: "Failed to Update",
+            message: "Failed to update progress.",
+            alertOnly: true,
+          });
         } finally {
           completedButton.disabled = false;
           progressButton.disabled = false;
@@ -226,6 +352,157 @@ export async function initGameDetails(params = new URLSearchParams()) {
       cover.src = game.cover_url;
     } else {
       showPlaceholder();
+    }
+
+    // Load My Gaming History
+    const historyLoading = document.getElementById("history-loading");
+    const historyEmpty = document.getElementById("history-empty");
+    const historyTimeline = document.getElementById("history-timeline");
+
+    try {
+      const completions = await getGameCompletions(game.id);
+
+      historyLoading.hidden = true;
+
+      document.getElementById("history-total").textContent = completions.length;
+
+      if (completions.length === 0) {
+        historyEmpty.hidden = false;
+      } else {
+        const years = completions.map((item) => item.completed_year);
+
+        document.getElementById("history-first").textContent = Math.min(
+          ...years,
+        );
+
+        document.getElementById("history-last").textContent = Math.max(
+          ...years,
+        );
+
+        for (const completion of completions) {
+          const entry = document.createElement("div");
+          entry.className =
+            "flex gap-4 rounded-lg border border-slate-700/50 bg-slate-900/30 p-4";
+
+          const icon = document.createElement("span");
+          icon.className = "text-xl";
+          icon.textContent = "🏆";
+
+          const details = document.createElement("div");
+          details.className = "min-w-0 flex-1";
+
+          const date = document.createElement("p");
+          date.className = "font-semibold text-white";
+
+          const parts = [
+            completion.completed_year,
+            completion.completed_month
+              ? String(completion.completed_month).padStart(2, "0")
+              : null,
+            completion.completed_day
+              ? String(completion.completed_day).padStart(2, "0")
+              : null,
+          ].filter(Boolean);
+
+          date.textContent = parts.join("-");
+
+          details.append(date);
+
+          if (completion.notes) {
+            const notes = document.createElement("p");
+            notes.className = "mt-2 whitespace-pre-line text-sm text-slate-400";
+            notes.textContent = completion.notes;
+            details.append(notes);
+          }
+
+          entry.append(icon, details);
+
+          if (adminUser) {
+            const editButton = document.createElement("button");
+
+            editButton.type = "button";
+            editButton.textContent = "✎";
+            editButton.title = "Edit completion";
+            editButton.setAttribute("aria-label", "Edit completion");
+
+            editButton.className =
+              "self-start rounded-lg border border-slate-700 px-3 py-2 " +
+              "text-slate-400 transition hover:border-pink-500 " +
+              "hover:text-pink-400";
+
+            editButton.addEventListener("click", () => {
+              editingCompletionId = completion.id;
+
+              document.getElementById("completion-year").value =
+                completion.completed_year;
+
+              document.getElementById("completion-month").value =
+                completion.completed_month ?? "";
+
+              document.getElementById("completion-day").value =
+                completion.completed_day ?? "";
+
+              document.getElementById("completion-notes").value =
+                completion.notes ?? "";
+
+              completionError.hidden = true;
+              completionDialogTitle.textContent = "Edit Completion";
+              completionSave.textContent = "Update Completion";
+
+              completionDialog.showModal();
+            });
+
+            entry.append(editButton);
+
+            const deleteButton = document.createElement("button");
+
+            deleteButton.type = "button";
+            deleteButton.textContent = "🗑";
+            deleteButton.title = "Delete completion";
+            deleteButton.setAttribute("aria-label", "Delete completion");
+
+            deleteButton.className =
+              "self-start rounded-lg border border-slate-700 px-3 py-2 " +
+              "text-slate-400 transition hover:border-red-500 " +
+              "hover:text-red-400";
+
+            deleteButton.addEventListener("click", async () => {
+              const confirmed = await confirmDialog({
+                title: "Delete Completion?",
+                message: `Are you sure you want to delete the completion from ${completion.completed_year}?`,
+                confirmText: "Delete Completion",
+              });
+
+              if (!confirmed) return;
+
+              deleteButton.disabled = true;
+
+              try {
+                await deleteGameCompletion(completion.id);
+
+                // Refresh Game Details
+                window.dispatchEvent(new HashChangeEvent("hashchange"));
+              } catch (error) {
+                console.error("Failed to delete completion:", error);
+                await confirmDialog({
+                  title: "Failed to Delete",
+                  message: "Failed to delete completion.",
+                  alertOnly: true,
+                });
+                deleteButton.disabled = false;
+              }
+            });
+
+            entry.append(deleteButton);
+          }
+
+          historyTimeline.append(entry);
+        }
+      }
+    } catch (historyError) {
+      console.error("Failed to load gaming history:", historyError);
+
+      historyLoading.textContent = "Unable to load completion history.";
     }
 
     // Load other games from the same series

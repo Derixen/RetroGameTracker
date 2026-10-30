@@ -1,4 +1,5 @@
 import { supabase } from "../supabase.js";
+import { confirmDialog } from "../components/confirmDialog.js";
 
 export async function deletePlatformImage(imageUrl) {
   if (!imageUrl) return;
@@ -54,7 +55,7 @@ export async function initAdminAddPlatform(params = new URLSearchParams()) {
     removeButton.hidden = true;
   }
 
-  imageInput.addEventListener("change", () => {
+  imageInput.addEventListener("change", async () => {
     clearPreview();
 
     const file = imageInput.files[0];
@@ -69,13 +70,21 @@ export async function initAdminAddPlatform(params = new URLSearchParams()) {
     }
 
     if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
-      alert("Please select a JPG, PNG or WebP image.");
+      await confirmDialog({
+        title: "Invalid Image Format",
+        message: "Please select a JPG, PNG or WebP image.",
+        alertOnly: true,
+      });
       imageInput.value = "";
       return;
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      alert("The image must be smaller than 5 MB.");
+      await confirmDialog({
+        title: "Invalid Image Format",
+        message: "Please select a JPG, PNG or WebP image.",
+        alertOnly: true,
+      });
       imageInput.value = "";
       return;
     }

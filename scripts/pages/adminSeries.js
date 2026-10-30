@@ -1,5 +1,6 @@
 import { getSeries } from "../api/series.js";
 import { supabase } from "../supabase.js";
+import { confirmDialog } from "../components/confirmDialog.js";
 
 export async function initAdminSeries() {
   const tableBody = document.getElementById("admin-series-list");
@@ -56,17 +57,19 @@ export async function initAdminSeries() {
           if (countError) throw countError;
 
           if (count > 0) {
-            alert(
-              `Cannot delete "${item.name}".\n\n` +
-                `${count} game(s) belong to this series.`,
-            );
+            await confirmDialog({
+              title: "Cannot Delete Game Series",
+              message: `"${item.name}" cannot be deleted because ${count} game(s) belong to this series.`,
+              alertOnly: true,
+            });
             return;
           }
 
-          const confirmed = window.confirm(
-            `Are you sure you want to delete "${item.name}"?\n\n` +
-              "This action cannot be undone.",
-          );
+          const confirmed = await confirmDialog({
+            title: "Delete Game Series?",
+            message: `Are you sure you want to delete "${item.name}"?\n\nThis action cannot be undone.`,
+            confirmText: "Delete Series",
+          });
 
           if (!confirmed) return;
 
@@ -91,7 +94,12 @@ export async function initAdminSeries() {
           }
         } catch (error) {
           console.error("Failed to delete series:", error);
-          alert(`Failed to delete series: ${error.message}`);
+
+          await confirmDialog({
+            title: "Failed to Delete Game Series",
+            message: error.message,
+            alertOnly: true,
+          });
         } finally {
           deleteButton.disabled = false;
           deleteButton.textContent = "Delete";

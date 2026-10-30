@@ -1,6 +1,7 @@
 import { getGames } from "../api/games.js";
 import { supabase } from "../supabase.js";
 import { deleteOldCover } from "./adminAddGame.js";
+import { confirmDialog } from "../components/confirmDialog.js";
 
 export async function initAdminGames() {
   const tableBody = document.getElementById("admin-games-list");
@@ -47,9 +48,11 @@ export async function initAdminGames() {
       deleteButton.textContent = "Delete";
 
       deleteButton.addEventListener("click", async () => {
-        const confirmed = window.confirm(
-          `Are you sure you want to delete "${game.title}"?\n\nThis action cannot be undone.`,
-        );
+        const confirmed = await confirmDialog({
+          title: "Delete Game?",
+          message: `Are you sure you want to delete "${game.title}"?\n\nThis will also delete its completion history. This action cannot be undone.`,
+          confirmText: "Delete Game",
+        });
 
         if (!confirmed) return;
 
@@ -86,7 +89,12 @@ export async function initAdminGames() {
           }
         } catch (error) {
           console.error("Failed to delete game:", error);
-          alert(`Failed to delete game: ${error.message}`);
+
+          await confirmDialog({
+            title: "Failed to delete game",
+            message: error.message,
+            alertOnly: true,
+          });
 
           deleteButton.disabled = false;
           deleteButton.textContent = "Delete";

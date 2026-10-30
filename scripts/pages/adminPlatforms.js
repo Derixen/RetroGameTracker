@@ -1,5 +1,6 @@
 import { getPlatforms } from "../api/platforms.js";
 import { supabase } from "../supabase.js";
+import { confirmDialog } from "../components/confirmDialog.js";
 
 export async function initAdminPlatforms() {
   const tableBody = document.getElementById("admin-platforms-list");
@@ -60,17 +61,21 @@ export async function initAdminPlatforms() {
           if (countError) throw countError;
 
           if (count > 0) {
-            alert(
-              `Cannot delete "${platform.name}".\n\n` +
-                `${count} game(s) are assigned to this platform.`,
-            );
+            await confirmDialog({
+              title: "Cannot Delete Platform",
+              message: `"${platform.name}" cannot be deleted because ${count} game(s) are assigned to it.`,
+              alertOnly: true,
+            });
             return;
           }
 
-          const confirmed = window.confirm(
-            `Are you sure you want to delete "${platform.name}"?\n\n` +
-              "This action cannot be undone.",
-          );
+          const confirmed = await confirmDialog({
+            title: "Delete Platform?",
+            message: `Are you sure you want to delete "${platform.name}"?\n\nThis action cannot be undone.`,
+            confirmText: "Delete Platform",
+          });
+
+          if (!confirmed) return;
 
           if (!confirmed) return;
 
@@ -97,7 +102,12 @@ export async function initAdminPlatforms() {
           }
         } catch (error) {
           console.error("Failed to delete platform:", error);
-          alert(`Failed to delete platform: ${error.message}`);
+
+          await confirmDialog({
+            title: "Failed to delete platform:",
+            message: error.message,
+            alertOnly: true,
+          });
         } finally {
           deleteButton.disabled = false;
           deleteButton.textContent = "Delete";

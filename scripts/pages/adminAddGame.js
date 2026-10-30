@@ -1,6 +1,7 @@
 import { getPlatforms } from "../api/platforms.js";
 import { getSeries } from "../api/series.js";
 import { supabase } from "../supabase.js";
+import { confirmDialog } from "../components/confirmDialog.js";
 
 export async function initAdminAddGame(params = new URLSearchParams()) {
   const platformSelect = document.getElementById("game-platform");
@@ -156,7 +157,7 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
 
   let previewUrl = null;
 
-  coverFileInput.addEventListener("change", () => {
+  coverFileInput.addEventListener("change", async () => {
     if (previewUrl) {
       URL.revokeObjectURL(previewUrl);
       previewUrl = null;
@@ -171,14 +172,22 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
     }
 
     if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
-      alert("Please select a JPG, PNG or WebP image.");
+      await confirmDialog({
+        title: "Image Too Large",
+        message: "The image must be smaller than 5 MB.",
+        alertOnly: true,
+      });
       coverFileInput.value = "";
       coverPreview.hidden = true;
       return;
     }
 
     if (file.size > 5 * 1024 * 1024) {
-      alert("The image must be smaller than 5 MB.");
+      await confirmDialog({
+        title: "Invalid Image Format",
+        message: "Please select a JPG, PNG or WebP image.",
+        alertOnly: true,
+      });
       coverFileInput.value = "";
       coverPreview.hidden = true;
       return;

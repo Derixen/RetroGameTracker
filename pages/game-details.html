@@ -110,6 +110,59 @@
     </div>
   </div>
 
+  <!-- My Gaming History -->
+  <section id="game-history-section" class="game-card static-card mt-8 p-6">
+    <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-bold text-white">My Gaming History</h2>
+        <p class="mt-1 text-sm text-slate-400">Your journey with this game</p>
+      </div>
+
+      <button
+        id="history-add-completion"
+        type="button"
+        class="hidden rounded-lg bg-pink-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-pink-600"
+      >
+        + Add Completion
+      </button>
+    </div>
+
+    <!-- Statistics -->
+    <div class="mb-6 grid grid-cols-3 gap-4 border-b border-slate-700/50 pb-6">
+      <div>
+        <p id="history-total" class="text-2xl font-bold text-white">0</p>
+        <p class="text-xs text-slate-400">Completions</p>
+      </div>
+
+      <div>
+        <p id="history-first" class="text-2xl font-bold text-white">—</p>
+        <p class="text-xs text-slate-400">First Completed</p>
+      </div>
+
+      <div>
+        <p id="history-last" class="text-2xl font-bold text-white">—</p>
+        <p class="text-xs text-slate-400">Last Completed</p>
+      </div>
+    </div>
+
+    <!-- Completion Timeline -->
+    <h3 class="mb-4 text-lg font-semibold text-white">Completion Timeline</h3>
+
+    <div id="history-loading" class="text-sm text-slate-400">
+      Loading completion history...
+    </div>
+
+    <div
+      id="history-empty"
+      class="rounded-lg border border-dashed border-slate-700 p-6 text-center text-sm text-slate-400"
+      hidden
+    >
+      No completions recorded yet.
+    </div>
+
+    <div id="history-timeline" class="space-y-4"></div>
+  </section>
+
   <section id="related-games-section" class="mt-10" hidden>
     <h2 class="mb-5 text-2xl font-bold text-white">Related Games</h2>
 
@@ -119,3 +172,103 @@
     ></div>
   </section>
 </div>
+
+<!-- Add Completion Dialog -->
+<dialog
+  id="completion-dialog"
+  class="w-full max-w-md rounded-xl border border-slate-700 bg-slate-900 p-6 text-white shadow-2xl backdrop:bg-black/70"
+>
+  <form id="completion-form" class="space-y-5">
+    <div>
+      <h2 id="completion-dialog-title" class="text-xl font-bold">
+        Add Completion
+      </h2>
+      <p class="mt-1 text-sm text-slate-400">
+        Record another chapter of your gaming history.
+      </p>
+    </div>
+
+    <div>
+      <label for="completion-year" class="mb-2 block text-sm"> Year * </label>
+      <input
+        id="completion-year"
+        type="number"
+        min="1970"
+        max="2100"
+        required
+        class="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2"
+      />
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label for="completion-month" class="mb-2 block text-sm">
+          Month (optional)
+        </label>
+        <select
+          id="completion-month"
+          class="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2"
+        >
+          <option value="">Unknown</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="completion-day" class="mb-2 block text-sm">
+          Day (optional)
+        </label>
+        <input
+          id="completion-day"
+          type="number"
+          min="1"
+          max="31"
+          class="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label for="completion-notes" class="mb-2 block text-sm">
+        Personal Memory (optional)
+      </label>
+      <textarea
+        id="completion-notes"
+        rows="3"
+        placeholder="What do you remember about this playthrough?"
+        class="w-full resize-y rounded-lg border border-slate-700 bg-slate-800 px-3 py-2"
+      ></textarea>
+    </div>
+
+    <p id="completion-form-error" class="text-sm text-red-400" hidden></p>
+
+    <div class="flex justify-end gap-3">
+      <button
+        id="completion-cancel"
+        type="button"
+        class="rounded-lg border border-slate-700 px-4 py-2 text-sm hover:bg-slate-800"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="completion-save"
+        type="submit"
+        class="rounded-lg bg-pink-500 px-4 py-2 text-sm font-semibold hover:bg-pink-600"
+      >
+        Save Completion
+      </button>
+    </div>
+  </form>
+</dialog>
