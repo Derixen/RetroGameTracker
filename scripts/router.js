@@ -4,6 +4,16 @@ import { initPlatforms } from "./pages/platforms.js";
 import { initSeries } from "./pages/series.js";
 import { initDevelopers } from "./pages/developers.js";
 import { initGenres } from "./pages/genres.js";
+import { initStatistics } from "./pages/statistics.js";
+import { initLogin } from "./pages/login.js";
+import { initAdminGames } from "./pages/adminGames.js";
+import { initAdminAddGame } from "./pages/adminAddGame.js";
+import { getAdminUser } from "./admin.js";
+import { initAdminPlatforms } from "./pages/adminPlatforms.js";
+import { initAdminAddPlatform } from "./pages/adminAddPlatform.js";
+import { initAdminSeries } from "./pages/adminSeries.js";
+import { initAdminAddSeries } from "./pages/adminAddSeries.js";
+import { initGameDetails } from "./pages/gameDetails.js";
 
 const routes = {
   home: "home",
@@ -13,6 +23,18 @@ const routes = {
   developers: "developers",
   genres: "genres",
   statistics: "statistics",
+  login: "login",
+  admin: "admin",
+  "admin/games": "admin-games",
+  "admin/add-game": "admin-add-game",
+  "admin/edit-game": "admin-add-game",
+  "admin/platforms": "admin-platforms",
+  "admin/add-platform": "admin-add-platform",
+  "admin/edit-platform": "admin-add-platform",
+  "admin/series": "admin-series",
+  "admin/add-series": "admin-add-series",
+  "admin/edit-series": "admin-add-series",
+  game: "game-details",
 };
 
 let cleanupPage = null;
@@ -26,6 +48,18 @@ export async function navigate() {
 
   const params = new URLSearchParams(queryString);
   const route = routes[page] ?? "games";
+
+  if (page === "admin" || page.startsWith("admin/")) {
+    const adminUser = await getAdminUser();
+
+    // Ignore an outdated navigation request
+    if (id !== navigationId) return;
+
+    if (!adminUser) {
+      window.location.hash = "#/home";
+      return;
+    }
+  }
 
   try {
     const response = await fetch(`./pages/${route}.html`);
@@ -98,6 +132,42 @@ export async function navigate() {
 
     if (route === "genres") {
       await initGenres();
+    }
+
+    if (route === "statistics") {
+      await initStatistics();
+    }
+
+    if (route === "login") {
+      initLogin();
+    }
+
+    if (route === "admin-games") {
+      await initAdminGames();
+    }
+
+    if (page === "admin/add-game" || page === "admin/edit-game") {
+      await initAdminAddGame(params);
+    }
+
+    if (route === "admin-platforms") {
+      await initAdminPlatforms();
+    }
+
+    if (page === "admin/add-platform" || page === "admin/edit-platform") {
+      await initAdminAddPlatform(params);
+    }
+
+    if (route === "admin-series") {
+      await initAdminSeries();
+    }
+
+    if (page === "admin/add-series" || page === "admin/edit-series") {
+      await initAdminAddSeries(params);
+    }
+
+    if (route === "game-details") {
+      await initGameDetails(params);
     }
   } catch (error) {
     if (id === navigationId) {

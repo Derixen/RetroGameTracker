@@ -19,7 +19,9 @@ export async function getGames() {
     platforms (
         name,
         manufacturer
-    )
+    ),
+    favorite,
+    completed
     
 `,
     )

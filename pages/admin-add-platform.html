@@ -1,0 +1,61 @@
+<div class="page-heading">
+  <div>
+    <p class="eyebrow">COLLECTION MANAGEMENT</p>
+    <h1>Add Platform</h1>
+    <p>Add a new gaming platform to your collection.</p>
+  </div>
+</div>
+
+<form id="add-platform-form" class="game-card max-w-2xl space-y-5 p-6">
+  <div>
+    <label for="platform-name" class="mb-2 block text-sm font-medium">
+      Platform Name *
+    </label>
+    <input
+      id="platform-name"
+      type="text"
+      required
+      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+    />
+  </div>
+
+  <div>
+    <label for="platform-manufacturer" class="mb-2 block text-sm font-medium">
+      Manufacturer
+    </label>
+    <input
+      id="platform-manufacturer"
+      type="text"
+      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+    />
+  </div>
+
+  <div>
+    <label for="platform-year" class="mb-2 block text-sm font-medium">
+      Release Year
+    </label>
+    <input
+      id="platform-year"
+      type="number"
+      min="1970"
+      max="2100"
+      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+    />
+  </div>
+
+  <p id="platform-error" class="text-sm text-red-400" role="alert" hidden></p>
+
+  <div class="flex items-center gap-4">
+    <button
+      id="save-platform"
+      type="submit"
+      class="rounded-lg bg-pink-500 px-6 py-3 font-semibold text-white transition hover:bg-pink-600"
+    >
+      Save Platform
+    </button>
+
+    <a href="#/admin/platforms" class="text-sm text-slate-400 hover:text-white">
+      Cancel
+    </a>
+  </div>
+</form>

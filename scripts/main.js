@@ -1,4 +1,5 @@
 import { navigate } from "./router.js";
+import { initAuth } from "./auth.js";
 
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("mobile-overlay");
@@ -35,3 +36,5 @@ window.addEventListener("hashchange", navigate);
 
 // Initial page
 navigate();
+
+initAuth();

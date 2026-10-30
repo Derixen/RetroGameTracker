@@ -1,0 +1,101 @@
+<div class="mb-6">
+  <a
+    id="back-to-games"
+    href="#/games"
+    class="text-sm text-slate-400 transition hover:text-pink-400"
+  >
+    ← Back to Games
+  </a>
+</div>
+
+<div id="game-details-loading" class="py-12 text-center text-slate-400">
+  Loading game details...
+</div>
+
+<div
+  id="game-details-error"
+  class="py-12 text-center text-red-400"
+  hidden
+></div>
+
+<div id="game-details-content" hidden>
+  <div class="game-card grid gap-8 p-6 md:grid-cols-[240px_1fr]">
+    <div>
+      <img
+        id="detail-cover"
+        alt="Game cover"
+        class="block h-auto w-full rounded-lg object-contain"
+        hidden
+      />
+      <div
+        id="detail-cover-placeholder"
+        class="hidden aspect-[3/4] items-center justify-center rounded-lg bg-slate-800 text-slate-500"
+      >
+        No Cover
+      </div>
+    </div>
+
+    <div>
+      <h1 id="detail-title" class="mb-3 text-3xl font-bold text-white"></h1>
+
+      <p id="detail-platform" class="mb-5 text-pink-400"></p>
+
+      <div class="mb-6 grid gap-4 sm:grid-cols-2">
+        <div>
+          <p class="text-xs uppercase text-slate-500">Release Year</p>
+          <p id="detail-year" class="text-slate-200"></p>
+        </div>
+
+        <div>
+          <p class="text-xs uppercase text-slate-500">Genre</p>
+          <p id="detail-genre" class="text-slate-200"></p>
+        </div>
+
+        <div>
+          <p class="text-xs uppercase text-slate-500">Developer</p>
+          <p id="detail-developer" class="text-slate-200"></p>
+        </div>
+
+        <div>
+          <p class="text-xs uppercase text-slate-500">Series</p>
+          <p id="detail-series" class="text-slate-200"></p>
+        </div>
+      </div>
+
+      <h2 class="mb-2 text-lg font-semibold">About This Game</h2>
+      <p
+        id="detail-description"
+        class="whitespace-pre-line leading-relaxed text-slate-400"
+      ></p>
+
+      <div class="mt-6 flex flex-wrap gap-3">
+        <button
+          id="detail-favorite"
+          type="button"
+          disabled
+          class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition disabled:cursor-default"
+        >
+          ♡ Favorite
+        </button>
+
+        <button
+          id="detail-completed"
+          type="button"
+          disabled
+          class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition disabled:cursor-default"
+        >
+          ○ Completed
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <section id="related-games-section" class="mt-10" hidden>
+    <h2 class="mb-5 text-2xl font-bold text-white">Related Games</h2>
+
+    <div
+      id="related-games-list"
+      class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4"
+    ></div>
+  </section>
+</div>

@@ -1,0 +1,32 @@
+<div class="page-heading">
+  <div>
+    <p class="eyebrow">COLLECTION MANAGEMENT</p>
+    <h1>Manage Game Series</h1>
+    <p>Manage the franchises in your retro game collection.</p>
+  </div>
+
+  <button
+    id="admin-add-series"
+    class="rounded-lg bg-pink-500 px-5 py-3 font-semibold text-white transition hover:bg-pink-600"
+  >
+    + Add Series
+  </button>
+</div>
+
+<div class="game-card overflow-x-auto p-5">
+  <table class="w-full text-left text-sm">
+    <thead class="border-b border-slate-700 text-slate-400">
+      <tr>
+        <th class="px-4 py-3">Series</th>
+        <th class="px-4 py-3">Description</th>
+        <th class="px-4 py-3 text-right">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody id="admin-series-list"></tbody>
+  </table>
+
+  <p id="admin-series-empty" class="py-8 text-center text-slate-400" hidden>
+    No game series found.
+  </p>
+</div>

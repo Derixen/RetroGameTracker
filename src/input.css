@@ -414,6 +414,9 @@ button {
 #active-platform-filter[hidden],
 #active-series-filter[hidden],
 #active-developer-filter[hidden],
-#active-genre-filter[hidden] {
+#active-genre-filter[hidden],
+#auth-login[hidden],
+#auth-logout[hidden],
+#auth-admin[hidden] {
   display: none;
 }

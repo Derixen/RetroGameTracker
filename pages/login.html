@@ -1,0 +1,51 @@
+<div class="mx-auto max-w-md py-12">
+  <div class="game-card p-8">
+    <p class="eyebrow">ADMIN ACCESS</p>
+
+    <h1 class="mb-2 text-3xl font-bold">Sign In</h1>
+
+    <p class="mb-8 text-sm text-slate-400">
+      Sign in to manage your retro game collection.
+    </p>
+
+    <form id="login-form" class="space-y-5">
+      <div>
+        <label for="login-email" class="mb-2 block text-sm font-medium">
+          Email
+        </label>
+
+        <input
+          id="login-email"
+          type="email"
+          required
+          autocomplete="username"
+          class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+        />
+      </div>
+
+      <div>
+        <label for="login-password" class="mb-2 block text-sm font-medium">
+          Password
+        </label>
+
+        <input
+          id="login-password"
+          type="password"
+          required
+          autocomplete="current-password"
+          class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+        />
+      </div>
+
+      <p id="login-error" class="text-sm text-red-400" role="alert" hidden></p>
+
+      <button
+        type="submit"
+        id="login-submit"
+        class="w-full rounded-lg bg-pink-500 px-4 py-3 font-semibold text-white transition hover:bg-pink-600"
+      >
+        Sign In
+      </button>
+    </form>
+  </div>
+</div>

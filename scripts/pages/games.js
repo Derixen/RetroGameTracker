@@ -158,8 +158,6 @@ export async function initGames(params = new URLSearchParams()) {
       ...game,
       platform: game.platforms?.name,
       year: game.release_year,
-      favorite: false,
-      completed: false,
     }));
 
     if (selectedSeries) {
