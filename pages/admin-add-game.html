@@ -6,6 +6,35 @@
   </div>
 </div>
 
+<section class="game-card static-card mb-6 max-w-2xl p-6">
+  <h2 class="mb-2 text-xl font-bold text-white">Search Game Database</h2>
+
+  <p class="mb-4 text-sm text-slate-400">
+    Find a game on IGDB and automatically fill in its details.
+  </p>
+
+  <div class="flex gap-3">
+    <input
+      id="igdb-search-input"
+      type="search"
+      placeholder="Search for a game..."
+      class="min-w-0 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+    />
+
+    <button
+      id="igdb-search-button"
+      type="button"
+      class="rounded-lg bg-pink-500 px-5 py-3 font-semibold text-white transition hover:bg-pink-600"
+    >
+      Search
+    </button>
+  </div>
+
+  <p id="igdb-search-error" class="mt-3 text-sm text-red-400" hidden></p>
+
+  <div id="igdb-search-results" class="mt-5 space-y-3" hidden></div>
+</section>
+
 <form id="add-game-form" class="game-card static-card max-w-2xl space-y-5 p-6">
   <div>
     <label for="game-title" class="mb-2 block text-sm font-medium">

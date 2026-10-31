@@ -10,6 +10,141 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
   const gameId = params.get("id");
   const isEditing = gameId !== null;
 
+  const igdbSearchInput = document.getElementById("igdb-search-input");
+  const igdbSearchButton = document.getElementById("igdb-search-button");
+  const igdbSearchResults = document.getElementById("igdb-search-results");
+  const igdbSearchError = document.getElementById("igdb-search-error");
+
+  async function searchIGDB() {
+    const query = igdbSearchInput.value.trim();
+
+    if (query.length < 2) return;
+
+    igdbSearchButton.disabled = true;
+    igdbSearchButton.textContent = "Searching...";
+    igdbSearchError.hidden = true;
+    igdbSearchResults.hidden = true;
+    igdbSearchResults.replaceChildren();
+
+    try {
+      const { data, error } = await supabase.functions.invoke("igdb-search", {
+        body: { query },
+      });
+
+      if (error) throw error;
+      if (data?.error) throw new Error(data.error);
+
+      const games = data.results ?? [];
+
+      if (!games.length) {
+        igdbSearchError.textContent = "No games found.";
+        igdbSearchError.hidden = false;
+        return;
+      }
+
+      for (const game of games) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className =
+          "flex w-full items-center gap-4 rounded-lg border border-slate-700 " +
+          "bg-slate-900 p-3 text-left transition hover:border-pink-500";
+
+        if (game.cover_url) {
+          const cover = document.createElement("img");
+          cover.src = game.cover_url;
+          cover.alt = "";
+          cover.className = "h-20 w-14 shrink-0 rounded object-cover";
+          button.append(cover);
+        }
+
+        const details = document.createElement("div");
+
+        const title = document.createElement("p");
+        title.className = "font-semibold text-white";
+        title.textContent = game.title;
+
+        const metadata = document.createElement("p");
+        metadata.className = "mt-1 text-xs text-slate-400";
+        metadata.textContent = [game.year, game.platforms?.join(", ")]
+          .filter(Boolean)
+          .join(" • ");
+
+        details.append(title, metadata);
+        button.append(details);
+
+        button.addEventListener("click", () => {
+          document.getElementById("game-title").value = game.title ?? "";
+          document.getElementById("game-year").value = game.year ?? "";
+          document.getElementById("game-genre").value =
+            game.genres?.join(", ") ?? "";
+          document.getElementById("game-developer").value =
+            game.developers?.join(", ") ?? "";
+          document.getElementById("game-description").value =
+            game.description ?? "";
+
+          const coverUrl = game.cover_url ?? "";
+          document.getElementById("game-cover").value = coverUrl;
+
+          // Update the cover preview
+          if (coverUrl) {
+            coverPreview.src = coverUrl;
+            coverPreview.hidden = false;
+            removeCoverButton.hidden = false;
+          } else {
+            coverPreview.removeAttribute("src");
+            coverPreview.hidden = true;
+            removeCoverButton.hidden = true;
+          }
+
+          removeCover = false;
+          coverFileInput.value = "";
+
+          if (previewUrl) {
+            URL.revokeObjectURL(previewUrl);
+            previewUrl = null;
+          }
+
+          // Match IGDB platforms with our existing platform options
+          const matchingOption = [...platformSelect.options].find((option) =>
+            game.platforms?.some(
+              (platform) =>
+                platform.toLowerCase() ===
+                option.textContent.trim().toLowerCase(),
+            ),
+          );
+
+          if (matchingOption) {
+            platformSelect.value = matchingOption.value;
+          } else {
+            platformSelect.value = "";
+          }
+
+          igdbSearchResults.hidden = true;
+        });
+
+        igdbSearchResults.append(button);
+      }
+
+      igdbSearchResults.hidden = false;
+    } catch (error) {
+      console.error("IGDB search failed:", error);
+      igdbSearchError.textContent = error.message || "Search failed.";
+      igdbSearchError.hidden = false;
+    } finally {
+      igdbSearchButton.disabled = false;
+      igdbSearchButton.textContent = "Search";
+    }
+  }
+
+  igdbSearchButton.addEventListener("click", searchIGDB);
+
+  igdbSearchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      searchIGDB();
+    }
+  });
+
   let oldCoverUrl = null;
   let removeCover = false;
 
