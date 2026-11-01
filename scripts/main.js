@@ -4,6 +4,13 @@ import { initAuth } from "./auth.js";
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("mobile-overlay");
 const menuToggle = document.getElementById("menu-toggle");
+const gameSearch = document.getElementById("game-search");
+
+gameSearch.addEventListener("input", () => {
+  if (!window.location.hash.startsWith("#/games")) {
+    window.location.hash = "#/games";
+  }
+});
 
 function closeMenu() {
   sidebar.classList.remove("open");
