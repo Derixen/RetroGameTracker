@@ -605,3 +605,21 @@ button {
   background-color: var(--sidebar);
   color: #e7ebf7;
 }
+/* Full-width layout for Welcome and Login */
+.app-shell.public-layout .sidebar {
+  display: none;
+}
+
+.app-shell.public-layout .main-area {
+  margin-left: 0;
+  width: 100%;
+}
+
+.app-shell.public-layout .mobile-header {
+  display: none;
+}
+
+.app-shell.public-layout .content {
+  width: 100%;
+  max-width: none;
+}

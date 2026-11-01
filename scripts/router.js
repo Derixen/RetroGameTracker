@@ -17,6 +17,7 @@ import { initGameDetails } from "./pages/gameDetails.js";
 import { createPageHeading } from "./components/pageHeading.js";
 
 const routes = {
+  welcome: "welcome",
   home: "home",
   games: "games",
   platforms: "platforms",
@@ -96,11 +97,40 @@ let navigationId = 0;
 export async function navigate() {
   const id = ++navigationId;
 
-  const hash = window.location.hash.replace(/^#\/?/, "") || "home";
+  const hash = window.location.hash.replace(/^#\/?/, "") || "welcome";
   const [page, queryString = ""] = hash.split("?");
 
   const params = new URLSearchParams(queryString);
   const route = routes[page] ?? "games";
+
+  // Public pages that do not require authentication
+  const publicRoutes = new Set(["welcome", "login"]);
+
+  // Hide application navigation on public pages
+  const isPublicPage = publicRoutes.has(page);
+  document
+    .querySelector(".app-shell")
+    ?.classList.toggle("public-layout", isPublicPage);
+
+  document.getElementById("sidebar")?.classList.toggle("hidden", isPublicPage);
+  document
+    .getElementById("menu-toggle")
+    ?.classList.toggle("hidden", isPublicPage);
+  document
+    .getElementById("game-search")
+    ?.classList.toggle("hidden", isPublicPage);
+  document.getElementById("mobile-overlay")?.classList.add("hidden");
+
+  if (!publicRoutes.has(page)) {
+    const user = await getAuthenticatedUser();
+
+    if (id !== navigationId) return;
+
+    if (!user) {
+      window.location.hash = "#/welcome";
+      return;
+    }
+  }
 
   const userRoutes = new Set([
     "admin/games",
