@@ -110,13 +110,19 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
           }
 
           // Match IGDB platforms with our existing platform options
-          const matchingOption = [...platformSelect.options].find((option) =>
-            game.platforms?.some(
-              (platform) =>
-                platform.toLowerCase() ===
-                option.textContent.trim().toLowerCase(),
-            ),
-          );
+          const selectedIgdbId = igdbPlatformFilter.value;
+
+          const matchingOption = selectedIgdbId
+            ? [...platformSelect.options].find(
+                (option) => option.dataset.igdbId === selectedIgdbId,
+              )
+            : [...platformSelect.options].find((option) =>
+                game.platforms?.some(
+                  (platform) =>
+                    platform.toLowerCase() ===
+                    option.textContent.trim().toLowerCase(),
+                ),
+              );
 
           if (matchingOption) {
             platformSelect.value = matchingOption.value;
@@ -362,6 +368,7 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
       const option = document.createElement("option");
       option.value = platform.id;
       option.textContent = platform.name;
+      option.dataset.igdbId = platform.igdb_id ?? "";
 
       platformSelect.append(option);
 

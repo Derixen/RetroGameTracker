@@ -39,6 +39,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
       .select(
         `
                 id,
+                user_id,
                 title,
                 release_year,
                 genre,
@@ -81,6 +82,15 @@ export async function initGameDetails(params = new URLSearchParams()) {
     updateButtons();
 
     const adminUser = await getAdminUser();
+
+    const {
+      data: { user },
+      error: authError,
+    } = await supabase.auth.getUser();
+
+    if (authError) throw authError;
+
+    const canManageGame = user !== null && game.user_id === user.id;
 
     const completionDialogTitle = document.getElementById(
       "completion-dialog-title",
@@ -187,7 +197,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
       });
     }
 
-    if (adminUser) {
+    if (canManageGame) {
       // Show Edit Game button
       const editButton = document.getElementById("detail-edit");
 
@@ -196,6 +206,49 @@ export async function initGameDetails(params = new URLSearchParams()) {
         editButton.classList.remove("hidden");
       }
 
+      // Show Delete Game button
+      const deleteButton = document.getElementById("detail-delete");
+
+      if (deleteButton) {
+        deleteButton.classList.remove("hidden");
+
+        deleteButton.addEventListener("click", async () => {
+          const confirmed = await confirmDialog({
+            title: "Delete Game?",
+            message: `Are you sure you want to permanently delete "${game.title}"? All completion history for this game will also be deleted.`,
+            confirmText: "Delete Game",
+          });
+
+          if (!confirmed) return;
+
+          deleteButton.disabled = true;
+
+          try {
+            const { data, error } = await supabase
+              .from("games")
+              .delete()
+              .eq("id", game.id)
+              .select("id");
+
+            if (error) throw error;
+            if (!data?.length) {
+              throw new Error("Game was not deleted. Check your permissions.");
+            }
+
+            window.location.hash = "#/games";
+          } catch (error) {
+            console.error("Failed to delete game:", error);
+
+            await confirmDialog({
+              title: "Failed to Delete",
+              message: error.message || "Could not delete the game.",
+              alertOnly: true,
+            });
+
+            deleteButton.disabled = false;
+          }
+        });
+      }
       favoriteButton.disabled = false;
       completedButton.disabled = false;
 
@@ -512,6 +565,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
         .select(
           `
             id,
+            user_id,
             title,
             release_year,
             genre,
