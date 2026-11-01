@@ -40,7 +40,28 @@
     </div>
 
     <div>
-      <h1 id="detail-title" class="mb-3 text-3xl font-bold text-white"></h1>
+      <div class="mb-3 flex flex-wrap items-start justify-between gap-3">
+        <h1
+          id="detail-title"
+          class="min-w-0 text-3xl font-bold text-white"
+        ></h1>
+        <div class="flex shrink-0 flex-wrap gap-2">
+          <a
+            id="detail-edit"
+            href="#/admin/games"
+            class="hidden rounded-lg border border-pink-500/40 px-3 py-2 text-sm font-semibold text-pink-400 transition hover:bg-pink-500/10"
+          >
+            ✎
+          </a>
+          <button
+            id="detail-delete"
+            type="button"
+            class="hidden rounded-lg border border-red-500/40 px-3 py-2 text-sm font-semibold text-red-400 transition hover:bg-red-500/10"
+          >
+            🗑
+          </button>
+        </div>
+      </div>
 
       <p id="detail-platform" class="mb-5 text-pink-400"></p>
 
@@ -98,20 +119,6 @@
           class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition disabled:cursor-default"
         >
           ○ Completed
-        </button>
-        <a
-          id="detail-edit"
-          href="#/admin/games"
-          class="hidden rounded-lg border border-pink-500/40 px-4 py-3 text-sm font-semibold text-pink-400 transition hover:bg-pink-500/10"
-        >
-          ✎ Edit Game
-        </a>
-        <button
-          id="detail-delete"
-          type="button"
-          class="hidden rounded-lg border border-red-500/40 px-4 py-3 text-sm font-semibold text-red-400 transition hover:bg-red-500/10"
-        >
-          🗑 Delete Game
         </button>
       </div>
     </div>
@@ -231,7 +238,6 @@
           <option value="12">December</option>
         </select>
       </div>
-
       <div>
         <label for="completion-day" class="mb-2 block text-sm">
           Day (optional)
@@ -279,3 +285,37 @@
     </div>
   </form>
 </dialog>
+
+<!-- Game Soundtrack -->
+<section
+  id="game-soundtrack-section"
+  class="game-card static-card mt-6 p-6"
+  hidden
+>
+  <div class="mb-4">
+    <h2 class="text-2xl font-bold text-white">♫ Game Soundtrack</h2>
+    <p class="mt-1 text-sm text-slate-400">Listen to the music of this game</p>
+  </div>
+
+  <div
+    id="game-soundtrack-player"
+    class="overflow-hidden rounded-xl border border-slate-700/50"
+  ></div>
+</section>
+
+<!-- Game Walkthrough -->
+<section
+  id="game-walkthrough-section"
+  class="game-card static-card mt-6 p-6"
+  hidden
+>
+  <div class="mb-4">
+    <h2 class="text-2xl font-bold text-white">🎮 Game Walkthrough</h2>
+    <p class="mt-1 text-sm text-slate-400">Watch a walkthrough of this game</p>
+  </div>
+
+  <div
+    id="game-walkthrough-player"
+    class="overflow-hidden rounded-xl border border-slate-700/50"
+  ></div>
+</section>

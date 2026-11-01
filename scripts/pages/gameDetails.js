@@ -41,6 +41,8 @@ export async function initGameDetails(params = new URLSearchParams()) {
                 id,
                 user_id,
                 title,
+                music_url,
+                walkthrough_url,
                 release_year,
                 genre,
                 developer,
@@ -105,7 +107,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
     const completionError = document.getElementById("completion-form-error");
     const completionSave = document.getElementById("completion-save");
 
-    if (adminUser) {
+    if (canManageGame) {
       document
         .getElementById("history-add-completion")
         .classList.remove("hidden");
@@ -352,6 +354,101 @@ export async function initGameDetails(params = new URLSearchParams()) {
           progressButton.disabled = false;
         }
       });
+    }
+
+    // Game Soundtrack
+    const soundtrackSection = document.getElementById(
+      "game-soundtrack-section",
+    );
+    const soundtrackPlayer = document.getElementById("game-soundtrack-player");
+
+    if (game.music_url) {
+      try {
+        const url = new URL(game.music_url);
+        let videoId = null;
+
+        if (
+          ["youtube.com", "www.youtube.com", "m.youtube.com"].includes(
+            url.hostname,
+          )
+        ) {
+          videoId =
+            url.pathname === "/watch"
+              ? url.searchParams.get("v")
+              : url.pathname.match(/^\/(?:shorts|embed)\/([^/]+)/)?.[1];
+        } else if (url.hostname === "youtu.be") {
+          videoId = url.pathname.slice(1);
+        }
+
+        if (videoId && /^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
+          const iframe = document.createElement("iframe");
+
+          iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}`;
+          iframe.title = `${game.title} Soundtrack`;
+          iframe.className = "aspect-video w-full";
+          iframe.allow = "encrypted-media; picture-in-picture";
+          iframe.allowFullscreen = true;
+          iframe.loading = "lazy";
+
+          soundtrackPlayer.replaceChildren(iframe);
+          soundtrackSection.hidden = false;
+        }
+      } catch (error) {
+        console.warn("Invalid soundtrack URL:", error);
+      }
+    }
+
+    // Game Walkthrough
+    const walkthroughSection = document.getElementById(
+      "game-walkthrough-section",
+    );
+    const walkthroughPlayer = document.getElementById(
+      "game-walkthrough-player",
+    );
+
+    if (game.walkthrough_url) {
+      try {
+        const url = new URL(game.walkthrough_url);
+        let embedUrl = null;
+
+        if (
+          ["youtube.com", "www.youtube.com", "m.youtube.com"].includes(
+            url.hostname,
+          )
+        ) {
+          const playlistId = url.searchParams.get("list");
+          const videoId =
+            url.searchParams.get("v") ||
+            url.pathname.match(/^\/(?:embed|shorts)\/([^/]+)/)?.[1];
+
+          if (playlistId && /^[a-zA-Z0-9_-]+$/.test(playlistId)) {
+            embedUrl = `https://www.youtube-nocookie.com/embed/videoseries?list=${playlistId}`;
+          } else if (videoId && /^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
+            embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}`;
+          }
+        } else if (url.hostname === "youtu.be") {
+          const videoId = url.pathname.slice(1);
+
+          if (/^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
+            embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}`;
+          }
+        }
+
+        if (embedUrl) {
+          const iframe = document.createElement("iframe");
+          iframe.src = embedUrl;
+          iframe.title = `${game.title} Walkthrough`;
+          iframe.className = "aspect-video w-full";
+          iframe.allow = "encrypted-media; picture-in-picture";
+          iframe.allowFullscreen = true;
+          iframe.loading = "lazy";
+
+          walkthroughPlayer.replaceChildren(iframe);
+          walkthroughSection.hidden = false;
+        }
+      } catch (error) {
+        console.warn("Invalid walkthrough URL:", error);
+      }
     }
 
     // Game information

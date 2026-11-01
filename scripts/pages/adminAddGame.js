@@ -195,6 +195,10 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
         developer: developer || null,
         cover_url: coverUrl || null,
         description: description || null,
+        music_url:
+          document.getElementById("game-music-url").value.trim() || null,
+        walkthrough_url:
+          document.getElementById("game-walkthrough-url").value.trim() || null,
       };
       if (removeCover) {
         gameData.cover_url = null;
@@ -408,6 +412,9 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
       document.getElementById("game-cover").value = game.cover_url ?? "";
       document.getElementById("game-description").value =
         game.description ?? "";
+      document.getElementById("game-music-url").value = game.music_url ?? "";
+      document.getElementById("game-walkthrough-url").value =
+        game.walkthrough_url ?? "";
 
       if (game.cover_url) {
         coverPreview.src = game.cover_url;

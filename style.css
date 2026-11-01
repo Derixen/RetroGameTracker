@@ -697,6 +697,10 @@ video {
   aspect-ratio: 3/4;
 }
 
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
 .h-2 {
   height: 0.5rem;
 }
@@ -805,6 +809,10 @@ video {
 
 .flex-wrap {
   flex-wrap: wrap;
+}
+
+.items-start {
+  align-items: flex-start;
 }
 
 .items-center {
