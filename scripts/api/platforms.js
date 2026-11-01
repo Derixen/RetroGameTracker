@@ -3,7 +3,7 @@ import { supabase } from "../supabase.js";
 export async function getPlatforms() {
   const { data, error } = await supabase
     .from("platforms")
-    .select("id, name, manufacturer, release_year,  image_url")
+    .select("id, name, manufacturer, release_year,  image_url, igdb_id")
     .order("release_year", { ascending: true });
 
   if (error) {

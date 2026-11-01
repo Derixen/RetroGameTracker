@@ -11,6 +11,7 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
   const isEditing = gameId !== null;
 
   const igdbSearchInput = document.getElementById("igdb-search-input");
+  const igdbPlatformFilter = document.getElementById("igdb-platform-filter");
   const igdbSearchButton = document.getElementById("igdb-search-button");
   const igdbSearchResults = document.getElementById("igdb-search-results");
   const igdbSearchError = document.getElementById("igdb-search-error");
@@ -27,8 +28,12 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
     igdbSearchResults.replaceChildren();
 
     try {
+      const platformId = igdbPlatformFilter.value
+        ? Number(igdbPlatformFilter.value)
+        : null;
+
       const { data, error } = await supabase.functions.invoke("igdb-search", {
-        body: { query },
+        body: { query, platformId },
       });
 
       if (error) throw error;
@@ -351,12 +356,21 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
       getSeries(),
     ]);
 
-    for (const platform of platforms) {
+    for (const platform of [...platforms].sort((a, b) =>
+      a.name.localeCompare(b.name, undefined, { sensitivity: "base" }),
+    )) {
       const option = document.createElement("option");
       option.value = platform.id;
       option.textContent = platform.name;
 
       platformSelect.append(option);
+
+      const filterOption = document.createElement("option");
+      filterOption.value = platform.igdb_id ?? "";
+      filterOption.textContent = platform.name;
+      filterOption.disabled = platform.igdb_id == null;
+
+      igdbPlatformFilter.append(filterOption);
     }
 
     for (const item of series) {
