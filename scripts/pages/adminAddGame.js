@@ -210,7 +210,16 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
           "image/webp": "webp",
         }[coverFile.type];
 
-        const fileName = `${crypto.randomUUID()}.${extension}`;
+        const {
+          data: { user },
+          error: authError,
+        } = await supabase.auth.getUser();
+
+        if (authError || !user) {
+          throw new Error("You must be signed in to upload a cover.");
+        }
+
+        const fileName = `${user.id}/${crypto.randomUUID()}.${extension}`;
 
         const { error: uploadError } = await supabase.storage
           .from("game-covers")
@@ -411,6 +420,19 @@ export async function deleteOldCover(coverUrl) {
   );
 
   if (!filePath) return;
+
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.getUser();
+
+  if (authError || !user) {
+    throw new Error("You must be signed in to delete a cover.");
+  }
+
+  if (!filePath.startsWith(`${user.id}/`)) {
+    return;
+  }
 
   const { error } = await supabase.storage
     .from("game-covers")

@@ -315,6 +315,29 @@ button {
   transform: translateY(-4px);
   box-shadow: 0 14px 30px #0005;
 }
+/* Compact game grid */
+#game-grid.small-view {
+  grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+  gap: 12px;
+}
+
+#game-grid.small-view .card-info {
+  padding: 9px;
+}
+
+#game-grid.small-view .card-info h3 {
+  font-size: 11px;
+}
+
+#game-grid.small-view .card-info p {
+  font-size: 10px;
+}
+
+#game-grid.small-view .platform-badge,
+#game-grid.small-view .year-badge {
+  font-size: 9px;
+  padding: 3px 6px;
+}
 .cover-area {
   position: relative;
   aspect-ratio: 3 / 4;
@@ -549,4 +572,36 @@ button {
 .game-card.static-card:hover {
   transform: none;
   box-shadow: none;
+}
+[hidden] {
+  display: none !important;
+}
+
+/* Game sorting and view options */
+#game-sort,
+#game-view {
+  background-color: var(--sidebar);
+  color: #e7ebf7;
+  border: 1px solid #ffffff20;
+  border-radius: 7px;
+  padding: 9px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+}
+
+#game-sort:hover,
+#game-view:hover {
+  border-color: #ffffff50;
+}
+
+#game-sort:focus,
+#game-view:focus {
+  border-color: var(--accent);
+}
+
+#game-sort option,
+#game-view option {
+  background-color: var(--sidebar);
+  color: #e7ebf7;
 }

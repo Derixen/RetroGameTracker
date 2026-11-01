@@ -5,6 +5,8 @@ export async function initAuth() {
   const loginLink = document.getElementById("auth-login");
   const logoutButton = document.getElementById("auth-logout");
   const adminLink = document.getElementById("auth-admin");
+  const manageSeriesLink = document.getElementById("auth-manage-series");
+  const managePlatformsLink = document.getElementById("auth-manage-platforms");
 
   function updateAuthUI(session) {
     const signedIn = Boolean(session?.user);
@@ -12,20 +14,15 @@ export async function initAuth() {
     loginLink.hidden = signedIn;
     logoutButton.hidden = !signedIn;
     adminLink.hidden = !signedIn;
+    manageSeriesLink.hidden = !signedIn;
+    managePlatformsLink.hidden = !isAdmin(session?.user);
   }
 
   const {
     data: { session },
   } = await supabase.auth.getSession();
 
-  function updateAuthUI(session) {
-    const signedIn = Boolean(session?.user);
-    const admin = isAdmin(session?.user);
-
-    loginLink.hidden = signedIn;
-    logoutButton.hidden = !signedIn;
-    adminLink.hidden = !admin;
-  }
+  updateAuthUI(session);
 
   supabase.auth.onAuthStateChange((_event, session) => {
     updateAuthUI(session);

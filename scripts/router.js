@@ -8,7 +8,7 @@ import { initStatistics } from "./pages/statistics.js";
 import { initLogin } from "./pages/login.js";
 import { initAdminGames } from "./pages/adminGames.js";
 import { initAdminAddGame } from "./pages/adminAddGame.js";
-import { getAdminUser } from "./admin.js";
+import { getAdminUser, getAuthenticatedUser } from "./admin.js";
 import { initAdminPlatforms } from "./pages/adminPlatforms.js";
 import { initAdminAddPlatform } from "./pages/adminAddPlatform.js";
 import { initAdminSeries } from "./pages/adminSeries.js";
@@ -102,10 +102,29 @@ export async function navigate() {
   const params = new URLSearchParams(queryString);
   const route = routes[page] ?? "games";
 
-  if (page === "admin" || page.startsWith("admin/")) {
+  const userRoutes = new Set([
+    "admin/games",
+    "admin/add-game",
+    "admin/edit-game",
+    "admin/series",
+    "admin/add-series",
+    "admin/edit-series",
+  ]);
+
+  if (userRoutes.has(page)) {
+    // Personal collection management requires login
+    const user = await getAuthenticatedUser();
+
+    if (id !== navigationId) return;
+
+    if (!user) {
+      window.location.hash = "#/login";
+      return;
+    }
+  } else if (page === "admin" || page.startsWith("admin/")) {
+    // Shared platform management remains administrator-only
     const adminUser = await getAdminUser();
 
-    // Ignore an outdated navigation request
     if (id !== navigationId) return;
 
     if (!adminUser) {

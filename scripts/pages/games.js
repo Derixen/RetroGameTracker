@@ -38,6 +38,11 @@ export async function initGames(params = new URLSearchParams()) {
   const empty = document.getElementById("empty-state");
   const count = document.getElementById("game-count");
   const search = document.getElementById("game-search");
+  const sort = document.getElementById("game-sort");
+  const view = document.getElementById("game-view");
+
+  view.value = localStorage.getItem("gameView") || "large";
+  grid.classList.toggle("small-view", view.value === "small");
 
   const platformFilter = document.getElementById("active-platform-filter");
   const platformName = document.getElementById("active-platform-name");
@@ -121,6 +126,28 @@ export async function initGames(params = new URLSearchParams()) {
       );
     });
 
+    filtered.sort((a, b) => {
+      switch (sort.value) {
+        case "title_asc":
+          return a.title.localeCompare(b.title);
+
+        case "title_desc":
+          return b.title.localeCompare(a.title);
+
+        case "year_desc":
+          return (b.year ?? 0) - (a.year ?? 0);
+
+        case "year_asc":
+          return (a.year ?? 9999) - (b.year ?? 9999);
+
+        case "recent":
+          return new Date(b.created_at ?? 0) - new Date(a.created_at ?? 0);
+
+        default:
+          return 0;
+      }
+    });
+
     grid.replaceChildren();
 
     count.textContent = `${filtered.length} ${filtered.length === 1 ? "GAME" : "GAMES"}`;
@@ -144,6 +171,16 @@ export async function initGames(params = new URLSearchParams()) {
   }
 
   search.addEventListener("input", renderGames, { signal });
+  sort.addEventListener("change", renderGames, { signal });
+
+  view.addEventListener(
+    "change",
+    () => {
+      localStorage.setItem("gameView", view.value);
+      grid.classList.toggle("small-view", view.value === "small");
+    },
+    { signal },
+  );
 
   document.querySelectorAll("[data-filter]").forEach((button) => {
     button.addEventListener(

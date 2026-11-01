@@ -19,12 +19,16 @@ export async function initPlatforms() {
       }
     }
 
-    count.textContent = `${platforms.length} PLATFORMS`;
-    empty.hidden = platforms.length > 0;
+    const visiblePlatforms = platforms.filter(
+      (platform) => (gameCounts[platform.name] || 0) > 0,
+    );
+
+    count.textContent = `${visiblePlatforms.length} PLATFORMS`;
+    empty.hidden = visiblePlatforms.length > 0;
 
     grid.replaceChildren();
 
-    for (const platform of platforms) {
+    for (const platform of visiblePlatforms) {
       const card = document.createElement("a");
       card.className = "game-card flex items-center gap-5 p-5 cursor-pointer";
       card.href = `#/games?platform=${encodeURIComponent(platform.name)}`;
@@ -32,7 +36,7 @@ export async function initPlatforms() {
       // Image container
       const imageContainer = document.createElement("div");
       imageContainer.className =
-        "flex h-24 w-24 shrink-0 items-center justify-center overflow-hidden rounded-xl";
+        "flex h-32 w-32 shrink-0 items-center justify-center overflow-hidden rounded-xl";
 
       // Placeholder for missing images
       const placeholder = document.createElement("div");
@@ -46,8 +50,7 @@ export async function initPlatforms() {
         image.src = platform.image_url;
         image.alt = `${platform.name} console`;
         image.loading = "lazy";
-        image.className = "h-full w-full object-contain p-2";
-
+        image.className = "h-full w-full object-contain";
         image.onerror = () => {
           image.replaceWith(placeholder);
         };

@@ -1,10 +1,10 @@
 <div class="mx-auto max-w-md py-12">
   <div class="game-card p-8">
-    <p class="eyebrow">ADMIN ACCESS</p>
+    <p class="eyebrow">YOUR ACCOUNT</p>
 
-    <h1 class="mb-2 text-3xl font-bold">Sign In</h1>
+    <h1 id="auth-title" class="mb-2 text-3xl font-bold">Sign In</h1>
 
-    <p class="mb-8 text-sm text-slate-400">
+    <p id="auth-description" class="mb-8 text-sm text-slate-400">
       Sign in to manage your retro game collection.
     </p>
 
@@ -18,7 +18,7 @@
           id="login-email"
           type="email"
           required
-          autocomplete="username"
+          autocomplete="email"
           class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
         />
       </div>
@@ -32,12 +32,20 @@
           id="login-password"
           type="password"
           required
+          minlength="8"
           autocomplete="current-password"
           class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
         />
       </div>
 
       <p id="login-error" class="text-sm text-red-400" role="alert" hidden></p>
+
+      <p
+        id="login-success"
+        class="text-sm text-green-400"
+        role="status"
+        hidden
+      ></p>
 
       <button
         type="submit"
@@ -47,5 +55,19 @@
         Sign In
       </button>
     </form>
+
+    <div class="mt-6 border-t border-slate-700 pt-6 text-center">
+      <p id="auth-switch-text" class="text-sm text-slate-400">
+        Don't have an account?
+      </p>
+
+      <button
+        id="auth-switch-button"
+        type="button"
+        class="mt-2 font-semibold text-pink-400 transition hover:text-pink-300"
+      >
+        Create Account
+      </button>
+    </div>
   </div>
 </div>

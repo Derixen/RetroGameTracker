@@ -81,8 +81,8 @@ export async function initAdminAddPlatform(params = new URLSearchParams()) {
 
     if (file.size > 5 * 1024 * 1024) {
       await confirmDialog({
-        title: "Invalid Image Format",
-        message: "Please select a JPG, PNG or WebP image.",
+        title: "Image Too Large",
+        message: "Please select an image smaller than 5 MB.",
         alertOnly: true,
       });
       imageInput.value = "";
