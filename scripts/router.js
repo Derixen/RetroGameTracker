@@ -117,7 +117,7 @@ export async function navigate() {
     .getElementById("menu-toggle")
     ?.classList.toggle("hidden", isPublicPage);
   document
-    .getElementById("game-search")
+    .getElementById("sidebar-search")
     ?.classList.toggle("hidden", isPublicPage);
   document.getElementById("mobile-overlay")?.classList.add("hidden");
 
@@ -182,7 +182,7 @@ export async function navigate() {
     }
 
     // Reset the global search when navigating
-    const search = document.getElementById("game-search");
+    const search = document.getElementById("sidebar-search");
 
     if (search) {
       search.value = "";

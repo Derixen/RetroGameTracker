@@ -39,6 +39,11 @@ export async function initGames(params = new URLSearchParams()) {
   const empty = document.getElementById("empty-state");
   const count = document.getElementById("game-count");
   const search = document.getElementById("game-search");
+  const sidebarSearch = document.getElementById("sidebar-search");
+
+  if (sidebarSearch?.value) {
+    search.value = sidebarSearch.value;
+  }
   const sort = document.getElementById("game-sort");
   const view = document.getElementById("game-view");
 
@@ -96,7 +101,7 @@ export async function initGames(params = new URLSearchParams()) {
 
     const filtered = games.filter((game) => {
       const matchesSearch =
-        `${game.title} ${game.platform ?? ""} ${game.genre ?? ""}`
+        `${game.title} ${game.platform ?? ""} ${game.genre ?? ""} ${game.developer ?? ""}`
           .toLowerCase()
           .includes(query);
 

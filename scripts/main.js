@@ -4,11 +4,19 @@ import { initAuth } from "./auth.js";
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("mobile-overlay");
 const menuToggle = document.getElementById("menu-toggle");
-const gameSearch = document.getElementById("game-search");
+const gameSearch = document.getElementById("sidebar-search");
 
 gameSearch.addEventListener("input", () => {
+  const gamesSearch = document.getElementById("game-search");
+
   if (!window.location.hash.startsWith("#/games")) {
     window.location.hash = "#/games";
+    return;
+  }
+
+  if (gamesSearch) {
+    gamesSearch.value = gameSearch.value;
+    gamesSearch.dispatchEvent(new Event("input", { bubbles: true }));
   }
 });
 
