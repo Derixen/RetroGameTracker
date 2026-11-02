@@ -11,6 +11,7 @@ export async function getGames() {
     genre,
     developer,
     cover_url,
+    music_url,
     created_at,
     series_id,
     series (

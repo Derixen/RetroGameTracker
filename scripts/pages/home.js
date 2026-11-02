@@ -2,29 +2,185 @@ import { getGames } from "../api/games.js";
 import { createGameCard } from "../components/gameCard.js";
 
 export async function initHome() {
+  const controller = new AbortController();
+  const signal = controller.signal;
+
+  let recommendationInterval = null;
+
   const totalGames = document.getElementById("total-games");
-  const totalPlatforms = document.getElementById("total-platforms");
-  const totalDevelopers = document.getElementById("total-developers");
+  const totalCompleted = document.getElementById("total-completed");
+  const totalInProgress = document.getElementById("total-in-progress");
 
   try {
     const games = await getGames();
 
+    const soundtrackGames = games.filter((game) => game.music_url?.trim());
+
+    const soundtrackSection = document.getElementById(
+      "home-soundtrack-section",
+    );
+
+    if (soundtrackGames.length > 0) {
+      soundtrackSection.hidden = false;
+
+      const title = document.getElementById("home-soundtrack-title");
+      const platform = document.getElementById("home-soundtrack-platform");
+      const player = document.getElementById("home-soundtrack-player");
+      const shuffle = document.getElementById("home-soundtrack-shuffle");
+
+      let currentGameId = null;
+
+      function showSoundtrack() {
+        const choices = soundtrackGames.filter(
+          (game) => game.id !== currentGameId,
+        );
+
+        const pool = choices.length ? choices : soundtrackGames;
+        const game = pool[Math.floor(Math.random() * pool.length)];
+
+        currentGameId = game.id;
+
+        title.textContent = game.title;
+        platform.textContent = game.platforms?.name || "Unknown Platform";
+
+        player.replaceChildren();
+
+        // Support YouTube video and playlist links
+        try {
+          const url = new URL(game.music_url);
+          let videoId = null;
+
+          if (
+            ["youtube.com", "www.youtube.com", "m.youtube.com"].includes(
+              url.hostname,
+            )
+          ) {
+            videoId = url.searchParams.get("v");
+
+            if (
+              url.pathname.startsWith("/shorts/") ||
+              url.pathname.startsWith("/embed/")
+            ) {
+              videoId = url.pathname.split("/")[2];
+            }
+          } else if (url.hostname === "youtu.be") {
+            videoId = url.pathname.slice(1);
+          }
+
+          const playlistId = url.searchParams.get("list");
+
+          if (videoId || playlistId) {
+            const iframe = document.createElement("iframe");
+
+            iframe.src = videoId
+              ? `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`
+              : `https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(playlistId)}`;
+
+            iframe.className = "w-full aspect-video rounded-lg";
+            iframe.title = `${game.title} soundtrack`;
+            iframe.allow =
+              "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.allowFullscreen = true;
+            iframe.loading = "lazy";
+
+            player.append(iframe);
+            return;
+          }
+        } catch (error) {
+          console.warn("Invalid soundtrack URL:", game.music_url);
+        }
+
+        // Fallback for other music links
+        const link = document.createElement("a");
+        link.href = game.music_url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.className = "text-pink-400 hover:underline";
+        link.textContent = "🎵 Open Soundtrack";
+
+        player.append(link);
+      }
+
+      shuffle.addEventListener("click", showSoundtrack);
+      showSoundtrack();
+    }
+
+    // Recommend games that haven't been completed
+    const recommendations = games.filter((game) => !game.completed);
+
+    const cover = document.getElementById("recommendation-cover");
+    const title = document.getElementById("recommendation-title");
+    const platform = document.getElementById("recommendation-platform");
+    const description = document.getElementById("recommendation-description");
+    const shuffleButton = document.getElementById("recommendation-shuffle");
+    const detailsButton = document.getElementById("recommendation-details");
+
+    let currentRecommendationId = null;
+
+    function showRecommendation() {
+      if (!recommendations.length) {
+        title.textContent = "You've completed every game!";
+        platform.textContent = "";
+        description.textContent =
+          "Add more games to discover your next adventure.";
+        cover.hidden = true;
+        detailsButton.hidden = true;
+        shuffleButton.hidden = true;
+        return;
+      }
+
+      // Avoid recommending the same game twice in a row
+      const choices = recommendations.filter(
+        (game) => game.id !== currentRecommendationId,
+      );
+
+      const pool = choices.length ? choices : recommendations;
+      const game = pool[Math.floor(Math.random() * pool.length)];
+
+      currentRecommendationId = game.id;
+
+      title.textContent = game.title;
+      platform.textContent = game.platforms?.name || "Unknown Platform";
+
+      description.textContent = game.in_progress
+        ? "You're already playing this one. Ready to continue?"
+        : "This adventure is waiting to be discovered!";
+
+      cover.hidden = !game.cover_url;
+
+      if (game.cover_url) {
+        cover.src = game.cover_url;
+        cover.alt = `${game.title} cover`;
+      }
+
+      detailsButton.hidden = false;
+      detailsButton.href = `#/game?id=${encodeURIComponent(game.id)}`;
+    }
+
+    shuffleButton.addEventListener("click", showRecommendation);
+
+    showRecommendation();
+
+    // Automatically recommend another game every 10 seconds
+    recommendationInterval = setInterval(() => {
+      if (document.visibilityState === "visible") {
+        showRecommendation();
+      }
+    }, 10000);
+
+    showRecommendation();
+
     // Total number of games
     totalGames.textContent = games.length;
 
-    // Count unique platforms
-    const platforms = new Set(
-      games.map((game) => game.platforms?.name).filter(Boolean),
-    );
+    const completed = games.filter((game) => game.completed).length;
 
-    totalPlatforms.textContent = platforms.size;
+    const inProgress = games.filter(
+      (game) => game.in_progress && !game.completed,
+    ).length;
 
-    // Count unique developers
-    const developers = new Set(
-      games.map((game) => game.developer).filter(Boolean),
-    );
-
-    totalDevelopers.textContent = developers.size;
+    totalCompleted.textContent = completed;
+    totalInProgress.textContent = inProgress;
 
     const distribution = document.getElementById("platform-distribution");
 
@@ -89,4 +245,9 @@ export async function initHome() {
   } catch (error) {
     console.error("Failed to load dashboard statistics:", error);
   }
+
+  return () => {
+    controller.abort();
+    clearInterval(recommendationInterval);
+  };
 }
