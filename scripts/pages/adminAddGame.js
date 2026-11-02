@@ -20,7 +20,11 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
     const title = document.getElementById("game-title").value.trim();
 
     if (!title) {
-      alert("Please select a game first.");
+      confirmDialog({
+        title: "No Game Selected",
+        message: "Please select a game first.",
+        alertOnly: true,
+      });
       return;
     }
 
@@ -41,7 +45,11 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
     const title = document.getElementById("game-title").value.trim();
 
     if (!title) {
-      alert("Please select a game first.");
+      confirmDialog({
+        title: "No Game Selected",
+        message: "Please select a game first.",
+        alertOnly: true,
+      });
       return;
     }
 
