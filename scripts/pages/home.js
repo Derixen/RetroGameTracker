@@ -110,6 +110,7 @@ export async function initHome() {
 
     const cover = document.getElementById("recommendation-cover");
     const title = document.getElementById("recommendation-title");
+    const year = document.getElementById("recommendation-year");
     const platform = document.getElementById("recommendation-platform");
     const description = document.getElementById("recommendation-description");
     const shuffleButton = document.getElementById("recommendation-shuffle");
@@ -141,6 +142,8 @@ export async function initHome() {
 
       title.textContent = game.title;
       platform.textContent = game.platforms?.name || "Unknown Platform";
+      year.hidden = !game.release_year;
+      year.textContent = game.release_year || "";
 
       description.textContent = game.in_progress
         ? "You're already playing this one. Ready to continue?"
@@ -193,9 +196,9 @@ export async function initHome() {
     }
 
     // Sort platforms by number of games
-    const sortedPlatforms = Object.entries(platformCounts).sort(
-      (a, b) => b[1] - a[1],
-    );
+    const sortedPlatforms = Object.entries(platformCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3);
 
     distribution.replaceChildren();
 

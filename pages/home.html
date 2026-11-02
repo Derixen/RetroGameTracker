@@ -23,7 +23,9 @@
   <div class="page-heading">
     <div>
       <p class="eyebrow">COLLECTION BREAKDOWN</p>
-      <h2 class="text-xl font-bold">Games by Platform</h2>
+      <h2 class="text-xl font-bold">
+        Games by Platform <span class="text-slate-400">(Top 3)</span>
+      </h2>
       <p>How your collection is distributed across platforms</p>
     </div>
   </div>
@@ -56,7 +58,18 @@
           Finding your next adventure...
         </h3>
 
-        <p id="recommendation-platform" class="mt-2 text-sm text-slate-400"></p>
+        <div class="mt-3 flex items-center gap-2">
+          <span
+            id="recommendation-platform"
+            class="inline-flex rounded-full bg-slate-700 px-3 py-1 text-xs font-bold text-slate-300"
+          ></span>
+
+          <span
+            id="recommendation-year"
+            class="rounded-full bg-slate-950 px-3 py-1 text-xs font-bold text-white"
+            hidden
+          ></span>
+        </div>
 
         <p id="recommendation-description" class="mt-4 text-sm text-slate-300">
           A game from your collection is waiting to be discovered.

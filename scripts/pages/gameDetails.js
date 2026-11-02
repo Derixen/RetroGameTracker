@@ -383,12 +383,12 @@ export async function initGameDetails(params = new URLSearchParams()) {
         if (videoId && /^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
           const iframe = document.createElement("iframe");
 
-          iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}`;
+          iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
           iframe.title = `${game.title} Soundtrack`;
           iframe.className = "aspect-video w-full";
-          iframe.allow = "encrypted-media; picture-in-picture";
+          iframe.allow = "autoplay; encrypted-media; picture-in-picture";
           iframe.allowFullscreen = true;
-          iframe.loading = "lazy";
+          iframe.loading = "eager";
 
           soundtrackPlayer.replaceChildren(iframe);
           soundtrackSection.hidden = false;
