@@ -103,7 +103,12 @@ export async function initGames(params = new URLSearchParams()) {
       const matchesFilter =
         currentFilter === "all" ||
         (currentFilter === "favorites" && game.favorite) ||
-        (currentFilter === "in_progress" && game.in_progress) ||
+        (currentFilter === "not_played" &&
+          !game.in_progress &&
+          !game.completed) ||
+        (currentFilter === "in_progress" &&
+          game.in_progress &&
+          !game.completed) ||
         (currentFilter === "completed" && game.completed);
 
       const matchesPlatform =

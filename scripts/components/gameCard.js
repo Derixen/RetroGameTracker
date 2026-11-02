@@ -63,6 +63,11 @@ export function createGameCard(game) {
     inProgress.className = "text-amber-400 text-sm font-semibold";
     inProgress.textContent = "◷ In Progress";
     status.append(inProgress);
+  } else {
+    const notPlayed = document.createElement("span");
+    notPlayed.className = "text-slate-400 text-sm font-semibold";
+    notPlayed.textContent = "";
+    status.append(notPlayed);
   }
 
   info.append(title, genre);
