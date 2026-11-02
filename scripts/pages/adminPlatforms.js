@@ -14,6 +14,14 @@ export async function initAdminPlatforms() {
   try {
     let platforms = await getPlatforms();
 
+    const searchInput = document.getElementById("platform-search");
+    let searchQuery = "";
+
+    searchInput.addEventListener("input", () => {
+      searchQuery = searchInput.value.trim().toLowerCase();
+      renderPlatforms();
+    });
+
     let sortDirection = "asc";
 
     document
@@ -91,7 +99,18 @@ export async function initAdminPlatforms() {
     function renderPlatforms() {
       tableBody.replaceChildren();
 
-      for (const platform of platforms) {
+      const filteredPlatforms = platforms.filter((platform) =>
+        [platform.name, platform.manufacturer, platform.release_year].some(
+          (value) =>
+            String(value ?? "")
+              .toLowerCase()
+              .includes(searchQuery),
+        ),
+      );
+
+      emptyMessage.hidden = filteredPlatforms.length > 0;
+
+      for (const platform of filteredPlatforms) {
         const row = document.createElement("tr");
         row.className = "border-b border-slate-700/50 hover:bg-slate-800/40";
 
