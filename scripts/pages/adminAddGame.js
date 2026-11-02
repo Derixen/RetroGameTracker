@@ -16,6 +16,48 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
   const igdbSearchResults = document.getElementById("igdb-search-results");
   const igdbSearchError = document.getElementById("igdb-search-error");
 
+  document.getElementById("find-soundtrack")?.addEventListener("click", () => {
+    const title = document.getElementById("game-title").value.trim();
+
+    if (!title) {
+      alert("Please select a game first.");
+      return;
+    }
+
+    const platformSelect = document.getElementById("game-platform");
+    const platform =
+      platformSelect.selectedOptions[0]?.textContent.trim() ?? "";
+
+    const query = `${title} ${platform} original game soundtrack OST`;
+
+    window.open(
+      `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  });
+
+  document.getElementById("find-walkthrough")?.addEventListener("click", () => {
+    const title = document.getElementById("game-title").value.trim();
+
+    if (!title) {
+      alert("Please select a game first.");
+      return;
+    }
+
+    const platformSelect = document.getElementById("game-platform");
+    const platform =
+      platformSelect.selectedOptions[0]?.textContent.trim() ?? "";
+
+    const query = `${title} ${platform} full game walkthrough longplay`;
+
+    window.open(
+      `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  });
+
   async function searchIGDB() {
     const query = igdbSearchInput.value.trim();
 
