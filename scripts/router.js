@@ -203,7 +203,31 @@ export async function navigate() {
     const headingConfig = pageHeadings[route];
 
     if (headingConfig) {
-      pageContent.prepend(createPageHeading(headingConfig));
+      const heading = createPageHeading(headingConfig);
+
+      if (route === "games") {
+        const counter = heading.querySelector("#game-count");
+
+        if (counter) {
+          const counterContainer = counter;
+
+          const wrapper = document.createElement("div");
+          wrapper.className = "flex flex-wrap items-center gap-3 mt-4";
+
+          counterContainer.parentNode.insertBefore(wrapper, counterContainer);
+          wrapper.appendChild(counterContainer);
+
+          const addButton = document.createElement("a");
+          addButton.href = "#/admin/add-game";
+          addButton.className =
+            "inline-flex h-[36px] items-center justify-center rounded-full bg-pink-500 px-4 text-sm font-semibold text-white transition hover:bg-pink-600";
+          addButton.textContent = "+ Add Game";
+
+          wrapper.appendChild(addButton);
+        }
+      }
+
+      pageContent.prepend(heading);
     }
 
     // Fade in the new page

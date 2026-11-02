@@ -623,3 +623,6 @@ button {
   width: 100%;
   max-width: none;
 }
+.page-heading-content .count-chip {
+  margin: 0;
+}
