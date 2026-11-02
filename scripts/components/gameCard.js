@@ -1,6 +1,6 @@
 export function createGameCard(game) {
   const card = document.createElement("article");
-  card.className = "game-card";
+  card.className = "game-card flex flex-col";
 
   const cover = document.createElement("div");
   cover.className = "cover-area";
@@ -31,7 +31,7 @@ export function createGameCard(game) {
   }
 
   const info = document.createElement("div");
-  info.className = "card-info";
+  info.className = "card-info flex flex-1 flex-col";
 
   const title = document.createElement("h3");
   title.textContent = game.title;
@@ -40,13 +40,17 @@ export function createGameCard(game) {
   genre.textContent = game.genre || "Game";
 
   const status = document.createElement("div");
-  status.className = "flex items-center gap-3 mt-2";
+  status.className = "flex items-center justify-center mt-auto pt-3";
 
   if (game.favorite) {
     const favorite = document.createElement("span");
-    favorite.className = "text-red-500 text-sm font-semibold";
-    favorite.textContent = "♥ Favorite";
-    status.append(favorite);
+    favorite.className = "platform-badge";
+    favorite.style.cssText =
+      "top: auto; left: auto; bottom: 10px; right: 9px; opacity: 0.8";
+    favorite.textContent = "♥ FAV ♥";
+    favorite.title = "Favorite";
+
+    cover.append(favorite);
   }
 
   if (game.completed) {
@@ -54,9 +58,7 @@ export function createGameCard(game) {
     completed.className = "text-green-400 text-sm font-semibold";
     completed.textContent = "✓ Completed";
     status.append(completed);
-  }
-
-  if (game.in_progress) {
+  } else if (game.in_progress) {
     const inProgress = document.createElement("span");
     inProgress.className = "text-amber-400 text-sm font-semibold";
     inProgress.textContent = "◷ In Progress";
