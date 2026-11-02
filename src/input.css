@@ -626,3 +626,6 @@ button {
 .page-heading-content .count-chip {
   margin: 0;
 }
+[hidden] {
+  display: none !important;
+}

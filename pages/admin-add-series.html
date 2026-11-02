@@ -49,3 +49,50 @@
     </a>
   </div>
 </form>
+
+<!-- Games belonging to this series -->
+<section
+  id="series-games-section"
+  class="game-card static-card mt-6 max-w-2xl p-6"
+  hidden
+>
+  <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
+    <div>
+      <h2 class="text-xl font-bold text-white">Games in this Series</h2>
+      <p class="mt-1 text-sm text-slate-400">
+        Manage games belonging to this franchise.
+      </p>
+    </div>
+
+    <span id="series-games-count" class="count-chip"> 0 GAMES </span>
+  </div>
+
+  <!-- Existing members -->
+  <div id="series-games-list" class="space-y-3"></div>
+
+  <!-- Add existing game -->
+  <div class="mt-6 border-t border-slate-700/50 pt-5">
+    <label for="series-game-search" class="mb-2 block text-sm font-medium">
+      Add Existing Game
+    </label>
+
+    <div class="flex flex-wrap gap-3">
+      <input
+        id="series-game-search"
+        type="search"
+        placeholder="Search your collection..."
+        class="min-w-0 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+      />
+
+      <button
+        id="series-add-game"
+        type="button"
+        class="rounded-lg bg-pink-500 px-5 py-3 font-semibold text-white transition hover:bg-pink-600"
+      >
+        + Add Game
+      </button>
+    </div>
+
+    <div id="series-game-results" class="mt-3 space-y-2" hidden></div>
+  </div>
+</section>

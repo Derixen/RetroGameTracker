@@ -9,6 +9,7 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
   const errorMessage = document.getElementById("add-game-error");
   const gameId = params.get("id");
   const isEditing = gameId !== null;
+  let pendingIgdbSeries = "";
 
   const igdbSearchInput = document.getElementById("igdb-search-input");
   const igdbPlatformFilter = document.getElementById("igdb-platform-filter");
@@ -180,6 +181,18 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
             platformSelect.value = "";
           }
 
+          // Match IGDB collection with our existing game series
+          const igdbSeries = game.collection || game.franchises?.[0] || "";
+
+          const matchingSeries = [...seriesSelect.options].find(
+            (option) =>
+              option.textContent.trim().toLowerCase() ===
+              igdbSeries.trim().toLowerCase(),
+          );
+
+          seriesSelect.value = matchingSeries?.value ?? "";
+          pendingIgdbSeries = igdbSeries.trim();
+
           igdbSearchResults.hidden = true;
         });
 
@@ -226,7 +239,7 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
 
     const title = document.getElementById("game-title").value.trim();
     const platformId = document.getElementById("game-platform").value;
-    const seriesId = document.getElementById("game-series").value;
+    let seriesId = document.getElementById("game-series").value;
     const year = document.getElementById("game-year").value;
     const genre = document.getElementById("game-genre").value.trim();
     const developer = document.getElementById("game-developer").value.trim();
@@ -236,6 +249,53 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
       .value.trim();
 
     try {
+      // Automatically create a missing IGDB series when saving
+      if (pendingIgdbSeries && !seriesSelect.value) {
+        const {
+          data: { user },
+          error: authError,
+        } = await supabase.auth.getUser();
+
+        if (authError || !user) {
+          throw new Error("You must be signed in to create a series.");
+        }
+
+        // Check again in case the series already exists
+        const { data: existingSeries, error: lookupError } = await supabase
+          .from("series")
+          .select("id")
+          .eq("user_id", user.id)
+          .ilike("name", pendingIgdbSeries)
+          .limit(1);
+
+        if (lookupError) throw lookupError;
+
+        seriesId = existingSeries?.[0]?.id;
+
+        if (!seriesId) {
+          const { data: newSeries, error: createError } = await supabase
+            .from("series")
+            .insert({
+              name: pendingIgdbSeries,
+              user_id: user.id,
+            })
+            .select("id")
+            .single();
+
+          if (createError) throw createError;
+
+          seriesId = newSeries.id;
+        }
+
+        // Add the series to the dropdown and select it
+        const option = document.createElement("option");
+        option.value = seriesId;
+        option.textContent = pendingIgdbSeries;
+
+        seriesSelect.append(option);
+        seriesSelect.value = String(seriesId);
+        seriesId = String(seriesSelect.value);
+      }
       const gameData = {
         title,
         platform_id: Number(platformId),
