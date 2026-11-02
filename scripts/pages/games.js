@@ -1,5 +1,6 @@
 import { getGames } from "../api/games.js";
 import { createGameCard } from "../components/gameCard.js";
+import { supabase } from "../supabase.js";
 
 export async function initGames(params = new URLSearchParams()) {
   const controller = new AbortController();
@@ -212,7 +213,20 @@ export async function initGames(params = new URLSearchParams()) {
         (game) => String(game.series_id) === selectedSeries,
       );
 
-      const name = selectedGame?.series?.name || "Unknown Series";
+      const { data: selectedSeriesData, error: seriesError } = await supabase
+        .from("series")
+        .select("name")
+        .eq("id", selectedSeries)
+        .maybeSingle();
+
+      if (seriesError) {
+        console.error("Failed to load series name:", seriesError);
+      }
+
+      const name =
+        selectedSeriesData?.name ??
+        selectedGame?.series?.name ??
+        "Unknown Series";
 
       document.getElementById("active-series-name").textContent = name;
       document.getElementById("page-title").textContent = `${name} Games`;

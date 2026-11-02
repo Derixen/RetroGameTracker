@@ -66,22 +66,88 @@ export async function initStatistics() {
     const developers = countBy(games, (game) => game.developer?.trim());
     const genres = countBy(games, (game) => game.genre?.trim());
 
-    const decades = countBy(games, (game) => {
-      if (game.release_year == null) return null;
-
-      const decade = Math.floor(game.release_year / 10) * 10;
-      return `${decade}s`;
+    const years = countBy(games, (game) => {
+      return game.release_year == null ? null : String(game.release_year);
     });
 
     document.getElementById("stat-total-games").textContent = games.length;
-    document.getElementById("stat-platforms").textContent = platforms.length;
-    document.getElementById("stat-developers").textContent = developers.length;
-    document.getElementById("stat-genres").textContent = genres.length;
+    const completed = games.filter((game) => game.completed).length;
+    const percentage = games.length
+      ? Math.round((completed / games.length) * 100)
+      : 0;
+
+    document.getElementById("stat-completed-games").textContent = completed;
+
+    const inProgress = games.filter(
+      (game) => !game.completed && game.in_progress,
+    ).length;
+
+    const notStarted = games.length - completed - inProgress;
+
+    const completedAngle = games.length ? (completed / games.length) * 360 : 0;
+
+    const progressAngle = games.length ? (inProgress / games.length) * 360 : 0;
+
+    const donut = document.getElementById("stat-status-donut");
+
+    donut.style.background = `conic-gradient(
+  #ff456c 0deg ${completedAngle}deg,
+  #24d7e6 ${completedAngle}deg ${completedAngle + progressAngle}deg,
+  #635aa8 ${completedAngle + progressAngle}deg 360deg
+)`;
+
+    document.getElementById("stat-status-total").textContent = games.length;
+
+    const legend = document.getElementById("stat-status-legend");
+    legend.replaceChildren();
+
+    for (const [label, value, color] of [
+      ["Completed", completed, "#ff456c"],
+      ["In Progress", inProgress, "#24d7e6"],
+      ["Not Started", notStarted, "#635aa8"],
+    ]) {
+      const row = document.createElement("div");
+      row.className = "flex items-center justify-between gap-5 text-sm";
+
+      const name = document.createElement("span");
+      name.className = "flex items-center gap-2 text-slate-300";
+
+      const dot = document.createElement("span");
+      dot.className = "h-3 w-3 rounded-sm";
+      dot.style.backgroundColor = color;
+
+      name.append(dot, document.createTextNode(label));
+
+      const count = document.createElement("span");
+      count.className = "font-semibold";
+      const percent = games.length
+        ? Math.round((value / games.length) * 100)
+        : 0;
+
+      count.textContent = `${value} (${percent}%)`;
+
+      row.append(name, count);
+      legend.append(row);
+    }
+
+    document.getElementById("stat-progress-bar").style.width = `${percentage}%`;
+
+    document.getElementById("stat-in-progress-games").textContent = inProgress;
+
+    document.getElementById("stat-progress-percent").textContent =
+      `${percentage}%`;
+
+    document.getElementById("stat-progress-description").textContent =
+      `${completed} of ${games.length} games completed`;
+
+    document.getElementById("stat-favorites").textContent = games.filter(
+      (game) => game.favorite,
+    ).length;
 
     renderChart("stat-platform-chart", platforms);
     renderChart("stat-genre-chart", genres);
     renderChart("stat-developer-chart", developers);
-    renderChart("stat-decade-chart", decades);
+    renderChart("stat-year-chart", years);
   } catch (error) {
     console.error("Failed to load statistics:", error);
   }

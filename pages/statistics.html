@@ -1,43 +1,93 @@
 <section class="grid grid-cols-2 gap-4 lg:grid-cols-4 mb-8">
-  <div class="game-card p-5">
+  <div class="game-card static-card p-5">
     <p class="text-sm text-slate-400">Total Games</p>
+
     <p id="stat-total-games" class="mt-2 text-3xl font-bold">0</p>
   </div>
 
-  <div class="game-card p-5">
-    <p class="text-sm text-slate-400">Platforms</p>
-    <p id="stat-platforms" class="mt-2 text-3xl font-bold">0</p>
+  <div class="game-card static-card p-5">
+    <p class="text-sm text-green-400">Completed Games</p>
+    <p id="stat-completed-games" class="mt-2 text-3xl font-bold text-green-400">
+      0
+    </p>
   </div>
 
-  <div class="game-card p-5">
-    <p class="text-sm text-slate-400">Developers</p>
-    <p id="stat-developers" class="mt-2 text-3xl font-bold">0</p>
+  <div class="game-card static-card p-5">
+    <p class="text-sm text-yellow-400">In Progress Games</p>
+    <p
+      id="stat-in-progress-games"
+      class="mt-2 text-3xl font-bold text-yellow-400"
+    >
+      0
+    </p>
   </div>
 
-  <div class="game-card p-5">
-    <p class="text-sm text-slate-400">Genres</p>
-    <p id="stat-genres" class="mt-2 text-3xl font-bold">0</p>
+  <div class="game-card static-card p-5">
+    <p class="text-sm text-red-500">Favorite Games</p>
+    <p id="stat-favorites" class="mt-2 text-3xl font-bold text-red-500">0</p>
   </div>
 </section>
 
-<section class="grid grid-cols-1 gap-6 xl:grid-cols-2">
-  <div class="game-card p-6">
+<section class="grid grid-cols-1 gap-6 lg:grid-cols-2 mb-6">
+  <div class="game-card static-card p-6">
+    <h2 class="mb-5 text-xl font-bold">Game Status</h2>
+
+    <div class="flex flex-wrap items-center gap-8">
+      <div
+        id="stat-status-donut"
+        class="relative h-40 w-40 shrink-0 rounded-full"
+      >
+        <div
+          class="absolute inset-6 flex flex-col items-center justify-center rounded-full bg-[#192441]"
+        >
+          <span id="stat-status-total" class="text-3xl font-bold">0</span>
+          <span class="text-xs text-slate-400">Games</span>
+        </div>
+      </div>
+
+      <div id="stat-status-legend" class="flex-1 space-y-3"></div>
+    </div>
+  </div>
+
+  <div class="game-card static-card p-6">
+    <h2 class="mb-8 text-xl font-bold">Completion Progress</h2>
+
+    <div class="flex items-center gap-5">
+      <div class="h-4 flex-1 overflow-hidden rounded-full bg-slate-700/60">
+        <div
+          id="stat-progress-bar"
+          class="h-full rounded-full bg-pink-500 transition-all duration-500"
+          style="width: 0%"
+        ></div>
+      </div>
+
+      <span id="stat-progress-percent" class="text-3xl font-bold">0%</span>
+    </div>
+
+    <p id="stat-progress-description" class="mt-4 text-sm text-slate-400">
+      0 of 0 games completed
+    </p>
+  </div>
+</section>
+
+<section class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+  <div class="game-card static-card p-6">
     <h2 class="mb-5 text-xl font-bold">Games by Platform</h2>
     <div id="stat-platform-chart" class="space-y-4"></div>
   </div>
 
-  <div class="game-card p-6">
+  <div class="game-card static-card p-6">
     <h2 class="mb-5 text-xl font-bold">Games by Genre</h2>
     <div id="stat-genre-chart" class="space-y-4"></div>
   </div>
 
-  <div class="game-card p-6">
+  <div class="game-card static-card p-6">
     <h2 class="mb-5 text-xl font-bold">Games by Developer</h2>
     <div id="stat-developer-chart" class="space-y-4"></div>
   </div>
 
-  <div class="game-card p-6">
-    <h2 class="mb-5 text-xl font-bold">Games by Release Decade</h2>
-    <div id="stat-decade-chart" class="space-y-4"></div>
+  <div class="game-card static-card p-6">
+    <h2 class="mb-5 text-xl font-bold">Games by Release Year</h2>
+    <div id="stat-year-chart" class="mt-5 space-y-4"></div>
   </div>
 </section>
