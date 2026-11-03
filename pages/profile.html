@@ -1,0 +1,62 @@
+<div class="page-heading">
+  <div>
+    <p class="eyebrow">ACCOUNT SETTINGS</p>
+    <h1>My Profile</h1>
+    <p>Manage your Retro Game Tracker account.</p>
+  </div>
+</div>
+
+<div class="grid max-w-3xl gap-6">
+  <!-- Account Information -->
+  <section class="game-card p-6">
+    <h2 class="mb-5 text-xl font-bold">Account Information</h2>
+
+    <div class="space-y-4">
+      <div>
+        <p class="mb-1 text-sm text-slate-400">Email Address</p>
+        <p id="profile-email" class="font-medium">Loading...</p>
+      </div>
+
+      <div>
+        <p class="mb-1 text-sm text-slate-400">Account Type</p>
+        <p id="profile-role" class="font-medium">Loading...</p>
+      </div>
+
+      <div>
+        <p class="mb-1 text-sm text-slate-400">Member Since</p>
+        <p id="profile-created" class="font-medium">Loading...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Security -->
+  <section class="game-card p-6">
+    <h2 class="mb-3 text-xl font-bold">Security</h2>
+
+    <p class="mb-5 text-sm text-slate-400">Manage your account password.</p>
+
+    <button
+      id="profile-change-password"
+      class="cursor-pointer rounded-lg bg-pink-500 px-5 py-3 font-semibold text-white transition hover:bg-pink-600"
+    >
+      Change Password
+    </button>
+  </section>
+
+  <!-- Danger Zone -->
+  <section class="game-card border border-red-500/30 p-6">
+    <h2 class="mb-3 text-xl font-bold text-red-400">Danger Zone</h2>
+
+    <p class="mb-5 text-sm text-slate-400">
+      Permanently delete your account and all associated game collection data.
+      This action cannot be undone.
+    </p>
+
+    <button
+      id="profile-delete-account"
+      class="cursor-pointer rounded-lg bg-red-600 px-5 py-3 font-semibold text-white transition hover:bg-red-700"
+    >
+      Delete My Account
+    </button>
+  </section>
+</div>

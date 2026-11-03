@@ -6,6 +6,7 @@ export function confirmDialog({
   confirmText = "Delete",
   cancelText = "Cancel",
   alertOnly = false,
+  passwordInput = false,
 } = {}) {
   return new Promise((resolve) => {
     // Create the dialog once and reuse it
@@ -19,6 +20,16 @@ export function confirmDialog({
       dialog.innerHTML = `
         <h2 class="mb-3 text-xl font-bold text-white"></h2>
         <p class="mb-6 whitespace-pre-line text-sm text-slate-400"></p>
+        
+        <input
+          type="password"
+          data-password
+          placeholder="Enter your password"
+          autocomplete="current-password"
+          class="mb-6 w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white outline-none focus:border-pink-500"
+          hidden
+        />
+
 
         <div class="flex justify-end gap-3">
           <button
@@ -46,6 +57,9 @@ export function confirmDialog({
     const description = dialog.querySelector("p");
     const cancelButton = dialog.querySelector("[data-cancel]");
     const confirmButton = dialog.querySelector("[data-confirm]");
+    const passwordField = dialog.querySelector("[data-password]");
+    passwordField.hidden = !passwordInput;
+    passwordField.value = "";
 
     heading.textContent = title;
     description.textContent = message;
@@ -65,7 +79,9 @@ export function confirmDialog({
       confirmButton.removeEventListener("click", onConfirm);
 
       dialog.close();
-      resolve(confirmed);
+      resolve(
+        passwordInput ? (confirmed ? passwordField.value : null) : confirmed,
+      );
     };
 
     const onCancel = () => finish(false);
@@ -80,6 +96,17 @@ export function confirmDialog({
 
     cancelButton.addEventListener("click", onCancel);
     confirmButton.addEventListener("click", onConfirm);
+
+    if (passwordInput) {
+      confirmButton.disabled = true;
+
+      passwordField.oninput = () => {
+        confirmButton.disabled = !passwordField.value.trim();
+      };
+    } else {
+      confirmButton.disabled = false;
+      passwordField.oninput = null;
+    }
 
     dialog.showModal();
   });

@@ -16,6 +16,8 @@ import { initAdminAddSeries } from "./pages/adminAddSeries.js";
 import { initGameDetails } from "./pages/gameDetails.js";
 import { createPageHeading } from "./components/pageHeading.js";
 import { initAdminDashboard } from "./pages/adminDashboard.js";
+import { initProfile } from "./pages/profile.js";
+import { initResetPassword } from "./pages/resetPassword.js";
 
 const routes = {
   welcome: "welcome",
@@ -26,7 +28,9 @@ const routes = {
   developers: "developers",
   genres: "genres",
   statistics: "statistics",
+  profile: "profile",
   login: "login",
+  "reset-password": "reset-password",
   admin: "admin",
   "admin/games": "admin-games",
   "admin/add-game": "admin-add-game",
@@ -320,6 +324,14 @@ export async function navigate() {
 
     if (route === "game-details") {
       await initGameDetails(params);
+    }
+
+    if (route === "profile") {
+      await initProfile();
+    }
+
+    if (route === "reset-password") {
+      await initResetPassword();
     }
   } catch (error) {
     if (id === navigationId) {

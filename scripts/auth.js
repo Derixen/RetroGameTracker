@@ -21,6 +21,7 @@ async function isPendingDeletion(user) {
 export async function initAuth() {
   const loginLink = document.getElementById("auth-login");
   const logoutButton = document.getElementById("auth-logout");
+  const profileLink = document.getElementById("auth-profile");
   const adminLink = document.getElementById("auth-admin");
   const adminDashboardLink = document.getElementById("auth-admin-dashboard");
   const manageSeriesLink = document.getElementById("auth-manage-series");
@@ -31,6 +32,7 @@ export async function initAuth() {
 
     loginLink.hidden = signedIn;
     logoutButton.hidden = !signedIn;
+    profileLink.hidden = !signedIn;
     adminLink.hidden = true;
     adminDashboardLink.hidden = true;
     manageSeriesLink.hidden = true;
@@ -61,6 +63,14 @@ export async function initAuth() {
   }
 
   supabase.auth.onAuthStateChange((event, session) => {
+    if (event === "PASSWORD_RECOVERY") {
+      sessionStorage.setItem("passwordRecovery", "true");
+      window.location.hash = "#/reset-password";
+      return;
+    }
+    if (event === "SIGNED_OUT") {
+      sessionStorage.removeItem("passwordRecovery");
+    }
     if (event === "SIGNED_IN" && session?.user) {
       // Run asynchronously outside the authentication callback.
       setTimeout(async () => {
