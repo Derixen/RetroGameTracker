@@ -12,6 +12,20 @@ export async function initAdminSeries() {
   try {
     const series = await getSeries();
 
+    const { data: games, error: gamesError } = await supabase
+      .from("games")
+      .select("series_id");
+
+    if (gamesError) throw gamesError;
+
+    const gameCounts = new Map();
+
+    for (const game of games) {
+      if (game.series_id === null) continue;
+
+      gameCounts.set(game.series_id, (gameCounts.get(game.series_id) ?? 0) + 1);
+    }
+
     tableBody.replaceChildren();
     emptyMessage.hidden = series.length > 0;
 
@@ -27,6 +41,11 @@ export async function initAdminSeries() {
         cell.textContent = value;
         row.append(cell);
       }
+
+      const gamesCell = document.createElement("td");
+      gamesCell.className = "px-4 py-4 text-center text-slate-300";
+      gamesCell.textContent = gameCounts.get(item.id) ?? 0;
+      row.append(gamesCell);
 
       const actionsCell = document.createElement("td");
       actionsCell.className = "px-4 py-4 text-right";
