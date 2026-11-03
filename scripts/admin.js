@@ -1,22 +1,28 @@
 import { supabase } from "./supabase.js";
 
-const ADMIN_USER_ID = "443984a6-3e40-48c8-9437-1e6676e08749";
+export async function isAdmin(user) {
+  if (!user) return false;
 
-export function isAdmin(user) {
-  return user?.id === ADMIN_USER_ID;
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
+
+  if (error) {
+    console.error("Failed to check admin role:", error);
+    return false;
+  }
+
+  return data.role === "admin";
 }
 
 export async function getAdminUser() {
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser();
+  const user = await getAuthenticatedUser();
 
-  if (error || !isAdmin(user)) {
-    return null;
-  }
+  if (!user) return null;
 
-  return user;
+  return (await isAdmin(user)) ? user : null;
 }
 
 export async function getAuthenticatedUser() {
@@ -25,7 +31,15 @@ export async function getAuthenticatedUser() {
     error,
   } = await supabase.auth.getUser();
 
-  if (error || !user) {
+  if (error || !user) return null;
+
+  const { data: profile, error: profileError } = await supabase
+    .from("profiles")
+    .select("deletion_started_at")
+    .eq("id", user.id)
+    .single();
+
+  if (profileError || !profile || profile.deletion_started_at !== null) {
     return null;
   }
 

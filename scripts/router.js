@@ -15,6 +15,7 @@ import { initAdminSeries } from "./pages/adminSeries.js";
 import { initAdminAddSeries } from "./pages/adminAddSeries.js";
 import { initGameDetails } from "./pages/gameDetails.js";
 import { createPageHeading } from "./components/pageHeading.js";
+import { initAdminDashboard } from "./pages/adminDashboard.js";
 
 const routes = {
   welcome: "welcome",
@@ -287,6 +288,10 @@ export async function navigate() {
 
     if (route === "login") {
       initLogin();
+    }
+
+    if (route === "admin") {
+      await initAdminDashboard();
     }
 
     if (route === "admin-games") {
