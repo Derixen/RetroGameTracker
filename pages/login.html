@@ -32,10 +32,17 @@
           id="login-password"
           type="password"
           required
-          minlength="8"
           autocomplete="current-password"
           class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
         />
+        <p
+          id="password-requirements"
+          class="mt-2 text-xs text-slate-400"
+          hidden
+        >
+          Minimum 12 characters, including uppercase and lowercase letters, a
+          number, and a special character.
+        </p>
       </div>
 
       <p id="login-error" class="text-sm text-red-400" role="alert" hidden></p>

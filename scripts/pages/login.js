@@ -11,12 +11,17 @@ export function initLogin() {
   const switchText = document.getElementById("auth-switch-text");
   const switchButton = document.getElementById("auth-switch-button");
   const passwordInput = document.getElementById("login-password");
+  const passwordRequirements = document.getElementById("password-requirements");
 
   let isRegistering = false;
 
   // Switch between Sign In and Create Account
   switchButton.addEventListener("click", () => {
+    document.getElementById("password-requirements").hidden = !isRegistering;
+    passwordInput.minLength = isRegistering ? 12 : 0;
     isRegistering = !isRegistering;
+    passwordRequirements.hidden = !isRegistering;
+    passwordInput.minLength = isRegistering ? 12 : 0;
 
     title.textContent = isRegistering ? "Create Account" : "Sign In";
 
@@ -58,6 +63,21 @@ export function initLogin() {
 
     try {
       if (isRegistering) {
+        if (password.length < 12) {
+          throw new Error("Password must contain at least 12 characters.");
+        }
+
+        if (
+          !/[a-z]/.test(password) ||
+          !/[A-Z]/.test(password) ||
+          !/[0-9]/.test(password) ||
+          !/[^a-zA-Z0-9]/.test(password)
+        ) {
+          throw new Error(
+            "Password must include uppercase and lowercase letters, a number, and a special character.",
+          );
+        }
+
         const { error } = await supabase.auth.signUp({
           email,
           password,

@@ -27,6 +27,22 @@ export async function initResetPassword() {
       "reset-confirm-password",
     ).value;
 
+    if (
+      password.length < 12 ||
+      !/[a-z]/.test(password) ||
+      !/[A-Z]/.test(password) ||
+      !/[0-9]/.test(password) ||
+      !/[^a-zA-Z0-9]/.test(password)
+    ) {
+      await confirmDialog({
+        title: "Weak Password",
+        message:
+          "Password must be at least 12 characters and include uppercase and lowercase letters, a number, and a special character.",
+        alertOnly: true,
+      });
+      return;
+    }
+
     if (password !== confirmation) {
       await confirmDialog({
         title: "Passwords Do Not Match",
