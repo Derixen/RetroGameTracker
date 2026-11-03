@@ -38,10 +38,13 @@ export async function initAuth() {
 
     if (signedIn) {
       const admin = await isAdmin(session.user);
-      adminDashboardLink.hidden = !admin;
 
-      adminLink.hidden = !admin;
-      manageSeriesLink.hidden = !admin;
+      // Available to all authenticated users
+      adminLink.hidden = false;
+      manageSeriesLink.hidden = false;
+
+      // Administrator-only features
+      adminDashboardLink.hidden = !admin;
       managePlatformsLink.hidden = !admin;
     }
   }
