@@ -91,20 +91,21 @@ export async function initStatistics() {
     const donut = document.getElementById("stat-status-donut");
 
     donut.style.background = `conic-gradient(
-  #ff456c 0deg ${completedAngle}deg,
-  #24d7e6 ${completedAngle}deg ${completedAngle + progressAngle}deg,
-  #635aa8 ${completedAngle + progressAngle}deg 360deg
+  #4ade80 0deg ${completedAngle}deg,
+  #facc15 ${completedAngle}deg ${completedAngle + progressAngle}deg,
+  #c084fc ${completedAngle + progressAngle}deg 360deg
 )`;
 
     document.getElementById("stat-status-total").textContent = games.length;
+    document.getElementById("stat-not-played-games").textContent = notStarted;
 
     const legend = document.getElementById("stat-status-legend");
     legend.replaceChildren();
 
     for (const [label, value, color] of [
-      ["Completed", completed, "#ff456c"],
-      ["In Progress", inProgress, "#24d7e6"],
-      ["Not Started", notStarted, "#635aa8"],
+      ["Completed", completed, "#4ade80"],
+      ["In Progress", inProgress, "#facc15"],
+      ["Not Started", notStarted, "#c084fc"],
     ]) {
       const row = document.createElement("div");
       row.className = "flex items-center justify-between gap-5 text-sm";
