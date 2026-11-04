@@ -248,8 +248,7 @@ export async function navigate() {
 
           const addButton = document.createElement("a");
           addButton.href = "#/admin/add-game";
-          addButton.className =
-            "inline-flex h-[36px] items-center justify-center rounded-full bg-pink-500 px-4 text-sm font-semibold text-white transition hover:bg-pink-600";
+          addButton.className = "add-game-btn";
           addButton.textContent = "+ Add Game";
 
           wrapper.appendChild(addButton);
@@ -258,6 +257,9 @@ export async function navigate() {
 
       pageContent.prepend(heading);
     }
+
+    // Initialize Lucide icons after the page has loaded
+    window.lucide?.createIcons();
 
     // Fade in the new page
     requestAnimationFrame(() => {

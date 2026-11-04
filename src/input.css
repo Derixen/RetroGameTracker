@@ -26,6 +26,25 @@ select {
 button {
   cursor: pointer;
 }
+/* Add Game button */
+.add-game-btn {
+  display: inline-flex;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  border-radius: 9999px;
+  background-color: #da5389;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.add-game-btn:hover {
+  background-color: #e44889;
+}
 
 /* App shell and sidebar */
 .app-shell {
@@ -230,14 +249,14 @@ button {
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 2.5px;
-  color: var(--accent);
+  color: #fd5a9c;
   margin-bottom: 8px;
 }
 .page-heading .eyebrow {
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 2.5px;
-  color: var(--accent);
+  color: #fd5a9c;
   margin: 0 0 8px;
 }
 .page-heading h1 {
@@ -247,6 +266,7 @@ button {
   letter-spacing: 1.2px;
   line-height: 1.2;
   margin: 0;
+  color: #38b9d2;
 }
 .page-heading p:not(.eyebrow) {
   color: var(--muted);
@@ -657,4 +677,11 @@ button {
 }
 [hidden] {
   display: none !important;
+}
+.collection-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: #38b9d2;
+  stroke-width: 1.8;
 }
