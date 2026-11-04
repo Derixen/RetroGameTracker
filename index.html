@@ -39,97 +39,95 @@
         </div>
         <nav id="main-nav" class="nav-list" aria-label="Sections">
           <button class="nav-item active" data-page="home" aria-current="page">
-            <span class="nav-icon">⌂</span><span>Home</span>
+            <i data-lucide="house" class="nav-icon"></i><span>Home</span>
           </button>
           <button class="nav-item" data-page="games">
-            <span class="nav-icon">♧</span><span>Games</span>
+            <i data-lucide="gamepad-2" class="nav-icon"></i><span>Games</span>
           </button>
           <button class="nav-item" data-page="platforms">
-            <span class="nav-icon">▣</span><span>Platforms</span>
+            <i data-lucide="monitor" class="nav-icon"></i><span>Platforms</span>
           </button>
           <button class="nav-item" data-page="series">
-            <span class="nav-icon">▤</span><span>Game Series</span>
+            <i data-lucide="library-big" class="nav-icon"></i
+            ><span>Game Series</span>
           </button>
           <button class="nav-item" data-page="developers">
-            <span class="nav-icon">♙</span><span>Developers</span>
+            <i data-lucide="code-2" class="nav-icon"></i><span>Developers</span>
           </button>
           <button class="nav-item" data-page="genres">
-            <span class="nav-icon">◇</span><span>Genres</span>
+            <i data-lucide="shapes" class="nav-icon"></i><span>Genres</span>
           </button>
           <button class="nav-item" data-page="statistics">
-            <span class="nav-icon">▥</span><span>Statistics</span>
+            <i data-lucide="chart-no-axes-column" class="nav-icon"></i
+            ><span>Statistics</span>
           </button>
         </nav>
 
-        <div class="mt-6 border-t border-slate-700/50 pt-5">
-          <a
-            id="auth-admin-dashboard"
-            href="#/admin"
-            class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white"
+        <div class="mt-6 border-t border-slate-700/50 px-3 pt-5">
+          <!-- MY ACCOUNT -->
+          <div
+            class="px-4 pb-2 text-xs font-bold tracking-widest text-slate-500"
+          >
+            MY ACCOUNT
+          </div>
+
+          <a id="auth-collection" href="#/collection" class="nav-item" hidden>
+            <i data-lucide="folder-heart" class="nav-icon"></i>
+            <span>Manage My Collection</span>
+          </a>
+
+          <a id="auth-profile" href="#/profile" class="nav-item" hidden>
+            <i data-lucide="user-round" class="nav-icon"></i>
+            <span>My Profile</span>
+          </a>
+
+          <!-- ADMINISTRATION -->
+          <div
+            id="auth-admin-section"
+            class="mt-4 border-t border-slate-700/50 px-4 pb-2 pt-5 text-xs font-bold tracking-widest text-slate-500"
             hidden
           >
-            <span>📊</span>
+            ADMINISTRATION
+          </div>
+
+          <a id="auth-admin-dashboard" href="#/admin" class="nav-item" hidden>
+            <i data-lucide="layout-dashboard" class="nav-icon"></i>
             <span>Admin Dashboard</span>
           </a>
 
           <a
-            id="auth-login"
-            href="#/login"
-            class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white"
+            id="auth-user-management"
+            href="#/admin/users"
+            class="nav-item"
             hidden
           >
-            <span>🔐</span>
-            <span>Sign In / Register</span>
+            <i data-lucide="users-round" class="nav-icon"></i>
+            <span>User Management</span>
           </a>
 
-          <a
-            id="auth-admin"
-            href="#/admin/games"
-            class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white"
-            hidden
-          >
-            <span>⚙️</span>
-            <span>Manage My Games</span>
-          </a>
-
-          <a
-            id="auth-manage-series"
-            href="#/admin/series"
-            class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white"
-            hidden
-          >
-            <span>📚</span>
-            <span>Manage My Series</span>
-          </a>
           <a
             id="auth-manage-platforms"
             href="#/admin/platforms"
-            class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white"
+            class="nav-item"
             hidden
           >
-            <span>🎮</span>
+            <i data-lucide="monitor-cog" class="nav-icon"></i>
             <span>Manage Platforms</span>
           </a>
 
-          <a
-            id="auth-profile"
-            href="#/profile"
-            class="flex items-center gap-3 rounded-lg px-4 py-3 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white"
-            hidden
-          >
-            <span>👤</span>
-            <span>My Profile</span>
+          <!-- SIGN IN -->
+          <a id="auth-login" href="#/login" class="nav-item" hidden>
+            <i data-lucide="log-in" class="nav-icon"></i>
+            <span>Sign In / Register</span>
           </a>
 
-          <button
-            id="auth-logout"
-            type="button"
-            class="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm text-slate-400 transition hover:bg-slate-800 hover:text-white"
-            hidden
-          >
-            <span>🚪</span>
-            <span>Logout</span>
-          </button>
+          <!-- LOGOUT -->
+          <div class="mt-4 border-t border-slate-700/50 pt-3">
+            <button id="auth-logout" type="button" class="nav-item" hidden>
+              <i data-lucide="log-out" class="nav-icon"></i>
+              <span>Logout</span>
+            </button>
+          </div>
         </div>
 
         <div class="sidebar-footer">COLLECTION ARCHIVE <span>v0.1</span></div>
@@ -153,6 +151,7 @@
       </div>
     </div>
     <div id="mobile-overlay" class="mobile-overlay" hidden></div>
+    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
     <script type="module" src="./scripts/main.js"></script>
   </body>
 </html>

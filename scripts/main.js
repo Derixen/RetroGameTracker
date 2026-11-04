@@ -53,3 +53,5 @@ window.addEventListener("hashchange", navigate);
 navigate();
 
 initAuth();
+
+window.lucide?.createIcons();

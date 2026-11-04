@@ -22,9 +22,10 @@ export async function initAuth() {
   const loginLink = document.getElementById("auth-login");
   const logoutButton = document.getElementById("auth-logout");
   const profileLink = document.getElementById("auth-profile");
-  const adminLink = document.getElementById("auth-admin");
   const adminDashboardLink = document.getElementById("auth-admin-dashboard");
-  const manageSeriesLink = document.getElementById("auth-manage-series");
+  const collectionLink = document.getElementById("auth-collection");
+  const userManagementLink = document.getElementById("auth-user-management");
+  const adminSection = document.getElementById("auth-admin-section");
   const managePlatformsLink = document.getElementById("auth-manage-platforms");
 
   async function updateAuthUI(session) {
@@ -33,20 +34,18 @@ export async function initAuth() {
     loginLink.hidden = signedIn;
     logoutButton.hidden = !signedIn;
     profileLink.hidden = !signedIn;
-    adminLink.hidden = true;
     adminDashboardLink.hidden = true;
-    manageSeriesLink.hidden = true;
+    collectionLink.hidden = !signedIn;
+    userManagementLink.hidden = true;
     managePlatformsLink.hidden = true;
 
     if (signedIn) {
       const admin = await isAdmin(session.user);
 
-      // Available to all authenticated users
-      adminLink.hidden = false;
-      manageSeriesLink.hidden = false;
-
       // Administrator-only features
       adminDashboardLink.hidden = !admin;
+      userManagementLink.hidden = !admin;
+      adminSection.hidden = !admin;
       managePlatformsLink.hidden = !admin;
     }
   }

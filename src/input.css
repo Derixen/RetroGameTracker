@@ -157,10 +157,33 @@ button {
   border-right: 4px solid var(--accent);
 }
 .nav-icon {
-  width: 21px;
-  text-align: center;
-  font-size: 21px;
-  line-height: 1;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  flex-shrink: 0;
+  stroke-width: 1.8;
+}
+/* Consistent sidebar navigation alignment */
+.sidebar .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+}
+
+/* Apply identical alignment to account and admin links */
+.sidebar a[id^="auth-"],
+.sidebar button[id^="auth-"] {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+/* Preserve visibility controlled by auth.js */
+.sidebar [hidden] {
+  display: none !important;
 }
 .sidebar-footer {
   margin-top: auto;

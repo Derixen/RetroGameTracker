@@ -10,6 +10,7 @@ export async function initHome() {
   const totalGames = document.getElementById("total-games");
   const totalCompleted = document.getElementById("total-completed");
   const totalInProgress = document.getElementById("total-in-progress");
+  const totalNotPlayed = document.getElementById("total-not-played");
 
   try {
     const games = await getGames();
@@ -182,8 +183,11 @@ export async function initHome() {
       (game) => game.in_progress && !game.completed,
     ).length;
 
+    const notPlayed = games.length - completed;
+
     totalCompleted.textContent = completed;
     totalInProgress.textContent = inProgress;
+    totalNotPlayed.textContent = notPlayed;
 
     const distribution = document.getElementById("platform-distribution");
 

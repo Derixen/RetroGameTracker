@@ -1183,6 +1183,10 @@ video {
   background-color: rgb(30 41 59 / var(--tw-bg-opacity, 1));
 }
 
+.bg-slate-800\/50 {
+  background-color: rgb(30 41 59 / 0.5);
+}
+
 .bg-slate-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(15 23 42 / var(--tw-bg-opacity, 1));
@@ -1420,6 +1424,11 @@ video {
 .text-cyan-400 {
   --tw-text-opacity: 1;
   color: rgb(34 211 238 / var(--tw-text-opacity, 1));
+}
+
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
 }
 
 .text-green-400 {
@@ -1706,10 +1715,37 @@ button {
 }
 
 .nav-icon {
-  width: 21px;
-  text-align: center;
-  font-size: 21px;
-  line-height: 1;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  flex-shrink: 0;
+  stroke-width: 1.8;
+}
+
+/* Consistent sidebar navigation alignment */
+
+.sidebar .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+}
+
+/* Apply identical alignment to account and admin links */
+
+.sidebar a[id^="auth-"],
+.sidebar button[id^="auth-"] {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+/* Preserve visibility controlled by auth.js */
+
+.sidebar [hidden] {
+  display: none !important;
 }
 
 .sidebar-footer {
@@ -2460,8 +2496,8 @@ button {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .md\:grid-cols-\[240px_1fr\] {

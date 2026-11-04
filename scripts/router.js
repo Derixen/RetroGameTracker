@@ -18,10 +18,12 @@ import { createPageHeading } from "./components/pageHeading.js";
 import { initAdminDashboard } from "./pages/adminDashboard.js";
 import { initProfile } from "./pages/profile.js";
 import { initResetPassword } from "./pages/resetPassword.js";
+import { initAdminUsers } from "./pages/adminUsers.js";
 
 const routes = {
   welcome: "welcome",
   home: "home",
+  collection: "collection",
   games: "games",
   platforms: "platforms",
   series: "series",
@@ -31,7 +33,8 @@ const routes = {
   profile: "profile",
   login: "login",
   "reset-password": "reset-password",
-  admin: "admin",
+  admin: "admin-dashboard",
+  "admin/users": "admin-users",
   "admin/games": "admin-games",
   "admin/add-game": "admin-add-game",
   "admin/edit-game": "admin-add-game",
@@ -91,6 +94,27 @@ const pageHeadings = {
     eyebrow: "PROGRESS OVERVIEW",
     title: "Statistics",
     subtitle: "Your retro gaming Progress at a glance",
+    countId: "",
+    countLabel: "",
+  },
+  collection: {
+    eyebrow: "MY COLLECTION",
+    title: "Manage My Collection",
+    subtitle: "Manage your games, series, and collection details",
+    countId: "",
+    countLabel: "",
+  },
+  "admin-users": {
+    eyebrow: "ADMINISTRATION",
+    title: "User Management",
+    subtitle: "Manage registered accounts, permissions, and user collections",
+    countId: "",
+    countLabel: "",
+  },
+  "admin-dashboard": {
+    eyebrow: "ADMINISTRATION",
+    title: "Admin Dashboard",
+    subtitle: "Monitor platform activity, users, and collection statistics",
     countId: "",
     countLabel: "",
   },
@@ -294,8 +318,12 @@ export async function navigate() {
       initLogin();
     }
 
-    if (route === "admin") {
+    if (route === "admin-dashboard") {
       await initAdminDashboard();
+    }
+
+    if (route === "admin-users") {
+      await initAdminUsers();
     }
 
     if (route === "admin-games") {
