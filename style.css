@@ -1709,7 +1709,7 @@ button {
 
 .nav-item.active {
   background: #48283e;
-  color: white;
+  color: #ffffff;
   border-left-color: var(--accent);
   border-right: 4px solid var(--accent);
 }
@@ -1720,6 +1720,12 @@ button {
   min-width: 20px;
   flex-shrink: 0;
   stroke-width: 1.8;
+  transition: color 0.2s ease;
+  color: #38b9d2;
+}
+
+.nav-item:hover .nav-icon {
+  color: #ffffff;
 }
 
 /* Consistent sidebar navigation alignment */
