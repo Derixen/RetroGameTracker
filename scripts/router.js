@@ -22,6 +22,13 @@ import { initAdminUsers } from "./pages/adminUsers.js";
 
 const routes = {
   welcome: "welcome",
+  about: "about",
+  contact: "contact",
+  privacy: "privacy",
+  terms: "terms",
+  changelog: "changelog",
+  "report-bug": "report-bug",
+  attributions: "attributions",
   home: "home",
   collection: "collection",
   games: "games",
@@ -117,6 +124,43 @@ const pageHeadings = {
     subtitle: "Monitor platform activity, users, and collection statistics",
     countId: "",
     countLabel: "",
+  },
+  about: {
+    eyebrow: "THE PROJECT",
+    title: "About RetroTrack",
+    subtitle: "Discover the story behind RetroTrack Games.",
+  },
+  contact: {
+    eyebrow: "GET IN TOUCH",
+    title: "Contact & Support",
+    subtitle:
+      "Questions, suggestions, or feedback? We'd love to hear from you.",
+  },
+  privacy: {
+    eyebrow: "LEGAL INFORMATION",
+    title: "Privacy Policy",
+    subtitle: "How RetroTrack Games handles your personal information.",
+  },
+  terms: {
+    eyebrow: "LEGAL INFORMATION",
+    title: "Terms of Service",
+    subtitle: "The rules and conditions for using RetroTrack Games.",
+  },
+  changelog: {
+    eyebrow: "DEVELOPMENT",
+    title: "What's New",
+    subtitle: "Latest updates, improvements, and version history.",
+  },
+  "report-bug": {
+    eyebrow: "SUPPORT",
+    title: "Report a Bug",
+    subtitle: "Help us improve RetroTrack Games by reporting issues.",
+  },
+  attributions: {
+    eyebrow: "CREDITS",
+    title: "Attributions & Credits",
+    subtitle:
+      "The technologies, services, and resources behind RetroTrack Games.",
   },
 };
 
