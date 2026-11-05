@@ -174,18 +174,61 @@ export async function navigate() {
   const [page, queryString = ""] = hash.split("?");
 
   const params = new URLSearchParams(queryString);
-  const route = routes[page] ?? "games";
+  const route = Object.hasOwn(routes, page) ? routes[page] : "not-found";
 
   // Public pages that do not require authentication
-  const publicRoutes = new Set(["welcome", "login"]);
+  const publicRoutes = new Set([
+    "welcome",
+    "login",
+    "about",
+    "contact",
+    "privacy",
+    "terms",
+    "changelog",
+    "report-bug",
+    "attributions",
+    "not-found",
+  ]);
 
   // Hide application navigation on public pages
-  const isPublicPage = publicRoutes.has(page);
+  const isPublicPage = page === "welcome" || page === "login";
+  const informationalPages = new Set([
+    "about",
+    "contact",
+    "privacy",
+    "terms",
+    "changelog",
+    "report-bug",
+    "attributions",
+    "not-found",
+  ]);
+
+  const isInformationalPage = informationalPages.has(route);
+  const informationalPageUser = isInformationalPage
+    ? await getAuthenticatedUser()
+    : null;
+
+  if (id !== navigationId) return;
+
+  const isGuestInformationalPage =
+    isInformationalPage && !informationalPageUser;
+
   document
     .querySelector(".app-shell")
     ?.classList.toggle("public-layout", isPublicPage);
 
   document.getElementById("sidebar")?.classList.toggle("hidden", isPublicPage);
+
+  document
+    .getElementById("sidebar")
+    ?.classList.toggle("guest-sidebar", isGuestInformationalPage);
+
+  document.getElementById("sidebar-account-section").hidden =
+    isGuestInformationalPage;
+
+  document.querySelector(".sidebar-controls").hidden = isGuestInformationalPage;
+  document.querySelector(".guest-nav").hidden = !isGuestInformationalPage;
+  document.getElementById("main-nav").hidden = isGuestInformationalPage;
   document
     .getElementById("menu-toggle")
     ?.classList.toggle("hidden", isPublicPage);
@@ -194,7 +237,7 @@ export async function navigate() {
     ?.classList.toggle("hidden", isPublicPage);
   document.getElementById("mobile-overlay")?.classList.add("hidden");
 
-  if (!publicRoutes.has(page)) {
+  if (!publicRoutes.has(page) && route !== "not-found") {
     const user = await getAuthenticatedUser();
 
     if (id !== navigationId) return;
@@ -410,6 +453,34 @@ export async function navigate() {
   } catch (error) {
     if (id === navigationId) {
       console.error("Navigation failed:", error);
+
+      const pageContent = document.getElementById("page-content");
+
+      pageContent.classList.remove("page-fading");
+
+      pageContent.innerHTML = `
+      <section class="game-card static-card mx-auto max-w-xl p-8 text-center">
+        <h2 class="text-2xl font-bold text-white">
+          Something Went Wrong
+        </h2>
+
+        <p class="mt-4 text-sm leading-7 text-slate-400">
+          We couldn't load this page. Please try again.
+        </p>
+
+        <button
+          type="button"
+          id="retry-navigation"
+          class="mt-6 font-semibold text-cyan-400 hover:text-cyan-300"
+        >
+          Try Again
+        </button>
+      </section>
+    `;
+
+      document
+        .getElementById("retry-navigation")
+        .addEventListener("click", () => navigate());
     }
   }
 }

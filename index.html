@@ -37,6 +37,24 @@
             />
           </label>
         </div>
+        <nav class="guest-nav nav-list" aria-label="Guest navigation" hidden>
+          <a href="#/welcome" class="nav-item">
+            <i data-lucide="house" class="nav-icon"></i>
+            <span>Home</span>
+          </a>
+          <a href="#/about" class="nav-item">
+            <i data-lucide="info" class="nav-icon"></i>
+            <span>About RetroTrack</span>
+          </a>
+          <a href="#/contact" class="nav-item">
+            <i data-lucide="mail" class="nav-icon"></i>
+            <span>Contact Us</span>
+          </a>
+          <a href="#/login" class="nav-item">
+            <i data-lucide="log-in" class="nav-icon"></i>
+            <span>Sign In</span>
+          </a>
+        </nav>
         <nav id="main-nav" class="nav-list" aria-label="Sections">
           <button class="nav-item active" data-page="home" aria-current="page">
             <i data-lucide="house" class="nav-icon"></i><span>Home</span>
@@ -63,7 +81,10 @@
           </button>
         </nav>
 
-        <div class="mt-6 border-t border-slate-700/50 px-3 pt-5">
+        <div
+          id="sidebar-account-section"
+          class="mt-6 border-t border-slate-700/50 px-3 pt-5"
+        >
           <!-- MY ACCOUNT -->
           <div
             class="px-4 pb-2 text-xs font-bold tracking-widest text-slate-500"
@@ -153,6 +174,7 @@
           <div class="footer-columns">
             <div class="footer-column">
               <h3>RetroTrack Games</h3>
+              <a href="#/welcome">Home</a>
               <a href="#/about">About RetroTrack</a>
               <a href="#/changelog">What's New</a>
             </div>
