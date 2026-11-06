@@ -194,7 +194,12 @@ export async function navigate() {
   ]);
 
   // Hide application navigation on public pages
-  const isPublicPage = page === "welcome" || page === "login";
+  const isPublicPage = [
+    "welcome",
+    "login",
+    "forgot-password",
+    "reset-password",
+  ].includes(page);
   const informationalPages = new Set([
     "about",
     "contact",
