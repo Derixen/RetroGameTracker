@@ -340,13 +340,6 @@ export async function navigate() {
 
           counterContainer.parentNode.insertBefore(wrapper, counterContainer);
           wrapper.appendChild(counterContainer);
-
-          const addButton = document.createElement("a");
-          addButton.href = "#/admin/add-game";
-          addButton.className = "add-game-btn";
-          addButton.textContent = "+ Add Game";
-
-          wrapper.appendChild(addButton);
         }
       }
 
