@@ -15,13 +15,8 @@ export function initLogin() {
 
   let isRegistering = false;
 
-  // Temporary: Public registration disabled during development
-  switchButton.hidden = true;
-  switchText.hidden = true;
-
   // Switch between Sign In and Create Account
   switchButton.addEventListener("click", () => {
-    return; // Registration temporarily disabled
     document.getElementById("password-requirements").hidden = !isRegistering;
     passwordInput.minLength = isRegistering ? 12 : 0;
     isRegistering = !isRegistering;
@@ -87,7 +82,7 @@ export function initLogin() {
           email,
           password,
           options: {
-            emailRedirectTo: "https://derixen.github.io/RetroGameTracker/",
+            emailRedirectTo: "https://retrotrack.games/#/login",
           },
         });
 

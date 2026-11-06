@@ -40,6 +40,7 @@ const routes = {
   profile: "profile",
   login: "login",
   "reset-password": "reset-password",
+  "forgot-password": "forgot-password",
   admin: "admin-dashboard",
   "admin/users": "admin-users",
   "admin/games": "admin-games",
@@ -188,6 +189,8 @@ export async function navigate() {
     "report-bug",
     "attributions",
     "not-found",
+    "reset-password",
+    "forgot-password",
   ]);
 
   // Hide application navigation on public pages
@@ -405,6 +408,9 @@ export async function navigate() {
 
     if (route === "login") {
       initLogin();
+    } else if (page === "forgot-password") {
+      const { initForgotPassword } = await import("./pages/forgot-password.js");
+      initForgotPassword();
     }
 
     if (route === "admin-dashboard") {
