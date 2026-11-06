@@ -16,7 +16,10 @@
 }
 body {
   font-family: Inter, sans-serif;
-  background: var(--bg);
+
+  background: linear-gradient(160deg, #0e0e22 0%, #10162c 45%, #151b35 100%);
+
+  background-attachment: fixed;
 }
 button,
 input,
