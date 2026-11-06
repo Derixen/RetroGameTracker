@@ -125,7 +125,7 @@ export function initLogin() {
           email,
           password,
           options: {
-            emailRedirectTo: "https://retrotrack.games/#/login",
+            emailRedirectTo: `${window.location.origin}${window.location.pathname}#/login`,
           },
         });
 
