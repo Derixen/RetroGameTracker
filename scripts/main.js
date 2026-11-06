@@ -49,9 +49,8 @@ document.querySelectorAll("[data-page]").forEach((button) => {
 // Browser navigation
 window.addEventListener("hashchange", navigate);
 
-// Initial page
-navigate();
-
-initAuth();
+// Initialize authentication before loading the first page
+await initAuth();
+await navigate();
 
 window.lucide?.createIcons();

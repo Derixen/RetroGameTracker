@@ -50,6 +50,13 @@ export async function initAuth() {
     }
   }
 
+  supabase.auth.onAuthStateChange((event) => {
+    if (event === "PASSWORD_RECOVERY") {
+      sessionStorage.setItem("passwordRecovery", "true");
+      window.location.hash = "#/reset-password";
+    }
+  });
+
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -62,11 +69,6 @@ export async function initAuth() {
   }
 
   supabase.auth.onAuthStateChange((event, session) => {
-    if (event === "PASSWORD_RECOVERY") {
-      sessionStorage.setItem("passwordRecovery", "true");
-      window.location.hash = "#/reset-password";
-      return;
-    }
     if (event === "SIGNED_OUT") {
       sessionStorage.removeItem("passwordRecovery");
     }
