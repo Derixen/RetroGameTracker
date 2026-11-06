@@ -40,3 +40,34 @@
     <p class="text-sm text-slate-400">Loading activity...</p>
   </div>
 </section>
+
+<!-- Site Settings -->
+<section class="game-card static-card mb-8 p-6">
+  <div class="mb-6">
+    <h2 class="text-xl font-bold text-white">Site Settings</h2>
+    <p class="mt-1 text-sm text-slate-400">
+      Manage public access to RetroTrack Games.
+    </p>
+  </div>
+
+  <div class="flex flex-wrap items-center justify-between gap-4">
+    <div>
+      <h3 class="font-semibold text-white">Allow New Registrations</h3>
+      <p class="mt-1 text-sm text-slate-400">
+        When disabled, visitors cannot create new accounts.
+      </p>
+      <p id="admin-registration-status" class="mt-2 text-sm text-slate-400">
+        Loading registration status...
+      </p>
+    </div>
+
+    <button
+      id="admin-registration-toggle"
+      type="button"
+      disabled
+      class="rounded-lg bg-pink-500 px-5 py-3 font-semibold text-white transition hover:bg-pink-600 disabled:opacity-50"
+    >
+      Loading...
+    </button>
+  </div>
+</section>

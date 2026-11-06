@@ -20,6 +20,55 @@ export async function initAdminDashboard() {
     data.newUsersThisWeek;
 
   renderLoginChart(data.dailyLogins);
+
+  await loadRegistrationSetting();
+}
+
+async function loadRegistrationSetting() {
+  const button = document.getElementById("admin-registration-toggle");
+  const status = document.getElementById("admin-registration-status");
+
+  const { data, error } = await supabase
+    .from("site_settings")
+    .select("value")
+    .eq("key", "registration_enabled")
+    .single();
+
+  if (error) {
+    console.error("Failed to load registration setting:", error);
+    status.textContent = "Unable to load registration status.";
+    return;
+  }
+
+  const enabled = data.value;
+
+  status.textContent = enabled
+    ? "Registration is currently enabled."
+    : "Registration is currently disabled.";
+
+  button.textContent = enabled ? "Disable Registration" : "Enable Registration";
+
+  button.disabled = false;
+  button.onclick = async () => {
+    const newValue = !enabled;
+
+    button.disabled = true;
+    status.textContent = "Updating registration setting...";
+
+    const { error } = await supabase
+      .from("site_settings")
+      .update({ value: newValue })
+      .eq("key", "registration_enabled");
+
+    if (error) {
+      console.error("Failed to update registration setting:", error);
+      status.textContent = "Failed to update registration setting.";
+      button.disabled = false;
+      return;
+    }
+
+    await loadRegistrationSetting();
+  };
 }
 
 function renderLoginChart(dailyLogins) {

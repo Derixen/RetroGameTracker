@@ -15,6 +15,36 @@ export function initLogin() {
 
   let isRegistering = false;
 
+  async function checkRegistrationStatus() {
+    const { data, error } = await supabase
+      .from("site_settings")
+      .select("value")
+      .eq("key", "registration_enabled")
+      .single();
+
+    const notice = document.getElementById("registration-disabled-notice");
+    const registrationSection = switchButton.parentElement;
+
+    if (error || data?.value !== true) {
+      registrationSection.hidden = true;
+      notice.hidden = false;
+      return false;
+    }
+
+    registrationSection.hidden = false;
+    switchButton.hidden = false;
+    switchText.hidden = false;
+    notice.hidden = true;
+
+    return true;
+
+    switchButton.hidden = false;
+    switchText.hidden = false;
+    return true;
+  }
+
+  checkRegistrationStatus();
+
   // Switch between Sign In and Create Account
   switchButton.addEventListener("click", () => {
     document.getElementById("password-requirements").hidden = !isRegistering;
@@ -63,6 +93,19 @@ export function initLogin() {
 
     try {
       if (isRegistering) {
+        const registrationAllowed = await checkRegistrationStatus();
+
+        if (!registrationAllowed) {
+          isRegistering = false;
+
+          title.textContent = "Sign In";
+          description.textContent =
+            "Sign in to manage your retro game collection.";
+          submitButton.textContent = "Sign In";
+          passwordRequirements.hidden = true;
+
+          throw new Error("New account registrations are currently disabled.");
+        }
         if (password.length < 12) {
           throw new Error("Password must contain at least 12 characters.");
         }
