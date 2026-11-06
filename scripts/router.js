@@ -313,9 +313,8 @@ export async function navigate() {
     }
     const pageContent = document.getElementById("page-content");
 
-    // Fade out the current page
+    // Prepare the new page without delaying navigation
     pageContent.classList.add("page-fading");
-
     await new Promise((resolve) => setTimeout(resolve, 200));
 
     // Stop if another navigation started
@@ -323,6 +322,7 @@ export async function navigate() {
 
     // Load the new page
     pageContent.innerHTML = html;
+    pageContent.style.visibility = "";
 
     const headingConfig = pageHeadings[route];
 

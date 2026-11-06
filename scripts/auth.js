@@ -101,14 +101,18 @@ export async function initAuth() {
   });
 
   logoutButton.addEventListener("click", async () => {
+    const pageContent = document.getElementById("page-content");
+    pageContent.style.visibility = "hidden";
+
     const { error } = await supabase.auth.signOut();
 
     if (error) {
+      pageContent.style.visibility = "";
       console.error("Logout failed:", error);
       return;
     }
 
-    window.location.hash = "#/home";
+    window.location.hash = "#/welcome";
   });
 }
 
