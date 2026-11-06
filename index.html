@@ -1,6 +1,44 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <style>
+      html.maintenance-checking body {
+        visibility: hidden;
+      }
+    </style>
+    <script>
+      document.documentElement.classList.add("maintenance-checking");
+    </script>
+    <script>
+      (async () => {
+        try {
+          const response = await fetch("./maintenance.html", {
+            method: "HEAD",
+            cache: "no-store",
+          });
+
+          if (response.ok) {
+            const page = await fetch("./maintenance.html", {
+              cache: "no-store",
+            });
+
+            const html = await page.text();
+
+            if (
+              page.ok &&
+              html.includes("<title>Maintenance — RetroTrack Games</title>")
+            ) {
+              window.location.replace("./maintenance.html");
+              return;
+            }
+          }
+        } catch (error) {
+          console.error("Maintenance check failed:", error);
+        } finally {
+          document.documentElement.classList.remove("maintenance-checking");
+        }
+      })();
+    </script>
     <link rel="icon" href="./images/favicon.png" type="image/png" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
