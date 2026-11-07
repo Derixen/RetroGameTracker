@@ -54,6 +54,7 @@ await initAuth();
 await navigate();
 
 window.lucide?.createIcons();
+document.querySelector(".sidebar")?.classList.add("sidebar-ready");
 
 // Reveal the fully initialized website
 requestAnimationFrame(() => {
