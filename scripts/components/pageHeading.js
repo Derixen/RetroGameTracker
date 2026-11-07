@@ -4,6 +4,8 @@ export function createPageHeading({
   subtitle,
   countId,
   countLabel,
+  actionText,
+  actionHref,
 }) {
   const heading = document.createElement("div");
   heading.className = "page-heading";
@@ -31,7 +33,22 @@ export function createPageHeading({
     count.id = countId;
     count.className = "count-chip";
     count.textContent = `0 ${countLabel}`;
-    content.append(count);
+
+    const counterRow = document.createElement("div");
+    counterRow.className = "flex flex-wrap items-center gap-3";
+
+    counterRow.append(count);
+
+    if (actionText && actionHref) {
+      const action = document.createElement("a");
+      action.href = actionHref;
+      action.className = "btn-primary px-4 py-2 text-sm whitespace-nowrap";
+      action.textContent = actionText;
+
+      counterRow.append(action);
+    }
+
+    content.append(counterRow);
   }
 
   heading.append(content);

@@ -741,6 +741,14 @@ video {
   margin-top: auto;
 }
 
+.\!mt-0 {
+  margin-top: 0px !important;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
 .block {
   display: block;
 }
@@ -1070,6 +1078,10 @@ video {
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.whitespace-nowrap {
   white-space: nowrap;
 }
 
@@ -2680,6 +2692,20 @@ html {
   background: rgba(82, 100, 134, 0.7);
 }
 
+/* Games search, sort and view alignment */
+
+#game-search,
+#game-sort,
+#game-view {
+  height: 38px;
+  box-sizing: border-box;
+}
+
+#game-sort,
+#game-view {
+  vertical-align: middle;
+}
+
 .file\:mr-4::file-selector-button {
   margin-right: 1rem;
 }
@@ -2757,10 +2783,6 @@ html {
 .hover\:border-pink-500:hover {
   --tw-border-opacity: 1;
   border-color: rgb(236 72 153 / var(--tw-border-opacity, 1));
-}
-
-.hover\:border-pink-500\/50:hover {
-  border-color: rgb(236 72 153 / 0.5);
 }
 
 .hover\:border-red-400\/60:hover {

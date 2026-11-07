@@ -1079,3 +1079,15 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(82, 100, 134, 0.7);
 }
+/* Games search, sort and view alignment */
+#game-search,
+#game-sort,
+#game-view {
+  height: 38px;
+  box-sizing: border-box;
+}
+
+#game-sort,
+#game-view {
+  vertical-align: middle;
+}
