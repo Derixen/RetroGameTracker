@@ -34,6 +34,7 @@ button {
 .add-game-btn {
   display: inline-flex;
   height: 36px;
+  margin-bottom: 0;
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -366,7 +367,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 9px;
-  margin-top: 0;
+  margin-top: -8px;
   margin-bottom: 25px;
 }
 
@@ -720,6 +721,8 @@ button {
 /* Game sorting and view options */
 #game-sort,
 #game-view {
+  height: 36px;
+  box-sizing: border-box;
   background-color: var(--sidebar);
   color: #e7ebf7;
   border: 1px solid #ffffff20;
@@ -728,6 +731,10 @@ button {
   font-size: 12px;
   cursor: pointer;
   outline: none;
+}
+#game-search {
+  height: 36px;
+  box-sizing: border-box;
 }
 
 #game-sort:hover,
