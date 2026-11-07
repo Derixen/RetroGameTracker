@@ -60,20 +60,37 @@
 
   <!-- Sorting and view: right side -->
   <div class="flex w-full flex-wrap items-center gap-3 xl:ml-auto xl:w-auto">
-    <label for="game-sort" class="text-sm text-slate-400">Sort:</label>
-    <select id="game-sort" class="filter-pill">
-      <option value="title_asc">Title A–Z</option>
-      <option value="title_desc">Title Z–A</option>
-      <option value="year_desc">Year: Newest</option>
-      <option value="year_asc">Year: Oldest</option>
-      <option value="recent">Recently Added</option>
-    </select>
+    <div class="sort-control">
+      <button
+        id="game-sort-button"
+        type="button"
+        class="filter-pill"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i data-lucide="arrow-down-up"></i>
+        <span id="game-sort-label">Title A–Z</span>
+        <i data-lucide="chevron-down"></i>
+      </button>
 
-    <label for="game-view" class="text-sm text-slate-400">View:</label>
-    <select id="game-view" class="filter-pill">
-      <option value="large">Large</option>
-      <option value="small">Small</option>
-    </select>
+      <div id="game-sort-menu" class="sort-menu" hidden>
+        <button data-sort="title_asc">Title A–Z</button>
+        <button data-sort="title_desc">Title Z–A</button>
+        <button data-sort="year_desc">Year: Newest</button>
+        <button data-sort="year_asc">Year: Oldest</button>
+        <button data-sort="recent">Recently Added</button>
+      </div>
+    </div>
+
+    <button
+      id="game-view"
+      type="button"
+      class="filter-pill inline-flex items-center gap-2 cursor-pointer"
+      aria-label="Toggle game card size"
+    >
+      <i data-lucide="layout-grid" id="game-view-icon"></i>
+      <span id="game-view-label">Large</span>
+    </button>
   </div>
 </div>
 <div class="mb-6 flex flex-wrap items-center gap-3">

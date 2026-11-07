@@ -44,11 +44,31 @@ export async function initGames(params = new URLSearchParams()) {
   if (sidebarSearch?.value) {
     search.value = sidebarSearch.value;
   }
-  const sort = document.getElementById("game-sort");
+  const sortButton = document.getElementById("game-sort-button");
+  const sortMenu = document.getElementById("game-sort-menu");
+  const sortLabel = document.getElementById("game-sort-label");
+
+  let currentSort = "title_asc";
   const view = document.getElementById("game-view");
 
-  view.value = localStorage.getItem("gameView") || "large";
-  grid.classList.toggle("small-view", view.value === "small");
+  let currentView = localStorage.getItem("gameView") || "large";
+
+  function updateView() {
+    grid.classList.toggle("small-view", currentView === "small");
+
+    document.getElementById("game-view-label").textContent =
+      currentView === "small" ? "Small" : "Large";
+
+    const icon = document.getElementById("game-view-icon");
+    icon.setAttribute(
+      "data-lucide",
+      currentView === "small" ? "grid-3x3" : "layout-grid",
+    );
+
+    window.lucide?.createIcons();
+  }
+
+  updateView();
 
   const platformFilter = document.getElementById("active-platform-filter");
   const platformName = document.getElementById("active-platform-name");
@@ -138,7 +158,7 @@ export async function initGames(params = new URLSearchParams()) {
     });
 
     filtered.sort((a, b) => {
-      switch (sort.value) {
+      switch (currentSort) {
         case "title_asc":
           return a.title.localeCompare(b.title);
 
@@ -182,13 +202,50 @@ export async function initGames(params = new URLSearchParams()) {
   }
 
   search.addEventListener("input", renderGames, { signal });
-  sort.addEventListener("change", renderGames, { signal });
+  sortButton.addEventListener(
+    "click",
+    () => {
+      const isOpen = !sortMenu.hidden;
+      sortMenu.hidden = isOpen;
+      sortButton.setAttribute("aria-expanded", String(!isOpen));
+    },
+    { signal },
+  );
+
+  sortMenu.querySelectorAll("[data-sort]").forEach((button) => {
+    button.addEventListener(
+      "click",
+      () => {
+        currentSort = button.dataset.sort;
+        sortLabel.textContent = button.textContent;
+
+        sortMenu.hidden = true;
+        sortButton.setAttribute("aria-expanded", "false");
+
+        renderGames();
+      },
+      { signal },
+    );
+  });
+
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (!sortButton.closest(".sort-control").contains(event.target)) {
+        sortMenu.hidden = true;
+        sortButton.setAttribute("aria-expanded", "false");
+      }
+    },
+    { signal },
+  );
 
   view.addEventListener(
-    "change",
+    "click",
     () => {
-      localStorage.setItem("gameView", view.value);
-      grid.classList.toggle("small-view", view.value === "small");
+      currentView = currentView === "large" ? "small" : "large";
+      localStorage.setItem("gameView", currentView);
+      updateView();
+      view.blur();
     },
     { signal },
   );

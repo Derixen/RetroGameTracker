@@ -392,6 +392,62 @@ button {
   border-color: #ff456c66;
 }
 
+#game-view {
+  background: #1b1b30;
+  border: 1px solid #ffffff12;
+  color: #aeb4c9;
+  border-radius: 7px;
+  padding: 9px 15px;
+  font-size: 12px;
+  transition: 0.2s;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+#game-view:hover {
+  border-color: rgba(36, 215, 230, 0.35);
+  color: #ffffff;
+}
+
+#game-view svg {
+  width: 15px;
+  height: 15px;
+  color: #24d7e6;
+  vertical-align: middle;
+}
+#game-view span {
+  line-height: 15px;
+}
+#game-view svg,
+#game-view span {
+  display: block;
+  flex-shrink: 0;
+}
+
+#game-view,
+#game-view svg {
+  color: #aeb4c9;
+}
+
+#game-view:focus,
+#game-view:active {
+  border-color: #ffffff12;
+  outline: none;
+  box-shadow: none;
+}
+
+#game-view:focus,
+#game-view:focus-visible,
+#game-view:active {
+  border-color: #ffffff12;
+  outline: none;
+  box-shadow: none;
+}
+
 /* Game cards */
 .game-grid {
   display: grid;
@@ -1090,4 +1146,53 @@ html {
 #game-sort,
 #game-view {
   vertical-align: middle;
+}
+.sort-control {
+  position: relative;
+}
+
+#game-sort-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+#game-sort-button svg {
+  width: 14px;
+  height: 14px;
+  color: #aeb4c9;
+}
+
+.sort-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 170px;
+  background: #1b1b30;
+  border: 1px solid #ffffff20;
+  border-radius: 8px;
+  padding: 5px;
+  z-index: 100;
+  box-shadow: 0 10px 30px #0006;
+}
+
+.sort-menu[hidden] {
+  display: none;
+}
+
+.sort-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 12px;
+  color: #aeb4c9;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sort-menu button:hover {
+  background: #48283e;
+  color: white;
 }

@@ -632,10 +632,6 @@ video {
   visibility: visible;
 }
 
-.fixed {
-  position: fixed;
-}
-
 .absolute {
   position: absolute;
 }
@@ -654,18 +650,6 @@ video {
 
 .top-1\/2 {
   top: 50%;
-}
-
-.bottom-8 {
-  bottom: 2rem;
-}
-
-.right-8 {
-  right: 2rem;
-}
-
-.z-30 {
-  z-index: 30;
 }
 
 .mx-auto {
@@ -1558,6 +1542,11 @@ video {
   outline-offset: 2px;
 }
 
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -1988,6 +1977,63 @@ button {
   color: white;
   background: #48283e;
   border-color: #ff456c66;
+}
+
+#game-view {
+  background: #1b1b30;
+  border: 1px solid #ffffff12;
+  color: #aeb4c9;
+  border-radius: 7px;
+  padding: 9px 15px;
+  font-size: 12px;
+  transition: 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+#game-view:hover {
+  border-color: rgba(36, 215, 230, 0.35);
+  color: #ffffff;
+}
+
+#game-view svg {
+  width: 15px;
+  height: 15px;
+  color: #24d7e6;
+  vertical-align: middle;
+}
+
+#game-view span {
+  line-height: 15px;
+}
+
+#game-view svg,
+#game-view span {
+  display: block;
+  flex-shrink: 0;
+}
+
+#game-view,
+#game-view svg {
+  color: #aeb4c9;
+}
+
+#game-view:focus,
+#game-view:active {
+  border-color: #ffffff12;
+  outline: none;
+  box-shadow: none;
+}
+
+#game-view:focus,
+#game-view:focus-visible,
+#game-view:active {
+  border-color: #ffffff12;
+  outline: none;
+  box-shadow: none;
 }
 
 /* Game cards */
@@ -2718,6 +2764,56 @@ html {
   vertical-align: middle;
 }
 
+.sort-control {
+  position: relative;
+}
+
+#game-sort-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+#game-sort-button svg {
+  width: 14px;
+  height: 14px;
+  color: #aeb4c9;
+}
+
+.sort-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 170px;
+  background: #1b1b30;
+  border: 1px solid #ffffff20;
+  border-radius: 8px;
+  padding: 5px;
+  z-index: 100;
+  box-shadow: 0 10px 30px #0006;
+}
+
+.sort-menu[hidden] {
+  display: none;
+}
+
+.sort-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 12px;
+  color: #aeb4c9;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sort-menu button:hover {
+  background: #48283e;
+  color: white;
+}
+
 .file\:mr-4::file-selector-button {
   margin-right: 1rem;
 }
@@ -2909,42 +3005,6 @@ html {
 }
 
 @media (min-width: 640px) {
-  .sm\:w-\[442px\] {
-    width: 442px;
-  }
-
-  .sm\:w-\[300px\] {
-    width: 300px;
-  }
-
-  .sm\:w-\[330px\] {
-    width: 330px;
-  }
-
-  .sm\:w-\[360px\] {
-    width: 360px;
-  }
-
-  .sm\:w-\[363px\] {
-    width: 363px;
-  }
-
-  .sm\:w-\[365px\] {
-    width: 365px;
-  }
-
-  .sm\:w-\[362px\] {
-    width: 362px;
-  }
-
-  .sm\:w-\[462px\] {
-    width: 462px;
-  }
-
-  .sm\:w-\[492px\] {
-    width: 492px;
-  }
-
   .sm\:w-\[292px\] {
     width: 292px;
   }
@@ -3012,28 +3072,8 @@ html {
     margin-left: auto;
   }
 
-  .xl\:w-\[440px\] {
-    width: 440px;
-  }
-
   .xl\:w-auto {
     width: auto;
-  }
-
-  .xl\:w-\[240px\] {
-    width: 240px;
-  }
-
-  .xl\:w-\[280px\] {
-    width: 280px;
-  }
-
-  .xl\:w-\[442px\] {
-    width: 442px;
-  }
-
-  .xl\:w-\[260px\] {
-    width: 260px;
   }
 
   .xl\:grid-cols-3 {
