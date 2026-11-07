@@ -77,11 +77,7 @@ export function createGameCard(game) {
   }
   card.append(cover, info);
 
-  card.classList.add(
-    "cursor-pointer",
-    "transition",
-    "hover:border-pink-500/50",
-  );
+  card.classList.add("cursor-pointer");
 
   card.addEventListener("click", (event) => {
     // Don't override links or buttons inside the card

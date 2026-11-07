@@ -61,6 +61,11 @@ requestAnimationFrame(() => {
   document.getElementById("app-loading-overlay")?.classList.add("fade-out");
 });
 
+// Welcome page doesn't need a loading overlay
+if (window.location.hash === "#/welcome" || window.location.hash === "") {
+  document.getElementById("app-loading-overlay")?.classList.add("fade-out");
+}
+
 // Reusable loading overlay
 export function showLoadingOverlay() {
   document.getElementById("app-loading-overlay")?.classList.remove("fade-out");
