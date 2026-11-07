@@ -8,9 +8,12 @@ import {
   deleteGameCompletion,
 } from "../api/completions.js";
 import { confirmDialog } from "../components/confirmDialog.js";
+import { showLoadingOverlay, hideLoadingOverlay } from "../loading.js";
 
 export async function initGameDetails(params = new URLSearchParams()) {
+  showLoadingOverlay();
   const loading = document.getElementById("game-details-loading");
+  loading.hidden = true;
   const content = document.getElementById("game-details-content");
   const errorMessage = document.getElementById("game-details-error");
 
@@ -22,6 +25,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
     loading.hidden = true;
     errorMessage.textContent = "Invalid game ID.";
     errorMessage.hidden = false;
+    hideLoadingOverlay();
     return;
   }
 
@@ -698,5 +702,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
     loading.hidden = true;
     errorMessage.textContent = "Failed to load game details.";
     errorMessage.hidden = false;
+  } finally {
+    hideLoadingOverlay();
   }
 }

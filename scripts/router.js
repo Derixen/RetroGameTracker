@@ -329,20 +329,6 @@ export async function navigate() {
     if (headingConfig) {
       const heading = createPageHeading(headingConfig);
 
-      if (route === "games") {
-        const counter = heading.querySelector("#game-count");
-
-        if (counter) {
-          const counterContainer = counter;
-
-          const wrapper = document.createElement("div");
-          wrapper.className = "flex flex-wrap items-center gap-3 mt-4";
-
-          counterContainer.parentNode.insertBefore(wrapper, counterContainer);
-          wrapper.appendChild(counterContainer);
-        }
-      }
-
       pageContent.prepend(heading);
     }
 

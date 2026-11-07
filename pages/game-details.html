@@ -8,8 +8,8 @@
   </a>
 </div>
 
-<div id="game-details-loading" class="py-12 text-center text-slate-400">
-  Loading game details...
+<div id="game-details-loading" class="loading-indicator" role="status">
+  Loading Data...
 </div>
 
 <div
@@ -49,7 +49,7 @@
           <a
             id="detail-edit"
             href="#/admin/games"
-            class="hidden rounded-lg border border-pink-500/40 px-3 py-2 text-sm font-semibold text-pink-400 transition hover:bg-pink-500/10"
+            class="btn-secondary px-3 py-2 text-sm"
           >
             ✎
           </a>
@@ -98,7 +98,7 @@
           id="detail-favorite"
           type="button"
           disabled
-          class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition disabled:cursor-default"
+          class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition hover:border-red-400/60 disabled:cursor-default"
         >
           ♡ Favorite
         </button>
@@ -116,7 +116,7 @@
           id="detail-completed"
           type="button"
           disabled
-          class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition disabled:cursor-default"
+          class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition hover:border-green-400/60 disabled:cursor-default"
         >
           ○ Completed
         </button>
@@ -135,7 +135,7 @@
       <button
         id="history-add-completion"
         type="button"
-        class="hidden rounded-lg bg-pink-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-pink-600"
+        class="btn-secondary mt-3 px-4 py-2 text-sm"
       >
         + Add Completion
       </button>
@@ -261,7 +261,7 @@
       <button
         id="completion-cancel"
         type="button"
-        class="rounded-lg border border-slate-700 px-4 py-2 text-sm hover:bg-slate-800"
+        class="btn-secondary px-4 py-2 text-sm"
       >
         Cancel
       </button>
@@ -269,7 +269,7 @@
       <button
         id="completion-save"
         type="submit"
-        class="rounded-lg bg-pink-500 px-4 py-2 text-sm font-semibold hover:bg-pink-600"
+        class="btn-primary px-4 py-2 text-sm"
       >
         Save Completion
       </button>
