@@ -1055,3 +1055,27 @@ button {
     animation: none;
   }
 }
+/* RetroTrack Custom Scrollbar */
+html {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(53, 69, 102, 0.4) #0e0e22;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e0e22;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(53, 69, 102, 0.4);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(82, 100, 134, 0.7);
+}
