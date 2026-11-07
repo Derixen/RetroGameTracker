@@ -69,8 +69,6 @@ const pageHeadings = {
     subtitle: "Browse my retro game collection",
     countId: "game-count",
     countLabel: "GAMES",
-    actionText: "+ Add Game",
-    actionHref: "#/admin/add-game",
   },
   platforms: {
     eyebrow: "THE HARDWARE",

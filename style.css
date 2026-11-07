@@ -632,6 +632,10 @@ video {
   visibility: visible;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -650,6 +654,18 @@ video {
 
 .top-1\/2 {
   top: 50%;
+}
+
+.bottom-8 {
+  bottom: 2rem;
+}
+
+.right-8 {
+  right: 2rem;
+}
+
+.z-30 {
+  z-index: 30;
 }
 
 .mx-auto {
@@ -2893,6 +2909,46 @@ html {
 }
 
 @media (min-width: 640px) {
+  .sm\:w-\[442px\] {
+    width: 442px;
+  }
+
+  .sm\:w-\[300px\] {
+    width: 300px;
+  }
+
+  .sm\:w-\[330px\] {
+    width: 330px;
+  }
+
+  .sm\:w-\[360px\] {
+    width: 360px;
+  }
+
+  .sm\:w-\[363px\] {
+    width: 363px;
+  }
+
+  .sm\:w-\[365px\] {
+    width: 365px;
+  }
+
+  .sm\:w-\[362px\] {
+    width: 362px;
+  }
+
+  .sm\:w-\[462px\] {
+    width: 462px;
+  }
+
+  .sm\:w-\[492px\] {
+    width: 492px;
+  }
+
+  .sm\:w-\[292px\] {
+    width: 292px;
+  }
+
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

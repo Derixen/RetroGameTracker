@@ -76,26 +76,34 @@
     </select>
   </div>
 </div>
-<div class="relative mb-6 w-full xl:w-[260px]">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-    stroke-width="2"
-  >
-    <circle cx="11" cy="11" r="8" />
-    <path d="m21 21-4.35-4.35" />
-  </svg>
+<div class="mb-6 flex flex-wrap items-center gap-3">
+  <div class="relative w-full sm:w-[292px]">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.35-4.35" />
+    </svg>
 
-  <input
-    id="game-search"
-    type="search"
-    placeholder="Search games..."
-    aria-label="Search games"
-    class="w-full xl:w-[280px] rounded-lg border border-slate-700 bg-slate-900 py-2 pl-10 pr-4 text-sm text-white outline-none focus:border-pink-500"
-  />
+    <input
+      id="game-search"
+      type="search"
+      placeholder="Search games..."
+      aria-label="Search games"
+      class="w-full rounded-lg border border-slate-700 bg-slate-900 py-2 pl-10 pr-4 text-sm text-white outline-none focus:border-pink-500"
+    />
+  </div>
+  <a
+    href="#/admin/add-game"
+    class="btn-primary whitespace-nowrap px-4 py-2 text-sm"
+  >
+    + Add Game
+  </a>
 </div>
 <section id="game-grid" class="game-grid" aria-label="Games"></section>
 <div id="empty-state" class="empty-state" hidden>
