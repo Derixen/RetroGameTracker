@@ -31,7 +31,7 @@ export async function initHome() {
 
       let currentGameId = null;
 
-      function showSoundtrack() {
+      function showSoundtrack(autoplay = false) {
         const choices = soundtrackGames.filter(
           (game) => game.id !== currentGameId,
         );
@@ -74,8 +74,8 @@ export async function initHome() {
             const iframe = document.createElement("iframe");
 
             iframe.src = videoId
-              ? `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}`
-              : `https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(playlistId)}`;
+              ? `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?autoplay=${autoplay ? 1 : 0}`
+              : `https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(playlistId)}&autoplay=${autoplay ? 1 : 0}`;
 
             iframe.className = "w-full aspect-video rounded-lg";
             iframe.title = `${game.title} soundtrack`;
@@ -102,8 +102,8 @@ export async function initHome() {
         player.append(link);
       }
 
-      shuffle.addEventListener("click", showSoundtrack);
-      showSoundtrack();
+      shuffle.addEventListener("click", () => showSoundtrack(true));
+      showSoundtrack(false);
     }
 
     // Recommend games that haven't been completed
