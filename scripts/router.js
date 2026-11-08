@@ -335,11 +335,6 @@ export async function navigate() {
     // Initialize Lucide icons after the page has loaded
     window.lucide?.createIcons();
 
-    // Fade in the new page
-    requestAnimationFrame(() => {
-      pageContent.classList.remove("page-fading");
-    });
-
     // Update active navigation
     document.querySelectorAll("[data-page]").forEach((button) => {
       const active = button.dataset.page === route;
@@ -439,6 +434,41 @@ export async function navigate() {
 
     if (route === "reset-password") {
       await initResetPassword();
+    }
+
+    // Reveal the fully initialized page
+    if (id === navigationId) {
+      requestAnimationFrame(() => {
+        if (id !== navigationId) return;
+
+        pageContent.classList.remove("page-fading");
+        const loadingOverlay = document.getElementById("app-loading-overlay");
+
+        loadingOverlay?.classList.add("fade-out");
+
+        const sidebar = document.getElementById("sidebar");
+
+        if (loadingOverlay?.classList.contains("full-screen")) {
+          loadingOverlay.addEventListener(
+            "transitionend",
+            (event) => {
+              if (
+                event.target !== loadingOverlay ||
+                event.propertyName !== "opacity"
+              ) {
+                return;
+              }
+
+              document
+                .getElementById("sidebar")
+                ?.classList.remove("login-loading");
+
+              loadingOverlay.classList.remove("full-screen");
+            },
+            { once: true },
+          );
+        }
+      });
     }
   } catch (error) {
     if (id === navigationId) {

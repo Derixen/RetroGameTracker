@@ -1088,8 +1088,19 @@ button {
 #app-loading-overlay:not(.fade-out) ~ .site-footer {
   visibility: hidden;
 }
+#app-loading-overlay.full-screen {
+  left: 0;
+}
 .sidebar:not(.sidebar-ready) {
   visibility: hidden;
+}
+#sidebar.login-loading {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+#sidebar {
+  transition: opacity 450ms ease;
 }
 @keyframes gameCardReveal {
   from {

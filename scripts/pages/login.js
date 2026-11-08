@@ -142,6 +142,16 @@ export function initLogin() {
 
         if (error) throw error;
 
+        // Cover the page before navigating
+        document.getElementById("sidebar")?.classList.add("login-loading");
+        document
+          .getElementById("app-loading-overlay")
+          ?.classList.add("full-screen");
+
+        document
+          .getElementById("app-loading-overlay")
+          ?.classList.remove("fade-out");
+
         window.location.hash = "#/games";
       }
     } catch (error) {
