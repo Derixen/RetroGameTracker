@@ -6,7 +6,9 @@ const overlay = document.getElementById("mobile-overlay");
 const menuToggle = document.getElementById("menu-toggle");
 const gameSearch = document.getElementById("sidebar-search");
 
-gameSearch.addEventListener("input", () => {
+gameSearch.addEventListener("input", (event) => {
+  if (!event.isTrusted) return;
+  console.trace("Sidebar search input triggered");
   const gamesSearch = document.getElementById("game-search");
 
   if (!window.location.hash.startsWith("#/games")) {
