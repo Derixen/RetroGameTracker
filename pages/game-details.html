@@ -178,6 +178,133 @@
   </section>
 </div>
 
+<!-- Personal Memory -->
+<section id="game-memory-section" class="game-card static-card mt-6 p-6">
+  <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+    <div>
+      <h2 class="text-2xl font-bold text-white">My Personal Memory</h2>
+      <p class="mt-1 text-sm text-slate-400">
+        Some games stay with us forever.
+      </p>
+    </div>
+    <div class="flex items-center gap-2">
+      <button
+        id="memory-edit"
+        type="button"
+        title="Edit memory"
+        aria-label="Edit memory"
+        class="rounded-lg border border-cyan-500/30 px-3 py-2 text-cyan-400 transition hover:border-cyan-400"
+        hidden
+      >
+        <i data-lucide="pencil" class="h-4 w-4"></i>
+      </button>
+
+      <button
+        id="memory-delete"
+        type="button"
+        title="Delete memory"
+        aria-label="Delete memory"
+        class="rounded-lg border border-red-500/30 px-3 py-2 text-red-400 transition hover:border-red-500"
+        hidden
+      >
+        <i data-lucide="trash-2" class="h-4 w-4"></i>
+      </button>
+    </div>
+  </div>
+  <div id="memory-loading" class="text-sm text-slate-400">
+    Loading memory...
+  </div>
+
+  <div id="memory-empty" hidden>
+    <p class="mb-4 text-sm text-slate-400">
+      You haven't saved a personal memory for this game yet.
+    </p>
+
+    <button
+      id="memory-add"
+      type="button"
+      class="btn-secondary px-4 py-2 text-sm"
+    >
+      + Add Memory
+    </button>
+  </div>
+
+  <div id="memory-content" hidden>
+    <p
+      id="memory-year"
+      class="mb-3 text-sm font-semibold text-pink-400"
+      hidden
+    ></p>
+
+    <p
+      id="memory-text"
+      class="whitespace-pre-line leading-relaxed text-slate-300"
+    ></p>
+  </div>
+</section>
+<!-- Personal Memory Dialog -->
+<dialog
+  id="memory-dialog"
+  class="w-full max-w-md rounded-xl border border-slate-700 bg-slate-900 p-6 text-white shadow-2xl backdrop:bg-black/70"
+>
+  <form id="memory-form" class="space-y-5">
+    <div>
+      <h2 class="text-xl font-bold">My Personal Memory</h2>
+      <p class="mt-1 text-sm text-slate-400">
+        Preserve a moment from your gaming journey.
+      </p>
+    </div>
+
+    <div>
+      <label for="memory-played-year" class="mb-2 block text-sm">
+        Year (optional)
+      </label>
+      <input
+        id="memory-played-year"
+        type="number"
+        min="1970"
+        max="2100"
+        placeholder="e.g. 1995"
+        class="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2"
+      />
+    </div>
+
+    <div>
+      <label for="memory-input" class="mb-2 block text-sm">
+        Your Memory *
+      </label>
+      <textarea
+        id="memory-input"
+        rows="5"
+        required
+        maxlength="5000"
+        placeholder="What makes this game special to you?"
+        class="w-full resize-y rounded-lg border border-slate-700 bg-slate-800 px-3 py-2"
+      ></textarea>
+    </div>
+
+    <p id="memory-error" class="text-sm text-red-400" hidden></p>
+
+    <div class="flex justify-end gap-3">
+      <button
+        id="memory-cancel"
+        type="button"
+        class="btn-secondary px-4 py-2 text-sm"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="memory-save"
+        type="submit"
+        class="btn-primary px-4 py-2 text-sm"
+      >
+        Save Memory
+      </button>
+    </div>
+  </form>
+</dialog>
+
 <!-- Add Completion Dialog -->
 <dialog
   id="completion-dialog"

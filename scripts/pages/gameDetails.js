@@ -9,6 +9,11 @@ import {
 } from "../api/completions.js";
 import { confirmDialog } from "../components/confirmDialog.js";
 import { showLoadingOverlay, hideLoadingOverlay } from "../loading.js";
+import {
+  getGameMemory,
+  saveGameMemory,
+  deleteGameMemory,
+} from "../api/memories.js";
 
 export async function initGameDetails(params = new URLSearchParams()) {
   showLoadingOverlay();
@@ -658,7 +663,137 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
       historyLoading.textContent = "Unable to load completion history.";
     }
+    // Personal Memory
+    const memoryLoading = document.getElementById("memory-loading");
+    const memoryEmpty = document.getElementById("memory-empty");
+    const memoryContent = document.getElementById("memory-content");
+    const memoryText = document.getElementById("memory-text");
+    const memoryYear = document.getElementById("memory-year");
 
+    const memoryAdd = document.getElementById("memory-add");
+    const memoryEdit = document.getElementById("memory-edit");
+    const memoryDelete = document.getElementById("memory-delete");
+    const memoryDialog = document.getElementById("memory-dialog");
+    const memoryForm = document.getElementById("memory-form");
+    const memoryCancel = document.getElementById("memory-cancel");
+    const memorySave = document.getElementById("memory-save");
+    const memoryError = document.getElementById("memory-error");
+    const memoryInput = document.getElementById("memory-input");
+    const memoryPlayedYear = document.getElementById("memory-played-year");
+
+    let currentMemory = null;
+
+    function renderMemory() {
+      memoryLoading.hidden = true;
+      memoryDelete.hidden = !currentMemory || !canManageGame;
+      memoryEmpty.hidden = Boolean(currentMemory);
+      memoryContent.hidden = !currentMemory;
+
+      memoryAdd.hidden = !canManageGame || Boolean(currentMemory);
+      memoryEdit.hidden = !currentMemory || !canManageGame;
+
+      if (currentMemory) {
+        memoryText.textContent = currentMemory.memory;
+
+        memoryYear.hidden = currentMemory.played_year == null;
+        memoryYear.textContent = currentMemory.played_year
+          ? `Year: ${currentMemory.played_year}`
+          : "";
+      }
+    }
+
+    try {
+      currentMemory = await getGameMemory(game.id);
+      renderMemory();
+    } catch (error) {
+      console.error("Failed to load personal memory:", error);
+      memoryLoading.textContent = "Unable to load personal memory.";
+    }
+
+    if (canManageGame) {
+      function openMemoryDialog() {
+        memoryForm.reset();
+        memoryError.hidden = true;
+
+        memoryInput.value = currentMemory?.memory ?? "";
+        memoryPlayedYear.value = currentMemory?.played_year ?? "";
+
+        memoryDialog.showModal();
+      }
+
+      memoryAdd.addEventListener("click", openMemoryDialog);
+      memoryEdit.addEventListener("click", openMemoryDialog);
+
+      memoryCancel.addEventListener("click", () => {
+        memoryDialog.close();
+      });
+
+      memoryForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const text = memoryInput.value.trim();
+        const year = memoryPlayedYear.value
+          ? Number(memoryPlayedYear.value)
+          : null;
+
+        if (!text) {
+          memoryError.textContent = "Please enter a personal memory.";
+          memoryError.hidden = false;
+          return;
+        }
+
+        memorySave.disabled = true;
+        memorySave.textContent = "Saving...";
+        memoryError.hidden = true;
+
+        try {
+          currentMemory = await saveGameMemory(game.id, user.id, text, year);
+
+          renderMemory();
+          memoryDialog.close();
+        } catch (error) {
+          console.error("Failed to save personal memory:", error);
+          memoryError.textContent = error.message;
+          memoryError.hidden = false;
+        } finally {
+          memorySave.disabled = false;
+          memorySave.textContent = "Save Memory";
+        }
+      });
+
+      window.lucide?.createIcons();
+
+      memoryDelete.addEventListener("click", async () => {
+        if (!currentMemory) return;
+
+        const confirmed = await confirmDialog({
+          title: "Delete Personal Memory?",
+          message: "Are you sure you want to permanently delete this memory?",
+          confirmText: "Delete Memory",
+        });
+
+        if (!confirmed) return;
+
+        memoryDelete.disabled = true;
+
+        try {
+          await deleteGameMemory(currentMemory.id);
+
+          currentMemory = null;
+          renderMemory();
+        } catch (error) {
+          console.error("Failed to delete personal memory:", error);
+
+          await confirmDialog({
+            title: "Failed to Delete",
+            message: error.message || "Could not delete personal memory.",
+            alertOnly: true,
+          });
+        } finally {
+          memoryDelete.disabled = false;
+        }
+      });
+    }
     // Load other games from the same series
     if (game.series_id !== null) {
       const { data: relatedGames, error: relatedError } = await supabase
