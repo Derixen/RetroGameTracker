@@ -124,6 +124,89 @@
     </div>
   </div>
 
+  <!-- My Achievements -->
+  <section
+    id="game-achievements-section"
+    class="game-card static-card mt-6 p-6"
+  >
+    <div class="mb-6 flex items-center justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-bold text-white">My Achievements</h2>
+        <p class="mt-1 text-sm text-slate-400">
+          Milestones from your gaming journey
+        </p>
+      </div>
+      <i data-lucide="trophy" class="h-7 w-7 shrink-0 text-amber-400"></i>
+    </div>
+
+    <!-- Earned badges -->
+    <div class="mb-6">
+      <h3
+        class="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-400"
+      >
+        Earned Badges
+        <span id="achievement-count">0</span>
+      </h3>
+
+      <div id="achievements-loading" class="text-sm text-slate-400">
+        Loading achievements...
+      </div>
+
+      <div
+        id="achievements-empty"
+        class="rounded-xl border border-dashed border-slate-700 p-6 text-center"
+        hidden
+      >
+        <i data-lucide="award" class="mx-auto mb-3 h-8 w-8 text-slate-500"></i>
+        <p class="text-sm text-slate-400">
+          No badges earned yet. Your next challenge awaits!
+        </p>
+      </div>
+
+      <div
+        id="achievements-badges"
+        class="flex flex-wrap justify-center gap-x-5 gap-y-5"
+      ></div>
+    </div>
+
+    <div class="mb-6 border-t border-slate-700/60"></div>
+
+    <!-- Add achievement -->
+    <div id="achievement-add-controls" hidden>
+      <label
+        for="achievement-select"
+        class="mb-3 block text-sm font-semibold text-slate-300"
+      >
+        Add Achievement
+      </label>
+
+      <div class="flex flex-wrap gap-3">
+        <select
+          id="achievement-select"
+          class="min-w-0 flex-1 rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white"
+        >
+          <option value="">Choose an achievement...</option>
+        </select>
+
+        <button
+          id="achievement-add"
+          type="button"
+          class="btn-primary px-5 py-3 text-sm"
+          disabled
+        >
+          + Add Badge
+        </button>
+      </div>
+
+      <p
+        id="achievement-error"
+        class="mt-3 text-sm text-red-400"
+        role="alert"
+        hidden
+      ></p>
+    </div>
+  </section>
+
   <!-- My Gaming History -->
   <section id="game-history-section" class="game-card static-card mt-8 p-6">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
@@ -192,32 +275,48 @@
         id="memory-edit"
         type="button"
         title="Edit memory"
-        aria-label="Edit memory"
-        class="rounded-lg border border-cyan-500/30 px-3 py-2 text-cyan-400 transition hover:border-cyan-400"
+        class="inline-flex items-center gap-2 rounded-lg border border-cyan-500/30 px-3 py-2 text-sm text-cyan-400 transition hover:border-cyan-400 hover:bg-cyan-500/10"
         hidden
       >
         <i data-lucide="pencil" class="h-4 w-4"></i>
+        <span>Edit</span>
       </button>
 
       <button
         id="memory-delete"
         type="button"
         title="Delete memory"
-        aria-label="Delete memory"
-        class="rounded-lg border border-red-500/30 px-3 py-2 text-red-400 transition hover:border-red-500"
+        class="inline-flex items-center gap-2 rounded-lg border border-red-500/30 px-3 py-2 text-sm text-red-400 transition hover:border-red-500 hover:bg-red-500/10"
         hidden
       >
         <i data-lucide="trash-2" class="h-4 w-4"></i>
+        <span>Delete</span>
       </button>
     </div>
   </div>
+  <div class="mb-5 border-t border-slate-700/60"></div>
   <div id="memory-loading" class="text-sm text-slate-400">
     Loading memory...
   </div>
 
-  <div id="memory-empty" hidden>
-    <p class="mb-4 text-sm text-slate-400">
-      You haven't saved a personal memory for this game yet.
+  <div
+    id="memory-empty"
+    class="rounded-xl border border-dashed border-slate-700 bg-slate-800/20 px-6 py-10 text-center"
+    hidden
+  >
+    <div
+      class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-pink-500/10"
+    >
+      <i data-lucide="book-heart" class="h-6 w-6 text-pink-400"></i>
+    </div>
+
+    <h3 class="mb-2 text-lg font-semibold text-white">
+      Every Game Has a Story
+    </h3>
+
+    <p class="mx-auto mb-5 max-w-md text-sm leading-relaxed text-slate-400">
+      Remember your first playthrough, a favorite moment, or the people you
+      shared this game with.
     </p>
 
     <button
@@ -230,15 +329,18 @@
   </div>
 
   <div id="memory-content" hidden>
-    <p
+    <div
       id="memory-year"
-      class="mb-3 text-sm font-semibold text-pink-400"
+      class="mb-4 inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-800/60 px-3 py-1.5 text-sm text-slate-300"
       hidden
-    ></p>
+    >
+      <i data-lucide="calendar-days" class="h-4 w-4 text-pink-400"></i>
+      <span id="memory-year-text"></span>
+    </div>
 
     <p
       id="memory-text"
-      class="whitespace-pre-line leading-relaxed text-slate-300"
+      class="max-w-3xl whitespace-pre-wrap break-words text-base leading-8 text-slate-200"
     ></p>
   </div>
 </section>

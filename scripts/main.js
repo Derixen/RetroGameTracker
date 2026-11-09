@@ -8,10 +8,16 @@ const gameSearch = document.getElementById("sidebar-search");
 
 gameSearch.addEventListener("input", (event) => {
   if (!event.isTrusted) return;
-  console.trace("Sidebar search input triggered");
+  if (document.activeElement !== gameSearch) return;
   const gamesSearch = document.getElementById("game-search");
 
   if (!window.location.hash.startsWith("#/games")) {
+    console.trace("Unexpected navigation to Games", {
+      isTrusted: event.isTrusted,
+      inputValue: gameSearch.value,
+      activeElement: document.activeElement,
+    });
+
     window.location.hash = "#/games";
     return;
   }

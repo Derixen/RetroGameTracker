@@ -13,6 +13,12 @@ import {
   saveGameMemory,
   deleteGameMemory,
 } from "../api/memories.js";
+import { ACHIEVEMENTS } from "../data/achievements.js";
+import {
+  getGameAchievements,
+  addGameAchievement,
+  deleteGameAchievement,
+} from "../api/achievements.js";
 
 export async function initGameDetails(params = new URLSearchParams()) {
   showLoadingOverlay();
@@ -510,6 +516,232 @@ export async function initGameDetails(params = new URLSearchParams()) {
       showPlaceholder();
     }
 
+    // My Achievements
+    const achievementLoading = document.getElementById("achievements-loading");
+    const achievementEmpty = document.getElementById("achievements-empty");
+    const achievementBadges = document.getElementById("achievements-badges");
+    const achievementCount = document.getElementById("achievement-count");
+    const achievementControls = document.getElementById(
+      "achievement-add-controls",
+    );
+    const achievementSelect = document.getElementById("achievement-select");
+    const achievementAdd = document.getElementById("achievement-add");
+    const achievementError = document.getElementById("achievement-error");
+
+    const achievementColors = {
+      amber: "text-amber-400 border-amber-500/40",
+      purple: "text-purple-400 border-purple-500/40",
+      yellow: "text-yellow-400 border-yellow-500/40",
+      pink: "text-pink-400 border-pink-500/40",
+      cyan: "text-cyan-400 border-cyan-500/40",
+      orange: "text-orange-400 border-orange-500/40",
+      red: "text-red-400 border-red-500/40",
+      emerald: "text-emerald-400 border-emerald-500/40",
+      green: "text-green-400 border-green-500/40",
+      violet: "text-violet-400 border-violet-500/40",
+      rose: "text-rose-400 border-rose-500/40",
+      blue: "text-blue-400 border-blue-500/40",
+      sky: "text-sky-400 border-sky-500/40",
+      slate: "text-slate-400 border-slate-500/40",
+      teal: "text-teal-400 border-teal-500/40",
+      indigo: "text-indigo-400 border-indigo-500/40",
+    };
+
+    let earnedAchievements = [];
+
+    function renderAchievements() {
+      achievementLoading.hidden = true;
+      achievementBadges.replaceChildren();
+
+      achievementCount.textContent = earnedAchievements.length;
+      achievementEmpty.hidden = earnedAchievements.length > 0;
+
+      const earnedIds = new Set(
+        earnedAchievements.map((item) => item.achievement_id),
+      );
+
+      for (const record of earnedAchievements) {
+        const achievement = ACHIEVEMENTS.find(
+          (item) => item.id === record.achievement_id,
+        );
+
+        if (!achievement) continue;
+
+        const badge = document.createElement("div");
+        badge.className =
+          "flex w-28 flex-col items-center gap-2 p-1 text-center";
+
+        const iconCircle = document.createElement("div");
+        iconCircle.className =
+          "flex h-20 w-20 items-center justify-center rounded-full " +
+          "transition-transform duration-200 hover:scale-110";
+
+        const icon = document.createElement("i");
+        icon.setAttribute("data-lucide", achievement.icon);
+        icon.className = "h-9 w-9";
+
+        // Lucide icon is the default fallback.
+        iconCircle.append(icon);
+
+        // Automatically look for a custom badge image.
+        const badgeImage = document.createElement("img");
+
+        badgeImage.src = `images/badges/${achievement.id}.png`;
+        badgeImage.alt = "";
+        badgeImage.className =
+          "hidden h-full w-full rounded-full object-contain";
+        badgeImage.style.imageRendering = "pixelated";
+
+        badgeImage.addEventListener("load", () => {
+          icon.hidden = true;
+          icon.classList.add("hidden");
+
+          badgeImage.hidden = false;
+          badgeImage.classList.remove("hidden");
+        });
+
+        badgeImage.addEventListener("error", () => {
+          // Keep the Lucide fallback visible.
+          badgeImage.remove();
+        });
+
+        iconCircle.append(badgeImage);
+
+        const name = document.createElement("p");
+        name.className =
+          "w-full text-center text-xs font-semibold leading-5 text-white";
+        name.textContent = achievement.name;
+
+        badge.title = achievement.description;
+        badge.append(iconCircle, name);
+
+        if (canManageGame) {
+          badge.classList.add(
+            "cursor-pointer",
+            "transition",
+            "hover:border-red-500/50",
+          );
+
+          badge.setAttribute("role", "button");
+          badge.setAttribute("tabindex", "0");
+          badge.setAttribute(
+            "aria-label",
+            `Remove ${achievement.name} achievement`,
+          );
+
+          async function removeBadge() {
+            const confirmed = await confirmDialog({
+              title: "Remove Achievement?",
+              message: `Remove "${achievement.name}" from your earned badges?`,
+              confirmText: "Remove Badge",
+            });
+
+            if (!confirmed) return;
+
+            badge.classList.add("pointer-events-none", "opacity-50");
+
+            try {
+              await deleteGameAchievement(record.id, user.id);
+
+              earnedAchievements = earnedAchievements.filter(
+                (item) => item.id !== record.id,
+              );
+
+              renderAchievements();
+            } catch (error) {
+              console.error("Failed to remove achievement:", error);
+
+              await confirmDialog({
+                title: "Failed to Remove Achievement",
+                message: error.message || "Could not remove achievement.",
+                alertOnly: true,
+              });
+
+              badge.classList.remove("pointer-events-none", "opacity-50");
+            }
+          }
+
+          badge.addEventListener("click", removeBadge);
+
+          badge.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              removeBadge();
+            }
+          });
+        }
+        achievementBadges.append(badge);
+      }
+
+      achievementSelect.replaceChildren(
+        new Option("Choose an achievement...", ""),
+      );
+
+      for (const achievement of ACHIEVEMENTS) {
+        if (!earnedIds.has(achievement.id)) {
+          achievementSelect.add(new Option(achievement.name, achievement.id));
+        }
+      }
+
+      achievementAdd.disabled = true;
+      achievementControls.hidden = !canManageGame;
+
+      window.lucide?.createIcons();
+    }
+
+    try {
+      earnedAchievements = canManageGame
+        ? await getGameAchievements(game.id, user.id)
+        : [];
+
+      renderAchievements();
+    } catch (error) {
+      console.error("Failed to load achievements:", error);
+      achievementLoading.textContent = "Unable to load achievements.";
+    }
+
+    if (canManageGame) {
+      achievementSelect.addEventListener("change", () => {
+        achievementAdd.disabled = !achievementSelect.value;
+        achievementError.hidden = true;
+      });
+
+      achievementAdd.addEventListener("click", async () => {
+        const achievementId = achievementSelect.value;
+
+        if (!achievementId) return;
+
+        // Only allow achievements from our universal library.
+        if (!ACHIEVEMENTS.some((item) => item.id === achievementId)) {
+          return;
+        }
+
+        achievementAdd.disabled = true;
+        achievementSelect.disabled = true;
+        achievementError.hidden = true;
+
+        try {
+          const newAchievement = await addGameAchievement(
+            game.id,
+            user.id,
+            achievementId,
+          );
+
+          earnedAchievements.push(newAchievement);
+          renderAchievements();
+        } catch (error) {
+          console.error("Failed to add achievement:", error);
+
+          achievementError.textContent =
+            error.message || "Could not add achievement.";
+          achievementError.hidden = false;
+        } finally {
+          achievementSelect.disabled = false;
+          achievementAdd.disabled = !achievementSelect.value;
+        }
+      });
+    }
+
     // Load My Gaming History
     const historyLoading = document.getElementById("history-loading");
     const historyEmpty = document.getElementById("history-empty");
@@ -666,7 +898,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
     const memoryContent = document.getElementById("memory-content");
     const memoryText = document.getElementById("memory-text");
     const memoryYear = document.getElementById("memory-year");
-
+    const memoryYearText = document.getElementById("memory-year-text");
     const memoryAdd = document.getElementById("memory-add");
     const memoryEdit = document.getElementById("memory-edit");
     const memoryDelete = document.getElementById("memory-delete");
@@ -693,8 +925,8 @@ export async function initGameDetails(params = new URLSearchParams()) {
         memoryText.textContent = currentMemory.memory;
 
         memoryYear.hidden = currentMemory.played_year == null;
-        memoryYear.textContent = currentMemory.played_year
-          ? `Year: ${currentMemory.played_year}`
+        memoryYearText.textContent = currentMemory.played_year
+          ? `Played in ${currentMemory.played_year}`
           : "";
       }
     }
