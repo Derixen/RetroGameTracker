@@ -171,6 +171,9 @@ let navigationId = 0;
 export async function navigate() {
   const id = ++navigationId;
 
+  const loadingOverlay = document.getElementById("app-loading-overlay");
+  loadingOverlay?.classList.remove("fade-out");
+
   const hash = window.location.hash.replace(/^#\/?/, "") || "welcome";
   const [page, queryString = ""] = hash.split("?");
 
