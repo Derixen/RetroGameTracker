@@ -1,10 +1,11 @@
 import { supabase } from "../supabase.js";
 
-export async function getGameMemory(gameId) {
+export async function getGameMemory(gameId, userId) {
   const { data, error } = await supabase
     .from("game_memories")
     .select("id, memory, played_year")
     .eq("game_id", gameId)
+    .eq("user_id", userId)
     .maybeSingle();
 
   if (error) throw error;

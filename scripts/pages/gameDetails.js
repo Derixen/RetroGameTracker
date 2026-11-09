@@ -700,7 +700,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
     }
 
     try {
-      currentMemory = await getGameMemory(game.id);
+      currentMemory = canManageGame
+        ? await getGameMemory(game.id, user.id)
+        : null;
+
       renderMemory();
     } catch (error) {
       console.error("Failed to load personal memory:", error);
