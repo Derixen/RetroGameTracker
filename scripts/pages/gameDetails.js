@@ -1,6 +1,5 @@
 import { supabase } from "../supabase.js";
 import { createGameCard } from "../components/gameCard.js";
-import { getAdminUser } from "../admin.js";
 import {
   getGameCompletions,
   addGameCompletion,
@@ -91,8 +90,6 @@ export async function initGameDetails(params = new URLSearchParams()) {
     }
 
     updateButtons();
-
-    const adminUser = await getAdminUser();
 
     const {
       data: { user },
@@ -576,7 +573,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
           entry.append(icon, details);
 
-          if (adminUser) {
+          if (canManageGame) {
             const editButton = document.createElement("button");
 
             editButton.type = "button";
