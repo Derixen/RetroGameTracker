@@ -321,6 +321,7 @@ export async function navigate() {
     if (id !== navigationId) return;
 
     // Load the new page
+    pageContent.classList.remove("page-ready");
     pageContent.innerHTML = html;
     pageContent.style.visibility = "";
 
@@ -440,6 +441,7 @@ export async function navigate() {
     if (id === navigationId) {
       requestAnimationFrame(() => {
         if (id !== navigationId) return;
+        pageContent.classList.add("page-ready");
 
         pageContent.classList.remove("page-fading");
         const loadingOverlay = document.getElementById("app-loading-overlay");

@@ -1113,7 +1113,7 @@ button {
   }
 }
 
-.game-card {
+#page-content.page-ready .game-card {
   animation: gameCardReveal 0.5s ease-out backwards;
 }
 
