@@ -20,6 +20,13 @@ import {
   deleteGameAchievement,
 } from "../api/achievements.js";
 
+import {
+  getGameLinks,
+  addGameLink,
+  updateGameLink,
+  deleteGameLink,
+} from "../api/gameLinks.js";
+
 export async function initGameDetails(params = new URLSearchParams()) {
   showLoadingOverlay();
   const loading = document.getElementById("game-details-loading");
@@ -776,9 +783,6 @@ export async function initGameDetails(params = new URLSearchParams()) {
           icon.className = "text-xl";
           icon.textContent = "🏆";
 
-          const details = document.createElement("div");
-          details.className = "min-w-0 flex-1";
-
           const date = document.createElement("p");
           date.className = "font-semibold text-white";
 
@@ -1026,6 +1030,257 @@ export async function initGameDetails(params = new URLSearchParams()) {
         }
       });
     }
+
+    // My Game Links
+    const gameLinksLoading = document.getElementById("game-links-loading");
+    const gameLinksEmpty = document.getElementById("game-links-empty");
+    const gameLinksList = document.getElementById("game-links-list");
+    const gameLinksError = document.getElementById("game-links-error");
+    const gameLinksAdd = document.getElementById("game-links-add");
+
+    let currentGameLinks = [];
+    let editingGameLinkId = null;
+
+    // Only the game's owner can add links.
+    gameLinksAdd.hidden = !canManageGame;
+
+    function renderGameLinks() {
+      gameLinksLoading.hidden = true;
+      gameLinksList.replaceChildren();
+
+      gameLinksEmpty.hidden = currentGameLinks.length > 0;
+      gameLinksList.hidden = currentGameLinks.length === 0;
+
+      for (const link of currentGameLinks) {
+        const item = document.createElement("div");
+        item.className =
+          "flex flex-wrap items-center justify-between gap-3 " +
+          "rounded-lg border border-slate-700/50 bg-slate-800/40 p-4";
+
+        const details = document.createElement("div");
+        details.className = "min-w-0 flex-1";
+
+        const anchor = document.createElement("a");
+        anchor.href = link.url;
+        anchor.target = "_blank";
+        anchor.rel = "noopener noreferrer";
+        anchor.textContent = link.name;
+        anchor.className =
+          "break-words font-semibold text-sky-400 " +
+          "transition hover:text-sky-300 hover:underline";
+
+        const linkInfo = document.createElement("div");
+        linkInfo.className = "min-w-0 flex-1";
+
+        const titleRow = document.createElement("div");
+        titleRow.className = "flex flex-wrap items-center gap-3";
+
+        titleRow.append(anchor);
+
+        if (link.category) {
+          const category = document.createElement("span");
+          category.className =
+            "rounded-full bg-slate-700/60 px-3 py-1 " +
+            "text-xs font-medium text-slate-300";
+          category.textContent = link.category;
+
+          titleRow.append(category);
+        }
+
+        const urlText = document.createElement("p");
+        urlText.className = "mt-1 break-all text-xs text-slate-400";
+        urlText.textContent = link.url;
+
+        linkInfo.append(titleRow, urlText);
+        item.append(linkInfo);
+
+        if (canManageGame) {
+          const actions = document.createElement("div");
+          actions.className = "flex shrink-0 items-center gap-2";
+
+          // Edit button
+          const editButton = document.createElement("button");
+          editButton.type = "button";
+          editButton.title = "Edit link";
+          editButton.className =
+            "inline-flex items-center gap-2 rounded-lg " +
+            "border border-cyan-500/30 px-3 py-2 text-sm " +
+            "text-cyan-400 transition hover:border-cyan-400 " +
+            "hover:bg-cyan-500/10";
+
+          const editIcon = document.createElement("i");
+          editIcon.setAttribute("data-lucide", "pencil");
+          editIcon.className = "h-4 w-4";
+
+          const editLabel = document.createElement("span");
+          editLabel.textContent = "Edit";
+
+          editButton.append(editIcon, editLabel);
+
+          editButton.addEventListener("click", () => {
+            editingGameLinkId = link.id;
+
+            gameLinkForm.reset();
+
+            gameLinkName.value = link.name;
+            gameLinkUrl.value = link.url;
+            gameLinkCategory.value = link.category ?? "";
+
+            document.getElementById("game-link-dialog-title").textContent =
+              "Edit Game Link";
+
+            gameLinkSave.textContent = "Update Link";
+            gameLinkDialog.showModal();
+          });
+
+          // Delete button
+          const deleteButton = document.createElement("button");
+          deleteButton.type = "button";
+          deleteButton.title = "Delete link";
+          deleteButton.className =
+            "inline-flex items-center gap-2 rounded-lg " +
+            "border border-red-500/30 px-3 py-2 text-sm " +
+            "text-red-400 transition hover:border-red-500 " +
+            "hover:bg-red-500/10";
+
+          const deleteIcon = document.createElement("i");
+          deleteIcon.setAttribute("data-lucide", "trash-2");
+          deleteIcon.className = "h-4 w-4";
+
+          const deleteLabel = document.createElement("span");
+          deleteLabel.textContent = "Delete";
+
+          deleteButton.append(deleteIcon, deleteLabel);
+
+          deleteButton.addEventListener("click", async () => {
+            const confirmed = await confirmDialog({
+              title: "Delete Game Link?",
+              message: `Are you sure you want to permanently delete "${link.name}"?`,
+              confirmText: "Delete Link",
+            });
+
+            if (!confirmed) return;
+
+            deleteButton.disabled = true;
+
+            try {
+              await deleteGameLink(link.id, user.id);
+
+              currentGameLinks = currentGameLinks.filter(
+                (item) => item.id !== link.id,
+              );
+
+              renderGameLinks();
+            } catch (error) {
+              console.error("Failed to delete game link:", error);
+
+              await confirmDialog({
+                title: "Failed to Delete",
+                message: error.message || "Could not delete game link.",
+                alertOnly: true,
+              });
+
+              deleteButton.disabled = false;
+            }
+          });
+
+          actions.append(editButton, deleteButton);
+          item.append(actions);
+        }
+        gameLinksList.append(item);
+      }
+      window.lucide?.createIcons();
+    }
+
+    try {
+      currentGameLinks = canManageGame
+        ? await getGameLinks(game.id, user.id)
+        : [];
+
+      renderGameLinks();
+    } catch (error) {
+      console.error("Failed to load game links:", error);
+      gameLinksLoading.hidden = true;
+      gameLinksError.textContent = "Unable to load game links.";
+      gameLinksError.hidden = false;
+    }
+
+    // Add Game Link
+    const gameLinkDialog = document.getElementById("game-link-dialog");
+    const gameLinkForm = document.getElementById("game-link-form");
+    const gameLinkCancel = document.getElementById("game-link-cancel");
+    const gameLinkSave = document.getElementById("game-link-save");
+
+    const gameLinkName = document.getElementById("game-link-name");
+    const gameLinkUrl = document.getElementById("game-link-url");
+    const gameLinkCategory = document.getElementById("game-link-category");
+
+    if (canManageGame) {
+      gameLinksAdd.addEventListener("click", () => {
+        editingGameLinkId = null;
+        gameLinkForm.reset();
+
+        document.getElementById("game-link-dialog-title").textContent =
+          "Add Game Link";
+
+        gameLinkSave.textContent = "Save Link";
+        gameLinkDialog.showModal();
+      });
+
+      gameLinkCancel.addEventListener("click", () => {
+        gameLinkDialog.close();
+      });
+
+      gameLinkForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const name = gameLinkName.value.trim();
+        const url = gameLinkUrl.value.trim();
+        const category = gameLinkCategory.value.trim();
+
+        if (!name || !url) return;
+
+        gameLinkSave.disabled = true;
+        gameLinkSave.textContent = "Saving...";
+
+        try {
+          if (editingGameLinkId !== null) {
+            const updatedLink = await updateGameLink(
+              editingGameLinkId,
+              user.id,
+              name,
+              url,
+              category,
+            );
+
+            currentGameLinks = currentGameLinks.map((link) =>
+              link.id === editingGameLinkId ? updatedLink : link,
+            );
+          } else {
+            const newLink = await addGameLink(
+              game.id,
+              user.id,
+              name,
+              url,
+              category,
+            );
+
+            currentGameLinks.push(newLink);
+          }
+
+          renderGameLinks();
+          gameLinkDialog.close();
+        } catch (error) {
+          console.error("Failed to add game link:", error);
+          alert(error.message || "Failed to save game link.");
+        } finally {
+          gameLinkSave.disabled = false;
+          gameLinkSave.textContent =
+            editingGameLinkId !== null ? "Update Link" : "Save Link";
+        }
+      });
+    }
+
     // Load other games from the same series
     if (game.series_id !== null) {
       const { data: relatedGames, error: relatedError } = await supabase

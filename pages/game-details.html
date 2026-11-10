@@ -562,3 +562,121 @@
     class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4"
   ></div>
 </section>
+
+<!-- My Game Links -->
+<section id="game-links-section" class="game-card static-card mt-6 p-6">
+  <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+    <div>
+      <h2 class="flex items-center gap-2 text-2xl font-bold text-white">
+        <i data-lucide="link-2" class="h-6 w-6 text-sky-400"></i>
+        My Game Links
+      </h2>
+      <p class="mt-1 text-sm text-slate-400">
+        Useful websites, cheats, guides, and places to play
+      </p>
+    </div>
+
+    <button
+      id="game-links-add"
+      type="button"
+      class="btn-primary px-4 py-2 text-sm"
+    >
+      + Add Link
+    </button>
+  </div>
+
+  <div id="game-links-loading" class="py-4 text-center text-sm text-slate-400">
+    Loading links...
+  </div>
+
+  <div id="game-links-error" class="mb-4 text-sm text-red-400" hidden></div>
+
+  <div
+    id="game-links-empty"
+    class="rounded-xl border border-dashed border-slate-700 p-6 text-center text-sm text-slate-400"
+    hidden
+  >
+    No links saved yet. Add a useful website for this game!
+  </div>
+
+  <div id="game-links-list" class="space-y-3" hidden></div>
+</section>
+
+<!-- Add / Edit Game Link Dialog -->
+<dialog
+  id="game-link-dialog"
+  class="w-full max-w-lg rounded-xl border border-slate-700 bg-slate-900 p-6 text-white shadow-2xl backdrop:bg-black/70"
+>
+  <form id="game-link-form" class="space-y-5">
+    <h3 id="game-link-dialog-title" class="text-xl font-bold text-white">
+      Add Game Link
+    </h3>
+
+    <div>
+      <label
+        for="game-link-name"
+        class="mb-2 block text-sm font-medium text-slate-300"
+      >
+        Name
+      </label>
+      <input
+        id="game-link-name"
+        type="text"
+        maxlength="150"
+        required
+        placeholder="e.g. Play Online"
+        class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-white outline-none focus:border-sky-500"
+      />
+    </div>
+
+    <div>
+      <label
+        for="game-link-url"
+        class="mb-2 block text-sm font-medium text-slate-300"
+      >
+        Link
+      </label>
+      <input
+        id="game-link-url"
+        type="url"
+        required
+        placeholder="https://example.com"
+        class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-white outline-none focus:border-sky-500"
+      />
+    </div>
+
+    <div>
+      <label
+        for="game-link-category"
+        class="mb-2 block text-sm font-medium text-slate-300"
+      >
+        Category (optional)
+      </label>
+      <input
+        id="game-link-category"
+        type="text"
+        maxlength="80"
+        placeholder="e.g. Cheats, Guide, Play Online"
+        class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-white outline-none focus:border-sky-500"
+      />
+    </div>
+
+    <div class="flex justify-end gap-3 pt-2">
+      <button
+        id="game-link-cancel"
+        type="button"
+        class="btn-secondary px-4 py-2 text-sm"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="game-link-save"
+        type="submit"
+        class="btn-primary px-4 py-2 text-sm"
+      >
+        Save Link
+      </button>
+    </div>
+  </form>
+</dialog>
