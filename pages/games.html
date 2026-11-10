@@ -86,7 +86,7 @@
       id="game-view"
       type="button"
       class="filter-pill inline-flex items-center gap-2 cursor-pointer"
-      aria-label="Toggle game card size"
+      aria-label="Change game view"
     >
       <i data-lucide="layout-grid" id="game-view-icon"></i>
       <span id="game-view-label">Large</span>
@@ -123,6 +123,59 @@
   </a>
 </div>
 <section id="game-grid" class="game-grid" aria-label="Games"></section>
+
+<!-- List View -->
+<div
+  id="game-list"
+  class="game-card static-card overflow-x-auto"
+  aria-label="Games list"
+  hidden
+>
+  <table class="w-full min-w-[600px] text-left text-sm">
+    <thead class="border-b border-slate-700 bg-slate-800/50">
+      <tr>
+        <th class="px-4 py-3 font-semibold text-slate-300">
+          <button
+            type="button"
+            data-list-sort="name"
+            class="inline-flex items-center gap-2 hover:text-sky-400"
+          >
+            Name <i data-lucide="arrow-down-up" class="h-4 w-4"></i>
+          </button>
+        </th>
+        <th class="px-4 py-3 font-semibold text-slate-300">
+          <button
+            type="button"
+            data-list-sort="platform"
+            class="inline-flex items-center gap-2 hover:text-sky-400"
+          >
+            Platform <i data-lucide="arrow-down-up" class="h-4 w-4"></i>
+          </button>
+        </th>
+        <th class="px-4 py-3 font-semibold text-slate-300">
+          <button
+            type="button"
+            data-list-sort="status"
+            class="inline-flex items-center gap-2 hover:text-sky-400"
+          >
+            Status <i data-lucide="arrow-down-up" class="h-4 w-4"></i>
+          </button>
+        </th>
+        <th class="px-4 py-3 font-semibold text-slate-300">
+          <button
+            type="button"
+            data-list-sort="year"
+            class="inline-flex items-center gap-2 hover:text-sky-400"
+          >
+            Year <i data-lucide="arrow-down-up" class="h-4 w-4"></i>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody id="game-list-body" class="divide-y divide-slate-700/50"></tbody>
+  </table>
+</div>
+
 <div id="empty-state" class="empty-state" hidden>
   <div class="empty-icon">🎮</div>
   <h2>No games to display yet</h2>
