@@ -18,10 +18,10 @@ export async function initPlatforms() {
         gameCounts[platformName] = (gameCounts[platformName] || 0) + 1;
       }
     }
-    const visiblePlatforms = platforms;
-    //const visiblePlatforms = platforms.filter(
-    //  (platform) => (gameCounts[platform.name] || 0) > 0,
-    // );
+    //const visiblePlatforms = platforms;
+    const visiblePlatforms = platforms.filter(
+      (platform) => (gameCounts[platform.name] || 0) > 0,
+    );
 
     count.textContent = `${visiblePlatforms.length} PLATFORMS`;
     empty.hidden = visiblePlatforms.length > 0;

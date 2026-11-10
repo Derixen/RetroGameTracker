@@ -64,7 +64,7 @@ export const ACHIEVEMENTS = [
   },
   {
     id: "perfect-run",
-    name: "Perfect Run",
+    name: "No Hit Run",
     description: "Clear a stage without taking damage.",
     icon: "sparkles",
     color: "sky",
