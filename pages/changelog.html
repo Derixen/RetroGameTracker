@@ -1,26 +1,149 @@
 <section class="game-card static-card p-6">
-  <h2 class="text-xl font-bold text-white">Version History</h2>
+  <div class="mb-8">
+    <h2 class="flex items-center gap-2 text-2xl font-bold text-white">
+      <i data-lucide="scroll-text" class="h-6 w-6 text-sky-400"></i>
+      Changelog
+    </h2>
+    <p class="mt-1 text-sm text-slate-400">
+      The evolution of Retro Game Tracker
+    </p>
+  </div>
 
-  <p class="mt-4 text-sm leading-7 text-slate-400">
-    Follow the development of RetroTrack Games, including new features,
-    improvements, and bug fixes.
-  </p>
-
-  <div class="mt-8 border-l-2 border-cyan-400 pl-6">
-    <div class="flex items-center gap-3">
-      <h3 class="text-lg font-bold text-white">v0.1.0</h3>
-      <span class="text-xs font-semibold text-cyan-400"> BETA </span>
+  <div class="space-y-8">
+    <!-- Version 0.2.1 -->
+    <div class="border-l-2 border-sky-500 pl-5">
+      <span
+        class="rounded-md bg-sky-500/10 px-3 py-1 text-sm font-semibold text-sky-400"
+      >
+        v0.2.1
+      </span>
+      <h3 class="mt-3 text-lg font-bold text-white">
+        Achievement Badge Improvements
+      </h3>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+        <li>Introduced circular retro pixel-art achievement badges.</li>
+        <li>Added automatic PNG loading from <code>images/badges/</code>.</li>
+        <li>Added Lucide icon fallbacks for missing badge images.</li>
+        <li>Improved badge alignment, spacing, and label readability.</li>
+        <li>Standardized game details headings with colored Lucide icons.</li>
+      </ul>
     </div>
 
-    <p class="mt-2 text-sm text-slate-500">Initial beta release</p>
+    <!-- Version 0.2.0 -->
+    <div class="border-l-2 border-sky-500 pl-5">
+      <span
+        class="rounded-md bg-sky-500/10 px-3 py-1 text-sm font-semibold text-sky-400"
+      >
+        v0.2.0
+      </span>
+      <h3 class="mt-3 text-lg font-bold text-white">Personal Achievements</h3>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+        <li>Introduced a universal gaming achievement library.</li>
+        <li>Added achievement selection and earned badge display.</li>
+        <li>Added badge removal with confirmation.</li>
+        <li>Saved achievements to Supabase with private user ownership.</li>
+        <li>Prevented duplicate achievements per game.</li>
+      </ul>
+    </div>
 
-    <ul class="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-400">
-      <li>Game library with search and filtering.</li>
-      <li>Browse gaming platforms, series, developers, and genres.</li>
-      <li>Personal game collection management.</li>
-      <li>User authentication and profile management.</li>
-      <li>Statistics and collection tracking.</li>
-      <li>Responsive interface for desktop and mobile.</li>
-    </ul>
+    <!-- Version 0.1.5 -->
+    <div class="border-l-2 border-sky-500 pl-5">
+      <span
+        class="rounded-md bg-sky-500/10 px-3 py-1 text-sm font-semibold text-sky-400"
+      >
+        v0.1.5
+      </span>
+      <h3 class="mt-3 text-lg font-bold text-white">Personal Memories</h3>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+        <li>Added one personal memory per game.</li>
+        <li>Added optional played year.</li>
+        <li>Implemented memory creation, editing, and deletion.</li>
+        <li>Added a dedicated empty state and improved memory presentation.</li>
+        <li>Strengthened database ownership constraints.</li>
+      </ul>
+    </div>
+
+    <!-- Version 0.1.4 -->
+    <div class="border-l-2 border-sky-500 pl-5">
+      <span
+        class="rounded-md bg-sky-500/10 px-3 py-1 text-sm font-semibold text-sky-400"
+      >
+        v0.1.4
+      </span>
+      <h3 class="mt-3 text-lg font-bold text-white">
+        Gaming History Improvements
+      </h3>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+        <li>Improved completion history presentation.</li>
+        <li>Refined completion management controls.</li>
+        <li>
+          Improved game ownership checks for editing and deleting records.
+        </li>
+      </ul>
+    </div>
+
+    <!-- Version 0.1.3 -->
+    <div class="border-l-2 border-sky-500 pl-5">
+      <span
+        class="rounded-md bg-sky-500/10 px-3 py-1 text-sm font-semibold text-sky-400"
+      >
+        v0.1.3
+      </span>
+      <h3 class="mt-3 text-lg font-bold text-white">
+        Navigation &amp; Interface
+      </h3>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+        <li>Improved navigation and loading transitions.</li>
+        <li>Fixed loading overlay behavior across pages.</li>
+        <li>Refined game details layout and responsiveness.</li>
+      </ul>
+    </div>
+
+    <!-- Version 0.1.2 -->
+    <div class="border-l-2 border-sky-500 pl-5">
+      <span
+        class="rounded-md bg-sky-500/10 px-3 py-1 text-sm font-semibold text-sky-400"
+      >
+        v0.1.2
+      </span>
+      <h3 class="mt-3 text-lg font-bold text-white">Game Details</h3>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+        <li>Added dedicated game details pages.</li>
+        <li>Displayed game information and cover artwork.</li>
+        <li>Added soundtrack and walkthrough embeds.</li>
+        <li>Added personal gaming history presentation.</li>
+      </ul>
+    </div>
+
+    <!-- Version 0.1.1 -->
+    <div class="border-l-2 border-sky-500 pl-5">
+      <span
+        class="rounded-md bg-sky-500/10 px-3 py-1 text-sm font-semibold text-sky-400"
+      >
+        v0.1.1
+      </span>
+      <h3 class="mt-3 text-lg font-bold text-white">Collection Management</h3>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+        <li>Added personal collection management.</li>
+        <li>Introduced favorite and game status tracking.</li>
+        <li>Added collection search and browsing.</li>
+      </ul>
+    </div>
+
+    <!-- Version 0.1.0 -->
+    <div class="border-l-2 border-sky-500 pl-5">
+      <span
+        class="rounded-md bg-sky-500/10 px-3 py-1 text-sm font-semibold text-sky-400"
+      >
+        v0.1.0
+      </span>
+      <h3 class="mt-3 text-lg font-bold text-white">Initial Release</h3>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-300">
+        <li>Initial Retro Game Tracker application.</li>
+        <li>Supabase integration and user authentication.</li>
+        <li>Basic game collection functionality.</li>
+        <li>Responsive dark-themed interface.</li>
+      </ul>
+    </div>
   </div>
 </section>
