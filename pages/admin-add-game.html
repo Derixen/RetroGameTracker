@@ -1,15 +1,27 @@
 <div class="page-heading">
   <div>
-    <p class="eyebrow">COLLECTION MANAGEMENT</p>
-    <h1>Add Game</h1>
-    <p>Add a new title to your retro game collection.</p>
+    <p class="eyebrow" data-i18n="admin_add_game.eyebrow">
+      COLLECTION MANAGEMENT
+    </p>
+    <h1 data-i18n="admin_add_game.title">Add Game</h1>
+    <p data-i18n="admin_add_game.subtitle">
+      Add a new title to your retro game collection.
+    </p>
   </div>
 </div>
 
 <section class="game-card static-card mb-6 max-w-2xl p-6">
-  <h2 class="mb-2 text-xl font-bold text-white">Search Game Database</h2>
+  <h2
+    class="mb-2 text-xl font-bold text-white"
+    data-i18n="admin_add_game.search_database"
+  >
+    Search Game Database
+  </h2>
 
-  <p class="mb-4 text-sm text-slate-400">
+  <p
+    class="mb-4 text-sm text-slate-400"
+    data-i18n="admin_add_game.search_description"
+  >
     Find a game on IGDB and automatically fill in its details.
   </p>
 
@@ -18,6 +30,7 @@
       id="igdb-search-input"
       type="search"
       placeholder="Search for a game..."
+      data-i18n-placeholder="admin_add_game.search_placeholder"
       class="min-w-0 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
     />
 
@@ -25,11 +38,19 @@
       id="igdb-platform-filter"
       class="w-44 shrink-0 rounded-lg border border-slate-700 bg-slate-900 px-3 py-3 text-sm text-white outline-none focus:border-pink-500"
       aria-label="Filter IGDB results by platform"
+      data-i18n-aria-label="admin_add_game.platform_filter_aria"
     >
-      <option value="">All Platforms</option>
+      <option value="" data-i18n="admin_add_game.all_platforms">
+        All Platforms
+      </option>
     </select>
 
-    <button id="igdb-search-button" type="button" class="btn-primary px-5 py-3">
+    <button
+      id="igdb-search-button"
+      type="button"
+      class="btn-primary px-5 py-3"
+      data-i18n="admin_add_game.search_button"
+    >
       Search
     </button>
   </div>
@@ -41,7 +62,11 @@
 
 <form id="add-game-form" class="game-card static-card max-w-2xl space-y-5 p-6">
   <div>
-    <label for="game-title" class="mb-2 block text-sm font-medium">
+    <label
+      for="game-title"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_game.game_title"
+    >
       Game Title *
     </label>
     <input
@@ -53,7 +78,11 @@
   </div>
 
   <div>
-    <label for="game-platform" class="mb-2 block text-sm font-medium">
+    <label
+      for="game-platform"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_game.platform"
+    >
       Platform *
     </label>
     <select
@@ -61,25 +90,35 @@
       required
       class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
     >
-      <option value="">Select a platform</option>
+      <option value="" data-i18n="admin_add_game.select_platform">
+        Select a platform
+      </option>
     </select>
   </div>
 
   <div>
-    <label for="game-series" class="mb-2 block text-sm font-medium">
+    <label
+      for="game-series"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_game.game_series"
+    >
       Game Series
     </label>
     <select
       id="game-series"
       class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
     >
-      <option value="">No series</option>
+      <option value="" data-i18n="admin_add_game.no_series">No series</option>
     </select>
   </div>
 
   <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
     <div>
-      <label for="game-year" class="mb-2 block text-sm font-medium">
+      <label
+        for="game-year"
+        class="mb-2 block text-sm font-medium"
+        data-i18n="admin_add_game.release_year"
+      >
         Release Year
       </label>
       <input
@@ -92,7 +131,11 @@
     </div>
 
     <div>
-      <label for="game-genre" class="mb-2 block text-sm font-medium">
+      <label
+        for="game-genre"
+        class="mb-2 block text-sm font-medium"
+        data-i18n="admin_add_game.genre"
+      >
         Genre
       </label>
       <input
@@ -104,7 +147,11 @@
   </div>
 
   <div>
-    <label for="game-developer" class="mb-2 block text-sm font-medium">
+    <label
+      for="game-developer"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_game.developer"
+    >
       Developer
     </label>
     <input
@@ -115,7 +162,11 @@
   </div>
 
   <div>
-    <label for="game-cover" class="mb-2 block text-sm font-medium">
+    <label
+      for="game-cover"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_game.cover_url"
+    >
       Cover Image URL
     </label>
     <input
@@ -128,6 +179,7 @@
       <label
         for="game-cover-file"
         class="mb-2 block text-sm font-medium text-slate-300"
+        data-i18n="admin_add_game.upload_cover"
       >
         Upload Cover Image
       </label>
@@ -139,20 +191,26 @@
         class="block w-full cursor-pointer rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-300 file:mr-4 file:cursor-pointer file:rounded-lg file:border file:border-cyan-400/30 file:bg-[#1b3654] file:px-4 file:py-2 file:font-semibold file:text-cyan-100 hover:file:bg-[#244566]"
       />
 
-      <p class="mt-2 text-xs text-slate-500">
+      <p
+        class="mt-2 text-xs text-slate-500"
+        data-i18n="admin_add_game.cover_help"
+      >
         JPG, PNG or WebP. Maximum file size: 5 MB.
       </p>
 
       <img
         id="game-cover-preview"
         alt="Selected game cover preview"
+        data-i18n-alt="admin_add_game.cover_preview_alt"
         class="mt-4 max-h-64 max-w-48 rounded-lg object-contain"
         hidden
       />
+
       <button
         id="remove-game-cover"
         type="button"
         class="mt-3 rounded-lg border border-red-500/40 px-4 py-2 text-sm font-semibold text-red-400 transition hover:bg-red-500/10"
+        data-i18n="admin_add_game.remove_cover"
         hidden
       >
         Remove Cover
@@ -161,7 +219,11 @@
   </div>
 
   <div>
-    <label for="game-description" class="mb-2 block text-sm font-medium">
+    <label
+      for="game-description"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_game.description"
+    >
       Description
     </label>
     <textarea
@@ -172,7 +234,11 @@
   </div>
 
   <div>
-    <label for="game-music-url" class="mb-2 block text-sm font-medium">
+    <label
+      for="game-music-url"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_game.soundtrack_label"
+    >
       Game Soundtrack (YouTube URL)
     </label>
 
@@ -182,21 +248,29 @@
       placeholder="https://www.youtube.com/watch?v=..."
       class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
     />
+
     <button
       id="find-soundtrack"
       type="button"
       class="btn-secondary mt-3 px-4 py-2 text-sm"
     >
-      🔎 Find Soundtrack
+      🔎 <span data-i18n="admin_add_game.find_soundtrack">Find Soundtrack</span>
     </button>
 
-    <p class="mt-2 text-xs text-slate-500">
+    <p
+      class="mt-2 text-xs text-slate-500"
+      data-i18n="admin_add_game.soundtrack_help"
+    >
       Optional. Add a YouTube link to the game's soundtrack.
     </p>
   </div>
 
   <div>
-    <label for="game-walkthrough-url" class="mb-2 block text-sm font-medium">
+    <label
+      for="game-walkthrough-url"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_game.walkthrough_label"
+    >
       Game Walkthrough (YouTube URL or Playlist)
     </label>
 
@@ -206,15 +280,20 @@
       placeholder="https://www.youtube.com/watch?v=..."
       class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
     />
+
     <button
       id="find-walkthrough"
       type="button"
       class="btn-secondary mt-3 px-4 py-2 text-sm"
     >
-      🔎 Find Walkthrough
+      🔎
+      <span data-i18n="admin_add_game.find_walkthrough">Find Walkthrough</span>
     </button>
 
-    <p class="mt-2 text-xs text-slate-500">
+    <p
+      class="mt-2 text-xs text-slate-500"
+      data-i18n="admin_add_game.walkthrough_help"
+    >
       Optional. Add a YouTube walkthrough video or playlist.
     </p>
   </div>
@@ -222,11 +301,20 @@
   <p id="add-game-error" class="text-sm text-red-400" role="alert" hidden></p>
 
   <div class="flex items-center gap-4">
-    <button id="save-game" type="submit" class="btn-primary px-6 py-3">
+    <button
+      id="save-game"
+      type="submit"
+      class="btn-primary px-6 py-3"
+      data-i18n="admin_add_game.save_game"
+    >
       Save Game
     </button>
 
-    <a href="#/admin/games" class="text-sm text-slate-400 hover:text-white">
+    <a
+      href="#/admin/games"
+      class="text-sm text-slate-400 hover:text-white"
+      data-i18n="admin_add_game.cancel"
+    >
       Cancel
     </a>
   </div>

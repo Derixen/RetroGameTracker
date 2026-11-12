@@ -1,0 +1,848 @@
+{
+  "common": {
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "delete": "Törlés",
+    "edit": "Szerkesztés",
+    "add": "Hozzáadás",
+    "loading": "Betöltés...",
+    "search": "Keresés...",
+    "yes": "Igen",
+    "no": "Nem",
+    "language": "Nyelv",
+    "select_language": "Nyelv kiválasztása"
+  },
+  "games": {
+    "title": "Játékaim",
+    "add": "Játék hozzáadása",
+    "search": "Játékok keresése...",
+    "count": "{count} játék",
+    "views": {
+      "large": "Nagy",
+      "small": "Kicsi",
+      "list": "Lista"
+    },
+    "status": {
+      "completed": "Befejezve",
+      "in_progress": "Folyamatban",
+      "not_played": "Még nem játszottam"
+    }
+  },
+  "nav": {
+    "home": "Kezdőlap",
+    "games": "Játékok",
+    "platforms": "Platformok",
+    "series": "Játéksorozatok",
+    "developers": "Fejlesztők",
+    "genres": "Műfajok",
+    "statistics": "Statisztikák",
+    "account_section": "FIÓKOM",
+    "manage_collection": "Gyűjteményem kezelése",
+    "my_profile": "Profilom",
+    "admin_section": "ADMINISZTRÁCIÓ",
+    "admin_dashboard": "Adminisztrációs vezérlőpult",
+    "user_management": "Felhasználók kezelése",
+    "manage_platforms": "Platformok kezelése",
+    "sign_in_register": "Bejelentkezés / Regisztráció",
+    "logout": "Kijelentkezés",
+    "about": "A RetroTrackről",
+    "contact": "Kapcsolat",
+    "sign_in": "Bejelentkezés"
+  },
+  "footer": {
+    "brand": "RetroTrack Games",
+    "home": "Kezdőlap",
+    "about": "A RetroTrackről",
+    "whats_new": "Újdonságok",
+    "legal": "Jogi információk",
+    "privacy": "Adatvédelmi szabályzat",
+    "terms": "Felhasználási feltételek",
+    "attributions": "Forrásmegjelölések",
+    "support": "Támogatás",
+    "contact": "Kapcsolat",
+    "report_bug": "Hiba bejelentése",
+    "collection_archive": "JÁTÉKGYŰJTEMÉNY"
+  },
+  "about": {
+    "title": "A RetroTrack Games bemutatása",
+    "description": "A RetroTrack Games egy személyes projekt, amely a retrojáték-gyűjtemények megőrzését és rendszerezését szolgálja.",
+    "features": "Böngéssz a játékok között, fedezd fel a játékplatformokat, építsd fel saját gyűjteményedet, és kövesd nyomon a játékokban elért haladásodat.",
+    "beta_notice": "A RetroTrack Games jelenleg bétafejlesztési szakaszban van. Rendszeresen érkeznek új funkciók és fejlesztések."
+  },
+  "admin_add_game": {
+    "eyebrow": "GYŰJTEMÉNY KEZELÉSE",
+    "title": "Játék hozzáadása",
+    "subtitle": "Adj hozzá egy új játékot a retrojáték-gyűjteményedhez.",
+    "search_database": "Keresés a játékadatbázisban",
+    "search_description": "Keress egy játékot az IGDB-n, és töltsd ki automatikusan az adatait.",
+    "search_placeholder": "Játék keresése...",
+    "platform_filter_aria": "IGDB-találatok szűrése platform szerint",
+    "all_platforms": "Összes platform",
+    "search_button": "Keresés",
+    "game_title": "Játék címe *",
+    "platform": "Platform *",
+    "select_platform": "Válassz platformot",
+    "game_series": "Játéksorozat",
+    "no_series": "Nem tartozik sorozathoz",
+    "release_year": "Megjelenés éve",
+    "genre": "Műfaj",
+    "developer": "Fejlesztő",
+    "cover_url": "Borítókép URL-címe",
+    "upload_cover": "Borítókép feltöltése",
+    "cover_help": "JPG, PNG vagy WebP. Maximális fájlméret: 5 MB.",
+    "cover_preview_alt": "Kiválasztott játékborító előnézete",
+    "remove_cover": "Borítókép eltávolítása",
+    "description": "Leírás",
+    "soundtrack_label": "Játékzene (YouTube URL)",
+    "find_soundtrack": "Játékzene keresése",
+    "soundtrack_help": "Nem kötelező. Add meg a játék zenéjének YouTube-linkjét.",
+    "walkthrough_label": "Végigjátszás (YouTube URL vagy lejátszási lista)",
+    "find_walkthrough": "Végigjátszás keresése",
+    "walkthrough_help": "Nem kötelező. Adj meg egy YouTube-végigjátszást vagy lejátszási listát.",
+    "save_game": "Játék mentése",
+    "cancel": "Mégse"
+  },
+  "admin_add_platform": {
+    "eyebrow": "GYŰJTEMÉNY KEZELÉSE",
+    "title": "Platform hozzáadása",
+    "subtitle": "Adj hozzá egy új játékplatformot a gyűjteményedhez.",
+    "platform_name": "Platform neve *",
+    "manufacturer": "Gyártó",
+    "release_year": "Megjelenés éve",
+    "platform_image": "Platform képe",
+    "image_help": "JPG, PNG vagy WebP. Maximális fájlméret: 5 MB.",
+    "image_preview_alt": "Platformkép előnézete",
+    "remove_image": "Kép eltávolítása",
+    "save_platform": "Platform mentése",
+    "cancel": "Mégse"
+  },
+  "admin_add_series": {
+    "eyebrow": "GYŰJTEMÉNY KEZELÉSE",
+    "title": "Játéksorozat hozzáadása",
+    "subtitle": "Adj hozzá egy új játéksorozatot a retrojáték-gyűjteményedhez.",
+    "series_name": "Sorozat neve *",
+    "description": "Leírás",
+    "save_series": "Sorozat mentése",
+    "cancel": "Mégse",
+    "games_heading": "A sorozat játékai",
+    "games_description": "A sorozathoz tartozó játékok kezelése.",
+    "games_count": "{count} JÁTÉK",
+    "add_existing_game": "Meglévő játék hozzáadása",
+    "search_placeholder": "Keresés a gyűjteményben...",
+    "add_game": "Játék hozzáadása"
+  },
+  "admin_dashboard": {
+    "registered_users": "Regisztrált felhasználók",
+    "total_games": "Összes játék",
+    "active_today": "Ma aktív",
+    "new_users_week": "Új felhasználók ezen a héten",
+    "daily_signins": "Napi bejelentkezések",
+    "signin_description": "Bejelentkezési aktivitás az elmúlt 30 napban.",
+    "loading_activity": "Aktivitás betöltése...",
+    "site_settings": "Webhelybeállítások",
+    "site_settings_description": "A RetroTrack Games nyilvános hozzáférésének kezelése.",
+    "allow_registrations": "Új regisztrációk engedélyezése",
+    "registrations_description": "Kikapcsolt állapotban a látogatók nem hozhatnak létre új fiókot.",
+    "registration_status_loading": "Regisztrációs állapot betöltése...",
+    "toggle_loading": "Betöltés...",
+    "registrations_enabled": "A regisztráció engedélyezve van.",
+    "registrations_disabled": "A regisztráció le van tiltva.",
+    "enable_registrations": "Regisztráció engedélyezése",
+    "disable_registrations": "Regisztráció letiltása"
+  },
+  "admin_games": {
+    "eyebrow": "GYŰJTEMÉNY KEZELÉSE",
+    "title": "Játékok kezelése",
+    "subtitle": "Játékok hozzáadása, szerkesztése és eltávolítása a gyűjteményből.",
+    "add_game": "Játék hozzáadása",
+    "column_title": "Cím",
+    "column_platform": "Platform",
+    "column_year": "Év",
+    "column_developer": "Fejlesztő",
+    "column_actions": "Műveletek",
+    "empty": "Nem található játék."
+  },
+  "admin_platforms": {
+    "eyebrow": "GYŰJTEMÉNY KEZELÉSE",
+    "title": "Platformok kezelése",
+    "subtitle": "A gyűjteményed játékplatformjainak kezelése.",
+    "add_platform": "Platform hozzáadása",
+    "search_placeholder": "Platformok keresése...",
+    "column_platform": "Platform",
+    "column_manufacturer": "Gyártó",
+    "column_release_year": "Megjelenés éve",
+    "column_cover_image": "Borítókép",
+    "column_actions": "Műveletek",
+    "empty": "Nem található platform."
+  },
+  "admin_series": {
+    "eyebrow": "GYŰJTEMÉNY KEZELÉSE",
+    "title": "Játéksorozatok kezelése",
+    "subtitle": "A retrojáték-gyűjteményed sorozatainak kezelése.",
+    "add_series": "Sorozat hozzáadása",
+    "column_series": "Sorozat",
+    "column_description": "Leírás",
+    "column_games": "Játékok",
+    "column_actions": "Műveletek",
+    "empty": "Nem található játéksorozat."
+  },
+  "admin_users": {
+    "title": "Regisztrált felhasználók",
+    "description": "Regisztrált fiókok, jogosultságok és felhasználói gyűjtemények kezelése.",
+    "column_email": "E-mail-cím",
+    "column_registered": "Regisztráció",
+    "column_games": "Játékok",
+    "column_role": "Szerepkör",
+    "column_actions": "Műveletek",
+    "loading": "Felhasználók betöltése..."
+  },
+  "attributions": {
+    "title": "Forrásmegjelölések és köszönetnyilvánítás",
+    "introduction": "A RetroTrack Games külső technológiákat, szolgáltatásokat és játékinformációkat használ a funkciói biztosításához.",
+    "game_information_heading": "Játékinformációk és grafikák",
+    "game_information_description": "A játékinformációk és képek az IGDB-ből származhatnak. A játékcímek, védjegyek, logók és grafikák a megfelelő jogtulajdonosok tulajdonát képezik.",
+    "game_data_provided_by": "A játékadatokat biztosítja:",
+    "technologies_heading": "Technológiák és szolgáltatások",
+    "supabase_description": "Hitelesítési és adatbázis-szolgáltatások.",
+    "github_description": "Webhelytárhely-szolgáltatás.",
+    "tailwind_description": "Felhasználói felület stílusai.",
+    "lucide_description": "Felületi ikonok.",
+    "independent_heading": "Független projekt",
+    "independent_description": "A RetroTrack Games független projekt, amely nem áll hivatalos kapcsolatban a játékkönyvtárában szereplő kiadókkal, fejlesztőkkel vagy platformgyártókkal, és azok nem támogatják hivatalosan."
+  },
+  "changelog": {
+    "title": "Változásnapló",
+    "subtitle": "A Retro Game Tracker fejlődése",
+    "v023": {
+      "title": "Listanézet",
+      "item1": "Új listanézet került a meglévő nagy és kis játékkártyás nézetek mellé.",
+      "item2": "Kompakt táblázat jelent meg a játék nevével, platformjával, teljesítési állapotával és megjelenési évével.",
+      "item3": "Mind a négy táblázatoszlop növekvő és csökkenő sorrendbe rendezhető.",
+      "item4": "A listanézet rendezése összehangolva a meglévő rendezési legördülő menüvel.",
+      "item5": "A táblázatsorokra kattintva megnyitható a megfelelő játék adatlapja.",
+      "item6": "A listanézet együttműködik a kereséssel, a platform- és állapotszűrőkkel.",
+      "item7": "A kiválasztott nézetet a helyi tárhely menti, így a következő látogatáskor is megmarad.",
+      "item8": "Jobb akadálymentesség billentyűzetes navigációval és rendezhető oszlopjelzőkkel."
+    },
+    "v022": {
+      "title": "Saját játéklinkek",
+      "item1": "Külön Saját játéklinkek szakasz került a játék adatlapjára.",
+      "item2": "Játékonként több hasznos webhely menthető.",
+      "item3": "A linkekhez név, URL és opcionális kategória adható meg.",
+      "item4": "A linkek létrehozása, szerkesztése és törlése teljes körűen megvalósult.",
+      "item5": "Megerősítő párbeszédablakok kerültek a mentett linkek törléséhez.",
+      "item6": "Kattintható linknevek és kategóriajelvények jelentek meg.",
+      "item7": "A Szerkesztés és Törlés gombok a Személyes emlékek stílusához igazodnak.",
+      "item8": "A személyes linkeket a Supabase sorszintű biztonsági szabályai védik."
+    },
+    "v021": {
+      "title": "Teljesítményjelvények fejlesztése",
+      "item1": "Kör alakú, retró pixelgrafikás teljesítményjelvények jelentek meg.",
+      "item2": "A PNG-képek automatikusan betöltődnek az images/badges/ mappából.",
+      "item3": "Hiányzó jelvényképeknél Lucide-ikonok jelennek meg helyettesítésként.",
+      "item4": "Javult a jelvények igazítása, térköze és a feliratok olvashatósága.",
+      "item5": "A játékadatlapok címsorai egységes, színes Lucide-ikonokat kaptak."
+    },
+    "v020": {
+      "title": "Személyes teljesítmények",
+      "item1": "Egységes játékteljesítmény-könyvtár jelent meg.",
+      "item2": "Bekerült a teljesítmények kiválasztása és a megszerzett jelvények megjelenítése.",
+      "item3": "A jelvények megerősítés után eltávolíthatók.",
+      "item4": "A teljesítmények privát felhasználói tulajdonlással mentődnek a Supabase-be.",
+      "item5": "Játékonként nem adható hozzá ugyanaz a teljesítmény többször."
+    },
+    "v015": {
+      "title": "Személyes emlékek",
+      "item1": "Játékonként egy személyes emlék adható hozzá.",
+      "item2": "Opcionálisan megadható a játék éve.",
+      "item3": "Elkészült az emlékek létrehozása, szerkesztése és törlése.",
+      "item4": "Külön üres állapot és továbbfejlesztett emlékmegjelenítés került be.",
+      "item5": "Szigorodtak az adatbázis tulajdonosi korlátozásai."
+    },
+    "v014": {
+      "title": "Játéktörténeti fejlesztések",
+      "item1": "Javult a befejezési előzmények megjelenítése.",
+      "item2": "Finomodtak a teljesítések kezelőelemei.",
+      "item3": "Javultak a tulajdonosi ellenőrzések a rekordok szerkesztésekor és törlésekor."
+    },
+    "v013": {
+      "title": "Navigáció és felület",
+      "item1": "Javult a navigáció és a betöltési átmenetek.",
+      "item2": "Javítva a betöltési réteg működése az oldalakon.",
+      "item3": "Finomodott a játékadatlap elrendezése és reszponzivitása."
+    },
+    "v012": {
+      "title": "Játékadatlapok",
+      "item1": "Külön adatlapok készültek a játékokhoz.",
+      "item2": "Megjelennek a játékinformációk és a borítók.",
+      "item3": "Bekerültek a játékzene- és végigjátszás-beágyazások.",
+      "item4": "Megjelent a személyes játéktörténet."
+    },
+    "v011": {
+      "title": "Gyűjteménykezelés",
+      "item1": "Bekerült a személyes gyűjtemény kezelése.",
+      "item2": "Megjelent a kedvencek és a játékállapotok követése.",
+      "item3": "Bekerült a gyűjtemény keresése és böngészése."
+    },
+    "v010": {
+      "title": "Első kiadás",
+      "item1": "A Retro Game Tracker alkalmazás első verziója.",
+      "item2": "Supabase-integráció és felhasználói hitelesítés.",
+      "item3": "Alapvető játékgyűjtemény-funkciók.",
+      "item4": "Reszponzív, sötét témájú felület."
+    }
+  },
+  "collection": {
+    "manage_games": "Játékaim kezelése",
+    "manage_games_description": "Játékok hozzáadása, szerkesztése és rendszerezése a gyűjteményedben.",
+    "manage_series": "Sorozataim kezelése",
+    "manage_series_description": "Játéksorozataid létrehozása és rendszerezése."
+  },
+  "contact": {
+    "title": "Kapcsolat és támogatás",
+    "question": "Kérdésed vagy javaslatod van, esetleg hibába ütköztél a RetroTrack Games használata közben?",
+    "feedback": "Keress minket bizalommal! A visszajelzések különösen értékesek a bétaidőszakban.",
+    "support_link": "Kapcsolatfelvétel a RetroTrack ügyfélszolgálatával"
+  },
+  "developers": {
+    "grid_aria_label": "Játékfejlesztők",
+    "empty_title": "Nem található fejlesztő",
+    "empty_description": "A fejlesztők akkor jelennek meg itt, amikor játékok kerülnek a gyűjteménybe."
+  },
+  "forgot_password": {
+    "eyebrow": "FIÓK HELYREÁLLÍTÁSA",
+    "title": "Jelszó visszaállítása",
+    "description": "Add meg az e-mail-címedet, és küldünk egy jelszó-visszaállító hivatkozást.",
+    "email_label": "E-mail-cím",
+    "submit": "Visszaállító hivatkozás küldése",
+    "back_to_login": "Vissza a bejelentkezéshez"
+  },
+  "game_details": {
+    "navigation": {
+      "back_to_games": "← Vissza a játékokhoz"
+    },
+    "loading": {
+      "game": "Adatok betöltése..."
+    },
+    "game": {
+      "no_cover": "Nincs borítókép",
+      "release_year": "Megjelenés éve",
+      "genre": "Műfaj",
+      "developer": "Fejlesztő",
+      "series": "Sorozat",
+      "about": "A játékról",
+      "favorite": "Kedvenc",
+      "in_progress": "Folyamatban",
+      "completed": "Befejezve",
+      "cover_alt": "Játékborító"
+    },
+    "achievements": {
+      "subtitle": "Játékos pályafutásod mérföldkövei",
+      "loading": "Teljesítmények betöltése...",
+      "empty": "Még nem szereztél jelvényt. Vár a következő kihívás!",
+      "add_title": "Teljesítmény hozzáadása",
+      "choose": "Válassz teljesítményt...",
+      "add_badge": "Jelvény hozzáadása",
+      "title": "Teljesítményeim",
+      "earned_badges": "Megszerzett jelvények"
+    },
+    "history": {
+      "subtitle": "A játékkal közös történeted",
+      "add_completion": "Befejezés hozzáadása",
+      "completions": "Befejezések",
+      "first_completed": "Első befejezés",
+      "last_completed": "Legutóbbi befejezés",
+      "timeline": "Befejezések idővonala",
+      "loading": "Befejezési előzmények betöltése...",
+      "empty": "Még nincs rögzített befejezés.",
+      "dialog_add_title": "Befejezés hozzáadása",
+      "dialog_description": "Rögzítsd játéktörténeted újabb fejezetét.",
+      "year_required": "Év *",
+      "month_optional": "Hónap (nem kötelező)",
+      "unknown": "Ismeretlen",
+      "day_optional": "Nap (nem kötelező)",
+      "notes_optional": "Személyes emlék (nem kötelező)",
+      "save": "Befejezés mentése",
+      "title": "Játéktörténetem",
+      "notes_placeholder": "Mire emlékszel ebből a végigjátszásból?",
+      "dialog_edit_title": "Befejezés szerkesztése"
+    },
+    "memory": {
+      "subtitle": "Vannak játékok, amelyek örökre velünk maradnak.",
+      "loading": "Emlék betöltése...",
+      "empty_title": "Minden játéknak van története",
+      "empty_description": "Emlékezz vissza az első végigjátszásodra, egy kedvenc pillanatra vagy azokra, akikkel együtt játszottál.",
+      "add": "Emlék hozzáadása",
+      "title": "Személyes emlékem",
+      "dialog_description": "Őrizz meg egy pillanatot a játékos pályafutásodból.",
+      "year_optional": "Év (nem kötelező)",
+      "your_memory": "Az emléked *",
+      "save": "Emlék mentése",
+      "edit_title": "Emlék szerkesztése",
+      "delete_title": "Emlék törlése",
+      "year_placeholder": "pl. 1995",
+      "input_placeholder": "Mitől különleges számodra ez a játék?"
+    },
+    "common": {
+      "edit": "Szerkesztés",
+      "delete": "Törlés",
+      "cancel": "Mégse"
+    },
+    "months": {
+      "january": "Január",
+      "february": "Február",
+      "march": "Március",
+      "april": "Április",
+      "may": "Május",
+      "june": "Június",
+      "july": "Július",
+      "august": "Augusztus",
+      "september": "Szeptember",
+      "october": "Október",
+      "november": "November",
+      "december": "December"
+    },
+    "media": {
+      "soundtrack_description": "Hallgasd meg a játék zenéjét",
+      "walkthrough_description": "Nézd meg a játék végigjátszását",
+      "soundtrack_title": "Játékzene",
+      "walkthrough_title": "Játék végigjátszása"
+    },
+    "related": {
+      "title": "Kapcsolódó játékok"
+    },
+    "links": {
+      "subtitle": "Hasznos webhelyek, csalások, útmutatók és játszási lehetőségek",
+      "add": "Link hozzáadása",
+      "loading": "Linkek betöltése...",
+      "empty": "Még nem mentettél linket. Adj hozzá egy hasznos webhelyet ehhez a játékhoz!",
+      "dialog_add_title": "Játéklink hozzáadása",
+      "name": "Név",
+      "url": "Hivatkozás",
+      "category_optional": "Kategória (nem kötelező)",
+      "save": "Link mentése",
+      "title": "Saját játéklinkjeim",
+      "name_placeholder": "pl. Online játék",
+      "url_placeholder": "https://example.com",
+      "category_placeholder": "pl. Csalások, Útmutató, Online játék",
+      "dialog_edit_title": "Játéklink szerkesztése"
+    }
+  },
+  "genres": {
+    "grid_aria_label": "Játékműfajok",
+    "empty_title": "Nem található műfaj",
+    "empty_description": "A műfajok akkor jelennek meg itt, amikor játékok kerülnek a gyűjteménybe."
+  },
+  "home": {
+    "stats_games": "Játékok",
+    "stats_completed": "Befejezve",
+    "stats_playing": "Folyamatban",
+    "stats_backlog": "Hátralévő játékok",
+    "breakdown_eyebrow": "GYŰJTEMÉNY MEGOSZLÁSA",
+    "breakdown_title": "Játékok platform szerint",
+    "breakdown_top_three": "(Top 3)",
+    "breakdown_description": "A gyűjteményed megoszlása platformok szerint",
+    "loading_platforms": "Platformok betöltése...",
+    "recommendation_eyebrow": "A KÖVETKEZŐ KALANDOD",
+    "recommendation_heading": "Mivel játsszak legközelebb?",
+    "recommendation_subtitle": "Fedezz fel újra egy játékot a gyűjteményedből",
+    "recommendation_cover_alt": "Ajánlott játék borítója",
+    "recommendation_loading": "A következő kalandod keresése...",
+    "recommendation_empty_description": "Egy játék a gyűjteményedből arra vár, hogy újra felfedezd.",
+    "recommendation_shuffle": "Lepj meg!",
+    "recommendation_view_game": "Játék megtekintése",
+    "soundtrack_eyebrow": "RETRO JÁTÉKZENÉK",
+    "soundtrack_heading": "Most szól",
+    "soundtrack_description": "Fedezd fel újra kedvenc retrojátékaid zenéit",
+    "soundtrack_next": "Következő",
+    "recent_eyebrow": "LEGÚJABB HOZZÁADÁSOK",
+    "recent_heading": "Legutóbb hozzáadott játékok",
+    "recent_description": "A gyűjteményedhez legutóbb hozzáadott játékok"
+  },
+  "login": {
+    "eyebrow": "FIÓKOD",
+    "email_label": "E-mail-cím",
+    "password_label": "Jelszó",
+    "forgot_password": "Elfelejtetted a jelszavad?",
+    "password_requirements": "Legalább 12 karakter, köztük kis- és nagybetűk, egy szám és egy speciális karakter.",
+    "sign_in_title": "Bejelentkezés",
+    "sign_in_description": "Jelentkezz be retrojáték-gyűjteményed kezeléséhez.",
+    "sign_in_button": "Bejelentkezés",
+    "sign_in_loading": "Bejelentkezés folyamatban...",
+    "sign_up_title": "Fiók létrehozása",
+    "sign_up_description": "Hozz létre fiókot retrojáték-gyűjteményed kezeléséhez.",
+    "sign_up_button": "Fiók létrehozása",
+    "sign_up_loading": "Fiók létrehozása folyamatban...",
+    "switch_to_sign_up_text": "Még nincs fiókod?",
+    "switch_to_sign_up_button": "Fiók létrehozása",
+    "switch_to_sign_in_text": "Már van fiókod?",
+    "switch_to_sign_in_button": "Bejelentkezés",
+    "registration_disabled_title": "A regisztráció átmenetileg nem érhető el",
+    "registration_disabled_description": "Az új fiókok regisztrációja jelenleg szünetel, amíg fejlesztjük a RetroTrack Games szolgáltatást. A meglévő tagok továbbra is bejelentkezhetnek. Kérjük, látogass vissza később."
+  },
+  "not_found": {
+    "title": "Az oldal nem található",
+    "description": "Úgy tűnik, ez az oldal eltűnt a retrojátékok végtelen világában. Lehet, hogy a cím hibás, vagy az oldalt áthelyeztük.",
+    "back_home": "Vissza a kezdőlapra"
+  },
+  "platforms": {
+    "grid_aria_label": "Platformok",
+    "empty_title": "Nem található platform",
+    "empty_description": "A platformok akkor jelennek meg itt, amikor bekerülnek az adatbázisba."
+  },
+  "privacy": {
+    "title": "Adatvédelmi szabályzat",
+    "introduction": "Ez az adatvédelmi szabályzat ismerteti, hogyan gyűjti, használja, tárolja és védi a RetroTrack Games a személyes adatokat.",
+    "last_updated": "Utolsó frissítés: 2026. november 5.",
+    "information_collect": {
+      "title": "1. Az általunk gyűjtött adatok",
+      "description": "Amikor fiókot hozol létre a RetroTrack Games szolgáltatásban, összegyűjtjük a fiókod biztosításához és fenntartásához szükséges adatokat.",
+      "email": "A regisztrációhoz és hitelesítéshez használt e-mail-cím.",
+      "profile": "Fiókazonosító és profiladatok.",
+      "collection": "A gyűjteményedhez hozzáadott játékok, beleértve a kedvenceket és a teljesítési állapotot.",
+      "security": "A szolgáltatás működtetéséhez szükséges technikai hitelesítési és biztonsági adatok."
+    },
+    "information_use": {
+      "title": "2. Hogyan használjuk fel az adataidat",
+      "description": "A RetroTrack Games a fiók- és gyűjteményadatokat a szolgáltatásai biztosítása és fenntartása érdekében kezeli.",
+      "accounts": "Felhasználói fiókok létrehozása, hitelesítése és kezelése céljából.",
+      "collection": "Személyes játékgyűjteményed mentése és megjelenítése céljából.",
+      "favorites": "Kedvenceid és a játékok teljesítési állapotának megjegyzése céljából.",
+      "management": "A fiókkezelési és fióktörlési funkciók biztosítása céljából.",
+      "security": "A platform biztonságának és megbízhatóságának fenntartása céljából."
+    },
+    "data_storage": {
+      "title": "3. Adattárolás és biztonság",
+      "description_1": "A RetroTrack Games a Supabase szolgáltatást használja hitelesítéshez és adatbázis-kezeléshez. A fiókadatokat és a személyes játékgyűjteményeket ezen az infrastruktúrán tároljuk.",
+      "description_2": "Hozzáférés-szabályozással korlátozzuk a személyes gyűjteményadatok elérését. Hitelesítési és adatbázis-biztonsági intézkedésekkel segítjük a felhasználói adatok védelmét a jogosulatlan hozzáféréssel szemben."
+    },
+    "account_deletion": {
+      "title": "4. Fióktörlés és jogaid",
+      "description_1": "A RetroTrack Games-fiókod törlését a webhelyen elérhető fiókkezelési funkciókon keresztül kérheted.",
+      "description_2": "Az alkalmazandó adatvédelmi jogszabályoktól, köztük a GDPR-tól függően jogosult lehetsz személyes adataidhoz hozzáférni, azokat helyesbíttetni, töröltetni, kezelésüket korlátoztatni, illetve másolatot kérni róluk. Bizonyos adatkezelési tevékenységek ellen tiltakozhatsz is.",
+      "description_3": "Adatvédelmi jogaid gyakorlásához vagy a személyes adataiddal kapcsolatos kérdésekhez lépj kapcsolatba velünk a Kapcsolat és támogatás oldalon."
+    },
+    "third_party": {
+      "title": "5. Külső szolgáltatások",
+      "description": "A RetroTrack Games külső szolgáltatásokat vesz igénybe a platform működtetéséhez és fenntartásához.",
+      "supabase": "Hitelesítési, adatbázis-tárolási és háttérrendszer-funkciókat biztosít.",
+      "github": "A webhelyet tárolja és kiszolgálja annak felületi fájljait.",
+      "igdb": "A játékadatbázis feltöltéséhez használt videojáték-metaadatokat biztosít."
+    },
+    "data_retention": {
+      "title": "6. Adatmegőrzés",
+      "description_1": "A RetroTrack Games általában addig őrzi meg a fiókadatokat és a személyes játékgyűjtemény adatait, amíg a fiók aktív.",
+      "description_2": "A fiók törlésekor a kapcsolódó személyes adatokat a platform törlési eljárásai szerint eltávolítjuk, az alkalmazandó jogi kötelezettségek és technikai megőrzési követelmények figyelembevételével.",
+      "description_3": "Bizonyos adatok átmenetileg biztonsági mentésekben vagy biztonsági naplókban maradhatnak, mielőtt a vonatkozó megőrzési ütemezés szerint törlésre kerülnének."
+    },
+    "legal_bases": {
+      "title": "7. Az adatkezelés jogalapjai",
+      "description": "Amennyiben az általános adatvédelmi rendelet (GDPR) alkalmazandó, a RetroTrack Games a következő jogalapokon kezeli a személyes adatokat:",
+      "contractual_title": "Szerződés teljesítéséhez szükséges adatkezelés:",
+      "contractual_description": "A felhasználói fiókok, a hitelesítés és a személyes játékgyűjtemények biztosításához szükséges adatkezelés (6. cikk (1) bekezdés b) pont).",
+      "legitimate_title": "Jogos érdek:",
+      "legitimate_description": "A platform biztonságának fenntartásához, a visszaélések megelőzéséhez és a megbízható működés biztosításához szükséges adatkezelés, amennyiben ezekkel szemben nem élveznek elsőbbséget a felhasználók jogai (6. cikk (1) bekezdés f) pont).",
+      "obligations_title": "Jogi kötelezettség:",
+      "obligations_description": "Az alkalmazandó jogszabályoknak való megfeleléshez szükséges adatkezelés (6. cikk (1) bekezdés c) pont)."
+    },
+    "data_controller": {
+      "title": "8. Adatkezelő és kapcsolat",
+      "description_1": "A RetroTrack Games függetlenül működtetett videojáték-gyűjteménykezelő platform.",
+      "description_2": "Adatvédelmi kérdésekkel, személyes adatokkal kapcsolatos kérelmekkel vagy panaszokkal fordulj hozzánk a Kapcsolat és támogatás oldalon.",
+      "description_3": "Jogod van panaszt benyújtani az illetékes adatvédelmi felügyeleti hatósághoz is."
+    },
+    "cookies": {
+      "title": "9. Sütik és helyi tárhely",
+      "original_description": "A RetroTrack Games böngészőalapú tárolási technológiákat használ a hitelesítés támogatására és a felhasználói munkamenetek fenntartására. Ezek segítenek a bejelentkezett állapot megőrzésében és az alkalmazás alapvető funkcióinak biztosításában.",
+      "description_1": "A RetroTrack Games böngészőalapú tárolási technológiákat használ a hitelesítés támogatására, a felhasználói munkamenetek fenntartására és az alkalmazás alapvető funkcióinak biztosítására.",
+      "description_2": "Ezek a technológiák sütiket és helyi tárhelyet is magukban foglalhatnak. Az alkalmazott technológiák a hitelesítési és tárhelyszolgáltatásoktól függenek."
+    },
+    "international_transfers": {
+      "title": "10. Nemzetközi adattovábbítás",
+      "original_description": "Egyes külső szolgáltatók az Európai Gazdasági Térségen kívül is kezelhetnek adatokat. Amennyiben a GDPR alkalmazandó, az ilyen adattovábbításoknak meg kell felelniük az alkalmazandó adatvédelmi követelményeknek.",
+      "description_1": "Egyes külső szolgáltatók az Európai Gazdasági Térségen (EGT) kívül is kezelhetnek személyes adatokat.",
+      "description_2": "Az alkalmazandó esetekben a nemzetközi adattovábbításoknak meg kell felelniük a GDPR követelményeinek, beleértve a megfelelő adattovábbítási garanciák alkalmazását."
+    },
+    "children": {
+      "title": "11. Gyermekek adatainak védelme",
+      "description_1": "A RetroTrack Games videojáték-gyűjteménykezelő platform. A fiókregisztráció és a használat feltételeit a Felhasználási feltételek ismertetik.",
+      "description_2": "Ha úgy gondolod, hogy egy gyermek személyes adatait nem megfelelően kezelték, lépj kapcsolatba velünk, hogy kivizsgálhassuk az ügyet."
+    },
+    "automated_decisions": {
+      "title": "12. Automatizált döntéshozatal",
+      "description": "A RetroTrack Games jelenleg nem kíván személyes adatokat olyan automatizált döntésekhez felhasználni, amelyek joghatással vagy hasonlóan jelentős következményekkel járnak a felhasználókra nézve."
+    },
+    "changes": {
+      "title": "13. Az adatvédelmi szabályzat módosításai",
+      "description_1": "Ez az adatvédelmi szabályzat a RetroTrack Games, a funkciók, a külső szolgáltatások vagy az alkalmazandó jogszabályi követelmények változásai miatt frissülhet.",
+      "description_2": "A szabályzat elején feltüntetett dátum az utolsó frissítés időpontját jelzi. A lényeges változásokról a felhasználókat a jogszabályok által előírt esetekben tájékoztatjuk."
+    }
+  },
+  "profile": {
+    "eyebrow": "FIÓKBEÁLLÍTÁSOK",
+    "title": "Profilom",
+    "description": "Kezeld Retro Game Tracker-fiókodat.",
+    "account_information": "Fiókadatok",
+    "email_address": "E-mail-cím",
+    "account_type": "Fiók típusa",
+    "member_since": "Regisztráció dátuma",
+    "loading": "Betöltés...",
+    "security_title": "Biztonság",
+    "security_description": "Fiókod jelszavának kezelése.",
+    "change_password": "Jelszó módosítása",
+    "danger_zone_title": "Veszélyes műveletek",
+    "danger_zone_description": "Fiókod és a hozzá tartozó összes játékgyűjtemény-adat végleges törlése. Ez a művelet nem vonható vissza.",
+    "delete_account": "Fiókom törlése"
+  },
+  "report_bug": {
+    "title": "Hiba bejelentése",
+    "description": "Találtál valamit, ami nem működik megfelelően? Segíts a RetroTrack Games fejlesztésében a hiba bejelentésével.",
+    "instructions": "Hibabejelentéskor írd le, mi történt, minek kellett volna történnie, és milyen lépésekkel reprodukálható a probléma.",
+    "contact_support": "Kapcsolatfelvétel a támogatással"
+  },
+  "reset_password": {
+    "eyebrow": "FIÓKBIZTONSÁG",
+    "title": "Jelszó visszaállítása",
+    "description": "Válassz új jelszót a fiókodhoz.",
+    "new_password": "Új jelszó",
+    "confirm_password": "Új jelszó megerősítése",
+    "password_requirements": "Legalább 12 karakter, köztük kis- és nagybetűk, egy szám és egy speciális karakter.",
+    "submit": "Jelszó frissítése"
+  },
+  "series": {
+    "grid_aria_label": "Játéksorozatok",
+    "empty_title": "Nem található játéksorozat",
+    "empty_description": "A játéksorozatok akkor jelennek meg itt, amikor bekerülnek az adatbázisba."
+  },
+  "statistics": {
+    "games": "Játékok",
+    "completed": "Befejezve",
+    "playing": "Folyamatban",
+    "backlog": "Hátralévő játékok",
+    "favorites": "Kedvencek",
+    "game_status": "Játékállapotok",
+    "completion_progress": "Teljesítési előrehaladás",
+    "progress_description": "{total} játékból {completed} befejezve",
+    "games_by_platform": "Játékok platform szerint",
+    "games_by_genre": "Játékok műfaj szerint",
+    "games_by_developer": "Játékok fejlesztő szerint",
+    "games_by_release_year": "Játékok megjelenési év szerint"
+  },
+  "terms": {
+    "title": "Felhasználási feltételek",
+    "introduction": "Ezek a felhasználási feltételek a RetroTrack Games szolgáltatáshoz való hozzáférést és annak használatát szabályozzák. A platform videojátékok felfedezésére és személyes játékgyűjtemények kezelésére szolgál.",
+    "last_updated": "Utolsó frissítés: 2026. november 5.",
+    "acceptance": {
+      "title": "1. A feltételek elfogadása",
+      "description": "A RetroTrack Games elérésével vagy használatával elfogadod ezeket a felhasználási feltételeket, és tudomásul veszed az adatvédelmi szabályzatot. Ha nem értesz egyet, ne használd a szolgáltatást."
+    },
+    "service_description": {
+      "title": "2. A szolgáltatás leírása",
+      "description_1": "A RetroTrack Games videojátékok felfedezésére, játékplatformok böngészésére és személyes játékgyűjtemények kezelésére szolgáló platform.",
+      "description_2": "A szolgáltatás jelenleg aktív fejlesztés alatt áll. A funkciók, a működés és az elérhetőség változhatnak."
+    },
+    "user_accounts": {
+      "title": "3. Felhasználói fiókok",
+      "description_1": "Bizonyos funkciókhoz regisztrált fiók szükséges. A felhasználók felelősek a pontos fiókadatok megadásáért, hitelesítő adataik bizalmas kezeléséért és a feltételezett jogosulatlan hozzáférés bejelentéséért.",
+      "description_2": "A fiókregisztráció a fejlesztés során korlátozott vagy átmenetileg nem elérhető lehet."
+    },
+    "acceptable_use": {
+      "title": "4. Elfogadható használat",
+      "description": "A felhasználók nem élhetnek vissza a RetroTrack Games szolgáltatással, és nem zavarhatják annak működését.",
+      "unauthorized_access": "Ne próbálj jogosulatlanul hozzáférni fiókokhoz vagy rendszerekhez.",
+      "security": "Ne használd ki a sérülékenységeket, és ne kerüld meg a biztonsági korlátozásokat.",
+      "disruption": "Ne zavard szándékosan a szolgáltatást, és ne terheld túl az infrastruktúráját.",
+      "unlawful": "Ne használd a platformot jogellenes tevékenységekre.",
+      "content": "Ne használd fel vagy terjeszd a tartalmakat az alkalmazandó jogok megsértésével."
+    },
+    "personal_collections": {
+      "title": "5. Személyes gyűjtemények",
+      "description_1": "A felhasználók a RetroTrack Games funkcióival rendszerezhetik és kezelhetik személyes játékgyűjteményeiket.",
+      "description_2": "Javasoljuk, hogy a fontos gyűjteményadatokról saját nyilvántartást is vezess. Bár észszerű erőfeszítéseket tehetünk az adatok megőrzésére, a megszakítás nélküli elérhetőség vagy a végleges megőrzés nem garantálható."
+    },
+    "intellectual_property": {
+      "title": "6. Szellemi tulajdon",
+      "description_1": "A RetroTrack Games eredeti dizájnját, arculatát és önállóan fejlesztett elemeit a vonatkozó szellemitulajdon-jogok védik.",
+      "description_2": "A videojátékok címei, védjegyei, logói, borítói és más külső anyagok a megfelelő jogtulajdonosok tulajdonában maradnak."
+    },
+    "third_party": {
+      "title": "7. Külső tartalmak és szolgáltatások",
+      "description_1": "A RetroTrack Games külső szolgáltatásokat és játékinformáció-forrásokat, köztük az IGDB-t használja egyes funkciók és játékmetaadatok biztosításához.",
+      "description_2": "A játékinformációk pontatlanságokat, hiányosságokat vagy elavult adatokat tartalmazhatnak. A RetroTrack Games nem tart igényt a külső játékos tartalmak tulajdonjogára."
+    },
+    "service_availability": {
+      "title": "8. A szolgáltatás elérhetősége",
+      "description_1": "A RetroTrack Games az aktuálisan rendelkezésre álló állapotában érhető el. Karbantartás, technikai problémák vagy fejlesztési változások átmenetileg megszakíthatják a hozzáférést.",
+      "description_2": "A funkciók az alkalmazandó jogszabályi követelmények figyelembevételével módosíthatók, felfüggeszthetők vagy megszüntethetők."
+    },
+    "account_termination": {
+      "title": "9. Fiókok felfüggesztése és megszüntetése",
+      "description_1": "A fiókok korlátozhatók vagy felfüggeszthetők, ha ez biztonsági fenyegetések, visszaélések, a feltételek megsértése vagy jogi követelmények kezelése érdekében észszerűen szükséges.",
+      "description_2": "A felhasználók az elérhető fiókkezelési funkciókkal kérhetik fiókjuk törlését. A törlést követő személyesadat-kezelést az adatvédelmi szabályzat ismerteti."
+    },
+    "disclaimer": {
+      "title": "10. Szavatossági nyilatkozat",
+      "description_1": "Az alkalmazandó jog által megengedett mértékben a RetroTrack Games nem garantálja a megszakítás nélküli működést, a hibamentes funkciókat vagy a játékinformációk teljes pontosságát.",
+      "description_2": "Ezek a feltételek nem zárnak ki olyan szavatosságokat vagy védelmeket, amelyek jogszerűen nem zárhatók ki."
+    },
+    "liability": {
+      "title": "11. A felelősség korlátozása",
+      "description_1": "Az alkalmazandó jog által megengedett mértékben a RetroTrack Games használatából vagy elérhetetlenségéből eredő felelősség korlátozható.",
+      "description_2": "Ezek a feltételek nem korlátozzák a felelősséget ott, ahol azt az alkalmazandó jog tiltja, és nem szüntetik meg a kötelező fogyasztóvédelmi jogokat."
+    },
+    "changes": {
+      "title": "12. A feltételek módosításai",
+      "description_1": "Ezek a feltételek a szolgáltatás, a jogszabályi követelmények vagy a működési gyakorlat változásai miatt frissülhetnek.",
+      "description_2": "A dokumentum elején szereplő dátum a legutóbbi frissítést jelzi. A lényeges változásokról az alkalmazandó jog által előírt esetekben tájékoztatást adunk."
+    },
+    "governing_law": {
+      "title": "13. Irányadó jog",
+      "description": "Ezekre a feltételekre az alkalmazandó jogszabályok és a kötelező fogyasztóvédelmi rendelkezések vonatkoznak. Az irányadó jogot és az illetékes joghatóságot a szolgáltatás nyilvános indulása előtt határozzuk meg."
+    },
+    "contact": {
+      "title": "14. Kapcsolat",
+      "description_before": "Ha kérdésed van ezekkel a felhasználási feltételekkel kapcsolatban, keresd fel a",
+      "link": "Kapcsolat és támogatás",
+      "description_after": "oldalt."
+    }
+  },
+  "welcome": {
+    "logo_alt": "RetroTrack Games",
+    "hero_title": "A te játékos utad,",
+    "hero_highlight": "A te történeted.",
+    "hero_description": "Építsd fel személyes retrojáték-gyűjteményedet, kövesd a haladásodat, és őrizd meg az emlékeket minden játék mögött, amellyel valaha játszottál. Rendszerezd kedvenceidet, fedezd fel a részletes statisztikákat, és adj hozzá egyszerűen kedvenc játékzenéket és végigjátszásokat közvetlenül a YouTube-ról.",
+    "sign_in": "Bejelentkezés / Kezdés",
+    "collection_image_alt": "Retro Game Tracker játékgyűjtemény",
+    "collection_title": "Építsd fel a gyűjteményedet",
+    "collection_description": "Hozd létre saját játékgyűjteményedet. Rendszerezd a játékokat platform, műfaj, fejlesztő és sorozat szerint. Tartsd számon mindazt, amivel játszottál, és fedezd fel újra a gyűjteményedet.",
+    "statistics_image_alt": "Retro Game Tracker statisztikai vezérlőpult",
+    "statistics_title": "Kövesd a haladásodat",
+    "statistics_description": "Jelöld a játékokat befejezettnek, folyamatban lévőnek vagy még nem játszottnak. Rögzítsd a befejezések dátumát, kövesd az eredményeidet, és fedezd fel a statisztikákban, hogyan alakult a játékos pályafutásod.",
+    "soundtracks_image_alt": "Retro Game Tracker YouTube-játékzenék",
+    "soundtracks_title": "Éld át újra a játékzenéket",
+    "soundtracks_description": "Minden nagyszerű játéknak felejthetetlen zenéje van. Add hozzá kedvenc játékzenéidet közvetlenül a YouTube-ról, és hallgasd őket a gyűjteményed mellett. Az ikonikus főcímzenéktől az emlékezetes háttérdallamokig őrizd meg játékos emlékeid hangjait.",
+    "walkthroughs_image_alt": "Retro Game Tracker YouTube-végigjátszások",
+    "walkthroughs_title": "Végigjátszások egy kattintásra",
+    "walkthroughs_description": "Elakadtál egy nehéz pályán, vagy újra átélnél egy klasszikus kalandot? Adj hozzá egyszerűen YouTube-végigjátszásokat a játékaidhoz, és tartsd kéznél a hasznos útmutatókat. Akár titkokat fedezel fel, akár régi kihívásokat élsz át újra, minden a gyűjteményedhez kapcsolódik.",
+    "game_details_image_alt": "Retro Game Tracker játékadatlap",
+    "game_details_title": "Minden játéknak van története",
+    "game_details_description": "Fedezd fel az egyes játékok adatlapjait borítókkal, megjelenési adatokkal, műfajokkal, fejlesztőkkel és személyes teljesítési állapotoddal. Tarts egy helyen minden részletet, amely különlegessé teszi a játékokat.",
+    "history_image_alt": "Retro Game Tracker játéktörténet",
+    "history_title": "A te játéktörténeted",
+    "history_description": "Minden befejezett játék egy újabb fejezet a játékos pályafutásodban. Tekints vissza a végigjátszott játékokra, emlékezz, mikor győzted le a kihívásaikat, és fedezd fel újra a kalandokat, amelyek megszerettették veled a játékokat. A gyűjteményed nem csupán játéklista — a saját történeted.",
+    "platforms_image_alt": "Retro Game Tracker platformok oldala",
+    "platforms_title": "Fedezd fel a platformjaidat",
+    "platforms_description": "A legendás otthoni konzoloktól a klasszikus számítógépekig fedezd fel a játékos pályafutásodat meghatározó platformokat. Rendszerezd játékaidat rendszerenként, és fedezd fel újra azokat a címeket, amelyek minden platformot különlegessé tettek.",
+    "cta_title": "Készen állsz újra átélni a játéktörténetedet?",
+    "cta_description": "A legelső játékodtól a legutóbb befejezett kalandodig a játékos múltad megérdemli, hogy saját helye legyen.",
+    "cta_button": "Kezdés"
+  },
+
+  "confirm_dialog": {
+    "default_title": "Biztos vagy benne?",
+    "default_message": "Ez a művelet nem vonható vissza.",
+    "delete": "Törlés",
+    "cancel": "Mégse",
+    "ok": "OK",
+    "password_placeholder": "Add meg a jelszavad"
+  },
+
+  "page_headings": {
+    "home": {
+      "eyebrow": "GYŰJTEMÉNY ÁTTEKINTÉSE",
+      "title": "Áttekintés",
+      "subtitle": "Retro játékgyűjteményed egy pillantásra"
+    },
+    "games": {
+      "eyebrow": "A GYŰJTEMÉNY",
+      "title": "Játékaim",
+      "subtitle": "Böngéssz a retro játékgyűjteményemben",
+      "count_label": "JÁTÉK"
+    },
+    "platforms": {
+      "eyebrow": "A HARDVEREK",
+      "title": "Platformok",
+      "subtitle": "Fedezd fel a gyűjtemény konzoljait és kézikonzoljait",
+      "count_label": "PLATFORM"
+    },
+    "series": {
+      "eyebrow": "JÁTÉKSOROZATOK",
+      "title": "Játéksorozatok",
+      "subtitle": "Fedezd fel a retro játékgyűjteményem sorozatait",
+      "count_label": "SOROZAT"
+    },
+    "developers": {
+      "eyebrow": "JÁTÉKSOROZATOK",
+      "title": "Játéksorozatok",
+      "subtitle": "Ismerd meg a retro játékgyűjteményem mögött álló fejlesztőstúdiókat",
+      "count_label": "FEJLESZTŐ"
+    },
+    "genres": {
+      "eyebrow": "BÖNGÉSZÉS KATEGÓRIA SZERINT",
+      "title": "Műfajok",
+      "subtitle": "Böngéssz a retro játékgyűjteményemben műfaj szerint",
+      "count_label": "MŰFAJ"
+    },
+    "statistics": {
+      "eyebrow": "HALADÁS ÁTTEKINTÉSE",
+      "title": "Statisztikák",
+      "subtitle": "Retro játékos előrehaladásod egy pillantásra"
+    },
+    "collection": {
+      "eyebrow": "SAJÁT GYŰJTEMÉNY",
+      "title": "Gyűjteményem kezelése",
+      "subtitle": "Kezeld játékaidat, sorozataidat és gyűjteményed adatait"
+    },
+    "admin-users": {
+      "eyebrow": "ADMINISZTRÁCIÓ",
+      "title": "Felhasználók kezelése",
+      "subtitle": "Regisztrált fiókok, jogosultságok és felhasználói gyűjtemények kezelése"
+    },
+    "admin-dashboard": {
+      "eyebrow": "ADMINISZTRÁCIÓ",
+      "title": "Adminisztrációs áttekintés",
+      "subtitle": "Kövesd nyomon a platform aktivitását, a felhasználókat és a gyűjtemény statisztikáit"
+    },
+    "about": {
+      "eyebrow": "A PROJEKT",
+      "title": "A RetroTrackről",
+      "subtitle": "Ismerd meg a RetroTrack Games történetét."
+    },
+    "contact": {
+      "eyebrow": "LÉPJ KAPCSOLATBA VELÜNK",
+      "title": "Kapcsolat és támogatás",
+      "subtitle": "Kérdésed, javaslatod vagy észrevételed van? Örömmel fogadjuk!"
+    },
+    "privacy": {
+      "eyebrow": "JOGI INFORMÁCIÓK",
+      "title": "Adatvédelmi tájékoztató",
+      "subtitle": "Hogyan kezeli a RetroTrack Games a személyes adataidat."
+    },
+    "terms": {
+      "eyebrow": "JOGI INFORMÁCIÓK",
+      "title": "Felhasználási feltételek",
+      "subtitle": "A RetroTrack Games használatára vonatkozó szabályok és feltételek."
+    },
+    "changelog": {
+      "eyebrow": "FEJLESZTÉS",
+      "title": "Újdonságok",
+      "subtitle": "Legújabb frissítések, fejlesztések és verzióelőzmények."
+    },
+    "report-bug": {
+      "eyebrow": "TÁMOGATÁS",
+      "title": "Hibabejelentés",
+      "subtitle": "Segíts a RetroTrack Games fejlesztésében a hibák bejelentésével."
+    },
+    "attributions": {
+      "eyebrow": "KÖSZÖNETNYILVÁNÍTÁS",
+      "title": "Források és közreműködők",
+      "subtitle": "A RetroTrack Games mögött álló technológiák, szolgáltatások és erőforrások."
+    }
+  },
+
+  "router": {
+    "error_title": "Hiba történt",
+    "error_description": "Nem sikerült betölteni az oldalt. Kérjük, próbáld újra.",
+    "retry": "Újrapróbálkozás"
+  }
+}

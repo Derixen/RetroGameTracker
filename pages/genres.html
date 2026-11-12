@@ -2,10 +2,15 @@
   id="genre-grid"
   class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3"
   aria-label="Game genres"
+  data-i18n-aria-label="genres.grid_aria_label"
 ></section>
 
 <div id="genre-empty" class="empty-state" hidden>
   <div class="empty-icon">🎮</div>
-  <h2>No genres found</h2>
-  <p>Genres will appear here once games are added to the collection.</p>
+
+  <h2 data-i18n="genres.empty_title">No genres found</h2>
+
+  <p data-i18n="genres.empty_description">
+    Genres will appear here once games are added to the collection.
+  </p>
 </div>

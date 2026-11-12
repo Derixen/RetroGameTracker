@@ -1,14 +1,18 @@
 <div class="page-heading">
   <div>
-    <p class="eyebrow">COLLECTION MANAGEMENT</p>
-    <h1>Manage Platforms</h1>
-    <p>Manage the gaming systems in your collection.</p>
+    <p class="eyebrow" data-i18n="admin_platforms.eyebrow">
+      COLLECTION MANAGEMENT
+    </p>
+    <h1 data-i18n="admin_platforms.title">Manage Platforms</h1>
+    <p data-i18n="admin_platforms.subtitle">
+      Manage the gaming systems in your collection.
+    </p>
   </div>
 </div>
 
 <div class="mb-6">
   <button id="admin-add-platform" class="btn-primary px-5 py-3 text-sm">
-    + Add Platform
+    + <span data-i18n="admin_platforms.add_platform">Add Platform</span>
   </button>
 </div>
 
@@ -17,6 +21,7 @@
     id="platform-search"
     type="search"
     placeholder="Search platforms..."
+    data-i18n-placeholder="admin_platforms.search_placeholder"
     class="w-full max-w-md rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
   />
 </div>
@@ -29,35 +34,54 @@
           class="px-4 py-3 cursor-pointer select-none hover:text-white"
           data-sort="name"
         >
-          Platform ↕
+          <span data-i18n="admin_platforms.column_platform">Platform</span> ↕
         </th>
+
         <th
           class="px-4 py-3 cursor-pointer select-none hover:text-white"
           data-sort="manufacturer"
         >
-          Manufacturer ↕
+          <span data-i18n="admin_platforms.column_manufacturer">
+            Manufacturer
+          </span>
+          ↕
         </th>
 
         <th
           class="px-4 py-3 cursor-pointer select-none hover:text-white"
           data-sort="release_year"
         >
-          Release Year ↕
+          <span data-i18n="admin_platforms.column_release_year">
+            Release Year
+          </span>
+          ↕
         </th>
+
         <th
           class="px-4 py-3 cursor-pointer select-none hover:text-white"
           data-sort="image_url"
         >
-          Cover Image ↕
+          <span data-i18n="admin_platforms.column_cover_image">
+            Cover Image
+          </span>
+          ↕
         </th>
-        <th class="px-4 py-3 text-right">Actions</th>
+
+        <th class="px-4 py-3 text-right">
+          <span data-i18n="admin_platforms.column_actions">Actions</span>
+        </th>
       </tr>
     </thead>
 
     <tbody id="admin-platforms-list"></tbody>
   </table>
 
-  <p id="admin-platforms-empty" class="py-8 text-center text-slate-400" hidden>
+  <p
+    id="admin-platforms-empty"
+    class="py-8 text-center text-slate-400"
+    data-i18n="admin_platforms.empty"
+    hidden
+  >
     No platforms found.
   </p>
 </div>

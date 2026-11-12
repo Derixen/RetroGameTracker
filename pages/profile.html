@@ -1,29 +1,44 @@
 <div class="page-heading">
   <div>
-    <p class="eyebrow">ACCOUNT SETTINGS</p>
-    <h1>My Profile</h1>
-    <p>Manage your Retro Game Tracker account.</p>
+    <p class="eyebrow" data-i18n="profile.eyebrow">ACCOUNT SETTINGS</p>
+
+    <h1 data-i18n="profile.title">My Profile</h1>
+
+    <p data-i18n="profile.description">
+      Manage your Retro Game Tracker account.
+    </p>
   </div>
 </div>
 
 <div class="grid max-w-3xl gap-6">
   <!-- Account Information -->
   <section class="game-card p-6">
-    <h2 class="mb-5 text-xl font-bold">Account Information</h2>
+    <h2 class="mb-5 text-xl font-bold" data-i18n="profile.account_information">
+      Account Information
+    </h2>
 
     <div class="space-y-4">
       <div>
-        <p class="mb-1 text-sm text-slate-400">Email Address</p>
+        <p
+          class="mb-1 text-sm text-slate-400"
+          data-i18n="profile.email_address"
+        >
+          Email Address
+        </p>
         <p id="profile-email" class="font-medium">Loading...</p>
       </div>
 
       <div>
-        <p class="mb-1 text-sm text-slate-400">Account Type</p>
+        <p class="mb-1 text-sm text-slate-400" data-i18n="profile.account_type">
+          Account Type
+        </p>
         <p id="profile-role" class="font-medium">Loading...</p>
       </div>
 
       <div>
-        <p class="mb-1 text-sm text-slate-400">Member Since</p>
+        <p class="mb-1 text-sm text-slate-400" data-i18n="profile.member_since">
+          Member Since
+        </p>
         <p id="profile-created" class="font-medium">Loading...</p>
       </div>
     </div>
@@ -31,13 +46,21 @@
 
   <!-- Security -->
   <section class="game-card p-6">
-    <h2 class="mb-3 text-xl font-bold">Security</h2>
+    <h2 class="mb-3 text-xl font-bold" data-i18n="profile.security_title">
+      Security
+    </h2>
 
-    <p class="mb-5 text-sm text-slate-400">Manage your account password.</p>
+    <p
+      class="mb-5 text-sm text-slate-400"
+      data-i18n="profile.security_description"
+    >
+      Manage your account password.
+    </p>
 
     <button
       id="profile-change-password"
       class="cursor-pointer rounded-lg bg-pink-500 px-5 py-3 font-semibold text-white transition hover:bg-pink-600"
+      data-i18n="profile.change_password"
     >
       Change Password
     </button>
@@ -45,9 +68,17 @@
 
   <!-- Danger Zone -->
   <section class="game-card border border-red-500/30 p-6">
-    <h2 class="mb-3 text-xl font-bold text-red-400">Danger Zone</h2>
+    <h2
+      class="mb-3 text-xl font-bold text-red-400"
+      data-i18n="profile.danger_zone_title"
+    >
+      Danger Zone
+    </h2>
 
-    <p class="mb-5 text-sm text-slate-400">
+    <p
+      class="mb-5 text-sm text-slate-400"
+      data-i18n="profile.danger_zone_description"
+    >
       Permanently delete your account and all associated game collection data.
       This action cannot be undone.
     </p>
@@ -55,6 +86,7 @@
     <button
       id="profile-delete-account"
       class="cursor-pointer rounded-lg bg-red-600 px-5 py-3 font-semibold text-white transition hover:bg-red-700"
+      data-i18n="profile.delete_account"
     >
       Delete My Account
     </button>

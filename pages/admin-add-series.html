@@ -1,8 +1,12 @@
 <div class="page-heading">
   <div>
-    <p class="eyebrow">COLLECTION MANAGEMENT</p>
-    <h1>Add Game Series</h1>
-    <p>Add a new franchise to your retro game collection.</p>
+    <p class="eyebrow" data-i18n="admin_add_series.eyebrow">
+      COLLECTION MANAGEMENT
+    </p>
+    <h1 data-i18n="admin_add_series.title">Add Game Series</h1>
+    <p data-i18n="admin_add_series.subtitle">
+      Add a new franchise to your retro game collection.
+    </p>
   </div>
 </div>
 
@@ -11,7 +15,11 @@
   class="game-card static-card max-w-2xl space-y-5 p-6"
 >
   <div>
-    <label for="series-name" class="mb-2 block text-sm font-medium">
+    <label
+      for="series-name"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_series.series_name"
+    >
       Series Name *
     </label>
     <input
@@ -23,7 +31,11 @@
   </div>
 
   <div>
-    <label for="series-description" class="mb-2 block text-sm font-medium">
+    <label
+      for="series-description"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_series.description"
+    >
       Description
     </label>
     <textarea
@@ -40,11 +52,16 @@
       id="save-series"
       type="submit"
       class="rounded-lg bg-pink-500 px-6 py-3 font-semibold text-white transition hover:bg-pink-600"
+      data-i18n="admin_add_series.save_series"
     >
       Save Series
     </button>
 
-    <a href="#/admin/series" class="text-sm text-slate-400 hover:text-white">
+    <a
+      href="#/admin/series"
+      class="text-sm text-slate-400 hover:text-white"
+      data-i18n="admin_add_series.cancel"
+    >
       Cancel
     </a>
   </div>
@@ -58,8 +75,16 @@
 >
   <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
     <div>
-      <h2 class="text-xl font-bold text-white">Games in this Series</h2>
-      <p class="mt-1 text-sm text-slate-400">
+      <h2
+        class="text-xl font-bold text-white"
+        data-i18n="admin_add_series.games_heading"
+      >
+        Games in this Series
+      </h2>
+      <p
+        class="mt-1 text-sm text-slate-400"
+        data-i18n="admin_add_series.games_description"
+      >
         Manage games belonging to this franchise.
       </p>
     </div>
@@ -72,7 +97,11 @@
 
   <!-- Add existing game -->
   <div class="mt-6 border-t border-slate-700/50 pt-5">
-    <label for="series-game-search" class="mb-2 block text-sm font-medium">
+    <label
+      for="series-game-search"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_series.add_existing_game"
+    >
       Add Existing Game
     </label>
 
@@ -81,6 +110,7 @@
         id="series-game-search"
         type="search"
         placeholder="Search your collection..."
+        data-i18n-placeholder="admin_add_series.search_placeholder"
         class="min-w-0 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
       />
 
@@ -89,7 +119,7 @@
         type="button"
         class="rounded-lg bg-pink-500 px-5 py-3 font-semibold text-white transition hover:bg-pink-600"
       >
-        + Add Game
+        + <span data-i18n="admin_add_series.add_game">Add Game</span>
       </button>
     </div>
 

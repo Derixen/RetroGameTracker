@@ -1,6 +1,6 @@
 <div class="mx-auto max-w-md py-12">
   <div class="game-card static-card p-8">
-    <p class="eyebrow">YOUR ACCOUNT</p>
+    <p class="eyebrow" data-i18n="login.eyebrow">YOUR ACCOUNT</p>
 
     <h1 id="auth-title" class="mb-2 text-3xl font-bold">Sign In</h1>
 
@@ -10,7 +10,11 @@
 
     <form id="login-form" class="space-y-5">
       <div>
-        <label for="login-email" class="mb-2 block text-sm font-medium">
+        <label
+          for="login-email"
+          class="mb-2 block text-sm font-medium"
+          data-i18n="login.email_label"
+        >
           Email
         </label>
 
@@ -24,7 +28,11 @@
       </div>
 
       <div>
-        <label for="login-password" class="mb-2 block text-sm font-medium">
+        <label
+          for="login-password"
+          class="mb-2 block text-sm font-medium"
+          data-i18n="login.password_label"
+        >
           Password
         </label>
 
@@ -35,17 +43,21 @@
           autocomplete="current-password"
           class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
         />
+
         <div class="text-right">
           <a
             href="#/forgot-password"
             class="text-sm font-medium text-pink-400 transition hover:text-pink-300"
+            data-i18n="login.forgot_password"
           >
             Forgot Password?
           </a>
         </div>
+
         <p
           id="password-requirements"
           class="mt-2 text-xs text-slate-400"
+          data-i18n="login.password_requirements"
           hidden
         >
           Minimum 12 characters, including uppercase and lowercase letters, a
@@ -70,18 +82,23 @@
         Sign In
       </button>
     </form>
+
     <div
       id="registration-disabled-notice"
       class="mt-6 rounded-lg border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-400"
       hidden
     >
-      <p class="font-semibold">Registration Temporarily Unavailable</p>
-      <p class="mt-2">
+      <p class="font-semibold" data-i18n="login.registration_disabled_title">
+        Registration Temporarily Unavailable
+      </p>
+
+      <p class="mt-2" data-i18n="login.registration_disabled_description">
         New account registrations are currently disabled while we make
         improvements to RetroTrack Games. Existing members can still sign in.
         Please check back later.
       </p>
     </div>
+
     <div class="mt-6 border-t border-slate-700 pt-6 text-center">
       <p id="auth-switch-text" class="text-sm text-slate-400">
         Don't have an account?

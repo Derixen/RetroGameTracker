@@ -3,12 +3,18 @@
     id="back-to-games"
     href="#/games"
     class="btn-secondary mt-3 px-4 py-2 text-sm"
+    data-i18n="game_details.navigation.back_to_games"
   >
     ← Back to Games
   </a>
 </div>
 
-<div id="game-details-loading" class="loading-indicator" role="status">
+<div
+  id="game-details-loading"
+  class="loading-indicator"
+  role="status"
+  data-i18n="game_details.loading.game"
+>
   Loading Data...
 </div>
 
@@ -24,6 +30,7 @@
       <img
         id="detail-cover"
         alt="Game cover"
+        data-i18n-alt="game_details.game.cover_alt"
         class="block h-auto w-full rounded-lg object-contain"
         hidden
       />
@@ -33,7 +40,10 @@
         hidden
       >
         <span class="text-5xl">🎮</span>
-        <span class="text-xs font-semibold uppercase tracking-widest">
+        <span
+          class="text-xs font-semibold uppercase tracking-widest"
+          data-i18n="game_details.game.no_cover"
+        >
           No Cover
         </span>
       </div>
@@ -67,27 +77,52 @@
 
       <div class="mb-6 grid gap-4 sm:grid-cols-2">
         <div>
-          <p class="text-xs uppercase text-slate-500">Release Year</p>
+          <p
+            class="text-xs uppercase text-slate-500"
+            data-i18n="game_details.game.release_year"
+          >
+            Release Year
+          </p>
           <p id="detail-year" class="text-slate-200"></p>
         </div>
 
         <div>
-          <p class="text-xs uppercase text-slate-500">Genre</p>
+          <p
+            class="text-xs uppercase text-slate-500"
+            data-i18n="game_details.game.genre"
+          >
+            Genre
+          </p>
           <p id="detail-genre" class="text-slate-200"></p>
         </div>
 
         <div>
-          <p class="text-xs uppercase text-slate-500">Developer</p>
+          <p
+            class="text-xs uppercase text-slate-500"
+            data-i18n="game_details.game.developer"
+          >
+            Developer
+          </p>
           <p id="detail-developer" class="text-slate-200"></p>
         </div>
 
         <div>
-          <p class="text-xs uppercase text-slate-500">Series</p>
+          <p
+            class="text-xs uppercase text-slate-500"
+            data-i18n="game_details.game.series"
+          >
+            Series
+          </p>
           <p id="detail-series" class="text-slate-200"></p>
         </div>
       </div>
 
-      <h2 class="mb-2 text-lg font-semibold">About This Game</h2>
+      <h2
+        class="mb-2 text-lg font-semibold"
+        data-i18n="game_details.game.about"
+      >
+        About This Game
+      </h2>
       <p
         id="detail-description"
         class="whitespace-pre-line leading-relaxed text-slate-400"
@@ -100,7 +135,7 @@
           disabled
           class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition hover:border-red-400/60 disabled:cursor-default"
         >
-          ♡ Favorite
+          ♡ <span data-i18n="game_details.game.favorite">Favorite</span>
         </button>
 
         <button
@@ -109,7 +144,7 @@
           class="rounded-lg border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-400 transition hover:border-amber-400/50"
           disabled
         >
-          ◷ In Progress
+          ◷ <span data-i18n="game_details.game.in_progress">In Progress</span>
         </button>
 
         <button
@@ -118,7 +153,7 @@
           disabled
           class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition hover:border-green-400/60 disabled:cursor-default"
         >
-          ○ Completed
+          ○ <span data-i18n="game_details.game.completed">Completed</span>
         </button>
       </div>
     </div>
@@ -133,9 +168,14 @@
       <div>
         <h2 class="flex items-center gap-2 text-2xl font-bold text-white">
           <i data-lucide="trophy" class="h-6 w-6 text-amber-400"></i>
-          My Achievements
+          <span data-i18n="game_details.achievements.title"
+            >My Achievements</span
+          >
         </h2>
-        <p class="mt-1 text-sm text-slate-400">
+        <p
+          class="mt-1 text-sm text-slate-400"
+          data-i18n="game_details.achievements.subtitle"
+        >
           Milestones from your gaming journey
         </p>
       </div>
@@ -146,11 +186,17 @@
       <h3
         class="mb-4 text-sm font-semibold uppercase tracking-wide text-slate-400"
       >
-        Earned Badges
+        <span data-i18n="game_details.achievements.earned_badges"
+          >Earned Badges</span
+        >
         <span id="achievement-count">0</span>
       </h3>
 
-      <div id="achievements-loading" class="text-sm text-slate-400">
+      <div
+        id="achievements-loading"
+        class="text-sm text-slate-400"
+        data-i18n="game_details.achievements.loading"
+      >
         Loading achievements...
       </div>
 
@@ -160,7 +206,10 @@
         hidden
       >
         <i data-lucide="award" class="mx-auto mb-3 h-8 w-8 text-slate-500"></i>
-        <p class="text-sm text-slate-400">
+        <p
+          class="text-sm text-slate-400"
+          data-i18n="game_details.achievements.empty"
+        >
           No badges earned yet. Your next challenge awaits!
         </p>
       </div>
@@ -178,6 +227,7 @@
       <label
         for="achievement-select"
         class="mb-3 block text-sm font-semibold text-slate-300"
+        data-i18n="game_details.achievements.add_title"
       >
         Add Achievement
       </label>
@@ -187,7 +237,9 @@
           id="achievement-select"
           class="min-w-0 flex-1 rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white"
         >
-          <option value="">Choose an achievement...</option>
+          <option value="" data-i18n="game_details.achievements.choose">
+            Choose an achievement...
+          </option>
         </select>
 
         <button
@@ -196,7 +248,8 @@
           class="btn-primary px-5 py-3 text-sm"
           disabled
         >
-          + Add Badge
+          +
+          <span data-i18n="game_details.achievements.add_badge">Add Badge</span>
         </button>
       </div>
 
@@ -215,9 +268,14 @@
       <div>
         <h2 class="flex items-center gap-2 text-2xl font-bold text-white">
           <i data-lucide="history" class="h-6 w-6 text-cyan-400"></i>
-          My Gaming History
+          <span data-i18n="game_details.history.title">My Gaming History</span>
         </h2>
-        <p class="mt-1 text-sm text-slate-400">Your journey with this game</p>
+        <p
+          class="mt-1 text-sm text-slate-400"
+          data-i18n="game_details.history.subtitle"
+        >
+          Your journey with this game
+        </p>
       </div>
 
       <button
@@ -225,7 +283,10 @@
         type="button"
         class="btn-secondary mt-3 px-4 py-2 text-sm"
       >
-        + Add Completion
+        +
+        <span data-i18n="game_details.history.add_completion"
+          >Add Completion</span
+        >
       </button>
     </div>
 
@@ -233,24 +294,48 @@
     <div class="mb-6 grid grid-cols-3 gap-4 border-b border-slate-700/50 pb-6">
       <div>
         <p id="history-total" class="text-2xl font-bold text-white">0</p>
-        <p class="text-xs text-slate-400">Completions</p>
+        <p
+          class="text-xs text-slate-400"
+          data-i18n="game_details.history.completions"
+        >
+          Completions
+        </p>
       </div>
 
       <div>
         <p id="history-first" class="text-2xl font-bold text-white">—</p>
-        <p class="text-xs text-slate-400">First Completed</p>
+        <p
+          class="text-xs text-slate-400"
+          data-i18n="game_details.history.first_completed"
+        >
+          First Completed
+        </p>
       </div>
 
       <div>
         <p id="history-last" class="text-2xl font-bold text-white">—</p>
-        <p class="text-xs text-slate-400">Last Completed</p>
+        <p
+          class="text-xs text-slate-400"
+          data-i18n="game_details.history.last_completed"
+        >
+          Last Completed
+        </p>
       </div>
     </div>
 
     <!-- Completion Timeline -->
-    <h3 class="mb-4 text-lg font-semibold text-white">Completion Timeline</h3>
+    <h3
+      class="mb-4 text-lg font-semibold text-white"
+      data-i18n="game_details.history.timeline"
+    >
+      Completion Timeline
+    </h3>
 
-    <div id="history-loading" class="text-sm text-slate-400">
+    <div
+      id="history-loading"
+      class="text-sm text-slate-400"
+      data-i18n="game_details.history.loading"
+    >
       Loading completion history...
     </div>
 
@@ -258,6 +343,7 @@
       id="history-empty"
       class="rounded-lg border border-dashed border-slate-700 p-6 text-center text-sm text-slate-400"
       hidden
+      data-i18n="game_details.history.empty"
     >
       No completions recorded yet.
     </div>
@@ -272,9 +358,12 @@
     <div>
       <h2 class="flex items-center gap-2 text-2xl font-bold text-white">
         <i data-lucide="book-heart" class="h-6 w-6 text-pink-400"></i>
-        My Personal Memory
+        <span data-i18n="game_details.memory.title">My Personal Memory</span>
       </h2>
-      <p class="mt-1 text-sm text-slate-400">
+      <p
+        class="mt-1 text-sm text-slate-400"
+        data-i18n="game_details.memory.subtitle"
+      >
         Some games stay with us forever.
       </p>
     </div>
@@ -287,7 +376,7 @@
         hidden
       >
         <i data-lucide="pencil" class="h-4 w-4"></i>
-        <span>Edit</span>
+        <span data-i18n="game_details.common.edit">Edit</span>
       </button>
 
       <button
@@ -298,12 +387,16 @@
         hidden
       >
         <i data-lucide="trash-2" class="h-4 w-4"></i>
-        <span>Delete</span>
+        <span data-i18n="game_details.common.delete">Delete</span>
       </button>
     </div>
   </div>
   <div class="mb-5 border-t border-slate-700/60"></div>
-  <div id="memory-loading" class="text-sm text-slate-400">
+  <div
+    id="memory-loading"
+    class="text-sm text-slate-400"
+    data-i18n="game_details.memory.loading"
+  >
     Loading memory...
   </div>
 
@@ -318,11 +411,17 @@
       <i data-lucide="book-heart" class="h-6 w-6 text-pink-400"></i>
     </div>
 
-    <h3 class="mb-2 text-lg font-semibold text-white">
+    <h3
+      class="mb-2 text-lg font-semibold text-white"
+      data-i18n="game_details.memory.empty_title"
+    >
       Every Game Has a Story
     </h3>
 
-    <p class="mx-auto mb-5 max-w-md text-sm leading-relaxed text-slate-400">
+    <p
+      class="mx-auto mb-5 max-w-md text-sm leading-relaxed text-slate-400"
+      data-i18n="game_details.memory.empty_description"
+    >
       Remember your first playthrough, a favorite moment, or the people you
       shared this game with.
     </p>
@@ -332,7 +431,7 @@
       type="button"
       class="btn-secondary px-4 py-2 text-sm"
     >
-      + Add Memory
+      + <span data-i18n="game_details.memory.add">Add Memory</span>
     </button>
   </div>
 
@@ -359,14 +458,23 @@
 >
   <form id="memory-form" class="space-y-5">
     <div>
-      <h2 class="text-xl font-bold">My Personal Memory</h2>
-      <p class="mt-1 text-sm text-slate-400">
+      <h2 class="text-xl font-bold" data-i18n="game_details.memory.title">
+        My Personal Memory
+      </h2>
+      <p
+        class="mt-1 text-sm text-slate-400"
+        data-i18n="game_details.memory.dialog_description"
+      >
         Preserve a moment from your gaming journey.
       </p>
     </div>
 
     <div>
-      <label for="memory-played-year" class="mb-2 block text-sm">
+      <label
+        for="memory-played-year"
+        class="mb-2 block text-sm"
+        data-i18n="game_details.memory.year_optional"
+      >
         Year (optional)
       </label>
       <input
@@ -375,12 +483,17 @@
         min="1970"
         max="2100"
         placeholder="e.g. 1995"
+        data-i18n-placeholder="game_details.memory.year_placeholder"
         class="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2"
       />
     </div>
 
     <div>
-      <label for="memory-input" class="mb-2 block text-sm">
+      <label
+        for="memory-input"
+        class="mb-2 block text-sm"
+        data-i18n="game_details.memory.your_memory"
+      >
         Your Memory *
       </label>
       <textarea
@@ -389,6 +502,7 @@
         required
         maxlength="5000"
         placeholder="What makes this game special to you?"
+        data-i18n-placeholder="game_details.memory.input_placeholder"
         class="w-full resize-y rounded-lg border border-slate-700 bg-slate-800 px-3 py-2"
       ></textarea>
     </div>
@@ -400,6 +514,7 @@
         id="memory-cancel"
         type="button"
         class="btn-secondary px-4 py-2 text-sm"
+        data-i18n="game_details.common.cancel"
       >
         Cancel
       </button>
@@ -408,6 +523,7 @@
         id="memory-save"
         type="submit"
         class="btn-primary px-4 py-2 text-sm"
+        data-i18n="game_details.memory.save"
       >
         Save Memory
       </button>
@@ -422,16 +538,29 @@
 >
   <form id="completion-form" class="space-y-5">
     <div>
-      <h2 id="completion-dialog-title" class="text-xl font-bold">
+      <h2
+        id="completion-dialog-title"
+        class="text-xl font-bold"
+        data-i18n="game_details.history.dialog_add_title"
+      >
         Add Completion
       </h2>
-      <p class="mt-1 text-sm text-slate-400">
+      <p
+        class="mt-1 text-sm text-slate-400"
+        data-i18n="game_details.history.dialog_description"
+      >
         Record another chapter of your gaming history.
       </p>
     </div>
 
     <div>
-      <label for="completion-year" class="mb-2 block text-sm"> Year * </label>
+      <label
+        for="completion-year"
+        class="mb-2 block text-sm"
+        data-i18n="game_details.history.year_required"
+      >
+        Year *
+      </label>
       <input
         id="completion-year"
         type="number"
@@ -444,30 +573,54 @@
 
     <div class="grid grid-cols-2 gap-4">
       <div>
-        <label for="completion-month" class="mb-2 block text-sm">
+        <label
+          for="completion-month"
+          class="mb-2 block text-sm"
+          data-i18n="game_details.history.month_optional"
+        >
           Month (optional)
         </label>
         <select
           id="completion-month"
           class="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2"
         >
-          <option value="">Unknown</option>
-          <option value="1">January</option>
-          <option value="2">February</option>
-          <option value="3">March</option>
-          <option value="4">April</option>
-          <option value="5">May</option>
-          <option value="6">June</option>
-          <option value="7">July</option>
-          <option value="8">August</option>
-          <option value="9">September</option>
-          <option value="10">October</option>
-          <option value="11">November</option>
-          <option value="12">December</option>
+          <option value="" data-i18n="game_details.history.unknown">
+            Unknown
+          </option>
+          <option value="1" data-i18n="game_details.months.january">
+            January
+          </option>
+          <option value="2" data-i18n="game_details.months.february">
+            February
+          </option>
+          <option value="3" data-i18n="game_details.months.march">March</option>
+          <option value="4" data-i18n="game_details.months.april">April</option>
+          <option value="5" data-i18n="game_details.months.may">May</option>
+          <option value="6" data-i18n="game_details.months.june">June</option>
+          <option value="7" data-i18n="game_details.months.july">July</option>
+          <option value="8" data-i18n="game_details.months.august">
+            August
+          </option>
+          <option value="9" data-i18n="game_details.months.september">
+            September
+          </option>
+          <option value="10" data-i18n="game_details.months.october">
+            October
+          </option>
+          <option value="11" data-i18n="game_details.months.november">
+            November
+          </option>
+          <option value="12" data-i18n="game_details.months.december">
+            December
+          </option>
         </select>
       </div>
       <div>
-        <label for="completion-day" class="mb-2 block text-sm">
+        <label
+          for="completion-day"
+          class="mb-2 block text-sm"
+          data-i18n="game_details.history.day_optional"
+        >
           Day (optional)
         </label>
         <input
@@ -481,13 +634,18 @@
     </div>
 
     <div>
-      <label for="completion-notes" class="mb-2 block text-sm">
+      <label
+        for="completion-notes"
+        class="mb-2 block text-sm"
+        data-i18n="game_details.history.notes_optional"
+      >
         Personal Memory (optional)
       </label>
       <textarea
         id="completion-notes"
         rows="3"
         placeholder="What do you remember about this playthrough?"
+        data-i18n-placeholder="game_details.history.notes_placeholder"
         class="w-full resize-y rounded-lg border border-slate-700 bg-slate-800 px-3 py-2"
       ></textarea>
     </div>
@@ -499,6 +657,7 @@
         id="completion-cancel"
         type="button"
         class="btn-secondary px-4 py-2 text-sm"
+        data-i18n="game_details.common.cancel"
       >
         Cancel
       </button>
@@ -507,6 +666,7 @@
         id="completion-save"
         type="submit"
         class="btn-primary px-4 py-2 text-sm"
+        data-i18n="game_details.history.save"
       >
         Save Completion
       </button>
@@ -523,9 +683,16 @@
   <div class="mb-4">
     <h2 class="flex items-center gap-2 text-2xl font-bold text-white">
       <i data-lucide="music-2" class="h-6 w-6 text-purple-400"></i>
-      Game Soundtrack
+      <span data-i18n="game_details.media.soundtrack_title"
+        >Game Soundtrack</span
+      >
     </h2>
-    <p class="mt-1 text-sm text-slate-400">Listen to the music of this game</p>
+    <p
+      class="mt-1 text-sm text-slate-400"
+      data-i18n="game_details.media.soundtrack_description"
+    >
+      Listen to the music of this game
+    </p>
   </div>
 
   <div
@@ -543,9 +710,16 @@
   <div class="mb-4">
     <h2 class="flex items-center gap-2 text-2xl font-bold text-white">
       <i data-lucide="gamepad-2" class="h-6 w-6 text-indigo-400"></i>
-      Game Walkthrough
+      <span data-i18n="game_details.media.walkthrough_title"
+        >Game Walkthrough</span
+      >
     </h2>
-    <p class="mt-1 text-sm text-slate-400">Watch a walkthrough of this game</p>
+    <p
+      class="mt-1 text-sm text-slate-400"
+      data-i18n="game_details.media.walkthrough_description"
+    >
+      Watch a walkthrough of this game
+    </p>
   </div>
 
   <div
@@ -555,7 +729,12 @@
 </section>
 
 <section id="related-games-section" class="mt-10" hidden>
-  <h2 class="mb-5 text-2xl font-bold text-white">Related Games</h2>
+  <h2
+    class="mb-5 text-2xl font-bold text-white"
+    data-i18n="game_details.related.title"
+  >
+    Related Games
+  </h2>
 
   <div
     id="related-games-list"
@@ -569,9 +748,12 @@
     <div>
       <h2 class="flex items-center gap-2 text-2xl font-bold text-white">
         <i data-lucide="link-2" class="h-6 w-6 text-sky-400"></i>
-        My Game Links
+        <span data-i18n="game_details.links.title">My Game Links</span>
       </h2>
-      <p class="mt-1 text-sm text-slate-400">
+      <p
+        class="mt-1 text-sm text-slate-400"
+        data-i18n="game_details.links.subtitle"
+      >
         Useful websites, cheats, guides, and places to play
       </p>
     </div>
@@ -581,11 +763,15 @@
       type="button"
       class="btn-primary px-4 py-2 text-sm"
     >
-      + Add Link
+      + <span data-i18n="game_details.links.add">Add Link</span>
     </button>
   </div>
 
-  <div id="game-links-loading" class="py-4 text-center text-sm text-slate-400">
+  <div
+    id="game-links-loading"
+    class="py-4 text-center text-sm text-slate-400"
+    data-i18n="game_details.links.loading"
+  >
     Loading links...
   </div>
 
@@ -595,6 +781,7 @@
     id="game-links-empty"
     class="rounded-xl border border-dashed border-slate-700 p-6 text-center text-sm text-slate-400"
     hidden
+    data-i18n="game_details.links.empty"
   >
     No links saved yet. Add a useful website for this game!
   </div>
@@ -608,7 +795,11 @@
   class="w-full max-w-lg rounded-xl border border-slate-700 bg-slate-900 p-6 text-white shadow-2xl backdrop:bg-black/70"
 >
   <form id="game-link-form" class="space-y-5">
-    <h3 id="game-link-dialog-title" class="text-xl font-bold text-white">
+    <h3
+      id="game-link-dialog-title"
+      class="text-xl font-bold text-white"
+      data-i18n="game_details.links.dialog_add_title"
+    >
       Add Game Link
     </h3>
 
@@ -616,6 +807,7 @@
       <label
         for="game-link-name"
         class="mb-2 block text-sm font-medium text-slate-300"
+        data-i18n="game_details.links.name"
       >
         Name
       </label>
@@ -625,6 +817,7 @@
         maxlength="150"
         required
         placeholder="e.g. Play Online"
+        data-i18n-placeholder="game_details.links.name_placeholder"
         class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-white outline-none focus:border-sky-500"
       />
     </div>
@@ -633,6 +826,7 @@
       <label
         for="game-link-url"
         class="mb-2 block text-sm font-medium text-slate-300"
+        data-i18n="game_details.links.url"
       >
         Link
       </label>
@@ -641,6 +835,7 @@
         type="url"
         required
         placeholder="https://example.com"
+        data-i18n-placeholder="game_details.links.url_placeholder"
         class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-white outline-none focus:border-sky-500"
       />
     </div>
@@ -649,6 +844,7 @@
       <label
         for="game-link-category"
         class="mb-2 block text-sm font-medium text-slate-300"
+        data-i18n="game_details.links.category_optional"
       >
         Category (optional)
       </label>
@@ -657,6 +853,7 @@
         type="text"
         maxlength="80"
         placeholder="e.g. Cheats, Guide, Play Online"
+        data-i18n-placeholder="game_details.links.category_placeholder"
         class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-2 text-white outline-none focus:border-sky-500"
       />
     </div>
@@ -666,6 +863,7 @@
         id="game-link-cancel"
         type="button"
         class="btn-secondary px-4 py-2 text-sm"
+        data-i18n="game_details.common.cancel"
       >
         Cancel
       </button>
@@ -674,6 +872,7 @@
         id="game-link-save"
         type="submit"
         class="btn-primary px-4 py-2 text-sm"
+        data-i18n="game_details.links.save"
       >
         Save Link
       </button>

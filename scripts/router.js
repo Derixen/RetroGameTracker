@@ -19,6 +19,7 @@ import { initAdminDashboard } from "./pages/adminDashboard.js";
 import { initProfile } from "./pages/profile.js";
 import { initResetPassword } from "./pages/resetPassword.js";
 import { initAdminUsers } from "./pages/adminUsers.js";
+import { t, translatePage } from "./i18n.js";
 
 const routes = {
   welcome: "welcome",
@@ -331,7 +332,17 @@ export async function navigate() {
     const headingConfig = pageHeadings[route];
 
     if (headingConfig) {
-      const heading = createPageHeading(headingConfig);
+      const heading = createPageHeading({
+        ...headingConfig,
+        eyebrowKey: `page_headings.${route}.eyebrow`,
+        titleKey: `page_headings.${route}.title`,
+        subtitleKey: `page_headings.${route}.subtitle`,
+        ...(headingConfig.countId
+          ? {
+              countLabelKey: `page_headings.${route}.count_label`,
+            }
+          : {}),
+      });
 
       pageContent.prepend(heading);
     }
@@ -440,6 +451,11 @@ export async function navigate() {
       await initResetPassword();
     }
 
+    // Translate the newly loaded page
+    if (id !== navigationId) return;
+
+    translatePage(pageContent);
+
     // Reveal the fully initialized page
     if (id === navigationId) {
       requestAnimationFrame(() => {
@@ -479,29 +495,39 @@ export async function navigate() {
     if (id === navigationId) {
       console.error("Navigation failed:", error);
 
+      const loadingOverlay = document.getElementById("app-loading-overlay");
+
+      // Hide the loading overlay even when navigation fails
+      loadingOverlay?.classList.add("fade-out");
+
+      document.getElementById("sidebar")?.classList.remove("login-loading");
+
       const pageContent = document.getElementById("page-content");
 
       pageContent.classList.remove("page-fading");
 
       pageContent.innerHTML = `
-      <section class="game-card static-card mx-auto max-w-xl p-8 text-center">
-        <h2 class="text-2xl font-bold text-white">
-          Something Went Wrong
-        </h2>
+  <section class="game-card static-card mx-auto max-w-xl p-8 text-center">
+    <h2
+      class="text-2xl font-bold text-white"
+      data-i18n="router.error_title"
+    ></h2>
 
-        <p class="mt-4 text-sm leading-7 text-slate-400">
-          We couldn't load this page. Please try again.
-        </p>
+    <p
+      class="mt-4 text-sm leading-7 text-slate-400"
+      data-i18n="router.error_description"
+    ></p>
 
-        <button
-          type="button"
-          id="retry-navigation"
-          class="mt-6 font-semibold text-cyan-400 hover:text-cyan-300"
-        >
-          Try Again
-        </button>
-      </section>
-    `;
+    <button
+      type="button"
+      id="retry-navigation"
+      class="mt-6 font-semibold text-cyan-400 hover:text-cyan-300"
+      data-i18n="router.retry"
+    ></button>
+  </section>
+`;
+
+      translatePage(pageContent);
 
       document
         .getElementById("retry-navigation")

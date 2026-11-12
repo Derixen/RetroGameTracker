@@ -1,8 +1,10 @@
 <div class="page-heading">
   <div>
-    <p class="eyebrow">COLLECTION MANAGEMENT</p>
-    <h1>Manage Games</h1>
-    <p>Add, edit, and remove games from your collection.</p>
+    <p class="eyebrow" data-i18n="admin_games.eyebrow">COLLECTION MANAGEMENT</p>
+    <h1 data-i18n="admin_games.title">Manage Games</h1>
+    <p data-i18n="admin_games.subtitle">
+      Add, edit, and remove games from your collection.
+    </p>
   </div>
 </div>
 
@@ -11,7 +13,7 @@
     id="admin-add-game"
     class="rounded-lg bg-pink-500 px-5 py-3 font-semibold text-white transition hover:bg-pink-600"
   >
-    + Add Game
+    + <span data-i18n="admin_games.add_game">Add Game</span>
   </button>
 </div>
 
@@ -23,38 +25,45 @@
           class="px-4 py-3 cursor-pointer select-none hover:text-white"
           data-sort="title"
         >
-          Title ↕
+          <span data-i18n="admin_games.column_title">Title</span> ↕
         </th>
 
         <th
           class="px-4 py-3 cursor-pointer select-none hover:text-white"
           data-sort="platform"
         >
-          Platform ↕
+          <span data-i18n="admin_games.column_platform">Platform</span> ↕
         </th>
 
         <th
           class="px-4 py-3 cursor-pointer select-none hover:text-white"
           data-sort="year"
         >
-          Year ↕
+          <span data-i18n="admin_games.column_year">Year</span> ↕
         </th>
 
         <th
           class="px-4 py-3 cursor-pointer select-none hover:text-white"
           data-sort="developer"
         >
-          Developer ↕
+          <span data-i18n="admin_games.column_developer">Developer</span> ↕
         </th>
 
-        <th class="px-4 py-3 text-right">Actions</th>
+        <th class="px-4 py-3 text-right">
+          <span data-i18n="admin_games.column_actions">Actions</span>
+        </th>
       </tr>
     </thead>
 
     <tbody id="admin-games-list"></tbody>
   </table>
 
-  <p id="admin-games-empty" class="py-8 text-center text-slate-400" hidden>
+  <p
+    id="admin-games-empty"
+    class="py-8 text-center text-slate-400"
+    data-i18n="admin_games.empty"
+    hidden
+  >
     No games found.
   </p>
 </div>

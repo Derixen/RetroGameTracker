@@ -2,10 +2,15 @@
   id="platform-grid"
   class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3"
   aria-label="Platforms"
+  data-i18n-aria-label="platforms.grid_aria_label"
 ></section>
 
 <div id="platform-empty" class="empty-state" hidden>
   <div class="empty-icon">🎮</div>
-  <h2>No platforms found</h2>
-  <p>Platforms will appear here once they are added to the database.</p>
+
+  <h2 data-i18n="platforms.empty_title">No platforms found</h2>
+
+  <p data-i18n="platforms.empty_description">
+    Platforms will appear here once they are added to the database.
+  </p>
 </div>

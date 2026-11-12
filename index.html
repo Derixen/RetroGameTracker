@@ -71,6 +71,7 @@
               id="sidebar-search"
               type="search"
               placeholder="Search games..."
+              data-i18n-placeholder="games.search"
               autocomplete="off"
             />
           </label>
@@ -78,44 +79,49 @@
         <nav class="guest-nav nav-list" aria-label="Guest navigation" hidden>
           <a href="#/welcome" class="nav-item">
             <i data-lucide="house" class="nav-icon"></i>
-            <span>Home</span>
+            <span data-i18n="nav.home">Home</span>
           </a>
           <a href="#/about" class="nav-item">
             <i data-lucide="info" class="nav-icon"></i>
-            <span>About RetroTrack</span>
+            <span data-i18n="nav.about">About RetroTrack</span>
           </a>
           <a href="#/contact" class="nav-item">
             <i data-lucide="mail" class="nav-icon"></i>
-            <span>Contact Us</span>
+            <span data-i18n="nav.contact">Contact Us</span>
           </a>
           <a href="#/login" class="nav-item">
             <i data-lucide="log-in" class="nav-icon"></i>
-            <span>Sign In</span>
+            <span data-i18n="nav.sign_in">Sign In</span>
           </a>
         </nav>
         <nav id="main-nav" class="nav-list" aria-label="Sections">
           <button class="nav-item active" data-page="home" aria-current="page">
-            <i data-lucide="house" class="nav-icon"></i><span>Home</span>
+            <i data-lucide="house" class="nav-icon"></i
+            ><span data-i18n="nav.home">Home</span>
           </button>
           <button class="nav-item" data-page="games">
-            <i data-lucide="gamepad-2" class="nav-icon"></i><span>Games</span>
+            <i data-lucide="gamepad-2" class="nav-icon"></i
+            ><span data-i18n="nav.games">Games</span>
           </button>
           <button class="nav-item" data-page="platforms">
-            <i data-lucide="monitor" class="nav-icon"></i><span>Platforms</span>
+            <i data-lucide="monitor" class="nav-icon"></i
+            ><span data-i18n="nav.platforms">Platforms</span>
           </button>
           <button class="nav-item" data-page="series">
             <i data-lucide="library-big" class="nav-icon"></i
-            ><span>Game Series</span>
+            ><span data-i18n="nav.series">Game Series</span>
           </button>
           <button class="nav-item" data-page="developers">
-            <i data-lucide="code-2" class="nav-icon"></i><span>Developers</span>
+            <i data-lucide="code-2" class="nav-icon"></i
+            ><span data-i18n="nav.developers">Developers</span>
           </button>
           <button class="nav-item" data-page="genres">
-            <i data-lucide="shapes" class="nav-icon"></i><span>Genres</span>
+            <i data-lucide="shapes" class="nav-icon"></i
+            ><span data-i18n="nav.genres">Genres</span>
           </button>
           <button class="nav-item" data-page="statistics">
             <i data-lucide="chart-no-axes-column" class="nav-icon"></i
-            ><span>Statistics</span>
+            ><span data-i18n="nav.statistics">Statistics</span>
           </button>
         </nav>
 
@@ -125,6 +131,7 @@
         >
           <!-- MY ACCOUNT -->
           <div
+            data-i18n="nav.account_section"
             class="px-4 pb-2 text-xs font-bold tracking-widest text-slate-500"
           >
             MY ACCOUNT
@@ -132,16 +139,17 @@
 
           <a id="auth-collection" href="#/collection" class="nav-item" hidden>
             <i data-lucide="folder-heart" class="nav-icon"></i>
-            <span>Manage My Collection</span>
+            <span data-i18n="nav.manage_collection">Manage My Collection</span>
           </a>
 
           <a id="auth-profile" href="#/profile" class="nav-item" hidden>
             <i data-lucide="user-round" class="nav-icon"></i>
-            <span>My Profile</span>
+            <span data-i18n="nav.my_profile">My Profile</span>
           </a>
 
           <!-- ADMINISTRATION -->
           <div
+            data-i18n="nav.admin_dashboard"
             id="auth-admin-section"
             class="mt-4 border-t border-slate-700/50 px-4 pb-2 pt-5 text-xs font-bold tracking-widest text-slate-500"
             hidden
@@ -161,7 +169,7 @@
             hidden
           >
             <i data-lucide="users-round" class="nav-icon"></i>
-            <span>User Management</span>
+            <span data-i18n="nav.user_management">User Management</span>
           </a>
 
           <a
@@ -171,25 +179,51 @@
             hidden
           >
             <i data-lucide="monitor-cog" class="nav-icon"></i>
-            <span>Manage Platforms</span>
+            <span data-i18n="nav.manage_platforms">Manage Platforms</span>
           </a>
 
           <!-- SIGN IN -->
           <a id="auth-login" href="#/login" class="nav-item" hidden>
             <i data-lucide="log-in" class="nav-icon"></i>
-            <span>Sign In / Register</span>
+            <span data-i18n="nav.sign_in_register">Sign In / Register</span>
           </a>
 
           <!-- LOGOUT -->
           <div class="mt-4 border-t border-slate-700/50 pt-3">
             <button id="auth-logout" type="button" class="nav-item" hidden>
               <i data-lucide="log-out" class="nav-icon"></i>
-              <span>Logout</span>
+              <span data-i18n="nav.logout">Logout</span>
             </button>
           </div>
         </div>
 
-        <div class="sidebar-footer">COLLECTION ARCHIVE <span>v0.1</span></div>
+        <!-- Language selector -->
+        <div class="px-4 py-4 border-t border-slate-700/50">
+          <label
+            for="language-select"
+            data-i18n="common.language"
+            class="px-4 mb-2 block text-xs font-bold tracking-widest text-slate-500"
+          >
+            Language
+          </label>
+
+          <select
+            id="language-select"
+            aria-label="Select language"
+            data-i18n-aria-label="common.select_language"
+            class="w-full rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-200 outline-none focus:border-sky-500"
+          >
+            <option value="en">🇬🇧 English</option>
+            <option value="hu">🇭🇺 Magyar</option>
+          </select>
+        </div>
+
+        <div class="sidebar-footer">
+          <span data-i18n="footer.collection_archive">
+            COLLECTION ARCHIVE
+          </span>
+          <span>v0.1</span>
+        </div>
       </aside>
 
       <div class="main-area">
@@ -214,23 +248,27 @@
         <footer class="site-footer">
           <div class="footer-columns">
             <div class="footer-column">
-              <h3>RetroTrack Games</h3>
-              <a href="#/welcome">Home</a>
-              <a href="#/about">About RetroTrack</a>
-              <a href="#/changelog">What's New</a>
+              <h3 data-i18n="footer.brand">RetroTrack Games</h3>
+              <a href="#/welcome" data-i18n="footer.home">Home</a>
+              <a href="#/about" data-i18n="footer.about">About RetroTrack</a>
+              <a href="#/changelog" data-i18n="footer.whats_new">What's New</a>
             </div>
 
             <div class="footer-column">
-              <h3>Legal</h3>
-              <a href="#/privacy">Privacy Policy</a>
-              <a href="#/terms">Terms of Service</a>
-              <a href="#/attributions">Attributions</a>
+              <h3 data-i18n="footer.legal">Legal</h3>
+              <a href="#/privacy" data-i18n="footer.privacy">Privacy Policy</a>
+              <a href="#/terms" data-i18n="footer.terms">Terms of Service</a>
+              <a href="#/attributions" data-i18n="footer.attributions"
+                >Attributions</a
+              >
             </div>
 
             <div class="footer-column">
-              <h3>Support</h3>
-              <a href="#/contact">Contact Us</a>
-              <a href="#/report-bug">Report a Bug</a>
+              <h3 data-i18n="footer.support">Support</h3>
+              <a href="#/contact" data-i18n="footer.contact">Contact Us</a>
+              <a href="#/report-bug" data-i18n="footer.report_bug"
+                >Report a Bug</a
+              >
             </div>
           </div>
 

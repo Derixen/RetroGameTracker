@@ -2,10 +2,15 @@
   id="series-grid"
   class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3"
   aria-label="Game series"
+  data-i18n-aria-label="series.grid_aria_label"
 ></section>
 
 <div id="series-empty" class="empty-state" hidden>
   <div class="empty-icon">🎮</div>
-  <h2>No game series found</h2>
-  <p>Game series will appear here once they are added to the database.</p>
+
+  <h2 data-i18n="series.empty_title">No game series found</h2>
+
+  <p data-i18n="series.empty_description">
+    Game series will appear here once they are added to the database.
+  </p>
 </div>

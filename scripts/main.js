@@ -1,5 +1,6 @@
 import { navigate } from "./router.js";
 import { initAuth } from "./auth.js";
+import { initI18n, t, getLanguage, setLanguage } from "./i18n.js";
 
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("mobile-overlay");
@@ -56,6 +57,41 @@ document.querySelectorAll("[data-page]").forEach((button) => {
 
 // Browser navigation
 window.addEventListener("hashchange", navigate);
+
+// Initialize localization before loading the application
+try {
+  await initI18n();
+  console.log("Localization initialized:", t("games.title"));
+} catch (error) {
+  console.error("Failed to initialize localization:", error);
+}
+
+const languageSelect = document.getElementById("language-select");
+
+if (languageSelect) {
+  // Display the currently selected language
+  languageSelect.value = getLanguage();
+
+  languageSelect.addEventListener("change", async () => {
+    const previousLanguage = getLanguage();
+
+    try {
+      languageSelect.disabled = true;
+
+      await setLanguage(languageSelect.value);
+
+      // Reload the current SPA page so JavaScript-generated
+      // content can be translated as well.
+      await navigate();
+    } catch (error) {
+      console.error("Failed to change language:", error);
+
+      languageSelect.value = previousLanguage;
+    } finally {
+      languageSelect.disabled = false;
+    }
+  });
+}
 
 // Initialize authentication before loading the first page
 await initAuth();

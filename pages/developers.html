@@ -2,10 +2,15 @@
   id="developer-grid"
   class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3"
   aria-label="Game developers"
+  data-i18n-aria-label="developers.grid_aria_label"
 ></section>
 
 <div id="developer-empty" class="empty-state" hidden>
   <div class="empty-icon">🎮</div>
-  <h2>No developers found</h2>
-  <p>Developers will appear here once games are added to the collection.</p>
+
+  <h2 data-i18n="developers.empty_title">No developers found</h2>
+
+  <p data-i18n="developers.empty_description">
+    Developers will appear here once games are added to the collection.
+  </p>
 </div>

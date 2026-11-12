@@ -1,10 +1,12 @@
+import { t } from "../i18n.js";
+
 let dialog = null;
 
 export function confirmDialog({
-  title = "Are you sure?",
-  message = "This action cannot be undone.",
-  confirmText = "Delete",
-  cancelText = "Cancel",
+  title,
+  message,
+  confirmText,
+  cancelText,
   alertOnly = false,
   passwordInput = false,
 } = {}) {
@@ -19,34 +21,29 @@ export function confirmDialog({
 
       dialog.innerHTML = `
         <h2 class="mb-3 text-xl font-bold text-white"></h2>
+
         <p class="mb-6 whitespace-pre-line text-sm text-slate-400"></p>
-        
+
         <input
           type="password"
           data-password
-          placeholder="Enter your password"
           autocomplete="current-password"
           class="mb-6 w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white outline-none focus:border-pink-500"
           hidden
         />
-
 
         <div class="flex justify-end gap-3">
           <button
             type="button"
             data-cancel
             class="rounded-lg border border-slate-700 px-4 py-2 text-sm transition hover:bg-slate-800"
-          >
-            Cancel
-          </button>
+          ></button>
 
           <button
             type="button"
             data-confirm
             class="rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-600"
-          >
-            Delete
-          </button>
+          ></button>
         </div>
       `;
 
@@ -58,15 +55,22 @@ export function confirmDialog({
     const cancelButton = dialog.querySelector("[data-cancel]");
     const confirmButton = dialog.querySelector("[data-confirm]");
     const passwordField = dialog.querySelector("[data-password]");
+
     passwordField.hidden = !passwordInput;
     passwordField.value = "";
+    passwordField.placeholder = t("confirm_dialog.password_placeholder");
 
-    heading.textContent = title;
-    description.textContent = message;
-    cancelButton.textContent = cancelText;
-    confirmButton.textContent = confirmText;
+    heading.textContent = title ?? t("confirm_dialog.default_title");
+
+    description.textContent = message ?? t("confirm_dialog.default_message");
+
+    cancelButton.textContent = cancelText ?? t("confirm_dialog.cancel");
+
+    confirmButton.textContent = alertOnly
+      ? t("confirm_dialog.ok")
+      : (confirmText ?? t("confirm_dialog.delete"));
+
     cancelButton.hidden = alertOnly;
-    confirmButton.textContent = alertOnly ? "OK" : confirmText;
 
     confirmButton.classList.toggle("bg-red-500", !alertOnly);
     confirmButton.classList.toggle("hover:bg-red-600", !alertOnly);
@@ -79,6 +83,7 @@ export function confirmDialog({
       confirmButton.removeEventListener("click", onConfirm);
 
       dialog.close();
+
       resolve(
         passwordInput ? (confirmed ? passwordField.value : null) : confirmed,
       );
@@ -93,7 +98,6 @@ export function confirmDialog({
     };
 
     dialog.addEventListener("cancel", onEscape);
-
     cancelButton.addEventListener("click", onCancel);
     confirmButton.addEventListener("click", onConfirm);
 

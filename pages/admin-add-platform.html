@@ -1,8 +1,12 @@
 <div class="page-heading">
   <div>
-    <p class="eyebrow">COLLECTION MANAGEMENT</p>
-    <h1>Add Platform</h1>
-    <p>Add a new gaming platform to your collection.</p>
+    <p class="eyebrow" data-i18n="admin_add_platform.eyebrow">
+      COLLECTION MANAGEMENT
+    </p>
+    <h1 data-i18n="admin_add_platform.title">Add Platform</h1>
+    <p data-i18n="admin_add_platform.subtitle">
+      Add a new gaming platform to your collection.
+    </p>
   </div>
 </div>
 
@@ -11,7 +15,11 @@
   class="game-card static-card max-w-2xl space-y-5 p-6"
 >
   <div>
-    <label for="platform-name" class="mb-2 block text-sm font-medium">
+    <label
+      for="platform-name"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_platform.platform_name"
+    >
       Platform Name *
     </label>
     <input
@@ -23,7 +31,11 @@
   </div>
 
   <div>
-    <label for="platform-manufacturer" class="mb-2 block text-sm font-medium">
+    <label
+      for="platform-manufacturer"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_platform.manufacturer"
+    >
       Manufacturer
     </label>
     <input
@@ -34,7 +46,11 @@
   </div>
 
   <div>
-    <label for="platform-year" class="mb-2 block text-sm font-medium">
+    <label
+      for="platform-year"
+      class="mb-2 block text-sm font-medium"
+      data-i18n="admin_add_platform.release_year"
+    >
       Release Year
     </label>
     <input
@@ -50,6 +66,7 @@
     <label
       for="platform-image-file"
       class="mb-2 block text-sm font-medium text-slate-300"
+      data-i18n="admin_add_platform.platform_image"
     >
       Platform Image
     </label>
@@ -61,13 +78,17 @@
       class="block w-full cursor-pointer rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-300 file:mr-4 file:cursor-pointer file:rounded-lg file:border-0 file:bg-pink-500 file:px-4 file:py-2 file:font-semibold file:text-white"
     />
 
-    <p class="mt-2 text-xs text-slate-500">
+    <p
+      class="mt-2 text-xs text-slate-500"
+      data-i18n="admin_add_platform.image_help"
+    >
       JPG, PNG or WebP. Maximum file size: 5 MB.
     </p>
 
     <img
       id="platform-image-preview"
       alt="Platform image preview"
+      data-i18n-alt="admin_add_platform.image_preview_alt"
       class="mt-4 max-h-48 max-w-48 rounded-lg object-contain"
       hidden
     />
@@ -76,6 +97,7 @@
       id="remove-platform-image"
       type="button"
       class="mt-3 rounded-lg border border-red-500/40 px-4 py-2 text-sm font-semibold text-red-400 transition hover:bg-red-500/10"
+      data-i18n="admin_add_platform.remove_image"
       hidden
     >
       Remove Image
@@ -89,11 +111,16 @@
       id="save-platform"
       type="submit"
       class="rounded-lg bg-pink-500 px-6 py-3 font-semibold text-white transition hover:bg-pink-600"
+      data-i18n="admin_add_platform.save_platform"
     >
       Save Platform
     </button>
 
-    <a href="#/admin/platforms" class="text-sm text-slate-400 hover:text-white">
+    <a
+      href="#/admin/platforms"
+      class="text-sm text-slate-400 hover:text-white"
+      data-i18n="admin_add_platform.cancel"
+    >
       Cancel
     </a>
   </div>
