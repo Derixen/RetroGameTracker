@@ -13,15 +13,164 @@
     phase.
   </p>
 
-  <a
-    href="mailto:YOUR_CONTACT_EMAIL"
-    class="mt-6 inline-flex items-center gap-2 font-semibold text-cyan-400 hover:text-cyan-300"
-  >
-    <i data-lucide="mail" class="h-5 w-5"></i>
-    <span data-i18n="contact.support_link"
-      ><a href="mailto:info@retrotrack.games">
-        Contact RetroTrack Support
-      </a></span
-    >
-  </a>
+  <form id="contact-form" class="mt-8 space-y-6">
+    <div>
+      <label
+        for="contact-type"
+        class="mb-2 block text-sm font-medium text-slate-300"
+        data-i18n="contact.form.type_label"
+      >
+        Message Type
+      </label>
+
+      <select
+        id="contact-type"
+        name="type"
+        required
+        class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white outline-none focus:border-pink-500"
+      >
+        <option value="general" data-i18n="contact.form.type_general">
+          General Question
+        </option>
+        <option value="feedback" data-i18n="contact.form.type_feedback">
+          Suggestion / Feedback
+        </option>
+        <option value="bug" data-i18n="contact.form.type_bug">
+          Report a Bug
+        </option>
+      </select>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      <div>
+        <label
+          for="contact-name"
+          class="mb-2 block text-sm font-medium text-slate-300"
+          data-i18n="contact.form.name_label"
+        >
+          Your Name
+        </label>
+
+        <input
+          id="contact-name"
+          name="name"
+          type="text"
+          maxlength="100"
+          autocomplete="name"
+          placeholder="Your name (optional)"
+          data-i18n-placeholder="contact.form.name_placeholder"
+          class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white outline-none focus:border-pink-500"
+        />
+      </div>
+
+      <div>
+        <label
+          for="contact-email"
+          class="mb-2 block text-sm font-medium text-slate-300"
+          data-i18n="contact.form.email_label"
+        >
+          Email Address
+        </label>
+
+        <input
+          id="contact-email"
+          name="email"
+          type="email"
+          required
+          maxlength="254"
+          autocomplete="email"
+          placeholder="you@example.com"
+          data-i18n-placeholder="contact.form.email_placeholder"
+          class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white outline-none focus:border-pink-500"
+        />
+      </div>
+    </div>
+
+    <div>
+      <label
+        for="contact-subject"
+        class="mb-2 block text-sm font-medium text-slate-300"
+        data-i18n="contact.form.subject_label"
+      >
+        Subject
+      </label>
+
+      <input
+        id="contact-subject"
+        name="subject"
+        type="text"
+        required
+        maxlength="150"
+        placeholder="How can we help?"
+        data-i18n-placeholder="contact.form.subject_placeholder"
+        class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white outline-none focus:border-pink-500"
+      />
+    </div>
+
+    <div>
+      <label
+        for="contact-message"
+        class="mb-2 block text-sm font-medium text-slate-300"
+        data-i18n="contact.form.message_label"
+      >
+        Message
+      </label>
+
+      <textarea
+        id="contact-message"
+        name="message"
+        rows="6"
+        required
+        minlength="10"
+        maxlength="5000"
+        placeholder="Write your message here..."
+        data-i18n-placeholder="contact.form.message_placeholder"
+        class="w-full resize-y rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm leading-7 text-white outline-none focus:border-pink-500"
+      ></textarea>
+
+      <p
+        class="mt-2 text-xs text-slate-500"
+        data-i18n="contact.form.message_help"
+      >
+        Please provide as much detail as possible.
+      </p>
+    </div>
+
+    <!-- Cloudflare Turnstile -->
+    <div class="space-y-2">
+      <div id="contact-turnstile" class="min-h-[65px]"></div>
+
+      <p
+        class="text-xs text-slate-500"
+        data-i18n="contact.form.verification_help"
+      >
+        Please complete the security verification before sending.
+      </p>
+    </div>
+
+    <div
+      id="contact-status"
+      role="status"
+      aria-live="polite"
+      class="text-sm"
+      hidden
+    ></div>
+
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <p class="text-xs text-slate-500" data-i18n="contact.form.privacy_notice">
+        Your information will only be used to respond to your message.
+      </p>
+
+      <button
+        id="contact-submit"
+        type="submit"
+        disabled
+        title="Message sending is not configured yet"
+        class="btn-primary inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
+      >
+        <i data-lucide="send" class="h-4 w-4"></i>
+        <span data-i18n="contact.form.submit"> Send Message </span>
+      </button>
+    </div>
+  </form>
 </section>

@@ -20,6 +20,7 @@ import { initProfile } from "./pages/profile.js";
 import { initResetPassword } from "./pages/resetPassword.js";
 import { initAdminUsers } from "./pages/adminUsers.js";
 import { t, translatePage } from "./i18n.js";
+import { initContact } from "./pages/contact.js";
 
 const routes = {
   welcome: "welcome",
@@ -449,6 +450,9 @@ export async function navigate() {
 
     if (route === "reset-password") {
       await initResetPassword();
+    }
+    if (route === "contact") {
+      cleanupPage = initContact();
     }
 
     // Translate the newly loaded page

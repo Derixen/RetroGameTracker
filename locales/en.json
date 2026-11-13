@@ -314,7 +314,28 @@
     "title": "Contact & Support",
     "question": "Have a question, suggestion, or encountered a problem while using RetroTrack Games?",
     "feedback": "Feel free to get in touch. Feedback is especially valuable during the beta phase.",
-    "support_link": "Contact RetroTrack Support"
+    "support_link": "Contact RetroTrack Support",
+    "verification_help": "Please complete the security verification before sending.",
+    "form": {
+      "type_label": "Message Type",
+      "type_general": "General Question",
+      "type_feedback": "Suggestion / Feedback",
+      "type_bug": "Report a Bug",
+      "name_label": "Your Name",
+      "name_placeholder": "Your name (optional)",
+      "email_label": "Email Address",
+      "email_placeholder": "you@example.com",
+      "subject_label": "Subject",
+      "subject_placeholder": "How can we help?",
+      "message_label": "Message",
+      "message_placeholder": "Write your message here...",
+      "message_help": "Please provide as much detail as possible.",
+      "privacy_notice": "Your information will only be used to respond to your message.",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Your message has been sent successfully. Thank you!",
+      "error": "Something went wrong. Please try again."
+    }
   },
 
   "developers": {

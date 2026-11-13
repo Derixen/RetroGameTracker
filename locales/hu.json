@@ -302,7 +302,28 @@
     "title": "Kapcsolat és támogatás",
     "question": "Kérdésed vagy javaslatod van, esetleg hibába ütköztél a RetroTrack Games használata közben?",
     "feedback": "Keress minket bizalommal! A visszajelzések különösen értékesek a bétaidőszakban.",
-    "support_link": "Kapcsolatfelvétel a RetroTrack ügyfélszolgálatával"
+    "support_link": "Kapcsolatfelvétel a RetroTrack ügyfélszolgálatával",
+    "verification_help": "Kérjük, végezd el a biztonsági ellenőrzést az üzenet elküldése előtt.",
+    "form": {
+      "type_label": "Üzenet típusa",
+      "type_general": "Általános kérdés",
+      "type_feedback": "Javaslat / Visszajelzés",
+      "type_bug": "Hibabejelentés",
+      "name_label": "Neved",
+      "name_placeholder": "Neved (nem kötelező)",
+      "email_label": "E-mail-cím",
+      "email_placeholder": "pelda@email.hu",
+      "subject_label": "Tárgy",
+      "subject_placeholder": "Miben segíthetünk?",
+      "message_label": "Üzenet",
+      "message_placeholder": "Írd ide az üzeneted...",
+      "message_help": "Kérjük, add meg a lehető legtöbb részletet.",
+      "privacy_notice": "A megadott adataidat kizárólag az üzeneted megválaszolására használjuk.",
+      "submit": "Üzenet küldése",
+      "sending": "Küldés...",
+      "success": "Üzenetedet sikeresen elküldtük. Köszönjük!",
+      "error": "Hiba történt. Kérjük, próbáld újra."
+    }
   },
   "developers": {
     "grid_aria_label": "Játékfejlesztők",
