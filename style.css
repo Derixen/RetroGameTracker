@@ -3348,6 +3348,10 @@ html {
     order: 2;
   }
 
+  .md\:w-44 {
+    width: 11rem;
+  }
+
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -3358,6 +3362,10 @@ html {
 
   .md\:grid-cols-\[240px_1fr\] {
     grid-template-columns: 240px 1fr;
+  }
+
+  .md\:flex-row {
+    flex-direction: row;
   }
 
   .md\:text-6xl {
