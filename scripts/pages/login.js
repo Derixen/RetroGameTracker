@@ -125,7 +125,7 @@ export function initLogin() {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}${window.location.pathname}#/login`,
+            emailRedirectTo: `${window.location.origin}${window.location.pathname}`,
           },
         });
 

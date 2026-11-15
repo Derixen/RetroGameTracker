@@ -94,7 +94,25 @@ if (languageSelect) {
 }
 
 // Initialize authentication before loading the first page
+const isAuthCallback = window.location.hash.startsWith("#access_token=");
+
 await initAuth();
+
+if (isAuthCallback) {
+  const { supabase } = await import("./supabase.js");
+
+  const { data, error } = await supabase.auth.getSession();
+
+  if (error) {
+    console.error("Authentication callback failed:", error);
+    window.history.replaceState(null, "", "#/login");
+  } else if (data.session) {
+    window.history.replaceState(null, "", "#/games");
+  } else {
+    window.history.replaceState(null, "", "#/login");
+  }
+}
+
 await navigate();
 
 window.lucide?.createIcons();
