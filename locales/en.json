@@ -638,13 +638,6 @@
     "delete_account": "Delete My Account"
   },
 
-  "report_bug": {
-    "title": "Report a Bug",
-    "description": "Found something that isn't working correctly? Help improve RetroTrack Games by reporting the issue.",
-    "instructions": "When reporting a bug, please include what happened, what you expected to happen, and the steps needed to reproduce the problem.",
-    "contact_support": "Contact Support"
-  },
-
   "reset_password": {
     "eyebrow": "ACCOUNT SECURITY",
     "title": "Reset Password",
@@ -876,11 +869,6 @@
       "eyebrow": "DEVELOPMENT",
       "title": "What's New",
       "subtitle": "Latest updates, improvements, and version history."
-    },
-    "report-bug": {
-      "eyebrow": "SUPPORT",
-      "title": "Report a Bug",
-      "subtitle": "Help us improve RetroTrack Games by reporting issues."
     },
     "attributions": {
       "eyebrow": "CREDITS",

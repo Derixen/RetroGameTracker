@@ -154,11 +154,6 @@ const pageHeadings = {
     title: "What's New",
     subtitle: "Latest updates, improvements, and version history.",
   },
-  "report-bug": {
-    eyebrow: "SUPPORT",
-    title: "Report a Bug",
-    subtitle: "Help us improve RetroTrack Games by reporting issues.",
-  },
   attributions: {
     eyebrow: "CREDITS",
     title: "Attributions & Credits",
