@@ -7,7 +7,13 @@ export async function initResetPassword() {
 
   const recoveryActive = sessionStorage.getItem("passwordRecovery") === "true";
 
-  if (!recoveryActive) {
+  const {
+    data: { user },
+    error: sessionError,
+  } = await supabase.auth.getUser();
+
+  if (!recoveryActive || sessionError || !user) {
+    sessionStorage.removeItem("passwordRecovery");
     await confirmDialog({
       title: "Invalid Recovery Link",
       message: "Please request a new password reset link.",

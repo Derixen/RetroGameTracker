@@ -107,7 +107,14 @@ if (isAuthCallback) {
     console.error("Authentication callback failed:", error);
     window.history.replaceState(null, "", "#/login");
   } else if (data.session) {
-    window.history.replaceState(null, "", "#/games");
+    const isPasswordRecovery =
+      sessionStorage.getItem("passwordRecovery") === "true";
+
+    window.history.replaceState(
+      null,
+      "",
+      isPasswordRecovery ? "#/reset-password" : "#/games",
+    );
   } else {
     window.history.replaceState(null, "", "#/login");
   }
