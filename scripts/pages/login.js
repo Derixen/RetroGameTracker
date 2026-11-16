@@ -37,18 +37,12 @@ export function initLogin() {
     notice.hidden = true;
 
     return true;
-
-    switchButton.hidden = false;
-    switchText.hidden = false;
-    return true;
   }
 
   checkRegistrationStatus();
 
   // Switch between Sign In and Create Account
   switchButton.addEventListener("click", () => {
-    document.getElementById("password-requirements").hidden = !isRegistering;
-    passwordInput.minLength = isRegistering ? 12 : 0;
     isRegistering = !isRegistering;
     passwordRequirements.hidden = !isRegistering;
     passwordInput.minLength = isRegistering ? 12 : 0;
