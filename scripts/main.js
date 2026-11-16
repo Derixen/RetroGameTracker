@@ -94,7 +94,13 @@ if (languageSelect) {
 }
 
 // Initialize authentication before loading the first page
-const isAuthCallback = window.location.hash.startsWith("#access_token=");
+const authHash = window.location.hash;
+
+const isAuthCallback = authHash.startsWith("#access_token=");
+
+const isRecoveryCallback =
+  isAuthCallback &&
+  new URLSearchParams(authHash.slice(1)).get("type") === "recovery";
 
 await initAuth();
 
@@ -108,7 +114,12 @@ if (isAuthCallback) {
     window.history.replaceState(null, "", "#/login");
   } else if (data.session) {
     const isPasswordRecovery =
+      isRecoveryCallback ||
       sessionStorage.getItem("passwordRecovery") === "true";
+
+    if (isPasswordRecovery) {
+      sessionStorage.setItem("passwordRecovery", "true");
+    }
 
     window.history.replaceState(
       null,
