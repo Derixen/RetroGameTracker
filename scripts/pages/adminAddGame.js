@@ -390,7 +390,7 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
         }
       }
 
-      window.location.hash = "#/admin/games";
+      window.location.hash = "#/games";
     } catch (error) {
       console.error("Failed to save game:", error);
 

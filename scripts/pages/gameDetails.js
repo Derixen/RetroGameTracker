@@ -12,6 +12,7 @@ import {
   getGameMemory,
   saveGameMemory,
   deleteGameMemory,
+  uploadMemoryImage,
 } from "../api/memories.js";
 import { ACHIEVEMENTS } from "../data/achievements.js";
 import {
@@ -913,10 +914,18 @@ export async function initGameDetails(params = new URLSearchParams()) {
     const memoryError = document.getElementById("memory-error");
     const memoryInput = document.getElementById("memory-input");
     const memoryPlayedYear = document.getElementById("memory-played-year");
+    const memoryRemoveImageContainer = document.getElementById(
+      "memory-remove-image-container",
+    );
+    const memoryRemoveImage = document.getElementById("memory-remove-image");
+    const memoryImageContainer = document.getElementById(
+      "memory-image-container",
+    );
+    const memoryImageDisplay = document.getElementById("memory-image-display");
 
     let currentMemory = null;
 
-    function renderMemory() {
+    async function renderMemory() {
       memoryLoading.hidden = true;
       memoryDelete.hidden = !currentMemory || !canManageGame;
       memoryEmpty.hidden = Boolean(currentMemory);
@@ -925,13 +934,34 @@ export async function initGameDetails(params = new URLSearchParams()) {
       memoryAdd.hidden = !canManageGame || Boolean(currentMemory);
       memoryEdit.hidden = !currentMemory || !canManageGame;
 
+      // Reset the image before displaying a memory.
+      memoryImageContainer.hidden = true;
+      memoryImageDisplay.removeAttribute("src");
+
       if (currentMemory) {
         memoryText.textContent = currentMemory.memory;
 
-        memoryYear.hidden = currentMemory.played_year == null;
         memoryYearText.textContent = currentMemory.played_year
-          ? `Played in ${currentMemory.played_year}`
+          ? `${currentMemory.played_year}`
           : "";
+
+        if (currentMemory.image_path) {
+          const imagePath = currentMemory.image_path;
+
+          const { data, error } = await supabase.storage
+            .from("memory-images")
+            .createSignedUrl(imagePath, 3600);
+
+          if (error) {
+            console.error("Failed to load memory image:", error);
+          } else if (
+            currentMemory?.image_path === imagePath &&
+            data?.signedUrl
+          ) {
+            memoryImageDisplay.src = data.signedUrl;
+            memoryImageContainer.hidden = false;
+          }
+        }
       }
     }
 
@@ -940,7 +970,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
         ? await getGameMemory(game.id, user.id)
         : null;
 
-      renderMemory();
+      await renderMemory();
     } catch (error) {
       console.error("Failed to load personal memory:", error);
       memoryLoading.textContent = "Unable to load personal memory.";
@@ -953,6 +983,12 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
         memoryInput.value = currentMemory?.memory ?? "";
         memoryPlayedYear.value = currentMemory?.played_year ?? "";
+
+        // Only offer removal when an image already exists.
+        memoryRemoveImageContainer.hidden = !currentMemory?.image_path;
+
+        // Always start with the checkbox unchecked.
+        memoryRemoveImage.checked = false;
 
         memoryDialog.showModal();
       }
@@ -977,15 +1013,83 @@ export async function initGameDetails(params = new URLSearchParams()) {
           memoryError.hidden = false;
           return;
         }
+        const imageFile = document.getElementById("memory-image").files[0];
 
+        if (imageFile) {
+          const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+          const maxSize = 5 * 1024 * 1024;
+
+          if (!allowedTypes.includes(imageFile.type)) {
+            memoryError.textContent =
+              "Please select a JPG, PNG, or WebP image.";
+            memoryError.hidden = false;
+            return;
+          }
+
+          if (imageFile.size > maxSize) {
+            memoryError.textContent = "The image must be smaller than 5 MB.";
+            memoryError.hidden = false;
+            return;
+          }
+        }
         memorySave.disabled = true;
         memorySave.textContent = "Saving...";
         memoryError.hidden = true;
 
         try {
-          currentMemory = await saveGameMemory(game.id, user.id, text, year);
+          const previousImagePath = currentMemory?.image_path ?? null;
+          const removeExistingImage = memoryRemoveImage.checked;
 
-          renderMemory();
+          // undefined = preserve existing image
+          // null = remove existing image
+          // string = save new image path
+          let imagePath = removeExistingImage ? null : undefined;
+
+          if (imageFile) {
+            imagePath = await uploadMemoryImage(game.id, user.id, imageFile);
+          }
+
+          try {
+            currentMemory = await saveGameMemory(
+              game.id,
+              user.id,
+              text,
+              year,
+              imagePath,
+            );
+          } catch (error) {
+            // Avoid leaving an unused image if saving the memory fails.
+            if (imagePath) {
+              try {
+                await supabase.storage
+                  .from("memory-images")
+                  .remove([imagePath]);
+              } catch (cleanupError) {
+                console.error("Image cleanup failed:", cleanupError);
+              }
+            }
+
+            throw error;
+          }
+
+          if (
+            previousImagePath &&
+            imagePath !== undefined &&
+            previousImagePath !== imagePath
+          ) {
+            const { error: cleanupError } = await supabase.storage
+              .from("memory-images")
+              .remove([previousImagePath]);
+
+            if (cleanupError) {
+              console.error(
+                "Failed to remove previous memory image:",
+                cleanupError,
+              );
+            }
+          }
+
+          await renderMemory();
           memoryDialog.close();
         } catch (error) {
           console.error("Failed to save personal memory:", error);
@@ -1013,10 +1117,27 @@ export async function initGameDetails(params = new URLSearchParams()) {
         memoryDelete.disabled = true;
 
         try {
+          const imagePath = currentMemory.image_path;
+
+          // Delete the database record first.
           await deleteGameMemory(currentMemory.id);
 
           currentMemory = null;
-          renderMemory();
+          await renderMemory();
+
+          // Remove the associated image from Storage.
+          if (imagePath) {
+            const { error: cleanupError } = await supabase.storage
+              .from("memory-images")
+              .remove([imagePath]);
+
+            if (cleanupError) {
+              console.error(
+                "Failed to remove deleted memory image:",
+                cleanupError,
+              );
+            }
+          }
         } catch (error) {
           console.error("Failed to delete personal memory:", error);
 

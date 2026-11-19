@@ -449,6 +449,15 @@
       id="memory-text"
       class="max-w-3xl whitespace-pre-wrap break-words text-base leading-8 text-slate-200"
     ></p>
+
+    <div id="memory-image-container" class="mt-5" hidden>
+      <img
+        id="memory-image-display"
+        alt="Personal gaming memory"
+        class="max-h-96 max-w-full rounded-xl border border-slate-700 object-contain"
+        loading="lazy"
+      />
+    </div>
   </div>
 </section>
 <!-- Personal Memory Dialog -->
@@ -505,6 +514,34 @@
         data-i18n-placeholder="game_details.memory.input_placeholder"
         class="w-full resize-y rounded-lg border border-slate-700 bg-slate-800 px-3 py-2"
       ></textarea>
+    </div>
+
+    <div>
+      <label for="memory-image" class="mb-2 block text-sm">
+        Memory Image (optional)
+      </label>
+
+      <input
+        id="memory-image"
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+        class="block w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-300 file:mr-3 file:rounded-md file:border-0 file:bg-slate-700 file:px-3 file:py-2 file:text-white hover:file:bg-slate-600"
+      />
+
+      <p class="mt-2 text-xs text-slate-400">JPG, PNG or WebP. Maximum 5 MB.</p>
+    </div>
+
+    <div id="memory-remove-image-container" hidden>
+      <label
+        class="flex cursor-pointer items-center gap-3 text-sm text-slate-300"
+      >
+        <input
+          id="memory-remove-image"
+          type="checkbox"
+          class="h-4 w-4 accent-pink-500"
+        />
+        Remove existing memory image
+      </label>
     </div>
 
     <p id="memory-error" class="text-sm text-red-400" hidden></p>
@@ -728,20 +765,6 @@
   ></div>
 </section>
 
-<section id="related-games-section" class="mt-10" hidden>
-  <h2
-    class="mb-5 text-2xl font-bold text-white"
-    data-i18n="game_details.related.title"
-  >
-    Related Games
-  </h2>
-
-  <div
-    id="related-games-list"
-    class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4"
-  ></div>
-</section>
-
 <!-- My Game Links -->
 <section id="game-links-section" class="game-card static-card mt-6 p-6">
   <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
@@ -879,3 +902,16 @@
     </div>
   </form>
 </dialog>
+<section id="related-games-section" class="mt-10" hidden>
+  <h2
+    class="mb-5 text-2xl font-bold text-white"
+    data-i18n="game_details.related.title"
+  >
+    Related Games
+  </h2>
+
+  <div
+    id="related-games-list"
+    class="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4"
+  ></div>
+</section>
