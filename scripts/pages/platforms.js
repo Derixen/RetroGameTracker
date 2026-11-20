@@ -18,10 +18,7 @@ export async function initPlatforms() {
         gameCounts[platformName] = (gameCounts[platformName] || 0) + 1;
       }
     }
-    //const visiblePlatforms = platforms;
-    const visiblePlatforms = platforms.filter(
-      (platform) => (gameCounts[platform.name] || 0) > 0,
-    );
+    const visiblePlatforms = platforms;
 
     count.textContent = `${visiblePlatforms.length} PLATFORMS`;
     empty.hidden = visiblePlatforms.length > 0;
@@ -31,7 +28,7 @@ export async function initPlatforms() {
     for (const platform of visiblePlatforms) {
       const card = document.createElement("a");
       card.className = "game-card flex items-center gap-5 p-5 cursor-pointer";
-      card.href = `#/games?platform=${encodeURIComponent(platform.name)}`;
+      card.href = `#/platform?id=${platform.id}`;
 
       // Image container
       const imageContainer = document.createElement("div");
