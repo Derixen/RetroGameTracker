@@ -2149,3 +2149,225 @@ html {
   background: rgba(220, 38, 38, 0.12);
   border-color: #ef4444;
 }
+
+/* ==========================================
+   PERSONAL MEMORY
+   Light / Dark Theme Support
+   ========================================== */
+
+/* LIGHT THEME */
+
+#game-memory-section h2,
+#game-memory-section h3 {
+  color: #0f172a;
+}
+
+#game-memory-section #memory-text {
+  color: #334155;
+}
+
+#game-memory-section #memory-year {
+  color: #475569;
+  background: rgba(241, 245, 249, 0.85);
+  border-color: #cbd5e1;
+}
+
+#game-memory-section #memory-year-text {
+  color: #334155;
+}
+
+#game-memory-section #memory-image-display {
+  border-color: rgba(6, 182, 212, 0.3);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+#game-memory-section #memory-empty {
+  background: rgba(248, 250, 252, 0.7);
+  border-color: #cbd5e1;
+}
+
+#game-memory-section #memory-empty p {
+  color: #64748b;
+}
+
+/* DARK THEME */
+
+.dark #game-memory-section h2,
+.dark #game-memory-section h3 {
+  color: #f8fafc;
+}
+
+.dark #game-memory-section #memory-text {
+  color: #e2e8f0;
+}
+
+.dark #game-memory-section #memory-year {
+  color: #cbd5e1;
+  background: rgba(30, 41, 59, 0.7);
+  border-color: #475569;
+}
+
+.dark #game-memory-section #memory-year-text {
+  color: #e2e8f0;
+}
+
+.dark #game-memory-section #memory-image-display {
+  border-color: rgba(71, 85, 105, 0.8);
+  box-shadow: none;
+}
+
+.dark #game-memory-section #memory-empty {
+  background: rgba(15, 23, 42, 0.35);
+  border-color: #475569;
+}
+
+.dark #game-memory-section #memory-empty p {
+  color: #94a3b8;
+}
+
+/* ==========================================
+   MY GAME LINKS
+   Light / Dark Theme Support
+   ========================================== */
+
+/* LIGHT THEME */
+
+/* Section heading */
+#game-links-section h2 {
+  color: #0f172a;
+}
+
+/* Saved link cards */
+#game-links-list > div {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(6, 182, 212, 0.22);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#game-links-list > div:hover {
+  background: rgba(236, 254, 255, 0.75);
+  border-color: rgba(6, 182, 212, 0.45);
+  box-shadow: 0 4px 16px rgba(6, 182, 212, 0.08);
+}
+
+/* Link title */
+#game-links-list a {
+  color: #0284c7;
+}
+
+#game-links-list a:hover {
+  color: #0369a1;
+}
+
+/* Link URL */
+#game-links-list p {
+  color: #64748b;
+}
+
+/* Category badge only */
+#game-links-list .min-w-0 .flex > span {
+  color: #475569;
+  background: rgba(226, 232, 240, 0.9);
+}
+
+/* Edit / Delete buttons */
+#game-links-list button {
+  background: rgba(248, 250, 252, 0.8);
+}
+
+#game-links-list button[title="Edit link"] {
+  color: #0891b2;
+  border-color: rgba(8, 145, 178, 0.3);
+}
+
+#game-links-list button[title="Edit link"]:hover {
+  background: #ecfeff;
+  border-color: #06b6d4;
+}
+
+#game-links-list button[title="Delete link"] {
+  color: #dc2626;
+  border-color: rgba(220, 38, 38, 0.25);
+}
+
+#game-links-list button[title="Delete link"]:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
+/* Empty state */
+#game-links-empty {
+  color: #64748b;
+  border-color: #cbd5e1;
+  background: rgba(248, 250, 252, 0.7);
+}
+
+/* DARK THEME */
+
+.dark #game-links-section h2 {
+  color: #f8fafc;
+}
+
+.dark #game-links-list > div {
+  background: rgba(15, 23, 42, 0.65);
+  border-color: rgba(71, 85, 105, 0.5);
+  box-shadow: none;
+}
+
+.dark #game-links-list > div:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(34, 211, 238, 0.35);
+}
+
+.dark #game-links-list a {
+  color: #38bdf8;
+}
+
+.dark #game-links-list a:hover {
+  color: #7dd3fc;
+}
+
+.dark #game-links-list p {
+  color: #94a3b8;
+}
+
+/* Dark theme category badge only */
+.dark #game-links-list .min-w-0 .flex > span {
+  color: #cbd5e1;
+  background: rgba(71, 85, 105, 0.7);
+}
+
+.dark #game-links-list button {
+  background: rgba(30, 41, 59, 0.8);
+}
+
+.dark #game-links-list button[title="Edit link"] {
+  color: #22d3ee;
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+.dark #game-links-list button[title="Edit link"]:hover {
+  background: rgba(8, 145, 178, 0.15);
+  border-color: #06b6d4;
+}
+
+.dark #game-links-list button[title="Delete link"] {
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+.dark #game-links-list button[title="Delete link"]:hover {
+  background: rgba(220, 38, 38, 0.12);
+  border-color: #ef4444;
+}
+
+.dark #game-links-empty {
+  color: #94a3b8;
+  border-color: #475569;
+  background: rgba(15, 23, 42, 0.35);
+}
