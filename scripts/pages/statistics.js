@@ -46,7 +46,8 @@ function renderChart(containerId, entries) {
     header.append(name, value);
 
     const track = document.createElement("div");
-    track.className = "h-2 overflow-hidden rounded-full bg-slate-700/60";
+    track.className =
+      "stat-chart-track h-2 w-full overflow-hidden rounded-full";
 
     const bar = document.createElement("div");
     bar.className = "h-full rounded-full bg-pink-500";
