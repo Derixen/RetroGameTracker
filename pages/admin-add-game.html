@@ -31,13 +31,13 @@
       type="search"
       placeholder="Search for a game..."
       data-i18n-placeholder="admin_add_game.search_placeholder"
-      class="w-full min-w-0 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+      class="theme-input px-4 py-3"
     />
 
     <div class="flex gap-3">
       <select
         id="igdb-platform-filter"
-        class="min-w-0 flex-1 rounded-lg border border-slate-700 bg-slate-900 px-3 py-3 text-sm text-white outline-none focus:border-pink-500"
+        class="theme-select flex-1 py-3"
         aria-label="Filter IGDB results by platform"
         data-i18n-aria-label="admin_add_game.platform_filter_aria"
       >
@@ -71,12 +71,7 @@
     >
       Game Title *
     </label>
-    <input
-      id="game-title"
-      type="text"
-      required
-      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
-    />
+    <input id="game-title" type="text" required class="theme-input px-4 py-3" />
   </div>
 
   <div>
@@ -87,11 +82,7 @@
     >
       Platform *
     </label>
-    <select
-      id="game-platform"
-      required
-      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
-    >
+    <select id="game-platform" required class="theme-select px-4 py-3">
       <option value="" data-i18n="admin_add_game.select_platform">
         Select a platform
       </option>
@@ -106,10 +97,7 @@
     >
       Game Series
     </label>
-    <select
-      id="game-series"
-      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
-    >
+    <select id="game-series" class="theme-select px-4 py-3">
       <option value="" data-i18n="admin_add_game.no_series">No series</option>
     </select>
   </div>
@@ -128,7 +116,7 @@
         type="number"
         min="1970"
         max="2100"
-        class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+        class="theme-input px-4 py-3"
       />
     </div>
 
@@ -140,11 +128,7 @@
       >
         Genre
       </label>
-      <input
-        id="game-genre"
-        type="text"
-        class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
-      />
+      <input id="game-genre" type="text" class="theme-input px-4 py-3" />
     </div>
   </div>
 
@@ -156,11 +140,7 @@
     >
       Developer
     </label>
-    <input
-      id="game-developer"
-      type="text"
-      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
-    />
+    <input id="game-developer" type="text" class="theme-input px-4 py-3" />
   </div>
 
   <div>
@@ -171,16 +151,12 @@
     >
       Cover Image URL
     </label>
-    <input
-      id="game-cover"
-      type="url"
-      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
-    />
+    <input id="game-cover" type="url" class="theme-input px-4 py-3" />
 
     <div>
       <label
         for="game-cover-file"
-        class="mb-2 block text-sm font-medium text-slate-300"
+        class="mb-2 block text-sm font-medium"
         data-i18n="admin_add_game.upload_cover"
       >
         Upload Cover Image
@@ -190,7 +166,7 @@
         id="game-cover-file"
         type="file"
         accept="image/jpeg,image/png,image/webp"
-        class="block w-full cursor-pointer rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-300 file:mr-4 file:cursor-pointer file:rounded-lg file:border file:border-cyan-400/30 file:bg-[#1b3654] file:px-4 file:py-2 file:font-semibold file:text-cyan-100 hover:file:bg-[#244566]"
+        class="theme-input theme-file-input block cursor-pointer px-4 py-3"
       />
 
       <p
@@ -231,7 +207,7 @@
     <textarea
       id="game-description"
       rows="4"
-      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+      class="theme-input px-4 py-3"
     ></textarea>
   </div>
 
@@ -248,7 +224,7 @@
       id="game-music-url"
       type="url"
       placeholder="https://www.youtube.com/watch?v=..."
-      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+      class="theme-input px-4 py-3"
     />
 
     <button
@@ -280,7 +256,7 @@
       id="game-walkthrough-url"
       type="url"
       placeholder="https://www.youtube.com/watch?v=..."
-      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+      class="theme-input px-4 py-3"
     />
 
     <button
