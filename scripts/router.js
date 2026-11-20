@@ -22,6 +22,7 @@ import { initAdminUsers } from "./pages/adminUsers.js";
 import { t, translatePage } from "./i18n.js";
 import { initContact } from "./pages/contact.js";
 import { syncThemeControls } from "./theme.js";
+import { initPlatformDetails } from "./pages/platformDetails.js";
 
 const routes = {
   welcome: "welcome",
@@ -36,6 +37,7 @@ const routes = {
   collection: "collection",
   games: "games",
   platforms: "platforms",
+  platform: "platform-details",
   series: "series",
   developers: "developers",
   genres: "genres",
@@ -380,6 +382,9 @@ export async function navigate() {
 
     if (route === "platforms") {
       await initPlatforms();
+    }
+    if (route === "platform-details") {
+      await initPlatformDetails(params);
     }
 
     if (route === "series") {

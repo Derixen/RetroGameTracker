@@ -1,0 +1,368 @@
+<!-- Platform Details -->
+<div class="space-y-6">
+  <!-- Back to Platforms -->
+  <a
+    href="#/platforms"
+    class="btn-secondary inline-flex items-center gap-2 px-4 py-2 text-sm"
+  >
+    <i data-lucide="arrow-left" class="h-4 w-4"></i>
+    Back to Platforms
+  </a>
+
+  <!-- Loading / Error -->
+  <div id="platform-details-loading" class="py-12 text-center text-slate-400">
+    Loading platform...
+  </div>
+
+  <p id="platform-details-error" class="text-red-400" hidden></p>
+
+  <div id="platform-details-content" class="space-y-6" hidden>
+    <!-- ==========================================
+         PLATFORM INFORMATION
+         ========================================== -->
+    <section class="game-card static-card p-6">
+      <div class="grid gap-6 md:grid-cols-[220px_1fr]">
+        <!-- Platform Image -->
+        <div class="flex items-center justify-center">
+          <img
+            id="platform-detail-image"
+            class="max-h-56 w-full object-contain"
+            alt="Platform console"
+            hidden
+          />
+
+          <div id="platform-detail-placeholder" class="text-6xl">🎮</div>
+        </div>
+
+        <!-- Platform Information -->
+        <div>
+          <h1 id="platform-detail-name" class="text-3xl font-bold"></h1>
+
+          <p id="platform-detail-manufacturer" class="mt-2 text-pink-400"></p>
+
+          <div class="mt-6 grid gap-4 sm:grid-cols-2">
+            <div>
+              <p class="text-xs uppercase text-slate-400">Release Year</p>
+              <p id="platform-detail-year" class="font-semibold"></p>
+            </div>
+
+            <div>
+              <p class="text-xs uppercase text-slate-400">Manufacturer</p>
+              <p id="platform-detail-maker" class="font-semibold"></p>
+            </div>
+          </div>
+
+          <a
+            id="platform-detail-games"
+            href="#/games"
+            class="btn-secondary mt-6 inline-flex px-4 py-2 text-sm"
+          >
+            <i data-lucide="gamepad-2" class="mr-2 h-4 w-4"></i>
+            Browse Games
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         MY CONSOLE MODELS
+         ========================================== -->
+    <section class="game-card static-card p-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold">My Console Models</h2>
+
+          <p class="mt-1 text-sm text-slate-400">
+            Your personal hardware collection
+          </p>
+        </div>
+
+        <button
+          id="console-model-add"
+          type="button"
+          class="btn-primary inline-flex items-center gap-2 px-4 py-2"
+        >
+          <i data-lucide="plus" class="h-4 w-4"></i>
+          Add Console
+        </button>
+      </div>
+
+      <!-- Console Collection Statistics -->
+      <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div class="rounded-xl border border-slate-500/20 p-4">
+          <p id="console-stat-total" class="text-2xl font-bold">0</p>
+          <p class="mt-1 text-xs text-slate-400">Total Consoles</p>
+        </div>
+
+        <div class="rounded-xl border border-emerald-500/20 p-4">
+          <p
+            id="console-stat-owned"
+            class="text-2xl font-bold text-emerald-500"
+          >
+            0
+          </p>
+          <p class="mt-1 text-xs text-slate-400">Owned</p>
+        </div>
+
+        <div class="rounded-xl border border-amber-500/20 p-4">
+          <p
+            id="console-stat-wishlist"
+            class="text-2xl font-bold text-amber-500"
+          >
+            0
+          </p>
+          <p class="mt-1 text-xs text-slate-400">Wishlist</p>
+        </div>
+
+        <div class="rounded-xl border border-slate-500/20 p-4">
+          <p id="console-stat-previous" class="text-2xl font-bold">0</p>
+          <p class="mt-1 text-xs text-slate-400">Previously Owned</p>
+        </div>
+      </div>
+
+      <!-- User's Console Models -->
+      <div id="console-model-list" class="mt-6 space-y-4"></div>
+
+      <!-- Empty State -->
+      <div
+        id="console-model-empty"
+        class="mt-6 rounded-xl border border-dashed border-slate-600/40 p-8 text-center"
+        hidden
+      >
+        <i
+          data-lucide="gamepad-2"
+          class="mx-auto mb-3 h-10 w-10 text-cyan-400"
+        ></i>
+
+        <h3 class="text-lg font-semibold">No Console Models Yet</h3>
+
+        <p class="mt-2 text-sm text-slate-400">
+          Add your first console model to your personal collection.
+        </p>
+      </div>
+
+      <p id="console-model-error" class="mt-4 text-sm text-red-400" hidden></p>
+    </section>
+  </div>
+
+  <!-- ==========================================
+     MY GAMES
+     ========================================== -->
+  <section class="game-card static-card p-6">
+    <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <h2 class="text-2xl font-bold">
+          <i
+            data-lucide="gamepad-2"
+            class="mr-2 inline-block h-6 w-6 text-cyan-400"
+          ></i>
+          My Games
+        </h2>
+
+        <p class="mt-1 text-sm text-slate-400">
+          Games in your collection for this platform
+        </p>
+      </div>
+
+      <a
+        id="platform-games-browse"
+        href="#/games"
+        class="btn-secondary inline-flex items-center gap-2 px-4 py-2 text-sm"
+      >
+        <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        View All Games
+      </a>
+    </div>
+
+    <!-- Loading -->
+    <p
+      id="platform-games-loading"
+      class="py-8 text-center text-sm text-slate-400"
+    >
+      Loading games...
+    </p>
+
+    <!-- Game Cards -->
+    <div
+      id="platform-games-list"
+      class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+    ></div>
+
+    <!-- Empty State -->
+    <div
+      id="platform-games-empty"
+      class="rounded-xl border border-dashed border-slate-500/30 p-8 text-center"
+      hidden
+    >
+      <i
+        data-lucide="gamepad-2"
+        class="mx-auto mb-3 h-10 w-10 text-cyan-400"
+      ></i>
+
+      <h3 class="text-lg font-semibold">No Games Yet</h3>
+
+      <p class="mt-2 text-sm text-slate-400">
+        You haven't added any games for this platform yet.
+      </p>
+    </div>
+
+    <!-- Error -->
+    <p id="platform-games-error" class="mt-4 text-sm text-red-400" hidden></p>
+  </section>
+</div>
+<!-- ==========================================
+     ADD / EDIT CONSOLE MODEL DIALOG
+     ========================================== -->
+
+<dialog
+  id="console-model-dialog"
+  class="theme-game-dialog w-full max-w-lg rounded-xl p-6 shadow-2xl"
+>
+  <form id="console-model-form" class="space-y-4">
+    <!-- Dialog Title -->
+    <div>
+      <h2 id="console-model-dialog-title" class="text-xl font-bold">
+        Add Console Model
+      </h2>
+
+      <p class="mt-1 text-sm text-slate-400">
+        Add a console variant to your personal collection.
+      </p>
+    </div>
+
+    <!-- Model Name -->
+    <div>
+      <label for="console-model-name" class="mb-2 block text-sm">
+        Model Name *
+      </label>
+
+      <input
+        id="console-model-name"
+        type="text"
+        maxlength="120"
+        required
+        placeholder="e.g. PlayStation 3 FAT 60GB"
+        class="theme-input w-full px-3 py-2"
+      />
+    </div>
+
+    <!-- Model Number -->
+    <div>
+      <label for="console-model-number" class="mb-2 block text-sm">
+        Model Number (optional)
+      </label>
+
+      <input
+        id="console-model-number"
+        type="text"
+        maxlength="100"
+        placeholder="e.g. CECHC04"
+        class="theme-input w-full px-3 py-2"
+      />
+    </div>
+
+    <!-- Ownership and Condition -->
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label for="console-model-status" class="mb-2 block text-sm">
+          Ownership
+        </label>
+
+        <select id="console-model-status" class="theme-select w-full">
+          <option value="owned">Owned</option>
+          <option value="wishlist">Wishlist</option>
+          <option value="previously_owned">Previously Owned</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="console-model-condition" class="mb-2 block text-sm">
+          Condition
+        </label>
+
+        <select id="console-model-condition" class="theme-select w-full">
+          <option value="">Not specified</option>
+          <option value="New">New</option>
+          <option value="Excellent">Excellent</option>
+          <option value="Good">Good</option>
+          <option value="Fair">Fair</option>
+          <option value="For parts">For parts</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Image URL -->
+    <div>
+      <label for="console-model-image-url" class="mb-2 block text-sm">
+        Image URL (optional)
+      </label>
+
+      <input
+        id="console-model-image-url"
+        type="url"
+        placeholder="https://example.com/console.jpg"
+        class="theme-input w-full px-3 py-2"
+      />
+    </div>
+
+    <!-- Image Upload -->
+    <div>
+      <label for="console-model-image-file" class="mb-2 block text-sm">
+        Or Upload an Image
+      </label>
+
+      <input
+        id="console-model-image-file"
+        type="file"
+        accept="image/jpeg,image/png,image/webp"
+        class="theme-input w-full px-3 py-2"
+      />
+
+      <p class="mt-1 text-xs text-slate-400">
+        JPG, PNG or WebP. Maximum 5 MB. Choose either a URL or an uploaded
+        image.
+      </p>
+    </div>
+
+    <!-- Personal Notes -->
+    <div>
+      <label for="console-model-notes" class="mb-2 block text-sm">
+        Personal Notes (optional)
+      </label>
+
+      <textarea
+        id="console-model-notes"
+        rows="3"
+        placeholder="Modifications, repairs, memories..."
+        class="theme-input w-full px-3 py-2"
+      ></textarea>
+    </div>
+
+    <!-- Error Message -->
+    <p
+      id="console-model-form-error"
+      class="text-sm text-red-400"
+      role="alert"
+      hidden
+    ></p>
+
+    <!-- Dialog Buttons -->
+    <div class="flex justify-end gap-3 pt-2">
+      <button
+        id="console-model-cancel"
+        type="button"
+        class="btn-secondary px-4 py-2 text-sm"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="console-model-save"
+        type="submit"
+        class="btn-primary px-4 py-2 text-sm"
+      >
+        Save Console
+      </button>
+    </div>
+  </form>
+</dialog>
