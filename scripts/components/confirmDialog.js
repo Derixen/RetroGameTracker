@@ -16,19 +16,18 @@ export function confirmDialog({
       dialog = document.createElement("dialog");
 
       dialog.className =
-        "w-full max-w-sm rounded-xl border border-slate-700 " +
-        "bg-slate-900 p-6 text-white shadow-2xl backdrop:bg-black/70";
+        "confirm-dialog w-full max-w-sm rounded-xl p-6 shadow-2xl";
 
       dialog.innerHTML = `
-        <h2 class="mb-3 text-xl font-bold text-white"></h2>
+        <h2 class="mb-3 text-xl font-bold"></h2>
 
-        <p class="mb-6 whitespace-pre-line text-sm text-slate-400"></p>
+        <p class="mb-6 whitespace-pre-line text-sm"></p>
 
         <input
           type="password"
           data-password
           autocomplete="current-password"
-          class="mb-6 w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white outline-none focus:border-pink-500"
+          class="confirm-dialog-input mb-6 w-full rounded-lg px-4 py-3 text-sm outline-none"
           hidden
         />
 
@@ -36,13 +35,13 @@ export function confirmDialog({
           <button
             type="button"
             data-cancel
-            class="rounded-lg border border-slate-700 px-4 py-2 text-sm transition hover:bg-slate-800"
+            class="confirm-dialog-cancel rounded-lg border px-4 py-2 text-sm transition"
           ></button>
 
           <button
             type="button"
             data-confirm
-            class="rounded-lg bg-red-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-red-600"
+            class="rounded-lg px-4 py-2 text-sm font-semibold text-white transition disabled:cursor-not-allowed disabled:opacity-50"
           ></button>
         </div>
       `;
@@ -61,9 +60,7 @@ export function confirmDialog({
     passwordField.placeholder = t("confirm_dialog.password_placeholder");
 
     heading.textContent = title ?? t("confirm_dialog.default_title");
-
     description.textContent = message ?? t("confirm_dialog.default_message");
-
     cancelButton.textContent = cancelText ?? t("confirm_dialog.cancel");
 
     confirmButton.textContent = alertOnly

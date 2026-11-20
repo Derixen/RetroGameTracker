@@ -2905,3 +2905,158 @@ html {
 :root[data-theme="light"] .contact-page .contact-help {
   color: #64748b;
 }
+
+/* ==========================================
+   ADD PLATFORM FORM
+   ========================================== */
+
+/* Dark theme (default) */
+.platform-form label {
+  color: #cbd5e1;
+}
+
+.platform-form .platform-help,
+.platform-form .platform-cancel {
+  color: #94a3b8;
+}
+
+.platform-form .platform-cancel:hover {
+  color: #f8fafc;
+}
+
+/* Light theme */
+:root[data-theme="light"] .platform-form label {
+  color: #334155;
+}
+
+:root[data-theme="light"] .platform-form .platform-help,
+:root[data-theme="light"] .platform-form .platform-cancel {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .platform-form .platform-cancel:hover {
+  color: #0f172a;
+}
+
+/* File upload button */
+.platform-form input[type="file"]::file-selector-button {
+  background-color: #ec4899;
+  color: #ffffff;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.platform-form input[type="file"]::file-selector-button:hover {
+  background-color: #db2777;
+}
+
+/* ==========================================
+   RESET PASSWORD FORM
+   ========================================== */
+
+/* Dark theme */
+.reset-password-card label {
+  color: #cbd5e1;
+}
+
+.reset-password-card .reset-password-help {
+  color: #94a3b8;
+}
+
+/* Light theme */
+:root[data-theme="light"] .reset-password-card label {
+  color: #334155;
+}
+
+:root[data-theme="light"] .reset-password-card .reset-password-help {
+  color: #64748b;
+}
+
+/* ==========================================
+   SHARED CONFIRMATION DIALOG
+   ========================================== */
+
+/* Dark theme (default) */
+.confirm-dialog {
+  background-color: #0f172a;
+  color: #f8fafc;
+  border: 1px solid #334155;
+}
+
+.confirm-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.confirm-dialog h2 {
+  color: #f8fafc;
+}
+
+.confirm-dialog p {
+  color: #94a3b8;
+}
+
+.confirm-dialog .confirm-dialog-input {
+  background-color: #1e293b;
+  color: #f8fafc;
+  border: 1px solid #334155;
+}
+
+.confirm-dialog .confirm-dialog-input:focus {
+  border-color: #ec4899;
+}
+
+.confirm-dialog .confirm-dialog-input::placeholder {
+  color: #94a3b8;
+}
+
+.confirm-dialog .confirm-dialog-cancel {
+  color: #f8fafc;
+  border-color: #334155;
+  background-color: transparent;
+}
+
+.confirm-dialog .confirm-dialog-cancel:hover {
+  background-color: #1e293b;
+}
+
+/* Light theme */
+:root[data-theme="light"] .confirm-dialog {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+:root[data-theme="light"] .confirm-dialog h2 {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .confirm-dialog p {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .confirm-dialog .confirm-dialog-input {
+  background-color: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+:root[data-theme="light"] .confirm-dialog .confirm-dialog-input:focus {
+  border-color: #ec4899;
+}
+
+:root[data-theme="light"] .confirm-dialog .confirm-dialog-input::placeholder {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .confirm-dialog .confirm-dialog-cancel {
+  color: #334155;
+  border-color: #cbd5e1;
+  background-color: #ffffff;
+}
+
+:root[data-theme="light"] .confirm-dialog .confirm-dialog-cancel:hover {
+  background-color: #f1f5f9;
+}

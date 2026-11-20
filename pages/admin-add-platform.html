@@ -12,7 +12,7 @@
 
 <form
   id="add-platform-form"
-  class="game-card static-card max-w-2xl space-y-5 p-6"
+  class="game-card static-card platform-form max-w-2xl space-y-5 p-6"
 >
   <div>
     <label
@@ -26,7 +26,7 @@
       id="platform-name"
       type="text"
       required
-      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+      class="theme-input px-4 py-3"
     />
   </div>
 
@@ -41,7 +41,7 @@
     <input
       id="platform-manufacturer"
       type="text"
-      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+      class="theme-input px-4 py-3"
     />
   </div>
 
@@ -58,14 +58,14 @@
       type="number"
       min="1970"
       max="2100"
-      class="w-full rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-white outline-none focus:border-pink-500"
+      class="theme-input px-4 py-3"
     />
   </div>
 
   <div>
     <label
       for="platform-image-file"
-      class="mb-2 block text-sm font-medium text-slate-300"
+      class="mb-2 block text-sm font-medium"
       data-i18n="admin_add_platform.platform_image"
     >
       Platform Image
@@ -75,11 +75,11 @@
       id="platform-image-file"
       type="file"
       accept="image/jpeg,image/png,image/webp"
-      class="block w-full cursor-pointer rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-sm text-slate-300 file:mr-4 file:cursor-pointer file:rounded-lg file:border-0 file:bg-pink-500 file:px-4 file:py-2 file:font-semibold file:text-white"
+      class="theme-input block w-full cursor-pointer px-4 py-3 text-sm file:mr-4 file:cursor-pointer file:rounded-lg file:border-0 file:bg-pink-500 file:px-4 file:py-2 file:font-semibold file:text-white"
     />
 
     <p
-      class="mt-2 text-xs text-slate-500"
+      class="platform-help mt-2 text-xs"
       data-i18n="admin_add_platform.image_help"
     >
       JPG, PNG or WebP. Maximum file size: 5 MB.
@@ -110,7 +110,7 @@
     <button
       id="save-platform"
       type="submit"
-      class="rounded-lg bg-pink-500 px-6 py-3 font-semibold text-white transition hover:bg-pink-600"
+      class="btn-primary px-6 py-3 font-semibold"
       data-i18n="admin_add_platform.save_platform"
     >
       Save Platform
@@ -118,7 +118,7 @@
 
     <a
       href="#/admin/platforms"
-      class="text-sm text-slate-400 hover:text-white"
+      class="platform-cancel text-sm"
       data-i18n="admin_add_platform.cancel"
     >
       Cancel
