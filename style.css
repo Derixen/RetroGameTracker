@@ -3653,6 +3653,158 @@ html {
   border-top-color: #087f99;
 }
 
+/* ========================================
+   COLLECTION MANAGEMENT CARDS
+======================================== */
+
+.collection-management-card {
+  display: block;
+  padding: 24px;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  background: rgba(30, 41, 59, 0.5);
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.collection-management-card:hover {
+  border-color: #ec4899;
+}
+
+.collection-management-card h2 {
+  color: #ffffff;
+}
+
+.collection-management-card p {
+  color: #94a3b8;
+}
+
+/* Light theme */
+
+:root[data-theme="light"] .collection-management-card {
+  background: #ffffff;
+  border-color: #dce4ef;
+  box-shadow: 0 4px 16px rgba(30, 41, 59, 0.06);
+}
+
+:root[data-theme="light"] .collection-management-card:hover {
+  border-color: #087f99;
+  box-shadow: 0 8px 24px rgba(30, 41, 59, 0.1);
+}
+
+:root[data-theme="light"] .collection-management-card h2 {
+  color: #17243b;
+}
+
+:root[data-theme="light"] .collection-management-card p {
+  color: #64748b;
+}
+
+/* ========================================
+   LIGHT THEME - MANAGE PLATFORMS TABLE
+======================================== */
+
+/* Table headings */
+
+:root[data-theme="light"] #page-content table thead {
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+:root[data-theme="light"] #page-content table th {
+  color: #475569;
+}
+
+/* Sortable column headings */
+
+:root[data-theme="light"] #page-content table th:hover {
+  color: #087f99;
+}
+
+/* Table content */
+
+:root[data-theme="light"] #admin-platforms-list td {
+  color: #334155;
+}
+
+/* Row borders */
+
+:root[data-theme="light"] #admin-platforms-list tr {
+  border-color: #e2e8f0;
+}
+
+/* Row hover - override dark Tailwind background */
+
+:root[data-theme="light"] #admin-platforms-list tr:hover {
+  background: #edf5fa;
+}
+
+/* Platform names */
+
+:root[data-theme="light"] #admin-platforms-list td:first-child {
+  color: #17243b;
+  font-weight: 500;
+}
+
+/* Preserve action colors */
+
+:root[data-theme="light"] #admin-platforms-list button.text-pink-400 {
+  color: #db2777;
+}
+
+:root[data-theme="light"] #admin-platforms-list button.text-red-400 {
+  color: #dc2626;
+}
+
+/* ========================================
+   LIGHT THEME - USER MANAGEMENT
+======================================== */
+
+:root[data-theme="light"] #admin-users-table td {
+  color: #334155;
+}
+
+:root[data-theme="light"] #admin-users-table td:first-child {
+  color: #17243b;
+  font-weight: 500;
+}
+
+:root[data-theme="light"] #admin-users-table td:nth-child(2) {
+  color: #64748b;
+}
+
+:root[data-theme="light"] #admin-users-table tr {
+  border-color: #e2e8f0;
+}
+
+:root[data-theme="light"] #admin-users-table tr:hover {
+  background: #edf5fa;
+}
+
+/* Role badges */
+
+:root[data-theme="light"] #admin-users-table .bg-slate-700 {
+  background: #e2e8f0;
+  color: #334155;
+}
+
+:root[data-theme="light"] #admin-users-table .text-pink-400 {
+  color: #be185d;
+}
+
+/* Action buttons */
+
+:root[data-theme="light"] #admin-users-table button.text-cyan-400 {
+  color: #087f99;
+}
+
+:root[data-theme="light"] #admin-users-table button.text-red-400 {
+  color: #dc2626;
+}
+
 .file\:mr-3::file-selector-button {
   margin-right: 0.75rem;
 }
