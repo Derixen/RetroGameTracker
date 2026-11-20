@@ -21,6 +21,7 @@ import { initResetPassword } from "./pages/resetPassword.js";
 import { initAdminUsers } from "./pages/adminUsers.js";
 import { t, translatePage } from "./i18n.js";
 import { initContact } from "./pages/contact.js";
+import { syncThemeControls } from "./theme.js";
 
 const routes = {
   welcome: "welcome",
@@ -323,6 +324,7 @@ export async function navigate() {
     // Load the new page
     pageContent.classList.remove("page-ready");
     pageContent.innerHTML = html;
+    syncThemeControls();
     pageContent.style.visibility = "";
 
     const headingConfig = pageHeadings[route];

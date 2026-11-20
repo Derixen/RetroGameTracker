@@ -44,6 +44,44 @@
     </div>
   </section>
 
+  <!-- Appearance -->
+  <section class="game-card p-6">
+    <h2 class="mb-3 text-xl font-bold" data-i18n="profile.appearance_title">
+      Appearance
+    </h2>
+
+    <p
+      class="mb-5 text-sm text-slate-400"
+      data-i18n="profile.appearance_description"
+    >
+      Choose how Retro Game Tracker looks.
+    </p>
+
+    <div class="grid grid-cols-2 gap-4">
+      <label class="theme-option">
+        <input type="radio" name="profile-theme" value="dark" checked />
+
+        <span class="theme-option-content">
+          <span class="theme-option-icon">🌙</span>
+          <span class="theme-option-title" data-i18n="profile.theme_dark">
+            Dark
+          </span>
+        </span>
+      </label>
+
+      <label class="theme-option">
+        <input type="radio" name="profile-theme" value="light" />
+
+        <span class="theme-option-content">
+          <span class="theme-option-icon">☀️</span>
+          <span class="theme-option-title" data-i18n="profile.theme_light">
+            Light
+          </span>
+        </span>
+      </label>
+    </div>
+  </section>
+
   <!-- Security -->
   <section class="game-card p-6">
     <h2 class="mb-3 text-xl font-bold" data-i18n="profile.security_title">

@@ -1207,3 +1207,339 @@ html {
   background: #48283e;
   color: white;
 }
+
+/* ========================================
+   Profile - Appearance Theme Selector
+======================================== */
+
+.theme-option {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.theme-option input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.theme-option-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 115px;
+  padding: 20px;
+  background: #1b1b30;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.theme-option-icon {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.theme-option-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e7ebf7;
+}
+
+.theme-option:hover .theme-option-content {
+  border-color: rgba(36, 215, 230, 0.4);
+  background: #202e50;
+}
+
+.theme-option input:checked + .theme-option-content {
+  border-color: #24d7e6;
+  background: #20364b;
+  box-shadow: 0 0 15px rgba(36, 215, 230, 0.1);
+}
+
+.theme-option input:focus-visible + .theme-option-content {
+  outline: 2px solid #24d7e6;
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  .theme-option-content {
+    min-height: 95px;
+    padding: 15px;
+  }
+}
+
+/* ========================================
+   LIGHT THEME
+======================================== */
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f4f7fc;
+  --sidebar: #ffffff;
+  --panel: #ffffff;
+  --muted: #64748b;
+  --accent: #e73565;
+  --cyan: #087f99;
+}
+
+:root[data-theme="light"] body {
+  background: linear-gradient(160deg, #f8faff 0%, #f1f5fb 55%, #eaf0f8 100%);
+  color: #1e293b;
+}
+
+/* Sidebar and navigation */
+
+:root[data-theme="light"] .sidebar,
+:root[data-theme="light"] .mobile-header {
+  background: #ffffff;
+  border-color: #dce4ef;
+}
+
+:root[data-theme="light"] .brand-icon {
+  background: #f1f5fb;
+}
+
+:root[data-theme="light"] .nav-item {
+  color: #475569;
+}
+
+:root[data-theme="light"] .nav-item:hover {
+  background: #edf3fa;
+  color: #17243b;
+}
+
+:root[data-theme="light"] .nav-item.active {
+  background: #fce7ef;
+  color: #9d174d;
+}
+
+:root[data-theme="light"] .nav-icon,
+:root[data-theme="light"] .collection-icon {
+  color: #087f99;
+}
+
+:root[data-theme="light"] .sidebar-footer {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .language-select {
+  background: #f1f5fb;
+  color: #1e293b;
+}
+
+:root[data-theme="light"] .search-wrap,
+:root[data-theme="light"] .search-wrap input {
+  color: #1e293b;
+}
+
+/* Page headings */
+
+:root[data-theme="light"] .page-heading h1 {
+  color: #087f99;
+}
+
+:root[data-theme="light"] .eyebrow {
+  color: #c02660;
+}
+
+/* Game cards */
+
+:root[data-theme="light"] .game-card {
+  background: #ffffff;
+  border-color: #dce4ef;
+  color: #1e293b;
+  box-shadow: 0 4px 16px rgba(30, 41, 59, 0.06);
+}
+
+:root[data-theme="light"] .game-card:hover {
+  border-color: rgba(8, 127, 153, 0.4);
+  box-shadow: 0 8px 24px rgba(30, 41, 59, 0.1);
+}
+
+:root[data-theme="light"] .cover-area {
+  background: #e8eef7;
+}
+
+:root[data-theme="light"] .cover-placeholder {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .platform-badge {
+  background: #fce7ef;
+  color: #be185d;
+}
+
+/* Filters and controls */
+
+:root[data-theme="light"] .filter-pill,
+:root[data-theme="light"] #game-sort,
+:root[data-theme="light"] #game-view,
+:root[data-theme="light"] .sort-menu {
+  background: #ffffff;
+  color: #475569;
+  border-color: #dce4ef;
+}
+
+:root[data-theme="light"] .filter-pill:hover,
+:root[data-theme="light"] #game-view:hover {
+  color: #17243b;
+  border-color: #087f99;
+}
+
+:root[data-theme="light"] .filter-pill.selected {
+  background: #fce7ef;
+  color: #9d174d;
+  border-color: #f9a8c0;
+}
+
+:root[data-theme="light"] .sort-menu button {
+  color: #475569;
+}
+
+:root[data-theme="light"] .sort-menu button:hover {
+  background: #fce7ef;
+  color: #9d174d;
+}
+
+/* Buttons */
+
+:root[data-theme="light"] .btn-primary,
+:root[data-theme="light"] .add-game-btn {
+  background: linear-gradient(135deg, #087f99, #12647c);
+  color: #ffffff;
+}
+
+:root[data-theme="light"] .btn-secondary {
+  background: #edf5fa;
+  color: #12647c;
+  border-color: #b9dce6;
+}
+
+/* Profile theme selector */
+
+:root[data-theme="light"] .theme-option-content {
+  background: #f8faff;
+  border-color: #dce4ef;
+}
+
+:root[data-theme="light"] .theme-option-title {
+  color: #1e293b;
+}
+
+:root[data-theme="light"] .theme-option:hover .theme-option-content {
+  background: #edf3fa;
+}
+
+:root[data-theme="light"] .theme-option input:checked + .theme-option-content {
+  background: #e0f2f7;
+  border-color: #087f99;
+}
+
+/* Footer */
+
+:root[data-theme="light"] .site-footer {
+  background: #ffffff;
+  border-color: #dce4ef;
+  color: #64748b;
+}
+
+:root[data-theme="light"] .footer-column h3 {
+  color: #1e293b;
+}
+
+:root[data-theme="light"] .footer-column a,
+:root[data-theme="light"] .footer-version {
+  color: #475569;
+}
+
+:root[data-theme="light"] .footer-bottom {
+  border-color: #dce4ef;
+}
+
+/* Loading screen */
+
+:root[data-theme="light"] #app-loading-overlay {
+  background: #f4f7fc;
+}
+
+/* Scrollbar */
+
+:root[data-theme="light"] {
+  scrollbar-color: #b7c7d9 #f4f7fc;
+}
+
+:root[data-theme="light"] ::-webkit-scrollbar-track {
+  background: #f4f7fc;
+}
+
+:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: #b7c7d9;
+}
+
+/* ========================================
+   LIGHT THEME - GAME DETAILS
+======================================== */
+
+/* Main game information */
+:root[data-theme="light"] #game-details-content {
+  color: #1e293b;
+}
+
+/* Headings */
+:root[data-theme="light"] #detail-title,
+:root[data-theme="light"] #game-details-content h2,
+:root[data-theme="light"] #game-details-content h3,
+:root[data-theme="light"] #game-details-content .text-white {
+  color: #17243b;
+}
+
+/* Release year, genre, developer, series */
+:root[data-theme="light"] #detail-year,
+:root[data-theme="light"] #detail-genre,
+:root[data-theme="light"] #detail-developer,
+:root[data-theme="light"] #detail-series {
+  color: #334155;
+}
+
+/* Metadata labels */
+:root[data-theme="light"] #game-details-content .text-slate-500 {
+  color: #64748b;
+}
+
+/* Game description */
+:root[data-theme="light"] #detail-description {
+  color: #475569;
+}
+
+/* Secondary information */
+:root[data-theme="light"] #game-details-content .text-slate-400,
+:root[data-theme="light"] #game-details-content .text-slate-300 {
+  color: #64748b;
+}
+
+/* Preserve platform accent */
+:root[data-theme="light"] #detail-platform {
+  color: #db2777;
+}
+
+/* Status buttons */
+:root[data-theme="light"] #detail-favorite {
+  color: #be123c;
+}
+
+:root[data-theme="light"] #detail-in-progress {
+  color: #b45309;
+}
+
+:root[data-theme="light"] #detail-completed {
+  color: #15803d;
+}

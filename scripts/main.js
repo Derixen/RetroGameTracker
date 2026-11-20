@@ -1,6 +1,9 @@
 import { navigate } from "./router.js";
 import { initAuth } from "./auth.js";
 import { initI18n, t, getLanguage, setLanguage } from "./i18n.js";
+import { initTheme } from "./theme.js";
+
+initTheme();
 
 const sidebar = document.getElementById("sidebar");
 const overlay = document.getElementById("mobile-overlay");
