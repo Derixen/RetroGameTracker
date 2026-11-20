@@ -2787,3 +2787,83 @@ html {
 :root[data-theme="light"] .admin-table .admin-action-delete:hover {
   color: #b91c1c;
 }
+
+/* Game Details dialogs — dark theme */
+.theme-game-dialog {
+  background-color: #0f172a;
+  color: #f8fafc;
+  border: 1px solid #334155;
+}
+
+.theme-game-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.theme-game-dialog h2,
+.theme-game-dialog h3 {
+  color: #f8fafc;
+}
+
+.theme-game-dialog label {
+  color: #e2e8f0;
+}
+
+.theme-game-dialog p.text-slate-400 {
+  color: #94a3b8;
+}
+
+.theme-game-dialog input:not([type="checkbox"]),
+.theme-game-dialog select,
+.theme-game-dialog textarea {
+  background-color: #1e293b;
+  color: #f8fafc;
+  border: 1px solid #334155;
+}
+
+.theme-game-dialog input::placeholder,
+.theme-game-dialog textarea::placeholder {
+  color: #94a3b8;
+}
+
+.theme-game-dialog input[type="file"]::file-selector-button {
+  background-color: #334155;
+  color: #f8fafc;
+}
+
+/* Game Details dialogs — light theme */
+/* Assumes the existing theme switch uses html.light */
+:root[data-theme="light"] .theme-game-dialog {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+:root[data-theme="light"] .theme-game-dialog h2,
+:root[data-theme="light"] .theme-game-dialog h3,
+:root[data-theme="light"] .theme-game-dialog label {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .theme-game-dialog p.text-slate-400 {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .theme-game-dialog input:not([type="checkbox"]),
+:root[data-theme="light"] .theme-game-dialog select,
+:root[data-theme="light"] .theme-game-dialog textarea {
+  background-color: #f8fafc;
+  color: #0f172a;
+  border-color: #cbd5e1;
+}
+
+:root[data-theme="light"] .theme-game-dialog input::placeholder,
+:root[data-theme="light"] .theme-game-dialog textarea::placeholder {
+  color: #64748b;
+}
+
+:root[data-theme="light"]
+  .theme-game-dialog
+  input[type="file"]::file-selector-button {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
