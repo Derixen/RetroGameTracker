@@ -1,6 +1,7 @@
 import { initGames } from "./pages/games.js";
 import { initHome } from "./pages/home.js";
 import { initPlatforms } from "./pages/platforms.js";
+import { initPlatformDetails } from "./pages/platformDetails.js";
 import { initSeries } from "./pages/series.js";
 import { initDevelopers } from "./pages/developers.js";
 import { initGenres } from "./pages/genres.js";
@@ -36,6 +37,7 @@ const routes = {
   collection: "collection",
   games: "games",
   platforms: "platforms",
+  platform: "platform-details",
   series: "series",
   developers: "developers",
   genres: "genres",
@@ -380,6 +382,10 @@ export async function navigate() {
 
     if (route === "platforms") {
       await initPlatforms();
+    }
+
+    if (route === "platform-details") {
+      await initPlatformDetails(params);
     }
 
     if (route === "series") {

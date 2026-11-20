@@ -1,0 +1,42 @@
+<div class="mb-6"><a href="#/platforms" class="btn-secondary px-4 py-2 text-sm">← Back to Platforms</a></div>
+<div id="platform-details-loading" class="loading-indicator">Loading platform...</div>
+<p id="platform-details-error" class="text-red-400" hidden></p>
+<div id="platform-details-content" class="space-y-6" hidden>
+  <section class="game-card static-card p-6">
+    <div class="grid gap-6 md:grid-cols-[220px_1fr]">
+      <div class="flex items-center justify-center"><img id="platform-detail-image" class="max-h-56 w-full object-contain" alt="Platform console" hidden/><div id="platform-detail-placeholder" class="text-6xl">🎮</div></div>
+      <div>
+        <h1 id="platform-detail-name" class="text-3xl font-bold"></h1>
+        <p id="platform-detail-manufacturer" class="mt-2 text-pink-400"></p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div><p class="text-xs uppercase text-slate-400">Release Year</p><p id="platform-detail-year" class="font-semibold"></p></div>
+          <div><p class="text-xs uppercase text-slate-400">Manufacturer</p><p id="platform-detail-maker" class="font-semibold"></p></div>
+        </div>
+        <a id="platform-detail-games" class="btn-secondary mt-6 px-4 py-2 text-sm" href="#/games">Browse Games</a>
+      </div>
+    </div>
+  </section>
+  <section class="game-card static-card p-6">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div><h2 class="text-2xl font-bold">My Console Models</h2><p class="mt-1 text-sm text-slate-400">Your private hardware collection</p></div>
+      <button id="console-model-add" type="button" class="btn-primary px-4 py-2">+ Add Console</button>
+    </div>
+    <div id="console-model-list" class="mt-5 space-y-4"></div>
+    <p id="console-model-empty" class="mt-6 text-sm text-slate-400" hidden>No console models added yet.</p>
+    <p id="console-model-error" class="mt-4 text-sm text-red-400" hidden></p>
+  </section>
+</div>
+<dialog id="console-model-dialog" class="theme-game-dialog w-full max-w-lg rounded-xl p-6">
+  <form id="console-model-form" class="space-y-4">
+    <h2 id="console-model-dialog-title" class="text-xl font-bold">Add Console Model</h2>
+    <div><label for="console-model-name" class="mb-2 block text-sm">Model Name *</label><input id="console-model-name" class="theme-input w-full px-3 py-2" maxlength="120" required placeholder="PS3 FAT 60GB"/></div>
+    <div><label for="console-model-number" class="mb-2 block text-sm">Model Number</label><input id="console-model-number" class="theme-input w-full px-3 py-2" maxlength="100" placeholder="CECHC04"/></div>
+    <div><label for="console-model-condition" class="mb-2 block text-sm">Condition</label><select id="console-model-condition" class="theme-select w-full"><option value="">Not specified</option><option>New</option><option>Excellent</option><option>Good</option><option>Fair</option><option>For parts</option></select></div>
+    <div><label for="console-model-status" class="mb-2 block text-sm">Ownership</label><select id="console-model-status" class="theme-select w-full"><option value="owned">Owned</option><option value="wishlist">Wishlist</option><option value="previously_owned">Previously Owned</option></select></div>
+    <div><label for="console-model-image-url" class="mb-2 block text-sm">Image URL (optional)</label><input id="console-model-image-url" class="theme-input w-full px-3 py-2" type="url" placeholder="https://..."/></div>
+    <div><label for="console-model-image-file" class="mb-2 block text-sm">Or upload an image (JPG, PNG, WebP; max 5 MB)</label><input id="console-model-image-file" type="file" accept="image/jpeg,image/png,image/webp" class="theme-input w-full px-3 py-2"/></div>
+    <div><label for="console-model-notes" class="mb-2 block text-sm">Personal Notes</label><textarea id="console-model-notes" class="theme-input w-full px-3 py-2" rows="3"></textarea></div>
+    <p id="console-model-form-error" class="text-sm text-red-400" role="alert" hidden></p>
+    <div class="flex justify-end gap-3"><button id="console-model-cancel" type="button" class="btn-secondary px-4 py-2">Cancel</button><button id="console-model-save" type="submit" class="btn-primary px-4 py-2">Save Console</button></div>
+  </form>
+</dialog>
