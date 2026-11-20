@@ -2867,3 +2867,41 @@ html {
   background-color: #e2e8f0;
   color: #0f172a;
 }
+
+/* ==========================================
+   CONTACT & SUPPORT
+   ========================================== */
+
+/* Dark theme (default) */
+.contact-page h2 {
+  color: #f8fafc;
+}
+
+.contact-page .contact-description {
+  color: #94a3b8;
+}
+
+.contact-page .contact-label {
+  color: #cbd5e1;
+}
+
+.contact-page .contact-help {
+  color: #94a3b8;
+}
+
+/* Light theme */
+:root[data-theme="light"] .contact-page h2 {
+  color: #17243b;
+}
+
+:root[data-theme="light"] .contact-page .contact-description {
+  color: #475569;
+}
+
+:root[data-theme="light"] .contact-page .contact-label {
+  color: #334155;
+}
+
+:root[data-theme="light"] .contact-page .contact-help {
+  color: #64748b;
+}

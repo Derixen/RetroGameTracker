@@ -1,14 +1,18 @@
-<section class="game-card static-card p-6">
-  <h2 class="text-xl font-bold text-white" data-i18n="contact.title">
-    Contact & Support
-  </h2>
+<section class="game-card static-card contact-page p-6">
+  <h2 class="text-xl font-bold" data-i18n="contact.title">Contact & Support</h2>
 
-  <p class="mt-4 text-sm leading-7 text-slate-400" data-i18n="contact.question">
+  <p
+    class="mt-4 text-sm leading-7 contact-description"
+    data-i18n="contact.question"
+  >
     Have a question, suggestion, or encountered a problem while using RetroTrack
     Games?
   </p>
 
-  <p class="mt-4 text-sm leading-7 text-slate-400" data-i18n="contact.feedback">
+  <p
+    class="mt-4 text-sm leading-7 contact-description"
+    data-i18n="contact.feedback"
+  >
     Feel free to get in touch. Feedback is especially valuable during the beta
     phase.
   </p>
@@ -17,7 +21,7 @@
     <div>
       <label
         for="contact-type"
-        class="mb-2 block text-sm font-medium text-slate-300"
+        class="contact-label mb-2 block text-sm font-medium"
         data-i18n="contact.form.type_label"
       >
         Message Type
@@ -27,7 +31,7 @@
         id="contact-type"
         name="type"
         required
-        class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white outline-none focus:border-pink-500"
+        class="theme-select px-4 py-3"
       >
         <option value="general" data-i18n="contact.form.type_general">
           General Question
@@ -45,7 +49,7 @@
       <div>
         <label
           for="contact-name"
-          class="mb-2 block text-sm font-medium text-slate-300"
+          class="contact-label mb-2 block text-sm font-medium"
           data-i18n="contact.form.name_label"
         >
           Your Name
@@ -59,14 +63,14 @@
           autocomplete="name"
           placeholder="Your name (optional)"
           data-i18n-placeholder="contact.form.name_placeholder"
-          class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white outline-none focus:border-pink-500"
+          class="theme-input px-4 py-3"
         />
       </div>
 
       <div>
         <label
           for="contact-email"
-          class="mb-2 block text-sm font-medium text-slate-300"
+          class="contact-label mb-2 block text-sm font-medium"
           data-i18n="contact.form.email_label"
         >
           Email Address
@@ -81,7 +85,7 @@
           autocomplete="email"
           placeholder="you@example.com"
           data-i18n-placeholder="contact.form.email_placeholder"
-          class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white outline-none focus:border-pink-500"
+          class="theme-input px-4 py-3"
         />
       </div>
     </div>
@@ -89,7 +93,7 @@
     <div>
       <label
         for="contact-subject"
-        class="mb-2 block text-sm font-medium text-slate-300"
+        class="contact-label mb-2 block text-sm font-medium"
         data-i18n="contact.form.subject_label"
       >
         Subject
@@ -103,14 +107,14 @@
         maxlength="150"
         placeholder="How can we help?"
         data-i18n-placeholder="contact.form.subject_placeholder"
-        class="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm text-white outline-none focus:border-pink-500"
+        class="theme-input px-4 py-3"
       />
     </div>
 
     <div>
       <label
         for="contact-message"
-        class="mb-2 block text-sm font-medium text-slate-300"
+        class="contact-label mb-2 block text-sm font-medium"
         data-i18n="contact.form.message_label"
       >
         Message
@@ -125,11 +129,11 @@
         maxlength="5000"
         placeholder="Write your message here..."
         data-i18n-placeholder="contact.form.message_placeholder"
-        class="w-full resize-y rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-sm leading-7 text-white outline-none focus:border-pink-500"
+        class="theme-input resize-y px-4 py-3 leading-7"
       ></textarea>
 
       <p
-        class="mt-2 text-xs text-slate-500"
+        class="contact-help mt-2 text-xs"
         data-i18n="contact.form.message_help"
       >
         Please provide as much detail as possible.
@@ -141,7 +145,7 @@
       <div id="contact-turnstile" class="min-h-[65px]"></div>
 
       <p
-        class="text-xs text-slate-500"
+        class="contact-help text-xs"
         data-i18n="contact.form.verification_help"
       >
         Please complete the security verification before sending.
@@ -157,7 +161,7 @@
     ></div>
 
     <div class="flex flex-wrap items-center justify-between gap-4">
-      <p class="text-xs text-slate-500" data-i18n="contact.form.privacy_notice">
+      <p class="contact-help text-xs" data-i18n="contact.form.privacy_notice">
         Your information will only be used to respond to your message.
       </p>
 
@@ -169,7 +173,7 @@
         class="btn-primary inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
       >
         <i data-lucide="send" class="h-4 w-4"></i>
-        <span data-i18n="contact.form.submit"> Send Message </span>
+        <span data-i18n="contact.form.submit">Send Message</span>
       </button>
     </div>
   </form>
