@@ -133,7 +133,7 @@
           id="detail-favorite"
           type="button"
           disabled
-          class="rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition hover:border-red-400/60 disabled:cursor-default"
+          class="game-status-favorite rounded-lg border border-slate-700 px-5 py-3 text-sm font-semibold text-slate-400 transition hover:border-red-400/60 disabled:cursor-default"
         >
           ♡ <span data-i18n="game_details.game.favorite">Favorite</span>
         </button>
@@ -566,6 +566,8 @@
 </dialog>
 
 <!-- Add Completion Dialog -->
+
+<!-- Add Completion Dialog -->
 <dialog
   id="completion-dialog"
   class="theme-game-dialog w-full max-w-md rounded-xl p-6 shadow-2xl"
@@ -587,6 +589,7 @@
       </p>
     </div>
 
+    <!-- Completion Year -->
     <div>
       <label
         for="completion-year"
@@ -605,6 +608,7 @@
       />
     </div>
 
+    <!-- Completion Month / Day -->
     <div class="grid grid-cols-2 gap-4">
       <div>
         <label
@@ -649,6 +653,7 @@
           </option>
         </select>
       </div>
+
       <div>
         <label
           for="completion-day"
@@ -667,6 +672,88 @@
       </div>
     </div>
 
+    <!-- Completion Time -->
+    <div>
+      <div class="mb-3 flex items-center gap-2">
+        <i data-lucide="timer" class="h-4 w-4 text-cyan-400"></i>
+        <span
+          class="text-sm font-semibold"
+          data-i18n="game_details.history.completion_time_optional"
+        >
+          Completion Time (optional)
+        </span>
+      </div>
+
+      <div class="grid grid-cols-3 gap-3">
+        <div>
+          <label
+            for="completion-hours"
+            class="mb-2 block text-xs text-slate-400"
+            data-i18n="game_details.history.hours"
+          >
+            Hours
+          </label>
+          <input
+            id="completion-hours"
+            type="number"
+            min="0"
+            step="1"
+            placeholder="0"
+            inputmode="numeric"
+            class="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-center text-white outline-none transition focus:border-cyan-500"
+          />
+        </div>
+
+        <div>
+          <label
+            for="completion-minutes"
+            class="mb-2 block text-xs text-slate-400"
+            data-i18n="game_details.history.minutes"
+          >
+            Minutes
+          </label>
+          <input
+            id="completion-minutes"
+            type="number"
+            min="0"
+            max="59"
+            step="1"
+            placeholder="00"
+            inputmode="numeric"
+            class="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-center text-white outline-none transition focus:border-cyan-500"
+          />
+        </div>
+
+        <div>
+          <label
+            for="completion-seconds"
+            class="mb-2 block text-xs text-slate-400"
+            data-i18n="game_details.history.seconds"
+          >
+            Seconds
+          </label>
+          <input
+            id="completion-seconds"
+            type="number"
+            min="0"
+            max="59"
+            step="1"
+            placeholder="00"
+            inputmode="numeric"
+            class="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-center text-white outline-none transition focus:border-cyan-500"
+          />
+        </div>
+      </div>
+
+      <p
+        class="mt-2 text-xs text-slate-500"
+        data-i18n="game_details.history.completion_time_hint"
+      >
+        Leave all fields empty if you don't remember your completion time.
+      </p>
+    </div>
+
+    <!-- Personal Memory -->
     <div>
       <label
         for="completion-notes"
@@ -684,8 +771,14 @@
       ></textarea>
     </div>
 
-    <p id="completion-form-error" class="text-sm text-red-400" hidden></p>
+    <p
+      id="completion-form-error"
+      class="text-sm text-red-400"
+      role="alert"
+      hidden
+    ></p>
 
+    <!-- Dialog Buttons -->
     <div class="flex justify-end gap-3">
       <button
         id="completion-cancel"

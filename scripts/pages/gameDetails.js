@@ -20,7 +20,6 @@ import {
   addGameAchievement,
   deleteGameAchievement,
 } from "../api/achievements.js";
-
 import {
   getGameLinks,
   addGameLink,
@@ -28,13 +27,22 @@ import {
   deleteGameLink,
 } from "../api/gameLinks.js";
 
+function formatCompletionTime(totalSeconds) {
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+
+  return `${hours}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
+}
+
 export async function initGameDetails(params = new URLSearchParams()) {
   showLoadingOverlay();
+
   const loading = document.getElementById("game-details-loading");
   loading.hidden = true;
+
   const content = document.getElementById("game-details-content");
   const errorMessage = document.getElementById("game-details-error");
-
   const gameId = params.get("id");
 
   let editingCompletionId = null;
@@ -48,7 +56,6 @@ export async function initGameDetails(params = new URLSearchParams()) {
   }
 
   const backLink = document.getElementById("back-to-games");
-
   const returnUrl = sessionStorage.getItem("gameDetailsReturnUrl");
 
   if (returnUrl?.startsWith("#/games")) {
@@ -60,23 +67,23 @@ export async function initGameDetails(params = new URLSearchParams()) {
       .from("games")
       .select(
         `
-                id,
-                user_id,
-                title,
-                music_url,
-                walkthrough_url,
-                release_year,
-                genre,
-                developer,
-                cover_url,
-                description,
-                series_id,
-                platforms (name),
-                series (name),
-                favorite,
-                in_progress,
-                completed
-            `,
+        id,
+        user_id,
+        title,
+        music_url,
+        walkthrough_url,
+        release_year,
+        genre,
+        developer,
+        cover_url,
+        description,
+        series_id,
+        platforms (name),
+        series (name),
+        favorite,
+        in_progress,
+        completed
+      `,
       )
       .eq("id", gameId)
       .single();
@@ -114,6 +121,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
     const canManageGame = user !== null && game.user_id === user.id;
 
+    // ==========================================
+    // GAME COMPLETION HISTORY
+    // ==========================================
+
     const completionDialogTitle = document.getElementById(
       "completion-dialog-title",
     );
@@ -121,6 +132,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
     const addCompletionButton = document.getElementById(
       "history-add-completion",
     );
+
     const completionDialog = document.getElementById("completion-dialog");
     const completionForm = document.getElementById("completion-form");
     const completionCancel = document.getElementById("completion-cancel");
@@ -128,21 +140,14 @@ export async function initGameDetails(params = new URLSearchParams()) {
     const completionSave = document.getElementById("completion-save");
 
     if (canManageGame) {
-      document
-        .getElementById("history-add-completion")
-        .classList.remove("hidden");
-
-      // Add Completion dialog
+      addCompletionButton.classList.remove("hidden");
 
       addCompletionButton.addEventListener("click", () => {
         editingCompletionId = null;
-
         completionForm.reset();
         completionError.hidden = true;
-
         completionDialogTitle.textContent = "Add Completion";
         completionSave.textContent = "Save Completion";
-
         completionDialog.showModal();
       });
 
@@ -154,6 +159,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
         event.preventDefault();
 
         const year = Number(document.getElementById("completion-year").value);
+
         const monthValue = document.getElementById("completion-month").value;
         const dayValue = document.getElementById("completion-day").value;
         const notes = document.getElementById("completion-notes").value.trim();
@@ -162,6 +168,46 @@ export async function initGameDetails(params = new URLSearchParams()) {
         const day = dayValue ? Number(dayValue) : null;
 
         completionError.hidden = true;
+
+        // Optional completion time
+        const hoursValue = document.getElementById("completion-hours").value;
+        const minutesValue =
+          document.getElementById("completion-minutes").value;
+        const secondsValue =
+          document.getElementById("completion-seconds").value;
+
+        const hasCompletionTime =
+          hoursValue !== "" || minutesValue !== "" || secondsValue !== "";
+
+        const hours = Number(hoursValue || 0);
+        const minutes = Number(minutesValue || 0);
+        const seconds = Number(secondsValue || 0);
+
+        if (
+          [hours, minutes, seconds].some(
+            (value) => !Number.isSafeInteger(value) || value < 0,
+          ) ||
+          minutes > 59 ||
+          seconds > 59
+        ) {
+          completionError.textContent = "Please enter a valid completion time.";
+          completionError.hidden = false;
+          return;
+        }
+
+        const completionTimeSeconds = hasCompletionTime
+          ? hours * 3600 + minutes * 60 + seconds
+          : null;
+
+        if (
+          completionTimeSeconds !== null &&
+          (!Number.isSafeInteger(completionTimeSeconds) ||
+            completionTimeSeconds > 2147483647)
+        ) {
+          completionError.textContent = "Completion time is too large.";
+          completionError.hidden = false;
+          return;
+        }
 
         if (day !== null && month === null) {
           completionError.textContent = "Select a month when entering a day.";
@@ -193,6 +239,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
             completed_month: month,
             completed_day: day,
             notes: notes || null,
+            completion_time_seconds: completionTimeSeconds,
           };
 
           if (editingCompletionId !== null) {
@@ -203,7 +250,6 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
           completionDialog.close();
 
-          // Reload the details page to display the new completion
           window.dispatchEvent(new HashChangeEvent("hashchange"));
         } catch (error) {
           console.error("Failed to save completion:", error);
@@ -218,6 +264,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
         }
       });
     }
+
+    // ==========================================
+    // GAME MANAGEMENT
+    // ==========================================
 
     if (canManageGame) {
       // Show Edit Game button
@@ -253,6 +303,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
               .select("id");
 
             if (error) throw error;
+
             if (!data?.length) {
               throw new Error("Game was not deleted. Check your permissions.");
             }
@@ -271,12 +322,13 @@ export async function initGameDetails(params = new URLSearchParams()) {
           }
         });
       }
+
+      // Enable status buttons
       favoriteButton.disabled = false;
       completedButton.disabled = false;
-
       progressButton.disabled = false;
-      progressButton.classList.add("cursor-pointer");
 
+      progressButton.classList.add("cursor-pointer");
       favoriteButton.classList.add("cursor-pointer");
       completedButton.classList.add("cursor-pointer");
 
@@ -289,18 +341,22 @@ export async function initGameDetails(params = new URLSearchParams()) {
           .single();
 
         if (error) throw error;
+
         return data;
       }
 
+      // Favorite
       favoriteButton.addEventListener("click", async () => {
         favoriteButton.disabled = true;
 
         try {
           await saveStatus({ favorite: !favorite });
+
           favorite = !favorite;
           updateButtons();
         } catch (error) {
           console.error("Failed to update favorite:", error);
+
           await confirmDialog({
             title: "Failed to Update",
             message: "Failed to update favorite.",
@@ -311,6 +367,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
         }
       });
 
+      // Completed
       completedButton.addEventListener("click", async () => {
         completedButton.disabled = true;
         progressButton.disabled = true;
@@ -332,6 +389,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           updateButtons();
         } catch (error) {
           console.error("Failed to update completed:", error);
+
           await confirmDialog({
             title: "Failed to Update",
             message: "Failed to update completed.",
@@ -343,6 +401,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
         }
       });
 
+      // In Progress
       progressButton.addEventListener("click", async () => {
         completedButton.disabled = true;
         progressButton.disabled = true;
@@ -364,6 +423,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           updateButtons();
         } catch (error) {
           console.error("Failed to update progress:", error);
+
           await confirmDialog({
             title: "Failed to Update",
             message: "Failed to update progress.",
@@ -376,7 +436,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
       });
     }
 
-    // Game Soundtrack
+    // ==========================================
+    // GAME SOUNDTRACK
+    // ==========================================
+
     const soundtrackSection = document.getElementById(
       "game-soundtrack-section",
     );
@@ -404,6 +467,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           const iframe = document.createElement("iframe");
 
           iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
+
           iframe.title = `${game.title} Soundtrack`;
           iframe.className = "aspect-video w-full";
           iframe.allow = "autoplay; encrypted-media; picture-in-picture";
@@ -418,7 +482,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
       }
     }
 
-    // Game Walkthrough
+    // ==========================================
+    // GAME WALKTHROUGH
+    // ==========================================
+
     const walkthroughSection = document.getElementById(
       "game-walkthrough-section",
     );
@@ -437,6 +504,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           )
         ) {
           const playlistId = url.searchParams.get("list");
+
           const videoId =
             url.searchParams.get("v") ||
             url.pathname.match(/^\/(?:embed|shorts)\/([^/]+)/)?.[1];
@@ -456,6 +524,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
         if (embedUrl) {
           const iframe = document.createElement("iframe");
+
           iframe.src = embedUrl;
           iframe.title = `${game.title} Walkthrough`;
           iframe.className = "aspect-video w-full";
@@ -471,7 +540,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
       }
     }
 
-    // Game information
+    // ==========================================
+    // GAME INFORMATION
+    // ==========================================
+
     document.getElementById("detail-title").textContent = game.title;
 
     document.getElementById("detail-platform").textContent =
@@ -492,7 +564,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
     document.getElementById("detail-description").textContent =
       game.description || "No description available.";
 
-    // Cover image
+    // ==========================================
+    // COVER IMAGE
+    // ==========================================
+
     const cover = document.getElementById("detail-cover");
     const placeholder = document.getElementById("detail-cover-placeholder");
 
@@ -524,7 +599,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
       showPlaceholder();
     }
 
-    // My Achievements
+    // ==========================================
+    // MY ACHIEVEMENTS
+    // ==========================================
+
     const achievementLoading = document.getElementById("achievements-loading");
     const achievementEmpty = document.getElementById("achievements-empty");
     const achievementBadges = document.getElementById("achievements-badges");
@@ -588,12 +666,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
         icon.setAttribute("data-lucide", achievement.icon);
         icon.className = "h-9 w-9";
 
-        // Lucide icon is the default fallback.
         iconCircle.append(icon);
 
         // Automatically look for a custom badge image.
         const badgeImage = document.createElement("img");
-
         badgeImage.src = `images/badges/${achievement.id}.png`;
         badgeImage.alt = "";
         badgeImage.className =
@@ -609,7 +685,6 @@ export async function initGameDetails(params = new URLSearchParams()) {
         });
 
         badgeImage.addEventListener("error", () => {
-          // Keep the Lucide fallback visible.
           badgeImage.remove();
         });
 
@@ -678,6 +753,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
             }
           });
         }
+
         achievementBadges.append(badge);
       }
 
@@ -719,7 +795,6 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
         if (!achievementId) return;
 
-        // Only allow achievements from our universal library.
         if (!ACHIEVEMENTS.some((item) => item.id === achievementId)) {
           return;
         }
@@ -750,7 +825,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
       });
     }
 
-    // Load My Gaming History
+    // ==========================================
+    // GAME COMPLETION HISTORY
+    // ==========================================
+
     const historyLoading = document.getElementById("history-loading");
     const historyEmpty = document.getElementById("history-empty");
     const historyTimeline = document.getElementById("history-timeline");
@@ -759,12 +837,15 @@ export async function initGameDetails(params = new URLSearchParams()) {
       const completions = await getGameCompletions(game.id);
 
       historyLoading.hidden = true;
+      historyTimeline.replaceChildren();
 
       document.getElementById("history-total").textContent = completions.length;
 
       if (completions.length === 0) {
         historyEmpty.hidden = false;
       } else {
+        historyEmpty.hidden = true;
+
         const years = completions.map((item) => item.completed_year);
 
         document.getElementById("history-first").textContent = Math.min(
@@ -775,15 +856,33 @@ export async function initGameDetails(params = new URLSearchParams()) {
           ...years,
         );
 
+        // Find the fastest recorded completion time.
+        // Untimed completions are excluded.
+        const timedCompletions = completions.filter(
+          (item) => item.completion_time_seconds != null,
+        );
+
+        const personalBest = timedCompletions.length
+          ? Math.min(
+              ...timedCompletions.map((item) => item.completion_time_seconds),
+            )
+          : null;
+
         for (const completion of completions) {
           const entry = document.createElement("div");
+
           entry.className =
-            "flex gap-4 rounded-lg border border-slate-700/50 bg-slate-900/30 p-4";
+            "flex gap-4 rounded-lg border border-slate-700/50 " +
+            "bg-slate-900/30 p-4";
 
           const icon = document.createElement("span");
           icon.className = "text-xl";
           icon.textContent = "🏆";
 
+          const details = document.createElement("div");
+          details.className = "min-w-0 flex-1";
+
+          // Completion date
           const date = document.createElement("p");
           date.className = "font-semibold text-white";
 
@@ -798,12 +897,39 @@ export async function initGameDetails(params = new URLSearchParams()) {
           ].filter(Boolean);
 
           date.textContent = parts.join("-");
-
           details.append(date);
 
+          // Completion time
+          if (completion.completion_time_seconds != null) {
+            const time = document.createElement("p");
+            time.className = "completion-time mt-1 text-sm";
+
+            time.textContent = `Completion Time: ${formatCompletionTime(
+              completion.completion_time_seconds,
+            )}`;
+
+            details.append(time);
+
+            // Personal Best
+            if (completion.completion_time_seconds === personalBest) {
+              const badge = document.createElement("span");
+
+              badge.className =
+                "completion-personal-best mt-1 inline-flex " +
+                "text-xs font-semibold";
+
+              badge.textContent = "🏆 Personal Best";
+
+              details.append(badge);
+            }
+          }
+
+          // Personal memory / notes for this completion
           if (completion.notes) {
             const notes = document.createElement("p");
+
             notes.className = "mt-2 whitespace-pre-line text-sm text-slate-400";
+
             notes.textContent = completion.notes;
             details.append(notes);
           }
@@ -811,6 +937,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           entry.append(icon, details);
 
           if (canManageGame) {
+            // Edit completion
             const editButton = document.createElement("button");
 
             editButton.type = "button";
@@ -819,9 +946,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
             editButton.setAttribute("aria-label", "Edit completion");
 
             editButton.className =
-              "self-start rounded-lg border border-slate-700 px-3 py-2 " +
-              "text-slate-400 transition hover:border-pink-500 " +
-              "hover:text-pink-400";
+              "self-start rounded-lg border border-slate-700 " +
+              "px-3 py-2 text-slate-400 transition " +
+              "hover:border-pink-500 hover:text-pink-400";
 
             editButton.addEventListener("click", () => {
               editingCompletionId = completion.id;
@@ -838,6 +965,20 @@ export async function initGameDetails(params = new URLSearchParams()) {
               document.getElementById("completion-notes").value =
                 completion.notes ?? "";
 
+              // Restore recorded completion time when editing.
+              const totalSeconds = completion.completion_time_seconds;
+
+              document.getElementById("completion-hours").value =
+                totalSeconds == null ? "" : Math.floor(totalSeconds / 3600);
+
+              document.getElementById("completion-minutes").value =
+                totalSeconds == null
+                  ? ""
+                  : Math.floor((totalSeconds % 3600) / 60);
+
+              document.getElementById("completion-seconds").value =
+                totalSeconds == null ? "" : totalSeconds % 60;
+
               completionError.hidden = true;
               completionDialogTitle.textContent = "Edit Completion";
               completionSave.textContent = "Update Completion";
@@ -847,6 +988,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
             entry.append(editButton);
 
+            // Delete completion
             const deleteButton = document.createElement("button");
 
             deleteButton.type = "button";
@@ -855,14 +997,16 @@ export async function initGameDetails(params = new URLSearchParams()) {
             deleteButton.setAttribute("aria-label", "Delete completion");
 
             deleteButton.className =
-              "self-start rounded-lg border border-slate-700 px-3 py-2 " +
-              "text-slate-400 transition hover:border-red-500 " +
-              "hover:text-red-400";
+              "self-start rounded-lg border border-slate-700 " +
+              "px-3 py-2 text-slate-400 transition " +
+              "hover:border-red-500 hover:text-red-400";
 
             deleteButton.addEventListener("click", async () => {
               const confirmed = await confirmDialog({
                 title: "Delete Completion?",
-                message: `Are you sure you want to delete the completion from ${completion.completed_year}?`,
+                message:
+                  `Are you sure you want to delete the completion ` +
+                  `from ${completion.completed_year}?`,
                 confirmText: "Delete Completion",
               });
 
@@ -877,11 +1021,13 @@ export async function initGameDetails(params = new URLSearchParams()) {
                 window.dispatchEvent(new HashChangeEvent("hashchange"));
               } catch (error) {
                 console.error("Failed to delete completion:", error);
+
                 await confirmDialog({
                   title: "Failed to Delete",
                   message: "Failed to delete completion.",
                   alertOnly: true,
                 });
+
                 deleteButton.disabled = false;
               }
             });
@@ -893,11 +1039,15 @@ export async function initGameDetails(params = new URLSearchParams()) {
         }
       }
     } catch (historyError) {
-      console.error("Failed to load gaming history:", historyError);
+      console.error("Failed to load completion history:", historyError);
 
       historyLoading.textContent = "Unable to load completion history.";
     }
-    // Personal Memory
+
+    // ==========================================
+    // PERSONAL MEMORY
+    // ==========================================
+
     const memoryLoading = document.getElementById("memory-loading");
     const memoryEmpty = document.getElementById("memory-empty");
     const memoryContent = document.getElementById("memory-content");
@@ -930,11 +1080,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
       memoryDelete.hidden = !currentMemory || !canManageGame;
       memoryEmpty.hidden = Boolean(currentMemory);
       memoryContent.hidden = !currentMemory;
-
       memoryAdd.hidden = !canManageGame || Boolean(currentMemory);
       memoryEdit.hidden = !currentMemory || !canManageGame;
 
-      // Reset the image before displaying a memory.
       memoryImageContainer.hidden = true;
       memoryImageDisplay.removeAttribute("src");
 
@@ -984,12 +1132,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
         memoryInput.value = currentMemory?.memory ?? "";
         memoryPlayedYear.value = currentMemory?.played_year ?? "";
 
-        // Only offer removal when an image already exists.
         memoryRemoveImageContainer.hidden = !currentMemory?.image_path;
 
-        // Always start with the checkbox unchecked.
         memoryRemoveImage.checked = false;
-
         memoryDialog.showModal();
       }
 
@@ -1013,10 +1158,12 @@ export async function initGameDetails(params = new URLSearchParams()) {
           memoryError.hidden = false;
           return;
         }
+
         const imageFile = document.getElementById("memory-image").files[0];
 
         if (imageFile) {
           const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+
           const maxSize = 5 * 1024 * 1024;
 
           if (!allowedTypes.includes(imageFile.type)) {
@@ -1032,12 +1179,14 @@ export async function initGameDetails(params = new URLSearchParams()) {
             return;
           }
         }
+
         memorySave.disabled = true;
         memorySave.textContent = "Saving...";
         memoryError.hidden = true;
 
         try {
           const previousImagePath = currentMemory?.image_path ?? null;
+
           const removeExistingImage = memoryRemoveImage.checked;
 
           // undefined = preserve existing image
@@ -1058,7 +1207,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
               imagePath,
             );
           } catch (error) {
-            // Avoid leaving an unused image if saving the memory fails.
+            // Clean up an uploaded image if saving fails.
             if (imagePath) {
               try {
                 await supabase.storage
@@ -1093,6 +1242,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           memoryDialog.close();
         } catch (error) {
           console.error("Failed to save personal memory:", error);
+
           memoryError.textContent = error.message;
           memoryError.hidden = false;
         } finally {
@@ -1119,13 +1269,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
         try {
           const imagePath = currentMemory.image_path;
 
-          // Delete the database record first.
           await deleteGameMemory(currentMemory.id);
 
           currentMemory = null;
           await renderMemory();
 
-          // Remove the associated image from Storage.
           if (imagePath) {
             const { error: cleanupError } = await supabase.storage
               .from("memory-images")
@@ -1152,7 +1300,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
       });
     }
 
-    // My Game Links
+    // ==========================================
+    // MY GAME LINKS
+    // ==========================================
+
     const gameLinksLoading = document.getElementById("game-links-loading");
     const gameLinksEmpty = document.getElementById("game-links-empty");
     const gameLinksList = document.getElementById("game-links-list");
@@ -1162,7 +1313,6 @@ export async function initGameDetails(params = new URLSearchParams()) {
     let currentGameLinks = [];
     let editingGameLinkId = null;
 
-    // Only the game's owner can add links.
     gameLinksAdd.hidden = !canManageGame;
 
     function renderGameLinks() {
@@ -1170,22 +1320,23 @@ export async function initGameDetails(params = new URLSearchParams()) {
       gameLinksList.replaceChildren();
 
       gameLinksEmpty.hidden = currentGameLinks.length > 0;
+
       gameLinksList.hidden = currentGameLinks.length === 0;
 
       for (const link of currentGameLinks) {
         const item = document.createElement("div");
+
         item.className =
           "flex flex-wrap items-center justify-between gap-3 " +
-          "rounded-lg border border-slate-700/50 bg-slate-800/40 p-4";
-
-        const details = document.createElement("div");
-        details.className = "min-w-0 flex-1";
+          "rounded-lg border border-slate-700/50 " +
+          "bg-slate-800/40 p-4";
 
         const anchor = document.createElement("a");
         anchor.href = link.url;
         anchor.target = "_blank";
         anchor.rel = "noopener noreferrer";
         anchor.textContent = link.name;
+
         anchor.className =
           "break-words font-semibold text-sky-400 " +
           "transition hover:text-sky-300 hover:underline";
@@ -1200,11 +1351,12 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
         if (link.category) {
           const category = document.createElement("span");
+
           category.className =
             "rounded-full bg-slate-700/60 px-3 py-1 " +
             "text-xs font-medium text-slate-300";
-          category.textContent = link.category;
 
+          category.textContent = link.category;
           titleRow.append(category);
         }
 
@@ -1219,10 +1371,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
           const actions = document.createElement("div");
           actions.className = "flex shrink-0 items-center gap-2";
 
-          // Edit button
+          // Edit link
           const editButton = document.createElement("button");
           editButton.type = "button";
           editButton.title = "Edit link";
+
           editButton.className =
             "inline-flex items-center gap-2 rounded-lg " +
             "border border-cyan-500/30 px-3 py-2 text-sm " +
@@ -1240,7 +1393,6 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
           editButton.addEventListener("click", () => {
             editingGameLinkId = link.id;
-
             gameLinkForm.reset();
 
             gameLinkName.value = link.name;
@@ -1254,10 +1406,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
             gameLinkDialog.showModal();
           });
 
-          // Delete button
+          // Delete link
           const deleteButton = document.createElement("button");
           deleteButton.type = "button";
           deleteButton.title = "Delete link";
+
           deleteButton.className =
             "inline-flex items-center gap-2 rounded-lg " +
             "border border-red-500/30 px-3 py-2 text-sm " +
@@ -1276,7 +1429,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
           deleteButton.addEventListener("click", async () => {
             const confirmed = await confirmDialog({
               title: "Delete Game Link?",
-              message: `Are you sure you want to permanently delete "${link.name}"?`,
+              message:
+                `Are you sure you want to permanently ` +
+                `delete "${link.name}"?`,
               confirmText: "Delete Link",
             });
 
@@ -1308,8 +1463,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
           actions.append(editButton, deleteButton);
           item.append(actions);
         }
+
         gameLinksList.append(item);
       }
+
       window.lucide?.createIcons();
     }
 
@@ -1321,17 +1478,20 @@ export async function initGameDetails(params = new URLSearchParams()) {
       renderGameLinks();
     } catch (error) {
       console.error("Failed to load game links:", error);
+
       gameLinksLoading.hidden = true;
       gameLinksError.textContent = "Unable to load game links.";
       gameLinksError.hidden = false;
     }
 
-    // Add Game Link
+    // ==========================================
+    // ADD / EDIT GAME LINKS
+    // ==========================================
+
     const gameLinkDialog = document.getElementById("game-link-dialog");
     const gameLinkForm = document.getElementById("game-link-form");
     const gameLinkCancel = document.getElementById("game-link-cancel");
     const gameLinkSave = document.getElementById("game-link-save");
-
     const gameLinkName = document.getElementById("game-link-name");
     const gameLinkUrl = document.getElementById("game-link-url");
     const gameLinkCategory = document.getElementById("game-link-category");
@@ -1392,17 +1552,22 @@ export async function initGameDetails(params = new URLSearchParams()) {
           renderGameLinks();
           gameLinkDialog.close();
         } catch (error) {
-          console.error("Failed to add game link:", error);
+          console.error("Failed to save game link:", error);
+
           alert(error.message || "Failed to save game link.");
         } finally {
           gameLinkSave.disabled = false;
+
           gameLinkSave.textContent =
             editingGameLinkId !== null ? "Update Link" : "Save Link";
         }
       });
     }
 
-    // Load other games from the same series
+    // ==========================================
+    // RELATED GAMES
+    // ==========================================
+
     if (game.series_id !== null) {
       const { data: relatedGames, error: relatedError } = await supabase
         .from("games")
@@ -1416,7 +1581,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
             developer,
             cover_url,
             platforms (name)
-        `,
+          `,
         )
         .eq("series_id", game.series_id)
         .neq("id", game.id)
@@ -1436,6 +1601,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
         section.hidden = false;
       }
     }
+
+    // ==========================================
+    // FINISH LOADING
+    // ==========================================
 
     loading.hidden = true;
     content.hidden = false;

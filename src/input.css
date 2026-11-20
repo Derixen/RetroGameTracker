@@ -1,941 +1,577 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   color-scheme: dark;
-
   --bg: #0e0e22;
-
   --sidebar: #1b1b30;
-
   --panel: #192441;
-
   --muted: #9ba1b5;
-
   --accent: #ff456c;
-
   --cyan: #24d7e6;
 }
-
 * {
   box-sizing: border-box;
 }
-
 body {
   font-family: Inter, sans-serif;
-
   background: linear-gradient(160deg, #0e0e22 0%, #10162c 45%, #151b35 100%);
-
   background-attachment: fixed;
 }
-
 button,
 input,
 select {
   font: inherit;
 }
-
 button {
   cursor: pointer;
 }
-
 /* Add Game button */
-
 .add-game-btn {
   display: inline-flex;
-
   height: 36px;
-
   margin-bottom: 0;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 8px;
-
   padding: 0 16px;
-
   border-radius: 9999px;
-
   border: 1px solid rgba(36, 215, 230, 0.3);
-
   background: linear-gradient(135deg, #244566 0%, #1b3654 55%, #172b47 100%);
-
   color: #d5faff;
-
   font-size: 14px;
-
   font-weight: 600;
-
   text-decoration: none;
-
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-
   transition:
     padding 0.2s ease,
     height 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease;
-
   transform-origin: center center;
-
   will-change: transform;
-
   backface-visibility: hidden;
 }
-
 .add-game-btn:hover {
   border-color: rgba(36, 215, 230, 0.6);
-
   box-shadow:
     0 5px 16px rgba(0, 0, 0, 0.25),
     0 0 12px rgba(36, 215, 230, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
-
 .add-game-btn:active {
   transform: scale(0.97);
 }
-
 /* App shell and sidebar */
-
 .app-shell {
   min-height: 100vh;
-
   display: flex;
 }
-
 .sidebar {
   position: fixed;
-
   inset: 0 auto 0 0;
-
   width: 252px;
-
   height: 100dvh;
-
   display: flex;
-
   flex-direction: column;
-
   overflow-y: auto;
-
   overscroll-behavior: contain;
-
   scrollbar-width: none;
-
   -ms-overflow-style: none;
-
   background: var(--sidebar);
-
   z-index: 40;
-
   border-right: 1px solid #ffffff08;
 }
-
 .brand {
   text-align: center;
-
   padding: 24px 15px 25px;
-
   border-bottom: 1px solid #ffffff09;
 }
-
 .brand-icon {
   width: 48px;
-
   height: 48px;
-
   border-radius: 11px;
-
   margin: 0 auto 10px;
-
   display: grid;
-
   place-items: center;
-
   background: #0e0e22;
-
   border: 1px solid #fb47694d;
-
   font-size: 25px;
-
   box-shadow: 0 0 24px #fa476329;
 }
-
 .brand-title {
   font-family: "Space Grotesk", sans-serif;
-
   font-size: 21px;
-
   font-weight: 800;
-
   letter-spacing: 1.2px;
-
   color: #ff557b;
-
   line-height: 1.1;
 }
-
 .brand-title span {
   color: #23d5e5;
 }
-
 .brand-subtitle {
   font-size: 10px;
-
   font-weight: 800;
-
   letter-spacing: 4px;
-
   color: #23d5e5;
-
   margin-top: 4px;
 }
-
 .brand p {
   font-size: 12px;
-
   line-height: 1.5;
-
   color: var(--muted);
-
   margin-top: 13px;
 }
-
 .sidebar-controls {
   padding: 16px 12px 18px;
-
   border-bottom: 1px solid #ffffff08;
 }
-
 .language-select {
   width: 100%;
-
   border: 0;
-
   border-radius: 9px;
-
   background: #172444;
-
   color: #e7ebf7;
-
   padding: 11px 12px;
-
   font-size: 13px;
-
   outline: none;
 }
-
 .search-wrap {
   display: flex;
-
   align-items: center;
-
   gap: 11px;
-
   margin-top: 15px;
-
   padding: 11px 12px;
-
   color: #8b92ab;
 }
-
 .search-wrap svg {
   width: 17px;
-
   height: 17px;
-
   fill: none;
-
   stroke: currentColor;
-
   stroke-width: 1.7;
-
   flex-shrink: 0;
 }
-
 .search-wrap input {
   min-width: 0;
-
   width: 100%;
-
   border: 0;
-
   background: transparent;
-
   outline: none;
-
   color: white;
-
   font-size: 13px;
 }
-
 .search-wrap input::placeholder {
   color: #7e849d;
 }
-
 .nav-list {
   display: flex;
-
   flex-direction: column;
-
   gap: 4px;
-
   padding: 16px 12px;
 }
-
 .nav-item {
   display: flex;
-
   align-items: center;
-
   gap: 14px;
-
   width: 100%;
-
   text-align: left;
-
   padding: 14px 16px;
-
   color: #a0a5b9;
-
   font-size: 14px;
-
   border-radius: 9px;
-
   border-left: 4px solid transparent;
-
   transition:
     background 0.2s,
     color 0.2s;
 }
-
 .nav-item:hover {
   background: #ffffff0a;
-
   color: #fff;
 }
-
 .nav-item.active {
   background: #48283e;
-
   color: #ffffff;
-
   border-left-color: var(--accent);
-
   border-right: 4px solid var(--accent);
 }
-
 .nav-icon {
   width: 20px;
-
   height: 20px;
-
   min-width: 20px;
-
   flex-shrink: 0;
-
   stroke-width: 1.8;
-
   transition: color 0.2s ease;
-
   color: #38b9d2;
 }
-
 .nav-item:hover .nav-icon {
   color: #ffffff;
 }
-
 /* Apply identical alignment to account and admin links */
-
 .sidebar a[id^="auth-"],
 .sidebar button[id^="auth-"] {
   display: flex;
-
   align-items: center;
-
   gap: 14px;
-
   width: 100%;
 }
-
 /* Preserve visibility controlled by auth.js */
-
 .sidebar [hidden] {
   display: none !important;
 }
-
 .sidebar-footer {
   margin-top: auto;
-
   padding: 17px 18px;
-
   font-size: 10px;
-
   color: #777f99;
-
   letter-spacing: 1px;
-
   display: flex;
-
   justify-content: space-between;
 }
-
 /* Main content and headings */
-
 .main-area {
   position: relative;
-
   display: flex;
-
   flex-direction: column;
-
   margin-left: 252px;
-
   width: calc(100% - 252px);
-
   min-height: 100dvh;
 }
-
 .content {
   width: 100%;
-
   max-width: none;
-
   margin: 0;
-
   padding: 44px 52px 90px;
 }
-
 .page-heading {
   display: flex;
-
   justify-content: flex-start;
-
   align-items: flex-start;
-
   margin-bottom: 24px;
 }
-
 .page-heading-content {
   display: flex;
-
   flex-direction: column;
-
   align-items: flex-start;
-
   width: fit-content;
-
   max-width: 100%;
-
   gap: 8px;
 }
-
 .eyebrow {
   font-size: 10px;
-
   font-weight: 800;
-
   letter-spacing: 2.5px;
-
   color: #fd5a9c;
-
   margin-bottom: 8px;
 }
-
 .page-heading .eyebrow {
   margin: 0 0 8px;
 }
-
 .page-heading h1 {
   font-family: "Space Grotesk", sans-serif;
-
   font-size: clamp(26px, 3vw, 34px);
-
   font-weight: 700;
-
   letter-spacing: 1.2px;
-
   line-height: 1.2;
-
   margin: 0;
-
   color: #38b9d2;
 }
-
 .page-heading p:not(.eyebrow) {
   color: var(--muted);
-
   font-size: 14px;
-
   margin-top: 8px;
 }
-
 .page-heading .page-subtitle {
   color: var(--muted);
-
   font-size: 14px;
-
   margin: 10px 0 0;
 }
-
 .count-chip {
   border: 1px solid #ffffff1b;
-
   border-radius: 999px;
-
   background: #ffffff08;
-
   padding: 10px 15px;
-
   color: #aab3c9;
-
   font-size: 11px;
-
   letter-spacing: 1px;
-
   white-space: nowrap;
 }
-
 .page-heading .count-chip {
   display: inline-flex;
-
   align-items: center;
-
   align-self: flex-start;
-
   width: fit-content;
-
   max-width: 100%;
-
   margin-top: 16px;
-
   font-weight: 400;
 }
-
 /* Games page: left-aligned title, subtitle and count */
-
 #page-content .page-heading:has(#page-title) {
   justify-content: flex-start;
-
   align-items: flex-start;
-
   text-align: left;
 }
-
 #page-content .page-heading:has(#page-title) > div {
   margin: 0;
-
   width: 100%;
-
   text-align: left;
 }
-
 /* Filters */
-
 .filter-bar {
   display: flex;
-
   flex-wrap: wrap;
-
   gap: 9px;
-
   margin-top: -8px;
-
   margin-bottom: 25px;
 }
-
 .filter-pill {
   background: #1b1b30;
-
   border: 1px solid #ffffff12;
-
   color: #aeb4c9;
-
   border-radius: 7px;
-
   padding: 9px 15px;
-
   font-size: 12px;
-
   transition: 0.2s;
 }
-
 .filter-pill:hover {
   color: #fff;
-
   border-color: #ffffff35;
 }
-
 .filter-pill.selected {
   color: white;
-
   background: #48283e;
-
   border-color: #ff456c66;
 }
-
 #game-view {
   background: #1b1b30;
-
   border: 1px solid #ffffff12;
-
   color: #aeb4c9;
-
   border-radius: 7px;
-
   padding: 9px 15px;
-
   font-size: 12px;
-
   transition: 0.2s;
-
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 8px;
-
   cursor: pointer;
 }
-
 #game-view:hover {
   border-color: rgba(36, 215, 230, 0.35);
-
   color: #ffffff;
 }
-
 #game-view svg {
   width: 15px;
-
   height: 15px;
-
   color: #24d7e6;
-
   vertical-align: middle;
 }
-
 #game-view span {
   line-height: 15px;
 }
-
 #game-view svg,
 #game-view span {
   display: block;
-
   flex-shrink: 0;
 }
-
 #game-view,
 #game-view svg {
   color: #aeb4c9;
 }
-
 #game-view:focus,
 #game-view:active {
   border-color: #ffffff12;
-
   outline: none;
-
   box-shadow: none;
 }
-
 #game-view:focus,
 #game-view:focus-visible,
 #game-view:active {
   border-color: #ffffff12;
-
   outline: none;
-
   box-shadow: none;
 }
-
 /* Game cards */
-
 .game-grid {
   display: grid;
-
   grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-
   gap: 19px;
 }
-
 .game-card {
   background: linear-gradient(145deg, #202e50 0%, #192441 55%, #151d35 100%);
-
   border: 1px solid rgba(100, 160, 255, 0.12);
-
   border-radius: 12px;
-
   overflow: hidden;
-
   box-shadow:
     0 4px 16px rgba(0, 0, 0, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
-
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
     border-color 0.25s ease;
 }
-
 .game-card:hover {
   transform: translateY(-3px);
-
   border-color: rgba(36, 215, 230, 0.35);
-
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.3),
     0 0 18px rgba(36, 215, 230, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
-
 /* Compact game grid */
-
 #game-grid.small-view {
   grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
-
   gap: 12px;
 }
-
 #game-grid.small-view .card-info {
   padding: 9px;
 }
-
 #game-grid.small-view .card-info h3 {
   font-size: 11px;
 }
-
 #game-grid.small-view .card-info p {
   font-size: 10px;
 }
-
 #game-grid.small-view .platform-badge,
 #game-grid.small-view .year-badge {
   font-size: 9px;
-
   padding: 3px 6px;
 }
-
 .cover-area {
   position: relative;
-
   aspect-ratio: 3 / 4;
-
   background: linear-gradient(145deg, #302842, #131a30);
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 }
-
 .cover-area img {
   width: 100%;
-
   height: 100%;
-
   object-fit: cover;
 }
-
 .cover-placeholder {
   display: grid;
-
   gap: 10px;
-
   justify-items: center;
-
   color: #8c94af;
 }
-
 .cover-placeholder span {
   font-size: 40px;
 }
-
 .cover-placeholder small {
   font-size: 11px;
-
   letter-spacing: 1px;
 }
-
 .platform-badge,
 .year-badge {
   position: absolute;
-
   top: 10px;
-
   border-radius: 99px;
-
   padding: 4px 9px;
-
   font-size: 10px;
-
   font-weight: 700;
 }
-
 .platform-badge {
   left: 9px;
-
   background: #5a2a49;
-
   color: #ff6488;
 }
-
 .year-badge {
   right: 9px;
-
   background: #0c0d18d9;
-
   color: #e4e7ef;
 }
-
 .card-info {
   padding: 13px 12px;
 }
-
 .card-info h3 {
   font-size: 13px;
-
   font-weight: 700;
-
   white-space: nowrap;
-
   overflow: hidden;
-
   text-overflow: ellipsis;
 }
-
 .card-info p {
   font-size: 11px;
-
   color: var(--muted);
-
   margin-top: 7px;
 }
-
 /* Empty states */
-
 .empty-state {
   text-align: center;
-
   padding: 85px 20px;
-
   border: 1px dashed #ffffff21;
-
   border-radius: 12px;
-
   background: #ffffff04;
 }
-
 .empty-icon {
   font-size: 45px;
-
   margin-bottom: 15px;
 }
-
 .empty-state h2 {
   font-family: "Space Grotesk", sans-serif;
-
   font-size: 21px;
-
   font-weight: 700;
 }
-
 .empty-state p {
   color: var(--muted);
-
   font-size: 13px;
-
   margin: 10px auto 0;
-
   max-width: 380px;
-
   line-height: 1.7;
 }
-
 /* Related games: compact cards */
-
 #related-games-list {
   grid-template-columns: repeat(auto-fill, minmax(175px, 215px));
-
   align-items: start;
 }
-
 #related-games-list .game-card {
   width: 100%;
-
   height: auto;
 }
-
 #related-games-list .cover-area {
   width: 100%;
-
   height: 220px;
-
   min-height: 0;
-
   flex: none;
 }
-
 #related-games-list .card-info {
   height: auto;
 }
-
 #related-games-list .cover-placeholder {
   width: 100%;
-
   height: 100%;
-
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   justify-content: center;
 }
-
 /* Static admin tables and game details panels */
-
 #page-content .game-card:has(table):hover,
 #game-details-content .game-card:hover {
   transform: none;
 }
-
 /* Active Game Details status buttons */
-
 #detail-favorite.text-red-500 {
   color: #ef4444;
-
   border-color: #ef4444;
 }
-
 #detail-in-progress.text-amber-400 {
   color: #fbbf24;
-
   border-color: #fbbf24;
 }
-
 #detail-completed.text-green-400 {
   color: #4ade80;
-
   border-color: #4ade80;
 }
-
 /* Hidden elements */
-
 .mobile-header {
   display: none;
 }
-
 .mobile-overlay[hidden],
 .game-grid[hidden],
 .filter-bar[hidden],
@@ -948,1570 +584,1011 @@ button {
 #auth-admin[hidden] {
   display: none;
 }
-
 /* Responsive layout */
-
 @media (max-width: 850px) {
   .sidebar {
     transform: translateX(-100%);
-
     transition: transform 0.25s;
   }
-
   .sidebar.open {
     transform: translateX(0);
   }
-
   .main-area {
     width: 100%;
-
     margin-left: 0;
   }
-
   .mobile-header {
     display: flex;
-
     align-items: center;
-
     gap: 16px;
-
     padding: 16px 20px;
-
     background: var(--sidebar);
-
     border-bottom: 1px solid #ffffff12;
   }
-
   .mobile-header button {
     font-size: 24px;
   }
-
   .mobile-header strong {
     font-family: "Space Grotesk", sans-serif;
-
     font-size: 15px;
-
     letter-spacing: 0.5px;
   }
-
   .mobile-header strong span {
     color: var(--accent);
   }
-
   .mobile-overlay:not([hidden]) {
     display: block;
-
     position: fixed;
-
     inset: 0;
-
     z-index: 30;
-
     background: #0009;
   }
-
   .content {
     padding: 30px 22px 70px;
   }
 }
-
 @media (max-width: 480px) {
   .game-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
     gap: 11px;
   }
-
   .content {
     padding: 26px 13px 50px;
   }
-
   .page-heading h1 {
     font-size: 25px;
   }
-
   .count-chip {
     font-size: 9px;
-
     padding: 8px;
   }
-
   .card-info {
     padding: 10px;
   }
 }
-
 /* Page navigation transitions */
-
 #page-content {
   opacity: 1;
-
   transition: opacity 0.2s ease-in-out;
 }
-
 #page-content.page-fading {
   opacity: 0;
 }
-
 @media (prefers-reduced-motion: reduce) {
   #page-content {
     transition: none;
   }
 }
-
 /* Disable hover animations for static cards */
-
 .game-card.static-card:hover {
   transform: none;
-
   box-shadow: none;
 }
-
 [hidden] {
   display: none !important;
 }
-
 /* Game sorting and view options */
-
 #game-sort,
 #game-view {
   height: 36px;
-
   box-sizing: border-box;
-
   background-color: var(--sidebar);
-
   color: #e7ebf7;
-
   border: 1px solid #ffffff20;
-
   border-radius: 7px;
-
   padding: 9px 12px;
-
   font-size: 12px;
-
   cursor: pointer;
-
   outline: none;
 }
-
 #game-search {
   height: 36px;
-
   box-sizing: border-box;
 }
-
 #game-sort:hover,
 #game-view:hover {
   border-color: #ffffff50;
 }
-
 #game-sort:focus,
 #game-view:focus {
   border-color: var(--accent);
 }
-
 #game-sort option,
 #game-view option {
   background-color: var(--sidebar);
-
   color: #e7ebf7;
 }
-
 /* Full-width layout for Welcome and Login */
-
 .app-shell.public-layout .sidebar {
   display: none;
 }
-
 .app-shell.public-layout .main-area {
   margin-left: 0;
-
   width: 100%;
 }
-
 .app-shell.public-layout .mobile-header {
   display: none;
 }
-
 .app-shell.public-layout .content {
   width: 100%;
-
   max-width: none;
 }
-
 .page-heading-content .count-chip {
   margin: 0;
 }
-
 .collection-icon {
   width: 24px;
-
   height: 24px;
-
   flex-shrink: 0;
-
   color: #38b9d2;
-
   stroke-width: 1.8;
 }
-
 @media (max-width: 767px) {
   .sidebar {
     height: 100dvh;
-
     overflow-y: auto;
-
     overscroll-behavior: contain;
-
     -webkit-overflow-scrolling: touch;
   }
 }
-
 .sidebar::-webkit-scrollbar {
   display: none;
 }
-
 .main-area > .content {
   flex: 1;
-
   min-height: 0;
 }
-
 .site-footer {
   display: block;
-
   padding: 30px 32px 18px;
-
   background: #0e0e22;
-
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-
   color: #9ba1b5;
-
   font-size: 12px;
 }
-
 .footer-columns {
   display: grid;
-
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
   gap: 32px;
-
   padding-bottom: 16px;
 }
-
 .footer-column {
   display: flex;
-
   flex-direction: column;
-
   align-items: flex-start;
-
   gap: 10px;
 }
-
 .footer-column h3 {
   margin-bottom: 8px;
-
   color: #fff;
-
   font-size: 14px;
-
   font-weight: 700;
 }
-
 .footer-column a {
   color: #9ba1b5;
-
   text-decoration: none;
-
   transition: color 0.2s ease;
 }
-
 .footer-column a:hover {
   color: #24d7e6;
 }
-
 .footer-bottom {
   display: flex;
-
   justify-content: space-between;
-
   align-items: center;
-
   gap: 16px;
-
   padding-top: 18px;
-
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
-
 .site-footer > span:last-child {
   justify-self: end;
 }
-
 .site-footer-links a:hover {
   color: #24d7e6;
 }
-
 @media (max-width: 767px) {
   .site-footer {
     padding: 24px 20px 16px;
   }
-
   .footer-columns {
     grid-template-columns: 1fr 1fr;
-
     gap: 32px 20px;
   }
-
   .footer-bottom {
     flex-wrap: wrap;
-
     gap: 8px;
   }
 }
-
 @media (max-width: 420px) {
   .footer-columns {
     grid-template-columns: 1fr;
-
     gap: 24px;
   }
 }
-
 .footer-version {
   color: #9ba1b5;
-
   text-decoration: none;
-
   transition: color 0.2s ease;
 }
-
 .footer-version:hover {
   color: #24d7e6;
 }
-
 .btn-primary {
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 8px;
-
   border-radius: 9px;
-
   border: 1px solid rgba(36, 215, 230, 0.3);
-
   background: linear-gradient(135deg, #244566 0%, #1b3654 55%, #172b47 100%);
-
   color: #d5faff;
-
   font-weight: 600;
-
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
-
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
     background 0.2s ease;
 }
-
 .btn-primary:hover {
   border-color: rgba(36, 215, 230, 0.6);
-
   box-shadow:
     0 5px 16px rgba(0, 0, 0, 0.25),
     0 0 12px rgba(36, 215, 230, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
-
 .btn-secondary {
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 8px;
-
   border-radius: 9px;
-
   border: 1px solid rgba(36, 215, 230, 0.2);
-
   background: linear-gradient(135deg, #1c2b45 0%, #17233b 100%);
-
   color: #9ddce8;
-
   font-weight: 600;
-
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
-
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
     background 0.2s ease;
 }
-
 .btn-secondary:hover {
   border-color: rgba(36, 215, 230, 0.45);
-
   color: #d5faff;
-
   box-shadow:
     0 0 12px rgba(36, 215, 230, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
-
 /* Reusable loading indicator */
-
 .loading-indicator {
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 12px;
-
   width: fit-content;
-
   margin: 24px auto;
-
   padding: 12px 20px;
-
   border: 1px solid rgba(36, 215, 230, 0.2);
-
   border-radius: 9px;
-
   background: linear-gradient(135deg, #1c2b45 0%, #17233b 100%);
-
   color: #9ddce8;
-
   font-size: 14px;
-
   font-weight: 600;
-
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
-
 .loading-indicator::before {
   content: "";
-
   width: 16px;
-
   height: 16px;
-
   border: 2px solid rgba(36, 215, 230, 0.2);
-
   border-top-color: #24d7e6;
-
   border-radius: 50%;
-
   animation: loading-spin 0.8s linear infinite;
 }
-
-@keyframes loading-spin {
+@keyframes *loading-spin* {
   to {
     transform: rotate(360deg);
   }
 }
-
 .loading-indicator[hidden] {
   display: none;
 }
-
 @media (prefers-reduced-motion: reduce) {
   .loading-indicator::before {
     animation: none;
   }
 }
-
 /* Center loading indicator on Game Details */
-
 #game-details-loading:not([hidden]) {
   position: fixed;
-
   top: 50%;
-
   left: 50%;
-
   transform: translate(-50%, -50%);
-
   margin: 0;
-
   z-index: 20;
 }
-
 /* Full-screen application loading overlay */
-
 #app-loading-overlay {
   position: fixed;
-
   top: 0;
-
   bottom: 0;
-
   left: 252px;
-
   right: 0;
-
   z-index: 9999;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   background: linear-gradient(160deg, #0e0e22 0%, #10162c 45%, #151b35 100%);
-
   opacity: 1;
-
   visibility: visible;
-
   transition:
     opacity 450ms ease,
     visibility 450ms ease;
 }
-
 #app-loading-overlay.fade-out {
   opacity: 0;
-
   visibility: hidden;
-
   pointer-events: none;
 }
-
 #app-loading-overlay .loading-indicator {
   margin: 0;
 }
-
-#app-loading-overlay:not(.fade-out) \~ .content #page-content {
+#app-loading-overlay:not(.fade-out) ~ .content #page-content {
   visibility: hidden;
 }
-
-#app-loading-overlay:not(.fade-out) \~ .site-footer {
+#app-loading-overlay:not(.fade-out) ~ .site-footer {
   visibility: hidden;
 }
-
 #app-loading-overlay.full-screen {
   left: 0;
 }
-
 .sidebar:not(.sidebar-ready) {
   visibility: hidden;
 }
-
 #sidebar.login-loading {
   opacity: 0 !important;
-
   visibility: hidden !important;
 }
-
 #sidebar {
   transition: opacity 450ms ease;
 }
-
-@keyframes gameCardReveal {
+@keyframes *gameCardReveal* {
   from {
     opacity: 0;
-
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
-
     transform: translateY(0);
   }
 }
-
 #page-content.page-ready .game-card {
   animation: gameCardReveal 0.5s ease-out backwards;
 }
-
 @media (prefers-reduced-motion: reduce) {
   .game-card {
     animation: none;
   }
 }
-
 /* RetroTrack Custom Scrollbar */
-
 html {
   scrollbar-gutter: stable;
-
   scrollbar-width: thin;
-
   scrollbar-color: rgba(53, 69, 102, 0.4) #0e0e22;
 }
-
 /* Chrome, Edge, Safari */
-
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: #0e0e22;
 }
-
 ::-webkit-scrollbar-thumb {
   background: rgba(53, 69, 102, 0.4);
-
   border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(82, 100, 134, 0.7);
 }
-
 /* Games search, sort and view alignment */
-
 #game-search,
 #game-sort,
 #game-view {
   height: 38px;
-
   box-sizing: border-box;
 }
-
 #game-sort,
 #game-view {
   vertical-align: middle;
 }
-
 .sort-control {
   position: relative;
 }
-
 #game-sort-button {
   display: inline-flex;
-
   align-items: center;
-
   gap: 8px;
-
   cursor: pointer;
 }
-
 #game-sort-button svg {
   width: 14px;
-
   height: 14px;
-
   color: #aeb4c9;
 }
-
 .sort-menu {
   position: absolute;
-
   top: calc(100% + 6px);
-
   right: 0;
-
   min-width: 170px;
-
   background: #1b1b30;
-
   border: 1px solid #ffffff20;
-
   border-radius: 8px;
-
   padding: 5px;
-
   z-index: 100;
-
   box-shadow: 0 10px 30px #0006;
 }
-
 .sort-menu[hidden] {
   display: none;
 }
-
 .sort-menu button {
   display: block;
-
   width: 100%;
-
   padding: 10px 12px;
-
   text-align: left;
-
   font-size: 12px;
-
   color: #aeb4c9;
-
   border-radius: 5px;
-
   cursor: pointer;
 }
-
 .sort-menu button:hover {
   background: #48283e;
-
   color: white;
 }
-
 /* ========================================
-
    Profile - Appearance Theme Selector
-
 ======================================== */
-
 .theme-option {
   display: block;
-
   position: relative;
-
   cursor: pointer;
 }
-
 .theme-option input {
   position: absolute;
-
   opacity: 0;
-
   width: 1px;
-
   height: 1px;
 }
-
 .theme-option-content {
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 10px;
-
   min-height: 115px;
-
   padding: 20px;
-
   background: #1b1b30;
-
   border: 2px solid rgba(255, 255, 255, 0.1);
-
   border-radius: 12px;
-
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
-
 .theme-option-icon {
   font-size: 28px;
-
   line-height: 1;
 }
-
 .theme-option-title {
   font-size: 14px;
-
   font-weight: 600;
-
   color: #e7ebf7;
 }
-
 .theme-option:hover .theme-option-content {
   border-color: rgba(36, 215, 230, 0.4);
-
   background: #202e50;
 }
-
 .theme-option input:checked + .theme-option-content {
   border-color: #24d7e6;
-
   background: #20364b;
-
   box-shadow: 0 0 15px rgba(36, 215, 230, 0.1);
 }
-
 .theme-option input:focus-visible + .theme-option-content {
   outline: 2px solid #24d7e6;
-
   outline-offset: 3px;
 }
-
 @media (max-width: 480px) {
   .theme-option-content {
     min-height: 95px;
-
     padding: 15px;
   }
 }
-
 /* ========================================
-
    LIGHT THEME
-
 ======================================== */
-
 :root[data-theme="light"] {
   color-scheme: light;
-
   --bg: #f4f7fc;
-
   --sidebar: #ffffff;
-
   --panel: #ffffff;
-
   --muted: #64748b;
-
   --accent: #e73565;
-
   --cyan: #087f99;
 }
-
 :root[data-theme="light"] body {
   background: linear-gradient(160deg, #f8faff 0%, #f1f5fb 55%, #eaf0f8 100%);
-
   color: #1e293b;
 }
-
 /* Sidebar and navigation */
-
 :root[data-theme="light"] .sidebar,
 :root[data-theme="light"] .mobile-header {
   background: #ffffff;
-
   border-color: #dce4ef;
 }
-
 :root[data-theme="light"] .brand-icon {
   background: #f1f5fb;
 }
-
 :root[data-theme="light"] .nav-item {
   color: #475569;
 }
-
 :root[data-theme="light"] .nav-item:hover {
   background: #edf3fa;
-
   color: #17243b;
 }
-
 :root[data-theme="light"] .nav-item.active {
   background: #fce7ef;
-
   color: #9d174d;
 }
-
 :root[data-theme="light"] .nav-icon,
 :root[data-theme="light"] .collection-icon {
   color: #087f99;
 }
-
 :root[data-theme="light"] .sidebar-footer {
   color: #64748b;
 }
-
 :root[data-theme="light"] .language-select {
   background: #f1f5fb;
-
   color: #1e293b;
 }
-
 :root[data-theme="light"] .search-wrap,
 :root[data-theme="light"] .search-wrap input {
   color: #1e293b;
 }
-
 /* Page headings */
-
 :root[data-theme="light"] .page-heading h1 {
   color: #087f99;
 }
-
 :root[data-theme="light"] .eyebrow {
   color: #c02660;
 }
-
 /* Game cards */
-
 :root[data-theme="light"] .game-card {
   background: #ffffff;
-
   border-color: #dce4ef;
-
   color: #1e293b;
-
   box-shadow: 0 4px 16px rgba(30, 41, 59, 0.06);
 }
-
 :root[data-theme="light"] .game-card:hover {
   border-color: rgba(8, 127, 153, 0.4);
-
   box-shadow: 0 8px 24px rgba(30, 41, 59, 0.1);
 }
-
 :root[data-theme="light"] .cover-area {
   background: #e8eef7;
 }
-
 :root[data-theme="light"] .cover-placeholder {
   color: #64748b;
 }
-
 :root[data-theme="light"] .platform-badge {
   background: #fce7ef;
-
   color: #be185d;
 }
-
 /* Filters and controls */
-
 :root[data-theme="light"] .filter-pill,
 :root[data-theme="light"] #game-sort,
 :root[data-theme="light"] #game-view,
 :root[data-theme="light"] .sort-menu {
   background: #ffffff;
-
   color: #475569;
-
   border-color: #dce4ef;
 }
-
 :root[data-theme="light"] .filter-pill:hover,
 :root[data-theme="light"] #game-view:hover {
   color: #17243b;
-
   border-color: #087f99;
 }
-
 :root[data-theme="light"] .filter-pill.selected {
   background: #fce7ef;
-
   color: #9d174d;
-
   border-color: #f9a8c0;
 }
-
 :root[data-theme="light"] .sort-menu button {
   color: #475569;
 }
-
 :root[data-theme="light"] .sort-menu button:hover {
   background: #fce7ef;
-
   color: #9d174d;
 }
-
 /* Buttons */
-
 :root[data-theme="light"] .btn-primary,
 :root[data-theme="light"] .add-game-btn {
   background: linear-gradient(135deg, #087f99, #12647c);
-
   color: #ffffff;
 }
-
 :root[data-theme="light"] .btn-secondary {
   background: #edf5fa;
-
   color: #12647c;
-
   border-color: #b9dce6;
 }
-
 /* Profile theme selector */
-
 :root[data-theme="light"] .theme-option-content {
   background: #f8faff;
-
   border-color: #dce4ef;
 }
-
 :root[data-theme="light"] .theme-option-title {
   color: #1e293b;
 }
-
 :root[data-theme="light"] .theme-option:hover .theme-option-content {
   background: #edf3fa;
 }
-
 :root[data-theme="light"] .theme-option input:checked + .theme-option-content {
   background: #e0f2f7;
-
   border-color: #087f99;
 }
-
 /* Footer */
-
 :root[data-theme="light"] .site-footer {
   background: #ffffff;
-
   border-color: #dce4ef;
-
   color: #64748b;
 }
-
 :root[data-theme="light"] .footer-column h3 {
   color: #1e293b;
 }
-
 :root[data-theme="light"] .footer-column a,
 :root[data-theme="light"] .footer-version {
   color: #475569;
 }
-
 :root[data-theme="light"] .footer-bottom {
   border-color: #dce4ef;
 }
-
 /* Loading screen */
-
 :root[data-theme="light"] #app-loading-overlay {
   background: #f4f7fc;
 }
-
 /* Scrollbar */
-
 :root[data-theme="light"] {
   scrollbar-color: #b7c7d9 #f4f7fc;
 }
-
 :root[data-theme="light"] ::-webkit-scrollbar-track {
   background: #f4f7fc;
 }
-
 :root[data-theme="light"] ::-webkit-scrollbar-thumb {
   background: #b7c7d9;
 }
-
 /* ========================================
-
    LIGHT THEME - GAME DETAILS
-
 ======================================== */
-
 /* Main game information */
-
 :root[data-theme="light"] #game-details-content {
   color: #1e293b;
 }
-
 /* Headings */
-
 :root[data-theme="light"] #detail-title,
 :root[data-theme="light"] #game-details-content h2,
 :root[data-theme="light"] #game-details-content h3,
 :root[data-theme="light"] #game-details-content .text-white {
   color: #17243b;
 }
-
 /* Release year, genre, developer, series */
-
 :root[data-theme="light"] #detail-year,
 :root[data-theme="light"] #detail-genre,
 :root[data-theme="light"] #detail-developer,
 :root[data-theme="light"] #detail-series {
   color: #334155;
 }
-
 /* Metadata labels */
-
 :root[data-theme="light"] #game-details-content .text-slate-500 {
   color: #64748b;
 }
-
 /* Game description */
-
 :root[data-theme="light"] #detail-description {
   color: #475569;
 }
-
 /* Secondary information */
-
 :root[data-theme="light"] #game-details-content .text-slate-400,
 :root[data-theme="light"] #game-details-content .text-slate-300 {
   color: #64748b;
 }
-
 /* Preserve platform accent */
-
 :root[data-theme="light"] #detail-platform {
   color: #db2777;
 }
-
-/* Status buttons */
-
-:root[data-theme="light"] #detail-favorite {
-  color: #be123c;
-}
-
-:root[data-theme="light"] #detail-in-progress {
-  color: #b45309;
-}
-
-:root[data-theme="light"] #detail-completed {
-  color: #15803d;
-}
-
 /* ========================================
-
    LIGHT THEME - ACHIEVEMENT DROPDOWN
-
 ======================================== */
-
 :root[data-theme="light"] #achievement-select {
   background-color: #ffffff;
-
   color: #1e293b;
-
   border-color: #cbd5e1;
 }
-
 :root[data-theme="light"] #achievement-select:hover {
   border-color: #087f99;
 }
-
 :root[data-theme="light"] #achievement-select:focus {
   outline: 2px solid #087f99;
-
   outline-offset: 2px;
 }
-
 :root[data-theme="light"] #achievement-select option {
   background-color: #ffffff;
-
   color: #1e293b;
 }
-
 /* ========================================
-
    LIGHT THEME - LANGUAGE DROPDOWN
-
 ======================================== */
-
 :root[data-theme="light"] select.language-select {
   background-color: #f1f5fb;
-
   color: #1e293b;
-
   border: 1px solid #cbd5e1;
 }
-
 :root[data-theme="light"] select.language-select:hover {
   border-color: #087f99;
 }
-
 :root[data-theme="light"] select.language-select:focus {
   outline: 2px solid #087f99;
-
   outline-offset: 2px;
 }
-
 :root[data-theme="light"] select.language-select option {
   background-color: #ffffff;
-
   color: #1e293b;
 }
-
 /* ========================================
-
    SHARED DROPDOWN STYLE
-
 ======================================== */
-
 .theme-select {
   width: 100%;
-
   min-width: 0;
-
   border: 1px solid #334155;
-
   border-radius: 8px;
-
   background-color: #0f172a;
-
   color: #e2e8f0;
-
   padding: 10px 12px;
-
   font-size: 14px;
-
   outline: none;
-
   cursor: pointer;
-
   transition: border-color 0.2s ease;
 }
-
 .theme-select:hover {
   border-color: #24d7e6;
 }
-
 .theme-select:focus-visible {
   border-color: #24d7e6;
-
   outline: 2px solid #24d7e6;
-
   outline-offset: 2px;
 }
-
 .theme-select option {
   background-color: #0f172a;
-
   color: #e2e8f0;
 }
-
 /* Light theme */
-
 :root[data-theme="light"] .theme-select {
   background-color: #ffffff;
-
   color: #1e293b;
-
   border-color: #cbd5e1;
 }
-
 :root[data-theme="light"] .theme-select:hover {
   border-color: #087f99;
 }
-
 :root[data-theme="light"] .theme-select:focus-visible {
   border-color: #087f99;
-
   outline-color: #087f99;
 }
-
 :root[data-theme="light"] .theme-select option {
   background-color: #ffffff;
-
   color: #1e293b;
 }
-
 /* ========================================
-
    SHARED INPUT STYLE
-
 ======================================== */
-
 .theme-input {
   width: 100%;
-
   min-width: 0;
-
   border: 1px solid #334155;
-
   border-radius: 8px;
-
   background-color: #0f172a;
-
   color: #e2e8f0;
-
   font-size: 14px;
-
   outline: none;
-
   transition: border-color 0.2s ease;
 }
-
 .theme-input::placeholder {
   color: #94a3b8;
 }
-
 .theme-input:hover {
   border-color: #24d7e6;
 }
-
 .theme-input:focus {
   border-color: #24d7e6;
-
   box-shadow: 0 0 0 2px rgba(36, 215, 230, 0.15);
 }
-
 /* Light theme */
-
 :root[data-theme="light"] .theme-input {
   background-color: #ffffff;
-
   color: #1e293b;
-
   border-color: #cbd5e1;
 }
-
 :root[data-theme="light"] .theme-input::placeholder {
   color: #64748b;
 }
-
 :root[data-theme="light"] .theme-input:hover,
 :root[data-theme="light"] .theme-input:focus {
   border-color: #087f99;
 }
-
 :root[data-theme="light"] .theme-input:focus {
   box-shadow: 0 0 0 2px rgba(8, 127, 153, 0.15);
 }
-
 /* ========================================
-
    SHARED FILE UPLOAD STYLE
-
 ======================================== */
-
 .theme-file-input {
   padding: 12px 16px;
 }
-
 .theme-file-input::file-selector-button {
   margin-right: 16px;
-
   padding: 8px 16px;
-
   border: 1px solid rgba(36, 215, 230, 0.3);
-
   border-radius: 8px;
-
   background: #1b3654;
-
   color: #cffafe;
-
   font: inherit;
-
   font-weight: 600;
-
   cursor: pointer;
 }
-
 .theme-file-input::file-selector-button:hover {
   background: #244566;
 }
-
 /* Light theme */
-
 :root[data-theme="light"] .theme-file-input::file-selector-button {
   background: #e0f2f7;
-
   color: #12647c;
-
   border-color: #b9dce6;
 }
-
 :root[data-theme="light"] .theme-file-input::file-selector-button:hover {
   background: #cceaf2;
 }
-
 /* ========================================
-
    LIGHT THEME - LOADING INDICATOR
-
 ======================================== */
-
 /* ========================================
-
    LIGHT THEME - LOADING INDICATOR
-
 ======================================== */
-
 :root[data-theme="light"] .loading-indicator {
   background: #ffffff;
-
   color: #087f99;
-
   border: 1px solid #cbd5e1;
-
   box-shadow: 0 4px 12px rgba(30, 41, 59, 0.06);
 }
-
 :root[data-theme="light"] .loading-indicator::before {
   border-color: rgba(8, 127, 153, 0.2);
-
   border-top-color: #087f99;
 }
-
 /* ========================================
-
    COLLECTION MANAGEMENT CARDS
-
 ======================================== */
-
 .collection-management-card {
   display: block;
-
   padding: 24px;
-
   border: 1px solid #334155;
-
   border-radius: 12px;
-
   background: rgba(30, 41, 59, 0.5);
-
   text-decoration: none;
-
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
-
 .collection-management-card:hover {
   border-color: #ec4899;
 }
-
 .collection-management-card h2 {
   color: #ffffff;
 }
-
 .collection-management-card p {
   color: #94a3b8;
 }
-
 /* Light theme */
-
 :root[data-theme="light"] .collection-management-card {
   background: #ffffff;
-
   border-color: #dce4ef;
-
   box-shadow: 0 4px 16px rgba(30, 41, 59, 0.06);
 }
-
 :root[data-theme="light"] .collection-management-card:hover {
   border-color: #087f99;
-
   box-shadow: 0 8px 24px rgba(30, 41, 59, 0.1);
 }
-
 :root[data-theme="light"] .collection-management-card h2 {
   color: #17243b;
 }
-
 :root[data-theme="light"] .collection-management-card p {
   color: #64748b;
 }
-
 /* ========================================
-
    LIGHT THEME - MANAGE PLATFORMS TABLE
-
 ======================================== */
-
 /* Table headings */
-
 :root[data-theme="light"] #page-content table thead {
   color: #475569;
-
   border-color: #cbd5e1;
 }
-
 :root[data-theme="light"] #page-content table th {
   color: #475569;
 }
-
 /* Sortable column headings */
-
 :root[data-theme="light"] #page-content table th:hover {
   color: #087f99;
 }
-
 /* Table content */
-
 :root[data-theme="light"] #admin-platforms-list td {
   color: #334155;
 }
-
 /* Row borders */
-
 :root[data-theme="light"] #admin-platforms-list tr {
   border-color: #e2e8f0;
 }
-
 /* Row hover - override dark Tailwind background */
-
 :root[data-theme="light"] #admin-platforms-list tr:hover {
   background: #edf5fa;
 }
-
 /* Platform names */
-
 :root[data-theme="light"] #admin-platforms-list td:first-child {
   color: #17243b;
-
   font-weight: 500;
 }
-
 /* Preserve action colors */
-
 :root[data-theme="light"] #admin-platforms-list button.text-pink-400 {
   color: #db2777;
 }
-
 :root[data-theme="light"] #admin-platforms-list button.text-red-400 {
   color: #dc2626;
 }
-
 /* ========================================
-
    LIGHT THEME - USER MANAGEMENT
-
 ======================================== */
-
 :root[data-theme="light"] #admin-users-table td {
   color: #334155;
 }
-
 :root[data-theme="light"] #admin-users-table td:first-child {
   color: #17243b;
-
   font-weight: 500;
 }
-
 :root[data-theme="light"] #admin-users-table td:nth-child(2) {
   color: #64748b;
 }
-
 :root[data-theme="light"] #admin-users-table tr {
   border-color: #e2e8f0;
 }
-
 :root[data-theme="light"] #admin-users-table tr:hover {
   background: #edf5fa;
 }
-
 /* Role badges */
-
 :root[data-theme="light"] #admin-users-table .bg-slate-700 {
   background: #e2e8f0;
-
   color: #334155;
 }
-
 :root[data-theme="light"] #admin-users-table .text-pink-400 {
   color: #be185d;
 }
-
 /* Action buttons */
-
 :root[data-theme="light"] #admin-users-table button.text-cyan-400 {
   color: #087f99;
 }
-
 :root[data-theme="light"] #admin-users-table button.text-red-400 {
   color: #dc2626;
 }
-
 /* ========================================
    WELCOME PAGE - RELIABLE THEME CONTRAST
    Uses the existing welcome translation attributes,
    independent of the SPA mount container.
 ======================================== */
-
 /* Default / dark theme */
 :root:not([data-theme="light"]) [data-i18n="welcome.hero_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.collection_title"],
@@ -2524,17 +1601,14 @@ html {
 :root:not([data-theme="light"]) [data-i18n="welcome.cta_title"] {
   color: #f8fafc;
 }
-
 :root:not([data-theme="light"])
   [data-i18n^="welcome."][class~="text-slate-400"] {
   color: #aebbd0;
 }
-
 /* Hero accent remains pink */
 [data-i18n="welcome.hero_highlight"] {
   color: #ec4899;
 }
-
 /* Light theme */
 :root[data-theme="light"] [data-i18n="welcome.hero_title"],
 :root[data-theme="light"] [data-i18n="welcome.collection_title"],
@@ -2547,11 +1621,9 @@ html {
 :root[data-theme="light"] [data-i18n="welcome.cta_title"] {
   color: #17243b;
 }
-
 :root[data-theme="light"] [data-i18n^="welcome."][class~="text-slate-400"] {
   color: #52647e;
 }
-
 :root[data-theme="light"]
   section:has([data-i18n="welcome.hero_title"])
   .bg-slate-900 {
@@ -2560,258 +1632,113 @@ html {
 }
 /* ==========================================
    ADMIN TABLES
-   Shared styling for Games, Series, etc.
-   ========================================== */
-
-.admin-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 0.875rem;
-}
-
-/* Headers */
-.admin-table thead {
-  border-bottom: 1px solid #cbd5e1;
-}
-
-.admin-table th {
-  padding: 12px 16px;
-  color: #334155;
-  font-weight: 700;
-}
-
-.admin-table th[data-sort] {
-  cursor: pointer;
-  user-select: none;
-}
-
-.admin-table th[data-sort]:hover {
-  color: #0284c7;
-}
-
-/* Rows */
-.admin-table tbody tr {
-  border-bottom: 1px solid #e2e8f0;
-  transition: background-color 150ms ease;
-}
-
-.admin-table tbody tr:hover {
-  background-color: #f1f5f9;
-}
-
-/* Cells */
-.admin-table td {
-  padding: 16px;
-  color: #334155;
-  vertical-align: middle;
-}
-
-/* Actions */
-.admin-table .admin-action-edit {
-  color: #db2777;
-  cursor: pointer;
-}
-
-.admin-table .admin-action-edit:hover {
-  color: #be185d;
-}
-
-.admin-table .admin-action-delete {
-  color: #dc2626;
-  cursor: pointer;
-}
-
-.admin-table .admin-action-delete:hover {
-  color: #b91c1c;
-}
-
-/* ==========================================
-   DARK MODE
-   ========================================== */
-
-.dark .admin-table thead {
-  border-bottom-color: #475569;
-}
-
-.dark .admin-table th {
-  color: #cbd5e1;
-}
-
-.dark .admin-table th[data-sort]:hover {
-  color: #38bdf8;
-}
-
-.dark .admin-table tbody tr {
-  border-bottom-color: #334155;
-}
-
-.dark .admin-table tbody tr:hover {
-  background-color: rgba(51, 65, 85, 0.4);
-}
-
-.dark .admin-table td {
-  color: #cbd5e1;
-}
-
-.dark .admin-table .admin-action-edit {
-  color: #f472b6;
-}
-
-.dark .admin-table .admin-action-edit:hover {
-  color: #f9a8d4;
-}
-
-.dark .admin-table .admin-action-delete {
-  color: #f87171;
-}
-
-.dark .admin-table .admin-action-delete:hover {
-  color: #fca5a5;
-}
-
-/* ==========================================
-   ADMIN TABLES
    Shared across Games, Series, Platforms, etc.
    Dark theme is the default.
    ========================================== */
-
 .admin-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
   font-size: 0.875rem;
 }
-
 /* Headers */
-
 .admin-table thead {
   border-bottom: 1px solid #475569;
 }
-
 .admin-table th {
   padding: 12px 16px;
   color: #cbd5e1;
   font-weight: 700;
 }
-
 .admin-table th[data-sort] {
   cursor: pointer;
   user-select: none;
   transition: color 150ms ease;
 }
-
 .admin-table th[data-sort]:hover {
   color: #7dd3fc;
 }
-
 /* Rows */
-
 .admin-table tbody tr {
   border-bottom: 1px solid #334155;
   transition: background-color 150ms ease;
 }
-
 .admin-table tbody tr:hover {
   background-color: rgba(148, 163, 184, 0.08);
 }
-
 /* Cells */
-
 .admin-table td {
   padding: 16px;
   color: #e2e8f0;
   vertical-align: middle;
 }
-
 /* Actions */
-
 .admin-table .admin-action-edit {
   color: #f472b6;
   cursor: pointer;
 }
-
 .admin-table .admin-action-edit:hover {
   color: #f9a8d4;
 }
-
 .admin-table .admin-action-delete {
   color: #f87171;
   cursor: pointer;
 }
-
 .admin-table .admin-action-delete:hover {
   color: #fca5a5;
 }
-
 /* ==========================================
    LIGHT THEME
    ========================================== */
-
 :root[data-theme="light"] .admin-table thead {
   border-bottom-color: #cbd5e1;
 }
-
 :root[data-theme="light"] .admin-table th {
   color: #334155;
 }
-
 :root[data-theme="light"] .admin-table th[data-sort]:hover {
   color: #0284c7;
 }
-
 :root[data-theme="light"] .admin-table tbody tr {
   border-bottom-color: #e2e8f0;
 }
-
 :root[data-theme="light"] .admin-table tbody tr:hover {
   background-color: #f1f5f9;
 }
-
 :root[data-theme="light"] .admin-table td {
   color: #334155;
 }
-
 :root[data-theme="light"] .admin-table .admin-action-edit {
   color: #db2777;
 }
-
 :root[data-theme="light"] .admin-table .admin-action-edit:hover {
   color: #be185d;
 }
-
 :root[data-theme="light"] .admin-table .admin-action-delete {
   color: #dc2626;
 }
-
 :root[data-theme="light"] .admin-table .admin-action-delete:hover {
   color: #b91c1c;
 }
-
 /* Game Details dialogs — dark theme */
 .theme-game-dialog {
   background-color: #0f172a;
   color: #f8fafc;
   border: 1px solid #334155;
 }
-
 .theme-game-dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.7);
 }
-
 .theme-game-dialog h2,
 .theme-game-dialog h3 {
   color: #f8fafc;
 }
-
 .theme-game-dialog label {
   color: #e2e8f0;
 }
-
 .theme-game-dialog p.text-slate-400 {
   color: #94a3b8;
 }
-
 .theme-game-dialog input:not([type="checkbox"]),
 .theme-game-dialog select,
 .theme-game-dialog textarea {
@@ -2819,35 +1746,28 @@ html {
   color: #f8fafc;
   border: 1px solid #334155;
 }
-
 .theme-game-dialog input::placeholder,
 .theme-game-dialog textarea::placeholder {
   color: #94a3b8;
 }
-
 .theme-game-dialog input[type="file"]::file-selector-button {
   background-color: #334155;
   color: #f8fafc;
 }
-
 /* Game Details dialogs — light theme */
-/* Assumes the existing theme switch uses html.light */
 :root[data-theme="light"] .theme-game-dialog {
   background-color: #ffffff;
   color: #0f172a;
   border-color: #cbd5e1;
 }
-
 :root[data-theme="light"] .theme-game-dialog h2,
 :root[data-theme="light"] .theme-game-dialog h3,
 :root[data-theme="light"] .theme-game-dialog label {
   color: #0f172a;
 }
-
 :root[data-theme="light"] .theme-game-dialog p.text-slate-400 {
   color: #64748b;
 }
-
 :root[data-theme="light"] .theme-game-dialog input:not([type="checkbox"]),
 :root[data-theme="light"] .theme-game-dialog select,
 :root[data-theme="light"] .theme-game-dialog textarea {
@@ -2855,89 +1775,70 @@ html {
   color: #0f172a;
   border-color: #cbd5e1;
 }
-
 :root[data-theme="light"] .theme-game-dialog input::placeholder,
 :root[data-theme="light"] .theme-game-dialog textarea::placeholder {
   color: #64748b;
 }
-
 :root[data-theme="light"]
   .theme-game-dialog
   input[type="file"]::file-selector-button {
   background-color: #e2e8f0;
   color: #0f172a;
 }
-
 /* ==========================================
    CONTACT & SUPPORT
    ========================================== */
-
 /* Dark theme (default) */
 .contact-page h2 {
   color: #f8fafc;
 }
-
 .contact-page .contact-description {
   color: #94a3b8;
 }
-
 .contact-page .contact-label {
   color: #cbd5e1;
 }
-
 .contact-page .contact-help {
   color: #94a3b8;
 }
-
 /* Light theme */
 :root[data-theme="light"] .contact-page h2 {
   color: #17243b;
 }
-
 :root[data-theme="light"] .contact-page .contact-description {
   color: #475569;
 }
-
 :root[data-theme="light"] .contact-page .contact-label {
   color: #334155;
 }
-
 :root[data-theme="light"] .contact-page .contact-help {
   color: #64748b;
 }
-
 /* ==========================================
    ADD PLATFORM FORM
    ========================================== */
-
 /* Dark theme (default) */
 .platform-form label {
   color: #cbd5e1;
 }
-
 .platform-form .platform-help,
 .platform-form .platform-cancel {
   color: #94a3b8;
 }
-
 .platform-form .platform-cancel:hover {
   color: #f8fafc;
 }
-
 /* Light theme */
 :root[data-theme="light"] .platform-form label {
   color: #334155;
 }
-
 :root[data-theme="light"] .platform-form .platform-help,
 :root[data-theme="light"] .platform-form .platform-cancel {
   color: #64748b;
 }
-
 :root[data-theme="light"] .platform-form .platform-cancel:hover {
   color: #0f172a;
 }
-
 /* File upload button */
 .platform-form input[type="file"]::file-selector-button {
   background-color: #ec4899;
@@ -2948,168 +1849,132 @@ html {
   font-weight: 600;
   cursor: pointer;
 }
-
 .platform-form input[type="file"]::file-selector-button:hover {
   background-color: #db2777;
 }
-
 /* ==========================================
    RESET PASSWORD FORM
    ========================================== */
-
 /* Dark theme */
 .reset-password-card label {
   color: #cbd5e1;
 }
-
 .reset-password-card .reset-password-help {
   color: #94a3b8;
 }
-
 /* Light theme */
 :root[data-theme="light"] .reset-password-card label {
   color: #334155;
 }
-
 :root[data-theme="light"] .reset-password-card .reset-password-help {
   color: #64748b;
 }
-
 /* ==========================================
    SHARED CONFIRMATION DIALOG
    ========================================== */
-
 /* Dark theme (default) */
 .confirm-dialog {
   background-color: #0f172a;
   color: #f8fafc;
   border: 1px solid #334155;
 }
-
 .confirm-dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.7);
 }
-
 .confirm-dialog h2 {
   color: #f8fafc;
 }
-
 .confirm-dialog p {
   color: #94a3b8;
 }
-
 .confirm-dialog .confirm-dialog-input {
   background-color: #1e293b;
   color: #f8fafc;
   border: 1px solid #334155;
 }
-
 .confirm-dialog .confirm-dialog-input:focus {
   border-color: #ec4899;
 }
-
 .confirm-dialog .confirm-dialog-input::placeholder {
   color: #94a3b8;
 }
-
 .confirm-dialog .confirm-dialog-cancel {
   color: #f8fafc;
   border-color: #334155;
   background-color: transparent;
 }
-
 .confirm-dialog .confirm-dialog-cancel:hover {
   background-color: #1e293b;
 }
-
 /* Light theme */
 :root[data-theme="light"] .confirm-dialog {
   background-color: #ffffff;
   color: #0f172a;
   border-color: #cbd5e1;
 }
-
 :root[data-theme="light"] .confirm-dialog h2 {
   color: #0f172a;
 }
-
 :root[data-theme="light"] .confirm-dialog p {
   color: #64748b;
 }
-
 :root[data-theme="light"] .confirm-dialog .confirm-dialog-input {
   background-color: #f8fafc;
   color: #0f172a;
   border-color: #cbd5e1;
 }
-
 :root[data-theme="light"] .confirm-dialog .confirm-dialog-input:focus {
   border-color: #ec4899;
 }
-
 :root[data-theme="light"] .confirm-dialog .confirm-dialog-input::placeholder {
   color: #64748b;
 }
-
 :root[data-theme="light"] .confirm-dialog .confirm-dialog-cancel {
   color: #334155;
   border-color: #cbd5e1;
   background-color: #ffffff;
 }
-
 :root[data-theme="light"] .confirm-dialog .confirm-dialog-cancel:hover {
   background-color: #f1f5f9;
 }
-
 /* ==========================================
    STATISTICS — THEME SUPPORT
    ========================================== */
-
 /* Dark theme (default) */
 .stat-progress-track,
 .stat-chart-track {
   background-color: #475569;
 }
-
 .stat-chart-label {
   color: #cbd5e1;
 }
-
 .stat-chart-description {
   color: #94a3b8;
 }
-
 .stat-donut-center {
   background-color: #192441;
 }
-
 /* Light theme */
 :root[data-theme="light"] .stat-progress-track,
 :root[data-theme="light"] .stat-chart-track {
   background-color: #e2e8f0;
 }
-
 :root[data-theme="light"] .stat-chart-label {
   color: #475569;
 }
-
 :root[data-theme="light"] .stat-chart-description {
   color: #64748b;
 }
-
 :root[data-theme="light"] .stat-donut-center {
   background-color: #ffffff;
 }
-
 /* ==========================================
    LIGHT THEME — WARM PINK CARD GRADIENT
    ========================================== */
 
 :root[data-theme="light"] .game-card {
   background: linear-gradient(135deg, #ffffff 0%, #faf4fc 70%, #eff9fd 100%);
-
   border: 1px solid #f0dce7;
-
   box-shadow:
     0 4px 14px rgba(120, 45, 85, 0.05),
     0 1px 3px rgba(120, 45, 85, 0.03);
@@ -3125,45 +1990,162 @@ html {
     0 10px 28px rgba(120, 45, 85, 0.1),
     0 3px 8px rgba(120, 45, 85, 0.05);
 }
+
 /* ==========================================
    LIGHT THEME — GAME COUNT BADGE
    ========================================== */
-
 :root[data-theme="light"] .page-heading .count-badge {
   display: inline-flex;
   align-items: center;
   width: fit-content;
-
   padding: 8px 14px;
   border: 1px solid #cbd5e1;
   border-radius: 9999px;
-
   background: linear-gradient(135deg, #ffffff, #eaf2ff);
   color: #475569;
-
   font-size: 0.75rem;
   font-weight: 500;
 }
-
 /* ==========================================
    LIGHT THEME — PAGE HEADING COUNT CHIP
    ========================================== */
-
 :root[data-theme="light"] .page-heading .count-chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   width: fit-content;
   padding: 8px 14px;
-
   background: linear-gradient(135deg, #ffffff 0%, #faf4fc 70%, #eff9fd 100%);
-
   border: 1px solid #cbd5e1;
   border-radius: 9999px;
-
   color: #475569;
   font-size: 0.75rem;
   font-weight: 500;
   line-height: 1.25rem;
+}
+/* ==========================================
+   GAME DETAILS — STATUS BUTTONS
+   ========================================== */
+/* Light theme — inactive buttons */
+:root[data-theme="light"] #detail-favorite,
+:root[data-theme="light"] #detail-in-progress,
+:root[data-theme="light"] #detail-completed {
+  color: #475569;
+  border-color: #cbd5e1;
+}
+/* Light theme — active buttons */
+:root[data-theme="light"] #detail-favorite.text-red-500 {
+  color: #dc2626;
+  border-color: #dc2626;
+}
+:root[data-theme="light"] #detail-in-progress.text-amber-400 {
+  color: #d97706;
+  border-color: #d97706;
+}
+:root[data-theme="light"] #detail-completed.text-green-400 {
+  color: #16a34a;
+  border-color: #16a34a;
+}
+
+/* ==========================================
+   GAME COMPLETION HISTORY
+   Light / Dark Theme Support
+   ========================================== */
+
+/* LIGHT THEME */
+#history-timeline > div {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(6, 182, 212, 0.22);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#history-timeline > div:hover {
+  background: rgba(236, 254, 255, 0.75);
+  border-color: rgba(6, 182, 212, 0.45);
+  box-shadow: 0 4px 16px rgba(6, 182, 212, 0.08);
+}
+
+#history-timeline > div > div > p:first-child {
+  color: #0f172a;
+}
+
+#history-timeline .completion-time {
+  color: #475569;
+}
+
+#history-timeline .completion-personal-best {
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
+#history-timeline button {
+  color: #475569;
+  background: rgba(248, 250, 252, 0.8);
+  border-color: #cbd5e1;
+}
+
+#history-timeline button:hover {
+  color: #0891b2;
+  border-color: #06b6d4;
+  background: #ecfeff;
+}
+
+#history-timeline button[title="Delete completion"]:hover {
+  color: #dc2626;
+  border-color: #f87171;
+  background: #fef2f2;
+}
+
+/* DARK THEME
+   Assumes your theme is applied via .dark on html
+*/
+.dark #history-timeline > div {
+  background: rgba(15, 23, 42, 0.65);
+  border-color: rgba(71, 85, 105, 0.5);
+  box-shadow: none;
+}
+
+.dark #history-timeline > div:hover {
+  background: rgba(30, 41, 59, 0.8);
+  border-color: rgba(34, 211, 238, 0.35);
+}
+
+.dark #history-timeline > div > div > p:first-child {
+  color: #f8fafc;
+}
+
+.dark #history-timeline .completion-time {
+  color: #cbd5e1;
+}
+
+.dark #history-timeline .completion-personal-best {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.dark #history-timeline button {
+  color: #cbd5e1;
+  background: rgba(30, 41, 59, 0.8);
+  border-color: #475569;
+}
+
+.dark #history-timeline button:hover {
+  color: #67e8f9;
+  background: rgba(8, 145, 178, 0.15);
+  border-color: #06b6d4;
+}
+
+.dark #history-timeline button[title="Delete completion"]:hover {
+  color: #f87171;
+  background: rgba(220, 38, 38, 0.12);
+  border-color: #ef4444;
 }
