@@ -1755,6 +1755,16 @@ video {
   color: rgb(100 116 139 / var(--tw-text-opacity, 1));
 }
 
+.text-slate-600 {
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity, 1));
+}
+
+.text-slate-900 {
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity, 1));
+}
+
 .text-teal-400 {
   --tw-text-opacity: 1;
   color: rgb(45 212 191 / var(--tw-text-opacity, 1));
@@ -1842,6 +1852,7 @@ video {
 }
 
 :root {
+  color-scheme: dark;
   --bg: #0e0e22;
   --sidebar: #1b1b30;
   --panel: #192441;
@@ -2955,11 +2966,11 @@ button {
   margin: 0;
 }
 
-#app-loading-overlay:not(.fade-out) ~ .content #page-content {
+#app-loading-overlay:not(.fade-out) \~ .content #page-content {
   visibility: hidden;
 }
 
-#app-loading-overlay:not(.fade-out) ~ .site-footer {
+#app-loading-overlay:not(.fade-out) \~ .site-footer {
   visibility: hidden;
 }
 
@@ -3094,7 +3105,9 @@ html {
 }
 
 /* ========================================
+
    Profile - Appearance Theme Selector
+
 ======================================== */
 
 .theme-option {
@@ -3162,7 +3175,9 @@ html {
 }
 
 /* ========================================
+
    LIGHT THEME
+
 ======================================== */
 
 :root[data-theme="light"] {
@@ -3370,7 +3385,9 @@ html {
 }
 
 /* ========================================
+
    LIGHT THEME - GAME DETAILS
+
 ======================================== */
 
 /* Main game information */
@@ -3437,7 +3454,9 @@ html {
 }
 
 /* ========================================
+
    LIGHT THEME - ACHIEVEMENT DROPDOWN
+
 ======================================== */
 
 :root[data-theme="light"] #achievement-select {
@@ -3461,7 +3480,9 @@ html {
 }
 
 /* ========================================
+
    LIGHT THEME - LANGUAGE DROPDOWN
+
 ======================================== */
 
 :root[data-theme="light"] select.language-select {
@@ -3485,7 +3506,9 @@ html {
 }
 
 /* ========================================
+
    SHARED DROPDOWN STYLE
+
 ======================================== */
 
 .theme-select {
@@ -3540,7 +3563,9 @@ html {
 }
 
 /* ========================================
+
    SHARED INPUT STYLE
+
 ======================================== */
 
 .theme-input {
@@ -3598,7 +3623,9 @@ html {
 }
 
 /* ========================================
+
    SHARED FILE UPLOAD STYLE
+
 ======================================== */
 
 .theme-file-input {
@@ -3634,11 +3661,15 @@ html {
 }
 
 /* ========================================
+
    LIGHT THEME - LOADING INDICATOR
+
 ======================================== */
 
 /* ========================================
+
    LIGHT THEME - LOADING INDICATOR
+
 ======================================== */
 
 :root[data-theme="light"] .loading-indicator {
@@ -3654,7 +3685,9 @@ html {
 }
 
 /* ========================================
+
    COLLECTION MANAGEMENT CARDS
+
 ======================================== */
 
 .collection-management-card {
@@ -3704,7 +3737,9 @@ html {
 }
 
 /* ========================================
+
    LIGHT THEME - MANAGE PLATFORMS TABLE
+
 ======================================== */
 
 /* Table headings */
@@ -3760,7 +3795,9 @@ html {
 }
 
 /* ========================================
+
    LIGHT THEME - USER MANAGEMENT
+
 ======================================== */
 
 :root[data-theme="light"] #admin-users-table td {
@@ -3803,6 +3840,300 @@ html {
 
 :root[data-theme="light"] #admin-users-table button.text-red-400 {
   color: #dc2626;
+}
+
+/* ========================================
+   WELCOME PAGE - RELIABLE THEME CONTRAST
+   Uses the existing welcome translation attributes,
+   independent of the SPA mount container.
+======================================== */
+
+/* Default / dark theme */
+
+:root:not([data-theme="light"]) [data-i18n="welcome.hero_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.collection_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.statistics_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.soundtracks_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.walkthroughs_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.game_details_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.history_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.platforms_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.cta_title"] {
+  color: #f8fafc;
+}
+
+:root:not([data-theme="light"])
+  [data-i18n^="welcome."][class~="text-slate-400"] {
+  color: #aebbd0;
+}
+
+/* Hero accent remains pink */
+
+[data-i18n="welcome.hero_highlight"] {
+  color: #ec4899;
+}
+
+/* Light theme */
+
+:root[data-theme="light"] [data-i18n="welcome.hero_title"],
+:root[data-theme="light"] [data-i18n="welcome.collection_title"],
+:root[data-theme="light"] [data-i18n="welcome.statistics_title"],
+:root[data-theme="light"] [data-i18n="welcome.soundtracks_title"],
+:root[data-theme="light"] [data-i18n="welcome.walkthroughs_title"],
+:root[data-theme="light"] [data-i18n="welcome.game_details_title"],
+:root[data-theme="light"] [data-i18n="welcome.history_title"],
+:root[data-theme="light"] [data-i18n="welcome.platforms_title"],
+:root[data-theme="light"] [data-i18n="welcome.cta_title"] {
+  color: #17243b;
+}
+
+:root[data-theme="light"] [data-i18n^="welcome."][class~="text-slate-400"] {
+  color: #52647e;
+}
+
+:root[data-theme="light"]
+  section:has([data-i18n="welcome.hero_title"])
+  .bg-slate-900 {
+  background-color: #ffffff;
+  border-color: #dce4ef;
+}
+
+/* ==========================================
+   ADMIN TABLES
+   Shared styling for Games, Series, etc.
+   ========================================== */
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+/* Headers */
+
+.admin-table thead {
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.admin-table th {
+  padding: 12px 16px;
+  color: #334155;
+  font-weight: 700;
+}
+
+.admin-table th[data-sort] {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.admin-table th[data-sort]:hover {
+  color: #0284c7;
+}
+
+/* Rows */
+
+.admin-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 150ms ease;
+}
+
+.admin-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Cells */
+
+.admin-table td {
+  padding: 16px;
+  color: #334155;
+  vertical-align: middle;
+}
+
+/* Actions */
+
+.admin-table .admin-action-edit {
+  color: #db2777;
+  cursor: pointer;
+}
+
+.admin-table .admin-action-edit:hover {
+  color: #be185d;
+}
+
+.admin-table .admin-action-delete {
+  color: #dc2626;
+  cursor: pointer;
+}
+
+.admin-table .admin-action-delete:hover {
+  color: #b91c1c;
+}
+
+/* ==========================================
+   DARK MODE
+   ========================================== */
+
+.dark .admin-table thead {
+  border-bottom-color: #475569;
+}
+
+.dark .admin-table th {
+  color: #cbd5e1;
+}
+
+.dark .admin-table th[data-sort]:hover {
+  color: #38bdf8;
+}
+
+.dark .admin-table tbody tr {
+  border-bottom-color: #334155;
+}
+
+.dark .admin-table tbody tr:hover {
+  background-color: rgba(51, 65, 85, 0.4);
+}
+
+.dark .admin-table td {
+  color: #cbd5e1;
+}
+
+.dark .admin-table .admin-action-edit {
+  color: #f472b6;
+}
+
+.dark .admin-table .admin-action-edit:hover {
+  color: #f9a8d4;
+}
+
+.dark .admin-table .admin-action-delete {
+  color: #f87171;
+}
+
+.dark .admin-table .admin-action-delete:hover {
+  color: #fca5a5;
+}
+
+/* ==========================================
+   ADMIN TABLES
+   Shared across Games, Series, Platforms, etc.
+   Dark theme is the default.
+   ========================================== */
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+/* Headers */
+
+.admin-table thead {
+  border-bottom: 1px solid #475569;
+}
+
+.admin-table th {
+  padding: 12px 16px;
+  color: #cbd5e1;
+  font-weight: 700;
+}
+
+.admin-table th[data-sort] {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transition: color 150ms ease;
+}
+
+.admin-table th[data-sort]:hover {
+  color: #7dd3fc;
+}
+
+/* Rows */
+
+.admin-table tbody tr {
+  border-bottom: 1px solid #334155;
+  transition: background-color 150ms ease;
+}
+
+.admin-table tbody tr:hover {
+  background-color: rgba(148, 163, 184, 0.08);
+}
+
+/* Cells */
+
+.admin-table td {
+  padding: 16px;
+  color: #e2e8f0;
+  vertical-align: middle;
+}
+
+/* Actions */
+
+.admin-table .admin-action-edit {
+  color: #f472b6;
+  cursor: pointer;
+}
+
+.admin-table .admin-action-edit:hover {
+  color: #f9a8d4;
+}
+
+.admin-table .admin-action-delete {
+  color: #f87171;
+  cursor: pointer;
+}
+
+.admin-table .admin-action-delete:hover {
+  color: #fca5a5;
+}
+
+/* ==========================================
+   LIGHT THEME
+   ========================================== */
+
+:root[data-theme="light"] .admin-table thead {
+  border-bottom-color: #cbd5e1;
+}
+
+:root[data-theme="light"] .admin-table th {
+  color: #334155;
+}
+
+:root[data-theme="light"] .admin-table th[data-sort]:hover {
+  color: #0284c7;
+}
+
+:root[data-theme="light"] .admin-table tbody tr {
+  border-bottom-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .admin-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+:root[data-theme="light"] .admin-table td {
+  color: #334155;
+}
+
+:root[data-theme="light"] .admin-table .admin-action-edit {
+  color: #db2777;
+}
+
+:root[data-theme="light"] .admin-table .admin-action-edit:hover {
+  color: #be185d;
+}
+
+:root[data-theme="light"] .admin-table .admin-action-delete {
+  color: #dc2626;
+}
+
+:root[data-theme="light"] .admin-table .admin-action-delete:hover {
+  color: #b91c1c;
 }
 
 .file\:mr-3::file-selector-button {
@@ -4111,5 +4442,17 @@ html {
 
   .xl\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:text-slate-400 {
+    --tw-text-opacity: 1;
+    color: rgb(148 163 184 / var(--tw-text-opacity, 1));
+  }
+
+  .dark\:text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1));
   }
 }

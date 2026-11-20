@@ -73,7 +73,7 @@ export async function initAdminGames() {
 
       for (const game of games) {
         const row = document.createElement("tr");
-        row.className = "border-b border-slate-700/50 hover:bg-slate-800/40";
+        row.className = "";
 
         const columns = [
           game.title,
@@ -84,23 +84,23 @@ export async function initAdminGames() {
 
         for (const value of columns) {
           const cell = document.createElement("td");
-          cell.className = "px-4 py-4 text-slate-300";
+          cell.className = "";
           cell.textContent = value;
           row.append(cell);
         }
 
         const actionsCell = document.createElement("td");
-        actionsCell.className = "px-4 py-4 text-right";
+        actionsCell.className = "text-right";
 
         const editButton = document.createElement("button");
-        editButton.className = "mr-3 text-pink-400 hover:text-pink-300";
+        editButton.className = "admin-action-edit mr-3";
         editButton.textContent = "Edit";
         editButton.addEventListener("click", () => {
           window.location.hash = `#/admin/edit-game?id=${game.id}`;
         });
 
         const deleteButton = document.createElement("button");
-        deleteButton.className = "text-red-400 hover:text-red-300";
+        deleteButton.className = "admin-action-delete";
         deleteButton.textContent = "Delete";
 
         deleteButton.addEventListener("click", async () => {

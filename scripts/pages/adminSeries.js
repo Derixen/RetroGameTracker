@@ -31,27 +31,27 @@ export async function initAdminSeries() {
 
     for (const item of series) {
       const row = document.createElement("tr");
-      row.className = "border-b border-slate-700/50 hover:bg-slate-800/40";
+      row.className = "";
 
       const columns = [item.name, item.description || "—"];
 
       for (const value of columns) {
         const cell = document.createElement("td");
-        cell.className = "px-4 py-4 text-slate-300";
+        cell.className = "";
         cell.textContent = value;
         row.append(cell);
       }
 
       const gamesCell = document.createElement("td");
-      gamesCell.className = "px-4 py-4 text-center text-slate-300";
+      gamesCell.className = "text-center";
       gamesCell.textContent = gameCounts.get(item.id) ?? 0;
       row.append(gamesCell);
 
       const actionsCell = document.createElement("td");
-      actionsCell.className = "px-4 py-4 text-right";
+      actionsCell.className = "text-right";
 
       const editButton = document.createElement("button");
-      editButton.className = "mr-3 text-pink-400 hover:text-pink-300";
+      editButton.className = "admin-action-edit mr-3";
       editButton.textContent = "Edit";
       editButton.classList.add("cursor-pointer");
 
@@ -60,7 +60,7 @@ export async function initAdminSeries() {
       });
 
       const deleteButton = document.createElement("button");
-      deleteButton.className = "cursor-pointer text-red-400 hover:text-red-300";
+      deleteButton.className = "admin-action-delete";
       deleteButton.textContent = "Delete";
 
       deleteButton.addEventListener("click", async () => {

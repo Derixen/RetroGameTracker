@@ -17,23 +17,16 @@
 </div>
 
 <div class="game-card overflow-x-auto p-5">
-  <table class="w-full text-left text-sm">
-    <thead class="border-b border-slate-700 text-slate-400">
+  <table class="admin-table">
+    <thead>
       <tr>
-        <th class="px-4 py-3" data-i18n="admin_series.column_series">Series</th>
+        <th data-i18n="admin_series.column_series">Series</th>
 
-        <th class="px-4 py-3" data-i18n="admin_series.column_description">
-          Description
-        </th>
+        <th data-i18n="admin_series.column_description">Description</th>
 
-        <th class="px-4 py-3 text-center" data-i18n="admin_series.column_games">
-          Games
-        </th>
+        <th class="text-center" data-i18n="admin_series.column_games">Games</th>
 
-        <th
-          class="px-4 py-3 text-right"
-          data-i18n="admin_series.column_actions"
-        >
+        <th class="text-right" data-i18n="admin_series.column_actions">
           Actions
         </th>
       </tr>
@@ -44,7 +37,7 @@
 
   <p
     id="admin-series-empty"
-    class="py-8 text-center text-slate-400"
+    class="py-8 text-center text-slate-500 dark:text-slate-400"
     data-i18n="admin_series.empty"
     hidden
   >
