@@ -47,7 +47,9 @@
     "logout": "Kijelentkezés",
     "about": "A RetroTrackről",
     "contact": "Kapcsolat",
-    "sign_in": "Bejelentkezés"
+    "sign_in": "Bejelentkezés",
+    "retro_resources": "Weboldalak",
+    "manage_resources": "Weboldalak kezelése"
   },
   "footer": {
     "brand": "RetroTrack Games",
@@ -213,6 +215,40 @@
   "changelog": {
     "title": "Változásnapló",
     "subtitle": "A Retro Game Tracker fejlődése",
+
+    "v026": {
+      "title": "Platformgyűjtemény és lokalizáció",
+      "item1": "Személyes platformgyűjtemények bevezetése, automatikus megjelenítéssel a játékok alapján.",
+      "item2": "Platformok kézi hozzáadása az adminisztrátor által kezelt katalógusból.",
+      "item3": "Platformok eltávolítása a játékok és a központi platformadatok törlése nélkül.",
+      "item4": "Platformkeresés, valamint dinamikus platform- és játékszámlálók hozzáadása.",
+      "item5": "Platformkártyák fejlesztése billentyűzettel elérhető navigációval és külön törlési vezérlőkkel.",
+      "item6": "A Platformok és a Platform részletei oldalak angol és magyar lokalizációja.",
+      "item7": "Konzolkezelő ablakok, tulajdonlási állapotok, műszaki állapotok és hibaüzenetek fordítása.",
+      "item8": "Témához igazodó megerősítő ablakok bevezetése platformok és konzolok eltávolításához."
+    },
+    "v025": {
+      "title": "Személyes konzolgyűjtemény",
+      "item1": "Személyes konzolmodell-gyűjtemény bevezetése a platformok adatlapján.",
+      "item2": "Több konzolmodell és hardverváltozat kezelése platformonként.",
+      "item3": "Konzolmodellek létrehozásának, szerkesztésének és törlésének megvalósítása.",
+      "item4": "Tulajdonlási állapotok bevezetése: saját tulajdon, kívánságlista és korábban birtokolt.",
+      "item5": "Hardverállapotok és opcionális modellszámok nyilvántartása.",
+      "item6": "Konzolképek megadása külső URL-lel vagy privát képfeltöltéssel.",
+      "item7": "Személyes megjegyzések hozzáadása módosításokhoz, javításokhoz és emlékekhez.",
+      "item8": "Biztonságos képtörlés és felhasználónként elkülönített Supabase-hozzáférés."
+    },
+    "v024": {
+      "title": "Platform- és játékadatlapok fejlesztése",
+      "item1": "Saját játékok szakasz bevezetése a platformok adatlapján.",
+      "item2": "Kompakt játékkártyák megjelenítése az adott platformhoz tartozó játékokkal.",
+      "item3": "Közvetlen navigáció a platformgyűjteményből a játékok adatlapjára.",
+      "item4": "Kattintható platformjelvények hozzáadása a játékadatlapokhoz.",
+      "item5": "Platformnavigáció és játékszűrés fejlesztése.",
+      "item6": "Játékkártyák méretének és elrendezésének egységesítése.",
+      "item7": "A 404-es hibaoldal fejlesztése a témához igazodó szöveg- és kiemelőszínekkel.",
+      "item8": "A világos és sötét témák megjelenésének egységesítése a platform- és játékoldalakon."
+    },
     "v023": {
       "title": "Listanézet",
       "item1": "Új listanézet került a meglévő nagy és kis játékkártyás nézetek mellé.",
@@ -509,7 +545,108 @@
   "platforms": {
     "grid_aria_label": "Platformok",
     "empty_title": "Nem található platform",
-    "empty_description": "A platformok akkor jelennek meg itt, amikor bekerülnek az adatbázisba."
+    "empty_description": "A platformok akkor jelennek meg itt, amikor bekerülnek az adatbázisba.",
+    "error_sign_in": "Platform hozzáadásához be kell jelentkezned.",
+    "select_platform": "Válassz platformot...",
+    "error_select_platform": "Kérlek, válassz egy platformot.",
+    "adding": "Hozzáadás...",
+    "error_add_platform": "Nem sikerült hozzáadni a platformot.",
+    "add_platform": "Platform hozzáadása",
+    "platform_count": "PLATFORM",
+    "unknown_manufacturer": "ISMERETLEN",
+    "released_in": "Megjelenés éve:",
+    "release_year_unknown": "A megjelenés éve ismeretlen",
+    "game_singular": "játék",
+    "game_plural": "játék",
+    "no_image": "Nincs kép",
+    "remove_tooltip": "Eltávolítás a platformjaim közül",
+    "remove_title": "Platform eltávolítása",
+    "remove_message_before": "Biztosan eltávolítod ezt a platformot:",
+    "remove_message_after": "?\n\nEz nem törli a játékokat vagy a konzolmodelleket.",
+    "remove": "Eltávolítás",
+    "remove_error_title": "Nem sikerült eltávolítani",
+    "remove_error": "Nem sikerült eltávolítani a platformot. Próbáld újra."
+  },
+  "platform_details": {
+    "back": "Vissza a platformokhoz",
+    "loading": "Platform betöltése...",
+    "release_year": "Megjelenés éve",
+    "manufacturer": "Gyártó",
+    "browse_games": "Játékok böngészése",
+
+    "models_title": "Konzolmodelljeim",
+    "models_description": "Saját konzolgyűjteményed",
+    "add_console": "Konzol hozzáadása",
+    "models_empty_title": "Még nincsenek konzolmodellek",
+    "models_empty_description": "Add hozzá az első konzolmodelledet a gyűjteményedhez.",
+
+    "games_title": "Játékaim",
+    "games_description": "A gyűjteményedben található játékok ezen a platformon",
+    "view_all_games": "Összes játék",
+    "games_loading": "Játékok betöltése...",
+    "games_empty_title": "Még nincsenek játékok",
+    "games_empty_description": "Még nem adtál hozzá játékot ehhez a platformhoz.",
+
+    "dialog_add_title": "Konzolmodell hozzáadása",
+    "dialog_edit_title": "Konzolmodell szerkesztése",
+    "dialog_description": "Adj hozzá egy konzolváltozatot a saját gyűjteményedhez.",
+    "model_name": "Modell neve *",
+    "model_name_placeholder": "pl. PlayStation 3 FAT 60GB",
+    "model_number": "Modellszám (opcionális)",
+    "model_number_placeholder": "pl. CECHC04",
+    "ownership": "Tulajdonlás",
+    "condition": "Állapot",
+    "image_url": "Kép URL-címe (opcionális)",
+    "image_url_placeholder": "https://example.com/console.jpg",
+    "upload_image": "Vagy tölts fel egy képet",
+    "image_help": "JPG, PNG vagy WebP. Maximum 5 MB. Adj meg egy URL-t, vagy tölts fel egy képet.",
+    "notes": "Személyes megjegyzések (opcionális)",
+    "notes_placeholder": "Módosítások, javítások, emlékek...",
+    "save_console": "Konzol mentése",
+
+    "owned": "Saját tulajdon",
+    "wishlist": "Kívánságlista",
+    "previously_owned": "Korábban birtokolt",
+    "not_specified": "Nincs megadva",
+    "condition_new": "Új",
+    "condition_excellent": "Kiváló",
+    "condition_good": "Jó",
+    "condition_fair": "Elfogadható",
+    "condition_parts": "Alkatrésznek",
+
+    "edit": "Szerkesztés",
+    "delete": "Törlés",
+    "delete_console_title": "Konzol törlése",
+    "delete_console_message": "Biztosan törölni szeretnéd ezt a konzolmodellt? Ez a művelet nem vonható vissza.",
+    "delete_console_confirm": "Konzol törlése",
+
+    "update_console": "Konzol frissítése",
+    "saving": "Mentés...",
+
+    "error_model_name": "A modell neve kötelező.",
+    "error_image_source": "Válassz egy kép URL-t vagy tölts fel egy képet, de ne mindkettőt.",
+    "error_image_type": "Csak JPG, PNG és WebP formátumú képek támogatottak.",
+    "error_image_size": "A kép mérete nem haladhatja meg az 5 MB-ot.",
+    "error_image_url": "A kép URL-jének https:// előtaggal kell kezdődnie.",
+
+    "error_invalid_platform": "Érvénytelen platformazonosító.",
+    "error_unknown_manufacturer": "Ismeretlen gyártó",
+    "unknown": "Ismeretlen",
+    "error_login_view": "A konzolok megtekintéséhez be kell jelentkezned.",
+    "error_login_add": "Konzol hozzáadásához be kell jelentkezned.",
+    "error_login_delete": "Konzol törléséhez be kell jelentkezned.",
+    "error_console_not_found": "A konzol nem található, vagy nincs jogosultságod.",
+    "error_load_consoles": "Nem sikerült betölteni a konzolmodelleket.",
+    "error_delete_console": "Nem sikerült törölni a konzolmodellt.",
+    "error_save_console": "Nem sikerült menteni a konzolmodellt.",
+    "error_load_games": "Nem sikerült betölteni a játékokat.",
+    "error_load_platform": "Nem sikerült betölteni a platform adatait."
+  },
+  "retro_resources": {
+    "count_label": "ERŐFORRÁS",
+    "search_placeholder": "Erőforrások keresése...",
+    "all_categories": "Összes kategória",
+    "no_results": "Nem található erőforrás."
   },
   "privacy": {
     "title": "Adatvédelmi szabályzat",
@@ -808,6 +945,12 @@
       "eyebrow": "HALADÁS ÁTTEKINTÉSE",
       "title": "Statisztikák",
       "subtitle": "Retro játékos előrehaladásod egy pillantásra"
+    },
+    "retroResources": {
+      "eyebrow": "RETRO ERŐFORRÁSOK",
+      "title": "Retro erőforrások",
+      "subtitle": "Hasznos eszközök, weboldalak és források a retrojátékok világából",
+      "count_label": "ERŐFORRÁS"
     },
     "collection": {
       "eyebrow": "SAJÁT GYŰJTEMÉNY",

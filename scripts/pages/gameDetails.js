@@ -549,6 +549,31 @@ export async function initGameDetails(params = new URLSearchParams()) {
     document.getElementById("detail-platform").textContent =
       game.platforms?.name ?? "Unknown Platform";
 
+    // Link the platform badge to its details page
+    const platformBadge = document.getElementById("detail-platform");
+
+    const platformName = game.platforms?.name;
+
+    if (platformName) {
+      const { data: platformData, error: platformError } = await supabase
+        .from("platforms")
+        .select("id")
+        .eq("name", platformName)
+        .maybeSingle();
+
+      if (platformError) {
+        console.error("Failed to find platform:", platformError);
+      }
+
+      if (platformData) {
+        platformBadge.href = `#/platform?id=${platformData.id}`;
+      } else {
+        platformBadge.removeAttribute("href");
+      }
+    } else {
+      platformBadge.removeAttribute("href");
+    }
+
     document.getElementById("detail-year").textContent =
       game.release_year ?? "Unknown";
 

@@ -1,0 +1,249 @@
+<div class="space-y-6">
+  <!-- Back to Admin Dashboard -->
+  <a
+    href="#/admin"
+    class="btn-secondary inline-flex items-center gap-2 px-4 py-2 text-sm"
+  >
+    <i data-lucide="arrow-left" class="h-4 w-4"></i>
+    <span data-i18n="admin_retro_resources.back_dashboard">
+      Back to Admin Dashboard
+    </span>
+  </a>
+
+  <header>
+    <p class="eyebrow" data-i18n="page_headings.adminRetroResources.eyebrow">
+      ADMINISTRATION
+    </p>
+
+    <h1
+      class="mt-3 text-3xl font-bold"
+      data-i18n="page_headings.adminRetroResources.title"
+    >
+      Manage Retro Resources
+    </h1>
+
+    <p
+      class="mt-3 text-sm text-slate-400"
+      data-i18n="page_headings.adminRetroResources.subtitle"
+    >
+      Manage the retro gaming resource directory.
+    </p>
+  </header>
+
+  <!-- Search and Add -->
+  <div class="flex flex-wrap items-center gap-3">
+    <div class="relative min-w-0 flex-1 sm:max-w-sm">
+      <i
+        data-lucide="search"
+        class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+      ></i>
+
+      <input
+        id="admin-resources-search"
+        type="search"
+        placeholder="Search resources..."
+        data-i18n-placeholder="admin_retro_resources.search_placeholder"
+        class="theme-input w-full py-2 pl-10 pr-3"
+      />
+    </div>
+
+    <button
+      id="admin-resources-add"
+      type="button"
+      class="btn-primary inline-flex items-center gap-2 px-4 py-2"
+    >
+      <i data-lucide="plus" class="h-4 w-4"></i>
+      <span data-i18n="admin_retro_resources.add_resource"> Add Resource </span>
+    </button>
+  </div>
+
+  <!-- Resource Table -->
+  <section class="game-card static-card overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-sm">
+        <thead>
+          <tr>
+            <th class="px-5 py-4" data-i18n="admin_retro_resources.column_name">
+              Name
+            </th>
+            <th
+              class="px-5 py-4"
+              data-i18n="admin_retro_resources.column_category"
+            >
+              Category
+            </th>
+            <th
+              class="px-5 py-4"
+              data-i18n="admin_retro_resources.column_visible"
+            >
+              Visible
+            </th>
+            <th
+              class="px-5 py-4 text-right"
+              data-i18n="admin_retro_resources.column_actions"
+            >
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody id="admin-resources-list"></tbody>
+      </table>
+    </div>
+
+    <p
+      id="admin-resources-loading"
+      class="p-8 text-center text-sm text-slate-400"
+      data-i18n="admin_retro_resources.loading"
+    >
+      Loading resources...
+    </p>
+
+    <p
+      id="admin-resources-empty"
+      class="p-8 text-center text-sm text-slate-400"
+      data-i18n="admin_retro_resources.empty"
+      hidden
+    >
+      No resources found.
+    </p>
+
+    <p id="admin-resources-error" class="p-5 text-sm text-red-400" hidden></p>
+  </section>
+</div>
+
+<!-- Add / Edit Resource Dialog -->
+<dialog
+  id="admin-resource-dialog"
+  class="theme-game-dialog w-full max-w-xl rounded-xl p-6 shadow-2xl"
+>
+  <form id="admin-resource-form" class="space-y-4">
+    <h2
+      id="admin-resource-dialog-title"
+      class="text-xl font-bold"
+      data-i18n="admin_retro_resources.add_resource"
+    >
+      Add Resource
+    </h2>
+
+    <div>
+      <label
+        for="admin-resource-name"
+        class="mb-2 block text-sm"
+        data-i18n="admin_retro_resources.name"
+      >
+        Resource Name *
+      </label>
+      <input
+        id="admin-resource-name"
+        type="text"
+        maxlength="150"
+        placeholder="e.g. DOSBox Staging"
+        data-i18n-placeholder="admin_retro_resources.name_placeholder"
+        class="theme-input w-full px-3 py-2"
+        required
+      />
+    </div>
+
+    <div>
+      <label
+        for="admin-resource-url"
+        class="mb-2 block text-sm"
+        data-i18n="admin_retro_resources.url"
+      >
+        Website URL *
+      </label>
+      <input
+        id="admin-resource-url"
+        type="url"
+        placeholder="https://example.com"
+        data-i18n-placeholder="admin_retro_resources.url_placeholder"
+        class="theme-input w-full px-3 py-2"
+        required
+      />
+    </div>
+
+    <div>
+      <label
+        for="admin-resource-category"
+        class="mb-2 block text-sm"
+        data-i18n="admin_retro_resources.category"
+      >
+        Category *
+      </label>
+      <input
+        id="admin-resource-category"
+        type="text"
+        maxlength="100"
+        placeholder="e.g. DOS & Classic PC"
+        data-i18n-placeholder="admin_retro_resources.category_placeholder"
+        class="theme-input w-full px-3 py-2"
+        required
+      />
+    </div>
+
+    <div>
+      <label
+        for="admin-resource-description"
+        class="mb-2 block text-sm"
+        data-i18n="admin_retro_resources.description"
+      >
+        Description
+      </label>
+
+      <textarea
+        id="admin-resource-description"
+        rows="3"
+        class="theme-input w-full px-3 py-2"
+        placeholder="Describe this resource in English..."
+        data-i18n-placeholder="admin_retro_resources.description_placeholder"
+      ></textarea>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label
+          for="admin-resource-order"
+          class="mb-2 block text-sm"
+          data-i18n="admin_retro_resources.sort_order"
+        >
+          Sort Order
+        </label>
+        <input
+          id="admin-resource-order"
+          type="number"
+          value="0"
+          class="theme-input w-full px-3 py-2"
+        />
+      </div>
+
+      <div class="flex items-end pb-2">
+        <label class="inline-flex items-center gap-2 text-sm">
+          <input id="admin-resource-visible" type="checkbox" checked />
+          <span data-i18n="admin_retro_resources.visible">
+            Visible to users
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <p id="admin-resource-form-error" class="text-sm text-red-400" hidden></p>
+
+    <div class="flex justify-end gap-3 pt-2">
+      <button
+        id="admin-resource-cancel"
+        type="button"
+        class="btn-secondary px-4 py-2 text-sm"
+      >
+        <span data-i18n="admin_retro_resources.cancel">Cancel</span>
+      </button>
+
+      <button
+        id="admin-resource-save"
+        type="submit"
+        class="btn-primary px-4 py-2 text-sm"
+      >
+        <span data-i18n="admin_retro_resources.save">Save Resource</span>
+      </button>
+    </div>
+  </form>
+</dialog>

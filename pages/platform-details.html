@@ -6,11 +6,15 @@
     class="btn-secondary inline-flex items-center gap-2 px-4 py-2 text-sm"
   >
     <i data-lucide="arrow-left" class="h-4 w-4"></i>
-    Back to Platforms
+    <span data-i18n="platform_details.back">Back to Platforms</span>
   </a>
 
   <!-- Loading / Error -->
-  <div id="platform-details-loading" class="py-12 text-center text-slate-400">
+  <div
+    id="platform-details-loading"
+    class="py-12 text-center text-slate-400"
+    data-i18n="platform_details.loading"
+  >
     Loading platform...
   </div>
 
@@ -42,12 +46,22 @@
 
           <div class="mt-6 grid gap-4 sm:grid-cols-2">
             <div>
-              <p class="text-xs uppercase text-slate-400">Release Year</p>
+              <p
+                class="text-xs uppercase text-slate-400"
+                data-i18n="platform_details.release_year"
+              >
+                Release Year
+              </p>
               <p id="platform-detail-year" class="font-semibold"></p>
             </div>
 
             <div>
-              <p class="text-xs uppercase text-slate-400">Manufacturer</p>
+              <p
+                class="text-xs uppercase text-slate-400"
+                data-i18n="platform_details.manufacturer"
+              >
+                Manufacturer
+              </p>
               <p id="platform-detail-maker" class="font-semibold"></p>
             </div>
           </div>
@@ -58,7 +72,9 @@
             class="btn-secondary mt-6 inline-flex px-4 py-2 text-sm"
           >
             <i data-lucide="gamepad-2" class="mr-2 h-4 w-4"></i>
-            Browse Games
+            <span data-i18n="platform_details.browse_games">
+              Browse Games
+            </span>
           </a>
         </div>
       </div>
@@ -70,9 +86,17 @@
     <section class="game-card static-card p-6">
       <div class="flex flex-wrap items-center justify-between gap-4">
         <div>
-          <h2 class="text-2xl font-bold">My Console Models</h2>
+          <h2
+            class="text-2xl font-bold"
+            data-i18n="platform_details.models_title"
+          >
+            My Console Models
+          </h2>
 
-          <p class="mt-1 text-sm text-slate-400">
+          <p
+            class="mt-1 text-sm text-slate-400"
+            data-i18n="platform_details.models_description"
+          >
             Your personal hardware collection
           </p>
         </div>
@@ -83,41 +107,8 @@
           class="btn-primary inline-flex items-center gap-2 px-4 py-2"
         >
           <i data-lucide="plus" class="h-4 w-4"></i>
-          Add Console
+          <span data-i18n="platform_details.add_console"> Add Console </span>
         </button>
-      </div>
-
-      <!-- Console Collection Statistics -->
-      <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <div class="rounded-xl border border-slate-500/20 p-4">
-          <p id="console-stat-total" class="text-2xl font-bold">0</p>
-          <p class="mt-1 text-xs text-slate-400">Total Consoles</p>
-        </div>
-
-        <div class="rounded-xl border border-emerald-500/20 p-4">
-          <p
-            id="console-stat-owned"
-            class="text-2xl font-bold text-emerald-500"
-          >
-            0
-          </p>
-          <p class="mt-1 text-xs text-slate-400">Owned</p>
-        </div>
-
-        <div class="rounded-xl border border-amber-500/20 p-4">
-          <p
-            id="console-stat-wishlist"
-            class="text-2xl font-bold text-amber-500"
-          >
-            0
-          </p>
-          <p class="mt-1 text-xs text-slate-400">Wishlist</p>
-        </div>
-
-        <div class="rounded-xl border border-slate-500/20 p-4">
-          <p id="console-stat-previous" class="text-2xl font-bold">0</p>
-          <p class="mt-1 text-xs text-slate-400">Previously Owned</p>
-        </div>
       </div>
 
       <!-- User's Console Models -->
@@ -134,9 +125,17 @@
           class="mx-auto mb-3 h-10 w-10 text-cyan-400"
         ></i>
 
-        <h3 class="text-lg font-semibold">No Console Models Yet</h3>
+        <h3
+          class="text-lg font-semibold"
+          data-i18n="platform_details.models_empty_title"
+        >
+          No Console Models Yet
+        </h3>
 
-        <p class="mt-2 text-sm text-slate-400">
+        <p
+          class="mt-2 text-sm text-slate-400"
+          data-i18n="platform_details.models_empty_description"
+        >
           Add your first console model to your personal collection.
         </p>
       </div>
@@ -146,8 +145,8 @@
   </div>
 
   <!-- ==========================================
-     MY GAMES
-     ========================================== -->
+       MY GAMES
+       ========================================== -->
   <section class="game-card static-card p-6">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
       <div>
@@ -156,10 +155,13 @@
             data-lucide="gamepad-2"
             class="mr-2 inline-block h-6 w-6 text-cyan-400"
           ></i>
-          My Games
+          <span data-i18n="platform_details.games_title"> My Games </span>
         </h2>
 
-        <p class="mt-1 text-sm text-slate-400">
+        <p
+          class="mt-1 text-sm text-slate-400"
+          data-i18n="platform_details.games_description"
+        >
           Games in your collection for this platform
         </p>
       </div>
@@ -170,7 +172,9 @@
         class="btn-secondary inline-flex items-center gap-2 px-4 py-2 text-sm"
       >
         <i data-lucide="arrow-right" class="h-4 w-4"></i>
-        View All Games
+        <span data-i18n="platform_details.view_all_games">
+          View All Games
+        </span>
       </a>
     </div>
 
@@ -178,6 +182,7 @@
     <p
       id="platform-games-loading"
       class="py-8 text-center text-sm text-slate-400"
+      data-i18n="platform_details.games_loading"
     >
       Loading games...
     </p>
@@ -185,7 +190,7 @@
     <!-- Game Cards -->
     <div
       id="platform-games-list"
-      class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+      class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
     ></div>
 
     <!-- Empty State -->
@@ -199,9 +204,17 @@
         class="mx-auto mb-3 h-10 w-10 text-cyan-400"
       ></i>
 
-      <h3 class="text-lg font-semibold">No Games Yet</h3>
+      <h3
+        class="text-lg font-semibold"
+        data-i18n="platform_details.games_empty_title"
+      >
+        No Games Yet
+      </h3>
 
-      <p class="mt-2 text-sm text-slate-400">
+      <p
+        class="mt-2 text-sm text-slate-400"
+        data-i18n="platform_details.games_empty_description"
+      >
         You haven't added any games for this platform yet.
       </p>
     </div>
@@ -210,6 +223,7 @@
     <p id="platform-games-error" class="mt-4 text-sm text-red-400" hidden></p>
   </section>
 </div>
+
 <!-- ==========================================
      ADD / EDIT CONSOLE MODEL DIALOG
      ========================================== -->
@@ -221,18 +235,29 @@
   <form id="console-model-form" class="space-y-4">
     <!-- Dialog Title -->
     <div>
-      <h2 id="console-model-dialog-title" class="text-xl font-bold">
+      <h2
+        id="console-model-dialog-title"
+        class="text-xl font-bold"
+        data-i18n="platform_details.dialog_add_title"
+      >
         Add Console Model
       </h2>
 
-      <p class="mt-1 text-sm text-slate-400">
+      <p
+        class="mt-1 text-sm text-slate-400"
+        data-i18n="platform_details.dialog_description"
+      >
         Add a console variant to your personal collection.
       </p>
     </div>
 
     <!-- Model Name -->
     <div>
-      <label for="console-model-name" class="mb-2 block text-sm">
+      <label
+        for="console-model-name"
+        class="mb-2 block text-sm"
+        data-i18n="platform_details.model_name"
+      >
         Model Name *
       </label>
 
@@ -242,13 +267,18 @@
         maxlength="120"
         required
         placeholder="e.g. PlayStation 3 FAT 60GB"
+        data-i18n-placeholder="platform_details.model_name_placeholder"
         class="theme-input w-full px-3 py-2"
       />
     </div>
 
     <!-- Model Number -->
     <div>
-      <label for="console-model-number" class="mb-2 block text-sm">
+      <label
+        for="console-model-number"
+        class="mb-2 block text-sm"
+        data-i18n="platform_details.model_number"
+      >
         Model Number (optional)
       </label>
 
@@ -257,6 +287,7 @@
         type="text"
         maxlength="100"
         placeholder="e.g. CECHC04"
+        data-i18n-placeholder="platform_details.model_number_placeholder"
         class="theme-input w-full px-3 py-2"
       />
     </div>
@@ -264,36 +295,82 @@
     <!-- Ownership and Condition -->
     <div class="grid grid-cols-2 gap-4">
       <div>
-        <label for="console-model-status" class="mb-2 block text-sm">
+        <label
+          for="console-model-status"
+          class="mb-2 block text-sm"
+          data-i18n="platform_details.ownership"
+        >
           Ownership
         </label>
 
         <select id="console-model-status" class="theme-select w-full">
-          <option value="owned">Owned</option>
-          <option value="wishlist">Wishlist</option>
-          <option value="previously_owned">Previously Owned</option>
+          <option value="owned" data-i18n="platform_details.owned">
+            Owned
+          </option>
+
+          <option value="wishlist" data-i18n="platform_details.wishlist">
+            Wishlist
+          </option>
+
+          <option
+            value="previously_owned"
+            data-i18n="platform_details.previously_owned"
+          >
+            Previously Owned
+          </option>
         </select>
       </div>
 
       <div>
-        <label for="console-model-condition" class="mb-2 block text-sm">
+        <label
+          for="console-model-condition"
+          class="mb-2 block text-sm"
+          data-i18n="platform_details.condition"
+        >
           Condition
         </label>
 
         <select id="console-model-condition" class="theme-select w-full">
-          <option value="">Not specified</option>
-          <option value="New">New</option>
-          <option value="Excellent">Excellent</option>
-          <option value="Good">Good</option>
-          <option value="Fair">Fair</option>
-          <option value="For parts">For parts</option>
+          <option value="" data-i18n="platform_details.not_specified">
+            Not specified
+          </option>
+
+          <option value="New" data-i18n="platform_details.condition_new">
+            New
+          </option>
+
+          <option
+            value="Excellent"
+            data-i18n="platform_details.condition_excellent"
+          >
+            Excellent
+          </option>
+
+          <option value="Good" data-i18n="platform_details.condition_good">
+            Good
+          </option>
+
+          <option value="Fair" data-i18n="platform_details.condition_fair">
+            Fair
+          </option>
+
+          <option
+            value="For parts"
+            data-i18n="platform_details.condition_parts"
+          >
+            For parts
+          </option>
         </select>
       </div>
     </div>
 
     <!-- Image URL -->
     <div>
-      <label for="console-model-image-url" class="mb-2 block text-sm">
+      <label
+        for="console-model-image-url"
+        class="mb-2 block text-sm"
+        data-i18n="platform_details.image_url"
+      >
         Image URL (optional)
       </label>
 
@@ -301,13 +378,18 @@
         id="console-model-image-url"
         type="url"
         placeholder="https://example.com/console.jpg"
+        data-i18n-placeholder="platform_details.image_url_placeholder"
         class="theme-input w-full px-3 py-2"
       />
     </div>
 
     <!-- Image Upload -->
     <div>
-      <label for="console-model-image-file" class="mb-2 block text-sm">
+      <label
+        for="console-model-image-file"
+        class="mb-2 block text-sm"
+        data-i18n="platform_details.upload_image"
+      >
         Or Upload an Image
       </label>
 
@@ -318,7 +400,10 @@
         class="theme-input w-full px-3 py-2"
       />
 
-      <p class="mt-1 text-xs text-slate-400">
+      <p
+        class="mt-1 text-xs text-slate-400"
+        data-i18n="platform_details.image_help"
+      >
         JPG, PNG or WebP. Maximum 5 MB. Choose either a URL or an uploaded
         image.
       </p>
@@ -326,7 +411,11 @@
 
     <!-- Personal Notes -->
     <div>
-      <label for="console-model-notes" class="mb-2 block text-sm">
+      <label
+        for="console-model-notes"
+        class="mb-2 block text-sm"
+        data-i18n="platform_details.notes"
+      >
         Personal Notes (optional)
       </label>
 
@@ -334,6 +423,7 @@
         id="console-model-notes"
         rows="3"
         placeholder="Modifications, repairs, memories..."
+        data-i18n-placeholder="platform_details.notes_placeholder"
         class="theme-input w-full px-3 py-2"
       ></textarea>
     </div>
@@ -353,13 +443,14 @@
         type="button"
         class="btn-secondary px-4 py-2 text-sm"
       >
-        Cancel
+        <span data-i18n="common.cancel">Cancel</span>
       </button>
 
       <button
         id="console-model-save"
         type="submit"
         class="btn-primary px-4 py-2 text-sm"
+        data-i18n="platform_details.save_console"
       >
         Save Console
       </button>

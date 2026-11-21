@@ -27,6 +27,7 @@ export async function initAuth() {
   const userManagementLink = document.getElementById("auth-user-management");
   const adminSection = document.getElementById("auth-admin-section");
   const managePlatformsLink = document.getElementById("auth-manage-platforms");
+  const manageResourcesLink = document.getElementById("auth-manage-resources");
 
   async function updateAuthUI(session) {
     const signedIn = Boolean(session?.user);
@@ -38,6 +39,7 @@ export async function initAuth() {
     collectionLink.hidden = !signedIn;
     userManagementLink.hidden = true;
     managePlatformsLink.hidden = true;
+    manageResourcesLink.hidden = true;
 
     if (signedIn) {
       const admin = await isAdmin(session.user);
@@ -47,6 +49,7 @@ export async function initAuth() {
       userManagementLink.hidden = !admin;
       adminSection.hidden = !admin;
       managePlatformsLink.hidden = !admin;
+      manageResourcesLink.hidden = !admin;
     }
   }
 

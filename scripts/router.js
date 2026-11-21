@@ -23,6 +23,9 @@ import { t, translatePage } from "./i18n.js";
 import { initContact } from "./pages/contact.js";
 import { syncThemeControls } from "./theme.js";
 import { initPlatformDetails } from "./pages/platformDetails.js";
+import { initChangelog } from "./pages/changelog.js";
+import { initRetroResources } from "./pages/retroResources.js";
+import { initAdminRetroResources } from "./pages/adminRetroResources.js";
 
 const routes = {
   welcome: "welcome",
@@ -31,6 +34,7 @@ const routes = {
   privacy: "privacy",
   terms: "terms",
   changelog: "changelog",
+  resources: "retroResources",
   "report-bug": "report-bug",
   attributions: "attributions",
   home: "home",
@@ -47,6 +51,7 @@ const routes = {
   "reset-password": "reset-password",
   "forgot-password": "forgot-password",
   admin: "admin-dashboard",
+  adminRetroResources: "adminRetroResources",
   "admin/users": "admin-users",
   "admin/games": "admin-games",
   "admin/add-game": "admin-add-game",
@@ -162,6 +167,14 @@ const pageHeadings = {
     title: "Attributions & Credits",
     subtitle:
       "The technologies, services, and resources behind RetroTrack Games.",
+  },
+  retroResources: {
+    eyebrow: "THE RETRO TOOLBOX",
+    title: "Retro Resources",
+    subtitle:
+      "Useful tools, emulators, communities, and retro gaming websites.",
+    countId: "retro-resources-count",
+    countLabel: "RESOURCES",
   },
 };
 
@@ -402,6 +415,9 @@ export async function navigate() {
     if (route === "statistics") {
       await initStatistics();
     }
+    if (page === "adminRetroResources") {
+      await initAdminRetroResources();
+    }
 
     if (route === "login") {
       initLogin();
@@ -449,12 +465,18 @@ export async function navigate() {
     if (route === "profile") {
       await initProfile();
     }
+    if (page === "resources") {
+      await initRetroResources();
+    }
 
     if (route === "reset-password") {
       await initResetPassword();
     }
     if (route === "contact") {
       cleanupPage = initContact();
+    }
+    if (page === "changelog") {
+      initChangelog();
     }
 
     // Translate the newly loaded page

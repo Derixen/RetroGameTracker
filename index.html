@@ -123,6 +123,10 @@
             <i data-lucide="chart-no-axes-column" class="nav-icon"></i
             ><span data-i18n="nav.statistics">Statistics</span>
           </button>
+          <button data-page="resources" class="nav-item">
+            <i data-lucide="book-open" class="nav-icon"></i>
+            <span data-i18n="nav.retro_resources">Websites</span>
+          </button>
         </nav>
 
         <div
@@ -182,6 +186,16 @@
             <span data-i18n="nav.manage_platforms">Manage Platforms</span>
           </a>
 
+          <a
+            id="auth-manage-resources"
+            href="#/adminRetroResources"
+            class="nav-item"
+            hidden
+          >
+            <i data-lucide="book-open" class="nav-icon"></i>
+            <span data-i18n="nav.manage_resources">Manage Websites</span>
+          </a>
+
           <!-- SIGN IN -->
           <a id="auth-login" href="#/login" class="nav-item" hidden>
             <i data-lucide="log-in" class="nav-icon"></i>
@@ -215,6 +229,7 @@
           >
             <option value="en">🇬🇧 English</option>
             <option value="hu">🇭🇺 Magyar</option>
+            <option value="de">🇩🇪 Deutsch</option>
           </select>
         </div>
 

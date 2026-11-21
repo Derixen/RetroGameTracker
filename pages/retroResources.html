@@ -1,0 +1,82 @@
+
+
+  
+<!-- Search and Filters -->
+<div class="flex flex-wrap items-center gap-3">
+  <!-- Search -->
+  <div class="relative w-full sm:w-96">
+    <i
+      data-lucide="search"
+      class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+    ></i>
+
+    <input
+      id="retro-resources-search"
+      type="search"
+      placeholder="Search resources..."
+      data-i18n-placeholder="retro_resources.search_placeholder"
+      class="theme-input w-full py-2 pl-10 pr-3"
+      autocomplete="off"
+    />
+  </div>
+
+  <!-- Category Filter -->
+  <select
+    id="retro-resources-category"
+    class="theme-select w-full px-4 py-2 sm:w-56"
+  >
+    <option value="" data-i18n="retro_resources.all_categories">
+      All Categories
+    </option>
+  </select>
+</div>
+
+
+  <!-- Resource Table -->
+<section class="game-card static-card mt-5 overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-sm">
+        <thead>
+          <tr>
+            <th class="px-5 py-4" data-i18n="retro_resources.column_name">
+              Resource
+            </th>
+            <th class="px-5 py-4" data-i18n="retro_resources.column_category">
+              Category
+            </th>
+            <th
+              class="px-5 py-4"
+              data-i18n="retro_resources.column_description"
+            >
+              Description
+            </th>
+          </tr>
+        </thead>
+
+        <tbody id="retro-resources-list"></tbody>
+      </table>
+    </div>
+
+    <!-- Empty State -->
+    <div id="retro-resources-empty" class="p-10 text-center" hidden>
+      <i
+        data-lucide="search-x"
+        class="mx-auto mb-3 h-10 w-10 text-cyan-400"
+      ></i>
+
+      <h2 class="text-lg font-semibold" data-i18n="retro_resources.empty_title">
+        No Resources Found
+      </h2>
+
+      <p
+        class="mt-2 text-sm text-slate-400"
+        data-i18n="retro_resources.empty_description"
+      >
+        No resources match your search or selected category.
+      </p>
+    </div>
+
+    <!-- Error -->
+    <p id="retro-resources-error" class="p-5 text-sm text-red-400" hidden></p>
+  </section>
+</div>

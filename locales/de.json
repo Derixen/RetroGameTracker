@@ -1,0 +1,1041 @@
+{
+  "common": {
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "add": "Hinzufügen",
+    "loading": "Wird geladen ...",
+    "search": "Suchen ...",
+    "yes": "Ja",
+    "no": "Nein",
+    "language": "Sprache",
+    "select_language": "Sprache auswählen"
+  },
+  "games": {
+    "title": "Meine Spiele",
+    "add": "Spiel hinzufügen",
+    "search": "Spiele suchen ...",
+    "count": "{count} Spiele",
+    "views": {
+      "large": "Groß",
+      "small": "Klein",
+      "list": "Liste"
+    },
+    "status": {
+      "completed": "Abgeschlossen",
+      "in_progress": "In Bearbeitung",
+      "not_played": "Nicht gespielt"
+    }
+  },
+  "nav": {
+    "home": "Startseite",
+    "games": "Spiele",
+    "platforms": "Plattformen",
+    "series": "Spielereihen",
+    "developers": "Entwickler",
+    "genres": "Genres",
+    "statistics": "Statistiken",
+    "account_section": "MEIN KONTO",
+    "manage_collection": "Meine Sammlung verwalten",
+    "my_profile": "Mein Profil",
+    "admin_section": "VERWALTUNG",
+    "admin_dashboard": "Admin-Dashboard",
+    "user_management": "Benutzerverwaltung",
+    "manage_platforms": "Plattformen verwalten",
+    "retro_resources": "Websites",
+    "manage_resources": "Websites verwalten",
+    "sign_in_register": "Anmelden / Registrieren",
+    "logout": "Abmelden",
+    "about": "Über RetroTrack",
+    "contact": "Kontakt",
+    "sign_in": "Anmelden"
+  },
+  "footer": {
+    "brand": "RetroTrack Games",
+    "home": "Startseite",
+    "about": "Über RetroTrack",
+    "whats_new": "Neuigkeiten",
+    "legal": "Rechtliches",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Nutzungsbedingungen",
+    "attributions": "Quellenangaben",
+    "support": "Support",
+    "contact": "Kontakt",
+    "report_bug": "Fehler melden",
+    "collection_archive": "SAMMLUNGSARCHIV"
+  },
+  "about": {
+    "title": "Über RetroTrack Games",
+    "description": "RetroTrack Games ist ein persönliches Projekt zur Bewahrung und Organisation von Retrospielesammlungen.",
+    "features": "Durchstöbere Spiele, entdecke Spieleplattformen und erstelle deine eigene Sammlung, während du deinen Spielfortschritt festhältst.",
+    "beta_notice": "RetroTrack Games befindet sich derzeit in der Beta-Entwicklung. Neue Funktionen und Verbesserungen werden regelmäßig eingeführt."
+  },
+  "admin_add_game": {
+    "eyebrow": "SAMMLUNGSVERWALTUNG",
+    "title": "Spiel hinzufügen",
+    "subtitle": "Füge deiner Retrospielesammlung einen neuen Titel hinzu.",
+    "search_database": "Spieledatenbank durchsuchen",
+    "search_description": "Finde ein Spiel auf IGDB und übernimm seine Angaben automatisch.",
+    "search_placeholder": "Nach einem Spiel suchen ...",
+    "platform_filter_aria": "IGDB-Ergebnisse nach Plattform filtern",
+    "all_platforms": "Alle Plattformen",
+    "search_button": "Suchen",
+    "game_title": "Spieltitel *",
+    "platform": "Plattform *",
+    "select_platform": "Plattform auswählen",
+    "game_series": "Spielereihe",
+    "no_series": "Keine Spielereihe",
+    "release_year": "Erscheinungsjahr",
+    "genre": "Genre",
+    "developer": "Entwickler",
+    "cover_url": "URL des Coverbilds",
+    "upload_cover": "Coverbild hochladen",
+    "cover_help": "JPG, PNG oder WebP. Maximale Dateigröße: 5 MB.",
+    "cover_preview_alt": "Vorschau des ausgewählten Spielcovers",
+    "remove_cover": "Cover entfernen",
+    "description": "Beschreibung",
+    "soundtrack_label": "Spielsoundtrack (YouTube-URL)",
+    "find_soundtrack": "Soundtrack finden",
+    "soundtrack_help": "Optional. Füge einen YouTube-Link zum Soundtrack des Spiels hinzu.",
+    "walkthrough_label": "Komplettlösung (YouTube-URL oder Playlist)",
+    "find_walkthrough": "Komplettlösung finden",
+    "walkthrough_help": "Optional. Füge ein YouTube-Video oder eine Playlist mit einer Komplettlösung hinzu.",
+    "save_game": "Spiel speichern",
+    "cancel": "Abbrechen"
+  },
+  "admin_add_platform": {
+    "eyebrow": "SAMMLUNGSVERWALTUNG",
+    "title": "Plattform hinzufügen",
+    "subtitle": "Füge deiner Sammlung eine neue Spieleplattform hinzu.",
+    "platform_name": "Plattformname *",
+    "manufacturer": "Hersteller",
+    "release_year": "Erscheinungsjahr",
+    "platform_image": "Plattformbild",
+    "image_help": "JPG, PNG oder WebP. Maximale Dateigröße: 5 MB.",
+    "image_preview_alt": "Vorschau des Plattformbilds",
+    "remove_image": "Bild entfernen",
+    "save_platform": "Plattform speichern",
+    "cancel": "Abbrechen"
+  },
+  "admin_add_series": {
+    "eyebrow": "SAMMLUNGSVERWALTUNG",
+    "title": "Spielereihe hinzufügen",
+    "subtitle": "Füge deiner Retrospielesammlung eine neue Spielereihe hinzu.",
+    "series_name": "Name der Spielereihe *",
+    "description": "Beschreibung",
+    "save_series": "Spielereihe speichern",
+    "cancel": "Abbrechen",
+    "games_heading": "Spiele dieser Reihe",
+    "games_description": "Verwalte die Spiele, die zu dieser Reihe gehören.",
+    "games_count": "{count} SPIELE",
+    "add_existing_game": "Vorhandenes Spiel hinzufügen",
+    "search_placeholder": "Sammlung durchsuchen ...",
+    "add_game": "Spiel hinzufügen"
+  },
+  "admin_dashboard": {
+    "registered_users": "Registrierte Benutzer",
+    "total_games": "Spiele insgesamt",
+    "active_today": "Heute aktiv",
+    "new_users_week": "Neue Benutzer diese Woche",
+    "daily_signins": "Tägliche Anmeldungen",
+    "signin_description": "Anmeldeaktivität der letzten 30 Tage.",
+    "loading_activity": "Aktivität wird geladen ...",
+    "site_settings": "Website-Einstellungen",
+    "site_settings_description": "Verwalte den öffentlichen Zugang zu RetroTrack Games.",
+    "allow_registrations": "Neue Registrierungen erlauben",
+    "registrations_description": "Wenn deaktiviert, können Besucher keine neuen Konten erstellen.",
+    "registration_status_loading": "Registrierungsstatus wird geladen ...",
+    "toggle_loading": "Wird geladen ...",
+    "registrations_enabled": "Registrierungen sind aktiviert.",
+    "registrations_disabled": "Registrierungen sind deaktiviert.",
+    "enable_registrations": "Registrierungen aktivieren",
+    "disable_registrations": "Registrierungen deaktivieren"
+  },
+  "admin_games": {
+    "eyebrow": "SAMMLUNGSVERWALTUNG",
+    "title": "Spiele verwalten",
+    "subtitle": "Füge Spiele hinzu, bearbeite sie oder entferne sie aus deiner Sammlung.",
+    "add_game": "Spiel hinzufügen",
+    "column_title": "Titel",
+    "column_platform": "Plattform",
+    "column_year": "Jahr",
+    "column_developer": "Entwickler",
+    "column_actions": "Aktionen",
+    "empty": "Keine Spiele gefunden."
+  },
+  "admin_platforms": {
+    "eyebrow": "SAMMLUNGSVERWALTUNG",
+    "title": "Plattformen verwalten",
+    "subtitle": "Verwalte die Spielesysteme in deiner Sammlung.",
+    "add_platform": "Plattform hinzufügen",
+    "search_placeholder": "Plattformen suchen ...",
+    "column_platform": "Plattform",
+    "column_manufacturer": "Hersteller",
+    "column_release_year": "Erscheinungsjahr",
+    "column_cover_image": "Coverbild",
+    "column_actions": "Aktionen",
+    "empty": "Keine Plattformen gefunden."
+  },
+  "admin_series": {
+    "eyebrow": "SAMMLUNGSVERWALTUNG",
+    "title": "Spielereihen verwalten",
+    "subtitle": "Verwalte die Spielereihen in deiner Retrospielesammlung.",
+    "add_series": "Spielereihe hinzufügen",
+    "column_series": "Spielereihe",
+    "column_description": "Beschreibung",
+    "column_games": "Spiele",
+    "column_actions": "Aktionen",
+    "empty": "Keine Spielereihen gefunden."
+  },
+  "admin_users": {
+    "title": "Registrierte Benutzer",
+    "description": "Verwalte registrierte Konten, Berechtigungen und Benutzersammlungen.",
+    "column_email": "E-Mail",
+    "column_registered": "Registriert",
+    "column_games": "Spiele",
+    "column_role": "Rolle",
+    "column_actions": "Aktionen",
+    "loading": "Benutzer werden geladen ..."
+  },
+  "attributions": {
+    "title": "Quellenangaben und Danksagungen",
+    "introduction": "RetroTrack Games nutzt Technologien, Dienste und Spielinformationen von Drittanbietern, um seine Funktionen bereitzustellen.",
+    "game_information_heading": "Spielinformationen und Grafiken",
+    "game_information_description": "Spielinformationen und Grafiken können von IGDB stammen. Videospieltitel, Marken, Logos und Grafiken gehören ihren jeweiligen Rechteinhabern.",
+    "game_data_provided_by": "Spieldaten bereitgestellt von",
+    "technologies_heading": "Technologien und Dienste",
+    "supabase_description": "Authentifizierungs- und Datenbankdienste.",
+    "github_description": "Website-Hosting.",
+    "tailwind_description": "Gestaltung der Benutzeroberfläche.",
+    "lucide_description": "Symbole der Benutzeroberfläche.",
+    "independent_heading": "Unabhängiges Projekt",
+    "independent_description": "RetroTrack Games ist ein unabhängiges Projekt und steht in keiner offiziellen Verbindung zu den Herausgebern, Entwicklern oder Plattformherstellern, die in der Spielebibliothek vertreten sind, und wird von diesen nicht unterstützt."
+  },
+  "changelog": {
+    "title": "Änderungsprotokoll",
+    "subtitle": "Die Entwicklung von Retro Game Tracker",
+    "v026": {
+      "title": "Plattformsammlung und Lokalisierung",
+      "item1": "Persönliche Plattformsammlungen mit automatischer Sichtbarkeit anhand vorhandener Spiele eingeführt.",
+      "item2": "Möglichkeit hinzugefügt, Plattformen manuell aus dem vom Administrator verwalteten Katalog hinzuzufügen.",
+      "item3": "Entfernen von Plattformen ermöglicht, ohne Spiele oder offizielle Plattformdatensätze zu löschen.",
+      "item4": "Plattformsuche sowie dynamische Plattform- und Spielanzahlen hinzugefügt.",
+      "item5": "Plattformkarten mit zugänglicher Navigation und unabhängigen Entfernen-Steuerelementen verbessert.",
+      "item6": "Oberflächen für Plattformen und Plattformdetails auf Englisch und Ungarisch lokalisiert.",
+      "item7": "Dialoge zur Konsolenverwaltung, Besitzstatus, Zustandsangaben und Validierungsmeldungen übersetzt.",
+      "item8": "Designabhängige Bestätigungsdialoge zum Entfernen von Plattformen und Konsolen integriert."
+    },
+    "v025": {
+      "title": "Persönliche Konsolensammlung",
+      "item1": "Persönliche Konsolenmodellsammlungen auf Plattformdetailseiten eingeführt.",
+      "item2": "Unterstützung für mehrere Konsolenmodelle und Hardwarevarianten pro Plattform hinzugefügt.",
+      "item3": "Erstellen, Bearbeiten und Löschen von Konsolen implementiert.",
+      "item4": "Besitzstatus „Im Besitz“, „Wunschliste“ und „Früher im Besitz“ hinzugefügt.",
+      "item5": "Erfassung des Hardwarezustands und optionaler Modellnummern eingeführt.",
+      "item6": "Konsolenbilder über externe URLs oder private Uploads ermöglicht.",
+      "item7": "Persönliche Notizen zu Modifikationen, Reparaturen und Hardware-Erinnerungen hinzugefügt.",
+      "item8": "Sichere Bildbereinigung und benutzerspezifische Supabase-Zugriffsrichtlinien implementiert."
+    },
+    "v024": {
+      "title": "Verbesserungen bei Plattform- und Spieldetails",
+      "item1": "Eigenen Bereich „Meine Spiele“ auf Plattformdetailseiten eingeführt.",
+      "item2": "Kompakte Spielkarten für die einer Plattform zugeordneten Spiele hinzugefügt.",
+      "item3": "Direkte Navigation von Plattformsammlungen zu einzelnen Spieldetails ermöglicht.",
+      "item4": "Anklickbare Plattformabzeichen in Spieldetails hinzugefügt, die zu Plattformdetails führen.",
+      "item5": "Plattformnavigation und Spielefilterung verbessert.",
+      "item6": "Größe und Layout der Spielkarten für eine einheitlichere Darstellung optimiert.",
+      "item7": "Seite „Nicht gefunden“ mit designabhängigen Text- und Akzentfarben verbessert.",
+      "item8": "Konsistenz zwischen hellem und dunklem Design auf Plattform- und Spieleseiten erhöht."
+    },
+    "v023": {
+      "title": "Listenansicht",
+      "item1": "Neue Listenansicht zusätzlich zu den vorhandenen großen und kleinen Spielkarten eingeführt.",
+      "item2": "Kompakte Tabelle mit Spielname, Plattform, Abschlussstatus und Erscheinungsjahr hinzugefügt.",
+      "item3": "Auf- und absteigende Sortierung für alle vier Tabellenspalten hinzugefügt.",
+      "item4": "Sortierung der Listenansicht mit dem vorhandenen Sortiermenü synchronisiert.",
+      "item5": "Anklickbare Tabellenzeilen hinzugefügt, die die jeweiligen Spieldetails öffnen.",
+      "item6": "Listenansicht in die vorhandene Suche sowie Plattform- und Statusfilter integriert.",
+      "item7": "Ausgewählte Ansichtsart im lokalen Speicher gespeichert, damit sie erhalten bleibt.",
+      "item8": "Barrierefreiheit durch Tastaturnavigation und Sortierindikatoren verbessert."
+    },
+    "v022": {
+      "title": "Meine Spielelinks",
+      "item1": "Eigenen Bereich „Meine Spielelinks“ in den Spieldetails hinzugefügt.",
+      "item2": "Speichern mehrerer nützlicher Websites für jedes Spiel ermöglicht.",
+      "item3": "Linknamen, URLs und optionale Kategorien hinzugefügt.",
+      "item4": "Vollständiges Erstellen, Bearbeiten und Löschen von Links implementiert.",
+      "item5": "Bestätigungsdialoge zum Löschen gespeicherter Links hinzugefügt.",
+      "item6": "Anklickbare Linknamen und Kategorieabzeichen eingeführt.",
+      "item7": "Schaltflächen „Bearbeiten“ und „Löschen“ an den Stil persönlicher Erinnerungen angepasst.",
+      "item8": "Persönliche Links durch Supabase Row Level Security geschützt."
+    },
+    "v021": {
+      "title": "Verbesserungen der Erfolgsabzeichen",
+      "item1": "Runde Erfolgsabzeichen im Retro-Pixel-Art-Stil eingeführt.",
+      "item2": "Automatisches Laden von PNG-Dateien aus images/badges/ hinzugefügt.",
+      "item3": "Lucide-Symbole als Ersatz für fehlende Abzeichenbilder hinzugefügt.",
+      "item4": "Ausrichtung, Abstände und Lesbarkeit der Abzeichen verbessert.",
+      "item5": "Überschriften in Spieldetails mit farbigen Lucide-Symbolen vereinheitlicht."
+    },
+    "v020": {
+      "title": "Persönliche Erfolge",
+      "item1": "Universelle Bibliothek für Spielerfolge eingeführt.",
+      "item2": "Auswahl von Erfolgen und Anzeige verdienter Abzeichen hinzugefügt.",
+      "item3": "Entfernen von Abzeichen mit Bestätigung hinzugefügt.",
+      "item4": "Erfolge in Supabase mit privater Benutzerzuordnung gespeichert.",
+      "item5": "Doppelte Erfolge pro Spiel verhindert."
+    },
+    "v015": {
+      "title": "Persönliche Erinnerungen",
+      "item1": "Eine persönliche Erinnerung pro Spiel hinzugefügt.",
+      "item2": "Optionales Spieljahr hinzugefügt.",
+      "item3": "Erstellen, Bearbeiten und Löschen von Erinnerungen implementiert.",
+      "item4": "Eigenen Leerzustand eingeführt und Darstellung der Erinnerungen verbessert.",
+      "item5": "Datenbankbeschränkungen für Eigentumsrechte verstärkt."
+    },
+    "v014": {
+      "title": "Verbesserungen des Spielverlaufs",
+      "item1": "Darstellung des Abschlussverlaufs verbessert.",
+      "item2": "Steuerelemente zur Verwaltung von Abschlüssen optimiert.",
+      "item3": "Besitzprüfungen beim Bearbeiten und Löschen von Datensätzen verbessert."
+    },
+    "v013": {
+      "title": "Navigation und Benutzeroberfläche",
+      "item1": "Navigation und Ladeübergänge verbessert.",
+      "item2": "Verhalten der Ladeüberlagerung auf verschiedenen Seiten korrigiert.",
+      "item3": "Layout und Responsivität der Spieldetails optimiert."
+    },
+    "v012": {
+      "title": "Spieldetails",
+      "item1": "Eigene Spieldetailseiten hinzugefügt.",
+      "item2": "Spielinformationen und Covergrafiken angezeigt.",
+      "item3": "Soundtrack- und Komplettlösungseinbettungen hinzugefügt.",
+      "item4": "Persönlichen Spielverlauf dargestellt."
+    },
+    "v011": {
+      "title": "Sammlungsverwaltung",
+      "item1": "Verwaltung persönlicher Sammlungen hinzugefügt.",
+      "item2": "Favoriten und Verfolgung des Spielstatus eingeführt.",
+      "item3": "Suche und Durchsuchen der Sammlung hinzugefügt."
+    },
+    "v010": {
+      "title": "Erste Veröffentlichung",
+      "item1": "Erste Version der Anwendung Retro Game Tracker.",
+      "item2": "Supabase-Integration und Benutzerauthentifizierung.",
+      "item3": "Grundlegende Funktionen zur Spielesammlung.",
+      "item4": "Responsive Benutzeroberfläche mit dunklem Design."
+    }
+  },
+  "collection": {
+    "manage_games": "Meine Spiele verwalten",
+    "manage_games_description": "Füge Spiele zu deiner Sammlung hinzu, bearbeite und organisiere sie.",
+    "manage_series": "Meine Spielereihen verwalten",
+    "manage_series_description": "Erstelle und organisiere deine Spielereihen."
+  },
+  "contact": {
+    "title": "Kontakt und Support",
+    "question": "Hast du eine Frage, einen Vorschlag oder ein Problem bei der Nutzung von RetroTrack Games festgestellt?",
+    "feedback": "Kontaktiere uns gerne. Besonders während der Beta-Phase ist dein Feedback wertvoll.",
+    "support_link": "RetroTrack-Support kontaktieren",
+    "verification_help": "Bitte schließe vor dem Senden die Sicherheitsüberprüfung ab.",
+    "form": {
+      "type_label": "Nachrichtentyp",
+      "type_general": "Allgemeine Frage",
+      "type_feedback": "Vorschlag / Feedback",
+      "type_bug": "Fehler melden",
+      "name_label": "Dein Name",
+      "name_placeholder": "Dein Name (optional)",
+      "email_label": "E-Mail-Adresse",
+      "email_placeholder": "you@example.com",
+      "subject_label": "Betreff",
+      "subject_placeholder": "Wie können wir helfen?",
+      "message_label": "Nachricht",
+      "message_placeholder": "Schreibe hier deine Nachricht ...",
+      "message_help": "Bitte beschreibe dein Anliegen möglichst ausführlich.",
+      "privacy_notice": "Deine Angaben werden ausschließlich zur Beantwortung deiner Nachricht verwendet.",
+      "submit": "Nachricht senden",
+      "sending": "Wird gesendet ...",
+      "success": "Deine Nachricht wurde erfolgreich gesendet. Vielen Dank!",
+      "error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+    }
+  },
+  "developers": {
+    "grid_aria_label": "Spieleentwickler",
+    "empty_title": "Keine Entwickler gefunden",
+    "empty_description": "Entwickler werden hier angezeigt, sobald Spiele zur Sammlung hinzugefügt wurden."
+  },
+  "forgot_password": {
+    "eyebrow": "KONTOWIEDERHERSTELLUNG",
+    "title": "Passwort zurücksetzen",
+    "description": "Gib deine E-Mail-Adresse ein. Wir senden dir einen Link zum Zurücksetzen deines Passworts.",
+    "email_label": "E-Mail",
+    "submit": "Link zum Zurücksetzen senden",
+    "back_to_login": "Zurück zur Anmeldung"
+  },
+  "game_details": {
+    "navigation": {
+      "back_to_games": "← Zurück zu den Spielen"
+    },
+    "loading": {
+      "game": "Daten werden geladen ..."
+    },
+    "game": {
+      "no_cover": "Kein Cover",
+      "release_year": "Erscheinungsjahr",
+      "genre": "Genre",
+      "developer": "Entwickler",
+      "series": "Spielereihe",
+      "about": "Über dieses Spiel",
+      "favorite": "Favorit",
+      "in_progress": "In Bearbeitung",
+      "completed": "Abgeschlossen",
+      "cover_alt": "Spielcover"
+    },
+    "achievements": {
+      "subtitle": "Meilensteine deiner Spielereise",
+      "loading": "Erfolge werden geladen ...",
+      "empty": "Noch keine Abzeichen verdient. Deine nächste Herausforderung wartet!",
+      "add_title": "Erfolg hinzufügen",
+      "choose": "Erfolg auswählen ...",
+      "add_badge": "Abzeichen hinzufügen",
+      "title": "Meine Erfolge",
+      "earned_badges": "Verdiente Abzeichen"
+    },
+    "history": {
+      "subtitle": "Deine Reise mit diesem Spiel",
+      "add_completion": "Abschluss hinzufügen",
+      "completions": "Abschlüsse",
+      "first_completed": "Erstmals abgeschlossen",
+      "last_completed": "Zuletzt abgeschlossen",
+      "timeline": "Abschluss-Zeitleiste",
+      "loading": "Abschlussverlauf wird geladen ...",
+      "empty": "Noch keine Abschlüsse erfasst.",
+      "dialog_add_title": "Abschluss hinzufügen",
+      "dialog_description": "Halte ein weiteres Kapitel deiner Spielgeschichte fest.",
+      "year_required": "Jahr *",
+      "month_optional": "Monat (optional)",
+      "unknown": "Unbekannt",
+      "day_optional": "Tag (optional)",
+      "notes_optional": "Persönliche Erinnerung (optional)",
+      "save": "Abschluss speichern",
+      "title": "Mein Spielverlauf",
+      "notes_placeholder": "Woran erinnerst du dich bei diesem Spieldurchlauf?",
+      "dialog_edit_title": "Abschluss bearbeiten"
+    },
+    "memory": {
+      "subtitle": "Manche Spiele bleiben für immer in Erinnerung.",
+      "loading": "Erinnerung wird geladen ...",
+      "empty_title": "Jedes Spiel erzählt eine Geschichte",
+      "empty_description": "Erinnere dich an deinen ersten Spieldurchlauf, einen besonderen Moment oder die Menschen, mit denen du dieses Spiel erlebt hast.",
+      "add": "Erinnerung hinzufügen",
+      "title": "Meine persönliche Erinnerung",
+      "dialog_description": "Bewahre einen Moment deiner Spielereise auf.",
+      "year_optional": "Jahr (optional)",
+      "your_memory": "Deine Erinnerung *",
+      "save": "Erinnerung speichern",
+      "edit_title": "Erinnerung bearbeiten",
+      "delete_title": "Erinnerung löschen",
+      "year_placeholder": "z. B. 1995",
+      "input_placeholder": "Was macht dieses Spiel für dich besonders?"
+    },
+    "common": {
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "cancel": "Abbrechen"
+    },
+    "months": {
+      "january": "Januar",
+      "february": "Februar",
+      "march": "März",
+      "april": "April",
+      "may": "Mai",
+      "june": "Juni",
+      "july": "Juli",
+      "august": "August",
+      "september": "September",
+      "october": "Oktober",
+      "november": "November",
+      "december": "Dezember"
+    },
+    "media": {
+      "soundtrack_description": "Höre dir die Musik dieses Spiels an",
+      "walkthrough_description": "Sieh dir eine Komplettlösung für dieses Spiel an",
+      "soundtrack_title": "Spielsoundtrack",
+      "walkthrough_title": "Komplettlösung"
+    },
+    "related": {
+      "title": "Ähnliche Spiele"
+    },
+    "links": {
+      "subtitle": "Nützliche Websites, Cheats, Anleitungen und Spielmöglichkeiten",
+      "add": "Link hinzufügen",
+      "loading": "Links werden geladen ...",
+      "empty": "Noch keine Links gespeichert. Füge eine nützliche Website für dieses Spiel hinzu!",
+      "dialog_add_title": "Spielelink hinzufügen",
+      "name": "Name",
+      "url": "Link",
+      "category_optional": "Kategorie (optional)",
+      "save": "Link speichern",
+      "title": "Meine Spielelinks",
+      "name_placeholder": "z. B. Online spielen",
+      "url_placeholder": "https://example.com",
+      "category_placeholder": "z. B. Cheats, Anleitung, Online spielen",
+      "dialog_edit_title": "Spielelink bearbeiten"
+    }
+  },
+  "genres": {
+    "grid_aria_label": "Spielgenres",
+    "empty_title": "Keine Genres gefunden",
+    "empty_description": "Genres werden hier angezeigt, sobald Spiele zur Sammlung hinzugefügt wurden."
+  },
+  "home": {
+    "stats_games": "Spiele",
+    "stats_completed": "Abgeschlossen",
+    "stats_playing": "Wird gespielt",
+    "stats_backlog": "Noch zu spielen",
+    "breakdown_eyebrow": "SAMMLUNGSÜBERSICHT",
+    "breakdown_title": "Spiele nach Plattform",
+    "breakdown_top_three": "(Top 3)",
+    "breakdown_description": "Verteilung deiner Sammlung auf die Plattformen",
+    "loading_platforms": "Plattformen werden geladen ...",
+    "recommendation_eyebrow": "DEIN NÄCHSTES ABENTEUER",
+    "recommendation_heading": "Was soll ich als Nächstes spielen?",
+    "recommendation_subtitle": "Entdecke ein Spiel aus deiner Sammlung wieder",
+    "recommendation_cover_alt": "Cover des empfohlenen Spiels",
+    "recommendation_loading": "Dein nächstes Abenteuer wird gesucht ...",
+    "recommendation_empty_description": "Ein Spiel aus deiner Sammlung wartet darauf, entdeckt zu werden.",
+    "recommendation_shuffle": "Überrasch mich",
+    "recommendation_view_game": "Spiel ansehen",
+    "soundtrack_eyebrow": "RETRO-SOUNDTRACKS",
+    "soundtrack_heading": "Jetzt läuft",
+    "soundtrack_description": "Entdecke die Musik deiner liebsten Retrospiele wieder",
+    "soundtrack_next": "Weiter",
+    "recent_eyebrow": "NEUESTE ZUGÄNGE",
+    "recent_heading": "Zuletzt hinzugefügte Spiele",
+    "recent_description": "Die neuesten Spiele in deiner Sammlung"
+  },
+  "login": {
+    "eyebrow": "DEIN KONTO",
+    "email_label": "E-Mail",
+    "password_label": "Passwort",
+    "forgot_password": "Passwort vergessen?",
+    "password_requirements": "Mindestens 12 Zeichen, darunter Groß- und Kleinbuchstaben, eine Zahl und ein Sonderzeichen.",
+    "sign_in_title": "Anmelden",
+    "sign_in_description": "Melde dich an, um deine Retrospielesammlung zu verwalten.",
+    "sign_in_button": "Anmelden",
+    "sign_in_loading": "Anmeldung läuft ...",
+    "sign_up_title": "Konto erstellen",
+    "sign_up_description": "Erstelle ein Konto, um deine Retrospielesammlung zu verwalten.",
+    "sign_up_button": "Konto erstellen",
+    "sign_up_loading": "Konto wird erstellt ...",
+    "switch_to_sign_up_text": "Noch kein Konto?",
+    "switch_to_sign_up_button": "Konto erstellen",
+    "switch_to_sign_in_text": "Bereits ein Konto?",
+    "switch_to_sign_in_button": "Anmelden",
+    "registration_disabled_title": "Registrierung vorübergehend nicht verfügbar",
+    "registration_disabled_description": "Neue Kontoregistrierungen sind derzeit deaktiviert, während wir RetroTrack Games verbessern. Bestehende Mitglieder können sich weiterhin anmelden. Bitte versuche es später erneut."
+  },
+  "not_found": {
+    "title": "Seite nicht gefunden",
+    "description": "Diese Seite scheint im Retro-Gaming-Nirgendwo verschwunden zu sein. Die Adresse ist möglicherweise falsch oder die Seite wurde verschoben.",
+    "back_home": "Zurück zur Startseite"
+  },
+  "platforms": {
+    "grid_aria_label": "Plattformen",
+    "empty_title": "Keine Plattformen gefunden",
+    "empty_description": "Plattformen werden hier angezeigt, sobald sie zur Datenbank hinzugefügt wurden.",
+    "error_sign_in": "Du musst angemeldet sein, um Plattformen hinzuzufügen.",
+    "select_platform": "Plattform auswählen ...",
+    "error_select_platform": "Bitte wähle eine Plattform aus.",
+    "adding": "Wird hinzugefügt ...",
+    "error_add_platform": "Plattform konnte nicht hinzugefügt werden.",
+    "add_platform": "Plattform hinzufügen",
+    "platform_count": "PLATTFORMEN",
+    "unknown_manufacturer": "UNBEKANNT",
+    "released_in": "Erschienen im Jahr",
+    "release_year_unknown": "Erscheinungsjahr unbekannt",
+    "game_singular": "Spiel",
+    "game_plural": "Spiele",
+    "no_image": "Kein Bild",
+    "remove_tooltip": "Aus meinen Plattformen entfernen",
+    "remove_title": "Plattform entfernen",
+    "remove_message_before": "Möchtest du wirklich",
+    "remove_message_after": "aus deinen Plattformen entfernen?\\n\\nDadurch werden keine Spiele oder Konsolenmodelle gelöscht.",
+    "remove": "Entfernen",
+    "remove_error_title": "Plattform konnte nicht entfernt werden",
+    "remove_error": "Die Plattform konnte nicht entfernt werden. Bitte versuche es erneut."
+  },
+  "platform_details": {
+    "back": "Zurück zu den Plattformen",
+    "loading": "Plattform wird geladen ...",
+    "release_year": "Erscheinungsjahr",
+    "manufacturer": "Hersteller",
+    "browse_games": "Spiele durchsuchen",
+    "models_title": "Meine Konsolenmodelle",
+    "models_description": "Deine persönliche Hardwaresammlung",
+    "add_console": "Konsole hinzufügen",
+    "models_empty_title": "Noch keine Konsolenmodelle",
+    "models_empty_description": "Füge dein erstes Konsolenmodell zu deiner persönlichen Sammlung hinzu.",
+    "games_title": "Meine Spiele",
+    "games_description": "Spiele in deiner Sammlung für diese Plattform",
+    "view_all_games": "Alle Spiele ansehen",
+    "games_loading": "Spiele werden geladen ...",
+    "games_empty_title": "Noch keine Spiele",
+    "games_empty_description": "Du hast für diese Plattform noch keine Spiele hinzugefügt.",
+    "dialog_add_title": "Konsolenmodell hinzufügen",
+    "dialog_edit_title": "Konsolenmodell bearbeiten",
+    "dialog_description": "Füge deiner persönlichen Sammlung eine Konsolenvariante hinzu.",
+    "model_name": "Modellname *",
+    "model_name_placeholder": "z. B. PlayStation 3 FAT 60GB",
+    "model_number": "Modellnummer (optional)",
+    "model_number_placeholder": "z. B. CECHC04",
+    "ownership": "Besitzstatus",
+    "condition": "Zustand",
+    "image_url": "Bild-URL (optional)",
+    "image_url_placeholder": "https://example.com/console.jpg",
+    "upload_image": "Oder Bild hochladen",
+    "image_help": "JPG, PNG oder WebP. Maximal 5 MB. Wähle entweder eine URL oder ein hochgeladenes Bild.",
+    "notes": "Persönliche Notizen (optional)",
+    "notes_placeholder": "Modifikationen, Reparaturen, Erinnerungen ...",
+    "save_console": "Konsole speichern",
+    "owned": "Im Besitz",
+    "wishlist": "Wunschliste",
+    "previously_owned": "Früher im Besitz",
+    "not_specified": "Nicht angegeben",
+    "condition_new": "Neu",
+    "condition_excellent": "Ausgezeichnet",
+    "condition_good": "Gut",
+    "condition_fair": "Akzeptabel",
+    "condition_parts": "Für Ersatzteile",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "delete_console_title": "Konsole löschen",
+    "delete_console_message": "Möchtest du dieses Konsolenmodell wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "delete_console_confirm": "Konsole löschen",
+    "update_console": "Konsole aktualisieren",
+    "saving": "Wird gespeichert ...",
+    "error_model_name": "Der Modellname ist erforderlich.",
+    "error_image_source": "Bitte wähle entweder eine Bild-URL oder einen Datei-Upload.",
+    "error_image_type": "Es werden nur JPG-, PNG- und WebP-Bilder unterstützt.",
+    "error_image_size": "Das Bild muss kleiner als 5 MB sein.",
+    "error_image_url": "Die Bild-URL muss mit https:// beginnen.",
+    "error_invalid_platform": "Ungültige Plattform-ID.",
+    "error_unknown_manufacturer": "Unbekannter Hersteller",
+    "unknown": "Unbekannt",
+    "error_login_view": "Du musst angemeldet sein, um deine Konsolen anzusehen.",
+    "error_login_add": "Du musst angemeldet sein, um eine Konsole hinzuzufügen.",
+    "error_login_delete": "Du musst angemeldet sein, um eine Konsole zu löschen.",
+    "error_console_not_found": "Konsole nicht gefunden oder Zugriff verweigert.",
+    "error_load_consoles": "Konsolenmodelle konnten nicht geladen werden.",
+    "error_delete_console": "Konsolenmodell konnte nicht gelöscht werden.",
+    "error_save_console": "Konsolenmodell konnte nicht gespeichert werden.",
+    "error_load_games": "Spiele konnten nicht geladen werden.",
+    "error_load_platform": "Plattformdetails konnten nicht geladen werden."
+  },
+  "retro_resources": {
+    "search_placeholder": "Websites suchen ...",
+    "all_categories": "Alle Kategorien",
+    "column_name": "Website",
+    "column_category": "Kategorie",
+    "column_description": "Beschreibung",
+    "column_website": "Website",
+    "visit_website": "Website besuchen",
+    "loading": "Websites werden geladen ...",
+    "empty_title": "Keine Website gefunden",
+    "empty_description": "Keine Websites entsprechen deiner Suche oder der ausgewählten Kategorie.",
+    "error_loading": "Websites konnten nicht geladen werden.",
+    "results": "{count} Websites",
+    "count_label": "WEBSITES"
+  },
+  "admin_retro_resources": {
+    "title": "Websites verwalten",
+    "subtitle": "Verwalte nützliche Websites und Tools für Retro-Gaming.",
+    "add_resource": "Website hinzufügen",
+    "edit_resource": "Website bearbeiten",
+    "search_placeholder": "Websites suchen ...",
+    "column_name": "Name",
+    "column_category": "Kategorie",
+    "column_url": "Website-URL",
+    "column_visible": "Sichtbar",
+    "column_order": "Reihenfolge",
+    "column_actions": "Aktionen",
+    "name": "Websitename *",
+    "name_placeholder": "z. B. DOSBox Staging",
+    "url": "Website-URL *",
+    "url_placeholder": "https://example.com",
+    "category": "Kategorie *",
+    "category_placeholder": "z. B. DOS & Classic PC",
+    "description": "Beschreibung",
+    "description_placeholder": "Beschreibe diese Website auf Englisch ...",
+    "sort_order": "Sortierreihenfolge",
+    "visible": "Für Benutzer sichtbar",
+    "save": "Website speichern",
+    "cancel": "Abbrechen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "loading": "Websites werden geladen ...",
+    "back_dashboard": "Zurück zum Admin-Dashboard",
+    "empty": "Keine Websites gefunden.",
+    "delete_title": "Website löschen",
+    "delete_message": "Möchtest du „{name}“ wirklich löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "visible_status": "Sichtbar",
+    "hidden_status": "Ausgeblendet",
+    "invalid_url": "Die Website-URL muss mit https:// beginnen.",
+    "delete_confirm": "Website löschen",
+    "error_loading": "Websites konnten nicht geladen werden.",
+    "error_saving": "Website konnte nicht gespeichert werden.",
+    "error_deleting": "Website konnte nicht gelöscht werden."
+  },
+  "privacy": {
+    "title": "Datenschutzerklärung",
+    "introduction": "Diese Datenschutzerklärung erläutert, wie RetroTrack Games personenbezogene Daten erhebt, verwendet, speichert und schützt.",
+    "last_updated": "Zuletzt aktualisiert: 5. November 2026",
+    "information_collect": {
+      "title": "1. Welche Daten wir erheben",
+      "description": "Wenn du ein Konto bei RetroTrack Games erstellst, erheben wir die für die Bereitstellung und Verwaltung deines Kontos erforderlichen Daten.",
+      "email": "E-Mail-Adresse für Registrierung und Authentifizierung.",
+      "profile": "Kontokennung und Profilinformationen.",
+      "collection": "Spiele in deiner Sammlung, einschließlich Favoriten und Abschlussstatus.",
+      "security": "Technische Authentifizierungs- und Sicherheitsinformationen, die für den Betrieb des Dienstes erforderlich sind."
+    },
+    "information_use": {
+      "title": "2. Wie wir deine Daten verwenden",
+      "description": "RetroTrack Games verarbeitet Konto- und Sammlungsdaten, um seine Dienste bereitzustellen und zu betreiben.",
+      "accounts": "Zur Erstellung, Authentifizierung und Verwaltung von Benutzerkonten.",
+      "collection": "Zum Speichern und Anzeigen deiner persönlichen Spielesammlung.",
+      "favorites": "Zum Speichern deiner Favoriten und des Abschlussstatus von Spielen.",
+      "management": "Zur Bereitstellung von Kontoverwaltung und Kontolöschung.",
+      "security": "Zur Gewährleistung der Sicherheit und Zuverlässigkeit der Plattform."
+    },
+    "data_storage": {
+      "title": "3. Datenspeicherung und Sicherheit",
+      "description_1": "RetroTrack Games verwendet Supabase für Authentifizierungs- und Datenbankdienste. Kontodaten und persönliche Spielesammlungen werden über diese Infrastruktur gespeichert.",
+      "description_2": "Zugriffskontrollen beschränken den Zugriff auf persönliche Sammlungsdaten. Authentifizierungs- und Datenbanksicherheitsmaßnahmen tragen zum Schutz der Benutzerdaten vor unbefugtem Zugriff bei."
+    },
+    "account_deletion": {
+      "title": "4. Kontolöschung und deine Rechte",
+      "description_1": "Du kannst die Löschung deines RetroTrack-Games-Kontos über die auf der Website bereitgestellten Kontoverwaltungsfunktionen beantragen.",
+      "description_2": "Je nach geltendem Datenschutzrecht, einschließlich der DSGVO, hast du möglicherweise das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung oder Erhalt einer Kopie deiner personenbezogenen Daten. Du kannst außerdem das Recht haben, bestimmten Verarbeitungen zu widersprechen.",
+      "description_3": "Um deine Datenschutzrechte auszuüben oder Fragen zu deinen personenbezogenen Daten zu stellen, kontaktiere uns bitte über unsere Seite „Kontakt und Support“."
+    },
+    "third_party": {
+      "title": "5. Dienste von Drittanbietern",
+      "description": "RetroTrack Games nutzt Dienste von Drittanbietern für den Betrieb und die Wartung der Plattform.",
+      "supabase": "Stellt Authentifizierung, Datenbankspeicherung und Backend-Funktionen bereit.",
+      "github": "Hostet die Website und liefert ihre Frontend-Dateien aus.",
+      "igdb": "Liefert Videospiel-Metadaten zur Befüllung der Spieledatenbank."
+    },
+    "data_retention": {
+      "title": "6. Speicherdauer",
+      "description_1": "RetroTrack Games speichert Kontoinformationen und persönliche Spielesammlungsdaten grundsätzlich so lange, wie das Konto aktiv ist.",
+      "description_2": "Bei Löschung eines Kontos werden die zugehörigen personenbezogenen Daten gemäß den Löschverfahren der Plattform entfernt, vorbehaltlich gesetzlicher Pflichten und technischer Aufbewahrungsanforderungen.",
+      "description_3": "Bestimmte Informationen können vorübergehend in Sicherungskopien oder Sicherheitsprotokollen verbleiben, bevor sie gemäß den geltenden Aufbewahrungsfristen gelöscht werden."
+    },
+    "legal_bases": {
+      "title": "7. Rechtsgrundlagen der Verarbeitung",
+      "description": "Soweit die Datenschutz-Grundverordnung (DSGVO) gilt, verarbeitet RetroTrack Games personenbezogene Daten auf folgenden Rechtsgrundlagen:",
+      "contractual_title": "Vertragserfüllung:",
+      "contractual_description": "Verarbeitung zur Bereitstellung von Benutzerkonten, Authentifizierung und persönlichen Spielesammlungen (Art. 6 Abs. 1 lit. b DSGVO).",
+      "legitimate_title": "Berechtigte Interessen:",
+      "legitimate_description": "Verarbeitung zur Gewährleistung der Plattformsicherheit, Verhinderung von Missbrauch und Sicherstellung eines zuverlässigen Betriebs, sofern die Rechte der Benutzer nicht überwiegen (Art. 6 Abs. 1 lit. f DSGVO).",
+      "obligations_title": "Rechtliche Verpflichtungen:",
+      "obligations_description": "Verarbeitung zur Erfüllung geltender gesetzlicher Pflichten (Art. 6 Abs. 1 lit. c DSGVO)."
+    },
+    "data_controller": {
+      "title": "8. Verantwortlicher und Kontakt",
+      "description_1": "RetroTrack Games ist eine unabhängig betriebene Plattform zur Verwaltung von Videospielesammlungen.",
+      "description_2": "Bei datenschutzbezogenen Fragen, Anfragen zu personenbezogenen Daten oder Beschwerden kontaktiere uns bitte über unsere Seite „Kontakt und Support“.",
+      "description_3": "Du hast außerdem das Recht, Beschwerde bei einer zuständigen Datenschutzaufsichtsbehörde einzulegen."
+    },
+    "cookies": {
+      "title": "9. Cookies und lokaler Speicher",
+      "original_description": "RetroTrack Games nutzt Speichertechnologien des Browsers, um die Authentifizierung zu unterstützen und Benutzersitzungen aufrechtzuerhalten. Diese Technologien helfen dabei, angemeldet zu bleiben und wesentliche Anwendungsfunktionen bereitzustellen.",
+      "description_1": "RetroTrack Games nutzt Speichertechnologien des Browsers zur Unterstützung der Authentifizierung, zur Aufrechterhaltung von Benutzersitzungen und zur Bereitstellung wesentlicher Anwendungsfunktionen.",
+      "description_2": "Diese Technologien können Cookies und lokalen Speicher umfassen. Welche Technologien konkret eingesetzt werden, hängt von den Authentifizierungs- und Hostingdiensten ab."
+    },
+    "international_transfers": {
+      "title": "10. Internationale Datenübermittlungen",
+      "original_description": "Einige Drittanbieter können Daten außerhalb des Europäischen Wirtschaftsraums verarbeiten. Soweit die DSGVO gilt, müssen solche Übermittlungen die geltenden Datenschutzanforderungen erfüllen.",
+      "description_1": "Einige Drittanbieter können personenbezogene Daten außerhalb des Europäischen Wirtschaftsraums (EWR) verarbeiten.",
+      "description_2": "Soweit anwendbar, müssen internationale Datenübermittlungen die Anforderungen der DSGVO erfüllen, einschließlich geeigneter Schutzmaßnahmen."
+    },
+    "children": {
+      "title": "11. Datenschutz von Kindern",
+      "description_1": "RetroTrack Games ist eine Plattform zur Verwaltung von Videospielesammlungen. Die Anforderungen für Registrierung und Nutzung sind in den Nutzungsbedingungen beschrieben.",
+      "description_2": "Wenn du glaubst, dass personenbezogene Daten eines Kindes unangemessen verarbeitet wurden, kontaktiere uns bitte, damit wir den Sachverhalt prüfen können."
+    },
+    "automated_decisions": {
+      "title": "12. Automatisierte Entscheidungen",
+      "description": "RetroTrack Games beabsichtigt derzeit nicht, personenbezogene Daten für automatisierte Entscheidungen zu verwenden, die rechtliche oder ähnlich erhebliche Auswirkungen auf Benutzer haben."
+    },
+    "changes": {
+      "title": "13. Änderungen dieser Datenschutzerklärung",
+      "description_1": "Diese Datenschutzerklärung kann aktualisiert werden, um Änderungen an RetroTrack Games, seinen Funktionen, Drittanbieterdiensten oder geltenden gesetzlichen Anforderungen Rechnung zu tragen.",
+      "description_2": "Das am Anfang dieser Erklärung angegebene Datum zeigt die letzte Aktualisierung an. Soweit erforderlich, werden Benutzer über wesentliche Änderungen informiert."
+    }
+  },
+  "profile": {
+    "eyebrow": "KONTOEINSTELLUNGEN",
+    "title": "Mein Profil",
+    "description": "Verwalte dein Retro-Game-Tracker-Konto.",
+    "account_information": "Kontoinformationen",
+    "email_address": "E-Mail-Adresse",
+    "account_type": "Kontotyp",
+    "member_since": "Mitglied seit",
+    "loading": "Wird geladen ...",
+    "security_title": "Sicherheit",
+    "security_description": "Verwalte dein Kontopasswort.",
+    "change_password": "Passwort ändern",
+    "danger_zone_title": "Gefahrenbereich",
+    "danger_zone_description": "Lösche dein Konto und alle zugehörigen Spielesammlungsdaten dauerhaft. Diese Aktion kann nicht rückgängig gemacht werden.",
+    "delete_account": "Mein Konto löschen"
+  },
+  "reset_password": {
+    "eyebrow": "KONTOSICHERHEIT",
+    "title": "Passwort zurücksetzen",
+    "description": "Wähle ein neues Passwort für dein Konto.",
+    "new_password": "Neues Passwort",
+    "confirm_password": "Neues Passwort bestätigen",
+    "password_requirements": "Mindestens 12 Zeichen, darunter Groß- und Kleinbuchstaben, eine Zahl und ein Sonderzeichen.",
+    "submit": "Passwort aktualisieren"
+  },
+  "series": {
+    "grid_aria_label": "Spielereihen",
+    "empty_title": "Keine Spielereihen gefunden",
+    "empty_description": "Spielereihen werden hier angezeigt, sobald sie zur Datenbank hinzugefügt wurden."
+  },
+  "statistics": {
+    "games": "Spiele",
+    "completed": "Abgeschlossen",
+    "playing": "Wird gespielt",
+    "backlog": "Noch zu spielen",
+    "favorites": "Favoriten",
+    "game_status": "Spielstatus",
+    "completion_progress": "Abschlussfortschritt",
+    "progress_description": "{completed} von {total} Spielen abgeschlossen",
+    "games_by_platform": "Spiele nach Plattform",
+    "games_by_genre": "Spiele nach Genre",
+    "games_by_developer": "Spiele nach Entwickler",
+    "games_by_release_year": "Spiele nach Erscheinungsjahr"
+  },
+  "terms": {
+    "title": "Nutzungsbedingungen",
+    "introduction": "Diese Nutzungsbedingungen regeln den Zugang zu und die Nutzung von RetroTrack Games, einer Plattform zum Entdecken von Videospielen und zur Verwaltung persönlicher Spielesammlungen.",
+    "last_updated": "Zuletzt aktualisiert: 5. November 2026",
+    "acceptance": {
+      "title": "1. Zustimmung zu den Bedingungen",
+      "description": "Durch den Zugriff auf oder die Nutzung von RetroTrack Games stimmst du diesen Nutzungsbedingungen zu und nimmst die Datenschutzerklärung zur Kenntnis. Wenn du nicht einverstanden bist, solltest du den Dienst nicht nutzen."
+    },
+    "service_description": {
+      "title": "2. Beschreibung des Dienstes",
+      "description_1": "RetroTrack Games ist eine Plattform zum Entdecken von Videospielen, Erkunden von Spieleplattformen und Verwalten persönlicher Spielesammlungen.",
+      "description_2": "Der Dienst befindet sich derzeit in aktiver Entwicklung. Funktionen, Leistungsumfang und Verfügbarkeit können sich ändern."
+    },
+    "user_accounts": {
+      "title": "3. Benutzerkonten",
+      "description_1": "Bestimmte Funktionen erfordern ein registriertes Konto. Benutzer sind dafür verantwortlich, korrekte Kontoinformationen anzugeben, ihre Zugangsdaten vertraulich zu behandeln und uns über vermuteten unbefugten Zugriff zu informieren.",
+      "description_2": "Die Kontoregistrierung kann während der Entwicklung eingeschränkt oder vorübergehend nicht verfügbar sein."
+    },
+    "acceptable_use": {
+      "title": "4. Zulässige Nutzung",
+      "description": "Benutzer dürfen RetroTrack Games nicht missbrauchen oder seinen Betrieb beeinträchtigen.",
+      "unauthorized_access": "Versuche nicht, unbefugt auf Konten oder Systeme zuzugreifen.",
+      "security": "Nutze keine Sicherheitslücken aus und umgehe keine Sicherheitsbeschränkungen.",
+      "disruption": "Störe den Dienst nicht vorsätzlich und überlaste seine Infrastruktur nicht.",
+      "unlawful": "Nutze die Plattform nicht für rechtswidrige Aktivitäten.",
+      "content": "Missbrauche oder verbreite keine Inhalte unter Verletzung geltender Rechte."
+    },
+    "personal_collections": {
+      "title": "5. Persönliche Sammlungen",
+      "description_1": "Benutzer können ihre persönlichen Spielesammlungen mithilfe der bereitgestellten Funktionen organisieren und pflegen.",
+      "description_2": "Benutzern wird empfohlen, wichtige Sammlungsinformationen zusätzlich selbst zu sichern. Obwohl angemessene Anstrengungen zum Erhalt der Daten unternommen werden können, kann weder eine unterbrechungsfreie Verfügbarkeit noch eine dauerhafte Aufbewahrung garantiert werden."
+    },
+    "intellectual_property": {
+      "title": "6. Geistiges Eigentum",
+      "description_1": "Das ursprüngliche Design, die Markenidentität und die unabhängig entwickelten Komponenten von RetroTrack Games unterliegen den geltenden Rechten des geistigen Eigentums.",
+      "description_2": "Videospieltitel, Marken, Logos, Covergrafiken und sonstige Materialien Dritter bleiben Eigentum ihrer jeweiligen Rechteinhaber."
+    },
+    "third_party": {
+      "title": "7. Inhalte und Dienste Dritter",
+      "description_1": "RetroTrack Games nutzt Dienste und Spielinformationsquellen Dritter, einschließlich IGDB, um bestimmte Funktionen und Spielmetadaten bereitzustellen.",
+      "description_2": "Spielinformationen können Ungenauigkeiten, Auslassungen oder veraltete Angaben enthalten. RetroTrack Games erhebt keinen Eigentumsanspruch auf Spielinhalte Dritter."
+    },
+    "service_availability": {
+      "title": "8. Verfügbarkeit des Dienstes",
+      "description_1": "RetroTrack Games wird nach Verfügbarkeit bereitgestellt. Wartungsarbeiten, technische Probleme oder Änderungen während der Entwicklung können den Zugriff vorübergehend unterbrechen.",
+      "description_2": "Funktionen können vorbehaltlich geltender gesetzlicher Anforderungen geändert, ausgesetzt oder eingestellt werden."
+    },
+    "account_termination": {
+      "title": "9. Kontosperrung und Kündigung",
+      "description_1": "Konten können eingeschränkt oder gesperrt werden, wenn dies zur Abwehr von Sicherheitsbedrohungen, Missbrauch, Verstößen gegen diese Bedingungen oder zur Erfüllung gesetzlicher Anforderungen angemessen erforderlich ist.",
+      "description_2": "Benutzer können die Löschung ihres Kontos über die verfügbaren Kontoverwaltungsfunktionen beantragen. Der Umgang mit personenbezogenen Daten nach der Löschung ist in der Datenschutzerklärung beschrieben."
+    },
+    "disclaimer": {
+      "title": "10. Gewährleistungsausschluss",
+      "description_1": "Soweit gesetzlich zulässig, wird RetroTrack Games ohne Gewähr für einen unterbrechungsfreien Betrieb, Fehlerfreiheit oder die vollständige Richtigkeit der Spielinformationen bereitgestellt.",
+      "description_2": "Diese Bedingungen schließen keine Gewährleistungen oder Schutzrechte aus, deren Ausschluss gesetzlich unzulässig ist."
+    },
+    "liability": {
+      "title": "11. Haftungsbeschränkung",
+      "description_1": "Soweit gesetzlich zulässig, kann die Haftung im Zusammenhang mit der Nutzung oder Nichtverfügbarkeit von RetroTrack Games beschränkt sein.",
+      "description_2": "Diese Bedingungen beschränken keine Haftung, deren Beschränkung gesetzlich verboten ist, und heben keine zwingenden Verbraucherschutzrechte auf."
+    },
+    "changes": {
+      "title": "12. Änderungen dieser Bedingungen",
+      "description_1": "Diese Bedingungen können aktualisiert werden, um Änderungen des Dienstes, gesetzlicher Anforderungen oder betrieblicher Verfahren zu berücksichtigen.",
+      "description_2": "Das Datum am Anfang dieses Dokuments zeigt die letzte Aktualisierung an. Wesentliche Änderungen werden mitgeteilt, soweit dies gesetzlich erforderlich ist."
+    },
+    "governing_law": {
+      "title": "13. Anwendbares Recht",
+      "description": "Diese Bedingungen unterliegen den geltenden Gesetzen und zwingenden Verbraucherschutzvorschriften. Das maßgebliche Recht und der Gerichtsstand werden vor der öffentlichen Veröffentlichung des Dienstes festgelegt."
+    },
+    "contact": {
+      "title": "14. Kontakt",
+      "description_before": "Bei Fragen zu diesen Nutzungsbedingungen besuche bitte unsere Seite",
+      "link": "Kontakt und Support",
+      "description_after": "."
+    }
+  },
+  "welcome": {
+    "logo_alt": "RetroTrack Games",
+    "hero_title": "Deine Spielereise,",
+    "hero_highlight": "deine Geschichte.",
+    "hero_description": "Erstelle deine persönliche Retrospielesammlung, verfolge deinen Fortschritt und bewahre die Erinnerungen an jedes Spiel, das du gespielt hast. Organisiere deine Favoriten, entdecke detaillierte Statistiken und füge deine Lieblingssoundtracks und Komplettlösungen direkt von YouTube hinzu.",
+    "sign_in": "Anmelden / Loslegen",
+    "collection_image_alt": "Spielesammlung von Retro Game Tracker",
+    "collection_title": "Erstelle deine Sammlung",
+    "collection_description": "Erstelle deine persönliche Spielebibliothek. Organisiere Spiele nach Plattform, Genre, Entwickler und Spielereihe. Behalte den Überblick über alles, was du gespielt hast, und entdecke deine Sammlung neu.",
+    "statistics_image_alt": "Verfolge deinen Fortschritt",
+    "statistics_title": "Markiere Spiele als abgeschlossen, in Bearbeitung oder noch nicht gespielt. Erfasse Abschlussdaten, verfolge deine Erfolge und entdecke Statistiken zur Entwicklung deiner Spielereise.",
+    "statistics_description": "Statistik-Dashboard von Retro Game Tracker",
+    "soundtracks_image_alt": "Erlebe die Soundtracks erneut",
+    "soundtracks_title": "Jedes großartige Spiel hat unvergessliche Musik. Füge deine Lieblingssoundtracks direkt von YouTube hinzu und genieße sie zusammen mit deiner Sammlung. Von legendären Titelmelodien bis zu einprägsamer Hintergrundmusik – bewahre die Klänge deiner Spielerinnerungen.",
+    "soundtracks_description": "YouTube-Soundtracks von Retro Game Tracker",
+    "walkthroughs_image_alt": "Komplettlösungen jederzeit griffbereit",
+    "walkthroughs_title": "Steckst du in einem schwierigen Level fest oder möchtest du ein klassisches Abenteuer erneut erleben? Füge deinen Spielen ganz einfach YouTube-Komplettlösungen hinzu und halte hilfreiche Anleitungen nur einen Klick entfernt. Ob du Geheimnisse entdeckst oder alte Herausforderungen erneut meisterst – alles bleibt mit deiner Sammlung verbunden.",
+    "walkthroughs_description": "YouTube-Komplettlösungen von Retro Game Tracker",
+    "game_details_image_alt": "Jedes Spiel erzählt eine Geschichte",
+    "game_details_title": "Entdecke einzelne Spieleseiten mit Covergrafiken, Erscheinungsinformationen, Genres, Entwicklern und deinem persönlichen Abschlussstatus. Bewahre alle Details, die ein Spiel besonders machen, an einem Ort auf.",
+    "game_details_description": "Spieldetails von Retro Game Tracker",
+    "history_image_alt": "Dein Spielverlauf",
+    "history_title": "Jedes abgeschlossene Spiel ist ein weiteres Kapitel deiner Spielereise. Blicke auf deine abgeschlossenen Spiele zurück, erinnere dich daran, wann du sie gemeistert hast, und entdecke die Abenteuer wieder, die deine Begeisterung für Spiele geprägt haben. Deine Sammlung ist nicht nur eine Liste – sie ist deine persönliche Geschichte.",
+    "history_description": "Spielverlauf von Retro Game Tracker",
+    "platforms_image_alt": "Entdecke deine Plattformen",
+    "platforms_title": "Von legendären Heimkonsolen bis zu klassischen Computern: Entdecke die Plattformen, die deine Spielereise geprägt haben. Organisiere deine Spiele nach System und entdecke die Titel wieder, die jede Plattform besonders gemacht haben.",
+    "platforms_description": "Plattformseite von Retro Game Tracker",
+    "cta_title": "Bereit, deine Spielgeschichte wiederzuentdecken?",
+    "cta_description": "Von deinem allerersten Spiel bis zu deinem neuesten abgeschlossenen Abenteuer – deine Spielgeschichte verdient einen eigenen Platz.",
+    "cta_button": "Jetzt loslegen"
+  },
+  "confirm_dialog": {
+    "default_title": "Bist du sicher?",
+    "default_message": "Diese Aktion kann nicht rückgängig gemacht werden.",
+    "delete": "Löschen",
+    "cancel": "Abbrechen",
+    "ok": "OK",
+    "password_placeholder": "Gib dein Passwort ein"
+  },
+  "page_headings": {
+    "home": {
+      "eyebrow": "SAMMLUNGSÜBERSICHT",
+      "title": "Dashboard",
+      "subtitle": "Deine Retrospielesammlung auf einen Blick"
+    },
+    "games": {
+      "eyebrow": "DIE SAMMLUNG",
+      "title": "Meine Spiele",
+      "subtitle": "Durchstöbere meine Retrospielesammlung",
+      "count_label": "SPIELE"
+    },
+    "platforms": {
+      "eyebrow": "DIE HARDWARE",
+      "title": "Plattformen",
+      "subtitle": "Entdecke die Konsolen und Handhelds im Archiv",
+      "count_label": "PLATTFORMEN"
+    },
+    "series": {
+      "eyebrow": "DIE SPIELEREIHEN",
+      "title": "Spielereihen",
+      "subtitle": "Entdecke die Spielereihen in meiner Retrospielesammlung",
+      "count_label": "SPIELEREIHEN"
+    },
+    "developers": {
+      "eyebrow": "DIE SPIELEREIHEN",
+      "title": "Spielereihen",
+      "subtitle": "Entdecke die Studios hinter meiner Retrospielesammlung",
+      "count_label": "ENTWICKLER"
+    },
+    "genres": {
+      "eyebrow": "NACH KATEGORIE ENTDECKEN",
+      "title": "Genres",
+      "subtitle": "Durchstöbere meine Retrospielesammlung nach Genre",
+      "count_label": "GENRES"
+    },
+    "statistics": {
+      "eyebrow": "FORTSCHRITTSÜBERSICHT",
+      "title": "Statistiken",
+      "subtitle": "Dein Retrospiel-Fortschritt auf einen Blick"
+    },
+    "collection": {
+      "eyebrow": "MEINE SAMMLUNG",
+      "title": "Meine Sammlung verwalten",
+      "subtitle": "Verwalte deine Spiele, Spielereihen und Sammlungsdetails"
+    },
+    "retroResources": {
+      "eyebrow": "RETRO-GAMING",
+      "title": "Websites",
+      "subtitle": "Nützliche Websites, Emulatoren, Tools und Communities für Retro-Gaming."
+    },
+    "adminRetroResources": {
+      "eyebrow": "VERWALTUNG",
+      "title": "Websites verwalten",
+      "subtitle": "Verwalte das Retro-Gaming-Websiteverzeichnis."
+    },
+    "admin-users": {
+      "eyebrow": "VERWALTUNG",
+      "title": "Benutzerverwaltung",
+      "subtitle": "Verwalte registrierte Konten, Berechtigungen und Benutzersammlungen"
+    },
+    "admin-dashboard": {
+      "eyebrow": "VERWALTUNG",
+      "title": "Admin-Dashboard",
+      "subtitle": "Überwache Plattformaktivitäten, Benutzer und Sammlungsstatistiken"
+    },
+    "about": {
+      "eyebrow": "DAS PROJEKT",
+      "title": "Über RetroTrack",
+      "subtitle": "Entdecke die Geschichte hinter RetroTrack Games."
+    },
+    "contact": {
+      "eyebrow": "KONTAKT",
+      "title": "Kontakt und Support",
+      "subtitle": "Fragen, Vorschläge oder Feedback? Wir freuen uns auf deine Nachricht."
+    },
+    "privacy": {
+      "eyebrow": "RECHTLICHE INFORMATIONEN",
+      "title": "Datenschutzerklärung",
+      "subtitle": "Wie RetroTrack Games mit deinen personenbezogenen Daten umgeht."
+    },
+    "terms": {
+      "eyebrow": "RECHTLICHE INFORMATIONEN",
+      "title": "Nutzungsbedingungen",
+      "subtitle": "Die Regeln und Bedingungen für die Nutzung von RetroTrack Games."
+    },
+    "changelog": {
+      "eyebrow": "ENTWICKLUNG",
+      "title": "Neuigkeiten",
+      "subtitle": "Neueste Updates, Verbesserungen und Versionsverlauf."
+    },
+    "attributions": {
+      "eyebrow": "QUELLENANGABEN",
+      "title": "Quellenangaben und Danksagungen",
+      "subtitle": "Die Technologien, Dienste und Ressourcen hinter RetroTrack Games."
+    }
+  },
+  "router": {
+    "error_title": "Etwas ist schiefgelaufen",
+    "error_description": "Wir konnten diese Seite nicht laden. Bitte versuche es erneut.",
+    "retry": "Erneut versuchen"
+  }
+}

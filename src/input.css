@@ -887,7 +887,7 @@ button {
   border-radius: 50%;
   animation: loading-spin 0.8s linear infinite;
 }
-@keyframes *loading-spin* {
+@keyframes loading-spin {
   to {
     transform: rotate(360deg);
   }
@@ -954,7 +954,7 @@ button {
 #sidebar {
   transition: opacity 450ms ease;
 }
-@keyframes *gameCardReveal* {
+@keyframes gameCardReveal {
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -2417,4 +2417,60 @@ html {
 
 [data-theme="dark"] #sidebar input[type="search"]::placeholder {
   color: #94a3b8;
+}
+/* ==========================================
+   404 PAGE — THEME SUPPORT
+   ========================================== */
+
+/* Dark theme (default) */
+.error-page-title {
+  color: #f8fafc;
+}
+
+.error-page-description {
+  color: #94a3b8;
+}
+
+/* Light theme */
+:root[data-theme="light"] .error-page-title {
+  color: #17243b;
+}
+
+:root[data-theme="light"] .error-page-description {
+  color: #64748b;
+}
+/* 404 Page — Accent Colors */
+
+/* Dark theme (default) */
+.error-page-accent {
+  color: #22d3ee;
+}
+
+.error-page-accent:hover {
+  color: #67e8f9;
+}
+
+/* Light theme */
+:root[data-theme="light"] .error-page-accent {
+  color: #f25296;
+}
+
+:root[data-theme="light"] a.error-page-accent:hover {
+  color: #db2777;
+}
+/* Retro Resources — Light Theme Button Hover */
+:root[data-theme="light"] #retro-resources-list .btn-secondary {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+:root[data-theme="light"] #retro-resources-list .btn-secondary:hover {
+  background: #d9eef5;
+  color: #075f73;
+  border-color: #087f99;
+  box-shadow: 0 4px 12px rgba(8, 127, 153, 0.15);
+  transform: translateY(-2px);
 }
