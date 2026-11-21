@@ -14,7 +14,7 @@
   },
   "games": {
     "title": "Játékaim",
-    "add": "Játék hozzáadása",
+    "add_game": "Játék hozzáadása",
     "search": "Játékok keresése...",
     "count": "{count} játék",
     "views": {
@@ -26,6 +26,24 @@
       "completed": "Befejezve",
       "in_progress": "Folyamatban",
       "not_played": "Még nem játszottam"
+    },
+    "filters": {
+      "all": "Összes játék",
+      "completed": "Befejezett",
+      "in_progress": "Folyamatban",
+      "not_played": "Még nem játszott",
+      "favorites": "Kedvencek"
+    },
+    "sort": {
+      "title_asc": "Cím A–Z",
+      "title_desc": "Cím Z–A",
+      "year_desc": "Év: Legújabb",
+      "year_asc": "Év: Legrégebbi",
+      "recent": "Legutóbb hozzáadott"
+    },
+    "view": {
+      "large": "Nagy",
+      "small": "Kicsi"
     }
   },
   "nav": {
@@ -401,7 +419,59 @@
       "choose": "Válassz teljesítményt...",
       "add_badge": "Jelvény hozzáadása",
       "title": "Teljesítményeim",
-      "earned_badges": "Megszerzett jelvények"
+      "earned_badges": "Megszerzett jelvények",
+      "complete-story": {
+        "name": "Történet befejezése",
+        "description": "Fejezd be a fő történetet."
+      },
+      "completion-100": {
+        "name": "100%-os teljesítés",
+        "description": "Teljesíts mindent a játékban."
+      },
+      "hundred-percent": {
+        "name": "100%-os teljesítés",
+        "description": "Teljesíts mindent a játékban."
+      },
+      "true-ending": {
+        "name": "Valódi befejezés",
+        "description": "Érd el a játék valódi befejezését."
+      },
+      "hard-mode": {
+        "name": "Nehéz mód",
+        "description": "Teljesítsd a játékot nehéz fokozaton."
+      },
+      "no-death-run": {
+        "name": "Halál nélküli végigjátszás",
+        "description": "Teljesítsd a játékot halál nélkül."
+      },
+      "speedrun": {
+        "name": "Gyors végigjátszás",
+        "description": "Teljesítsd a játékot a lehető leggyorsabban."
+      },
+      "secret-hunter": {
+        "name": "Titokvadász",
+        "description": "Fedezd fel a játék rejtett titkait."
+      },
+      "collector": {
+        "name": "Gyűjtő",
+        "description": "Gyűjtsd össze a játék gyűjthető tárgyait."
+      },
+      "high-score": {
+        "name": "Rekordpontszám",
+        "description": "Érj el kiemelkedő pontszámot."
+      },
+      "perfect-run": {
+        "name": "Tökéletes végigjátszás",
+        "description": "Teljesítsd a játékot hibátlanul."
+      },
+      "original-hardware": {
+        "name": "Eredeti hardver",
+        "description": "Játssz eredeti hardveren."
+      },
+      "couch-coop": {
+        "name": "Helyi kooperatív játék",
+        "description": "Játssz együtt másokkal helyben."
+      }
     },
     "history": {
       "subtitle": "A játékkal közös történeted",
@@ -548,6 +618,7 @@
     "empty_description": "A platformok akkor jelennek meg itt, amikor bekerülnek az adatbázisba.",
     "error_sign_in": "Platform hozzáadásához be kell jelentkezned.",
     "select_platform": "Válassz platformot...",
+    "search_placeholder": "Platformok keresése...",
     "error_select_platform": "Kérlek, válassz egy platformot.",
     "adding": "Hozzáadás...",
     "error_add_platform": "Nem sikerült hozzáadni a platformot.",

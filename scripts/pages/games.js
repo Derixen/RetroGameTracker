@@ -1,6 +1,7 @@
 import { getGames } from "../api/games.js";
 import { createGameCard } from "../components/gameCard.js";
 import { supabase } from "../supabase.js";
+import { t } from "../i18n.js";
 
 export async function initGames(params = new URLSearchParams()) {
   const controller = new AbortController();
@@ -51,6 +52,7 @@ export async function initGames(params = new URLSearchParams()) {
   const sortLabel = document.getElementById("game-sort-label");
 
   let currentSort = "title_asc";
+  sortLabel.textContent = t(`games.sort.${currentSort}`);
   let listSortColumn = "name";
   let listSortAscending = true;
   const view = document.getElementById("game-view");
@@ -66,9 +68,9 @@ export async function initGames(params = new URLSearchParams()) {
     grid.classList.toggle("small-view", currentView === "small");
 
     const labels = {
-      large: "Large",
-      small: "Small",
-      list: "List",
+      large: t("games.view.large"),
+      small: t("games.view.small"),
+      list: t("games.view.list"),
     };
 
     const icons = {
@@ -298,7 +300,7 @@ export async function initGames(params = new URLSearchParams()) {
     grid.replaceChildren();
     gameListBody.replaceChildren();
 
-    count.textContent = `${filtered.length} ${filtered.length === 1 ? "GAME" : "GAMES"}`;
+    count.textContent = `${filtered.length} ${t("page_headings.games.count_label")}`;
 
     empty.hidden = filtered.length > 0;
 
@@ -367,12 +369,10 @@ export async function initGames(params = new URLSearchParams()) {
 
         if (listSortColumn === "name") {
           currentSort = listSortAscending ? "title_asc" : "title_desc";
-          sortLabel.textContent = listSortAscending ? "Title A–Z" : "Title Z–A";
+          sortLabel.textContent = t(`games.sort.${currentSort}`);
         } else if (listSortColumn === "year") {
           currentSort = listSortAscending ? "year_asc" : "year_desc";
-          sortLabel.textContent = listSortAscending
-            ? "Year: Oldest"
-            : "Year: Newest";
+          sortLabel.textContent = t(`games.sort.${currentSort}`);
         }
 
         updateListSortHeaders();
@@ -400,7 +400,7 @@ export async function initGames(params = new URLSearchParams()) {
       "click",
       () => {
         currentSort = button.dataset.sort;
-        sortLabel.textContent = button.textContent;
+        sortLabel.textContent = t(`games.sort.${currentSort}`);
 
         const sortMapping = {
           title_asc: ["name", true],

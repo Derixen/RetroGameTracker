@@ -26,6 +26,7 @@ import {
   updateGameLink,
   deleteGameLink,
 } from "../api/gameLinks.js";
+import { t } from "../i18n.js";
 
 function formatCompletionTime(totalSeconds) {
   const hours = Math.floor(totalSeconds / 3600);
@@ -146,8 +147,8 @@ export async function initGameDetails(params = new URLSearchParams()) {
         editingCompletionId = null;
         completionForm.reset();
         completionError.hidden = true;
-        completionDialogTitle.textContent = "Add Completion";
-        completionSave.textContent = "Save Completion";
+        completionDialogTitle.textContent = t("game_details.history.add_title");
+        completionSave.textContent = t("game_details.history.save");
         completionDialog.showModal();
       });
 
@@ -190,7 +191,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           minutes > 59 ||
           seconds > 59
         ) {
-          completionError.textContent = "Please enter a valid completion time.";
+          completionError.textContent = t("game_details.history.invalid_time");
           completionError.hidden = false;
           return;
         }
@@ -204,13 +205,17 @@ export async function initGameDetails(params = new URLSearchParams()) {
           (!Number.isSafeInteger(completionTimeSeconds) ||
             completionTimeSeconds > 2147483647)
         ) {
-          completionError.textContent = "Completion time is too large.";
+          completionError.textContent = t(
+            "game_details.history.time_too_large",
+          );
           completionError.hidden = false;
           return;
         }
 
         if (day !== null && month === null) {
-          completionError.textContent = "Select a month when entering a day.";
+          completionError.textContent = t(
+            "game_details.history.month_required",
+          );
           completionError.hidden = false;
           return;
         }
@@ -223,14 +228,16 @@ export async function initGameDetails(params = new URLSearchParams()) {
             validDate.getUTCMonth() !== month - 1 ||
             validDate.getUTCDate() !== day
           ) {
-            completionError.textContent = "Please enter a valid date.";
+            completionError.textContent = t(
+              "game_details.history.invalid_date",
+            );
             completionError.hidden = false;
             return;
           }
         }
 
         completionSave.disabled = true;
-        completionSave.textContent = "Saving...";
+        completionSave.textContent = t("game_details.history.saving");
 
         try {
           const completionData = {
@@ -259,8 +266,8 @@ export async function initGameDetails(params = new URLSearchParams()) {
           completionSave.disabled = false;
           completionSave.textContent =
             editingCompletionId !== null
-              ? "Update Completion"
-              : "Save Completion";
+              ? t("game_details.history.update")
+              : t("game_details.history.save");
         }
       });
     }
@@ -718,9 +725,13 @@ export async function initGameDetails(params = new URLSearchParams()) {
         const name = document.createElement("p");
         name.className =
           "w-full text-center text-xs font-semibold leading-5 text-white";
-        name.textContent = achievement.name;
+        name.textContent = t(
+          `game_details.achievements.${achievement.id}.name`,
+        );
 
-        badge.title = achievement.description;
+        badge.title = t(
+          `game_details.achievements.${achievement.id}.description`,
+        );
         badge.append(iconCircle, name);
 
         if (canManageGame) {
@@ -783,12 +794,17 @@ export async function initGameDetails(params = new URLSearchParams()) {
       }
 
       achievementSelect.replaceChildren(
-        new Option("Choose an achievement...", ""),
+        new Option(t("game_details.achievements.choose"), ""),
       );
 
       for (const achievement of ACHIEVEMENTS) {
         if (!earnedIds.has(achievement.id)) {
-          achievementSelect.add(new Option(achievement.name, achievement.id));
+          achievementSelect.add(
+            new Option(
+              t(`game_details.achievements.${achievement.id}.name`),
+              achievement.id,
+            ),
+          );
         }
       }
 
@@ -929,7 +945,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
             const time = document.createElement("p");
             time.className = "completion-time mt-1 text-sm";
 
-            time.textContent = `Completion Time: ${formatCompletionTime(
+            time.textContent = `${t("game_details.history.completion_time")}: ${formatCompletionTime(
               completion.completion_time_seconds,
             )}`;
 
@@ -943,7 +959,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
                 "completion-personal-best mt-1 inline-flex " +
                 "text-xs font-semibold";
 
-              badge.textContent = "🏆 Personal Best";
+              badge.textContent = `🏆 ${t("game_details.history.personal_best")}`;
 
               details.append(badge);
             }
@@ -967,8 +983,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
             editButton.type = "button";
             editButton.textContent = "✎";
-            editButton.title = "Edit completion";
-            editButton.setAttribute("aria-label", "Edit completion");
+            editButton.title = t("game_details.history.edit");
+            editButton.setAttribute(
+              "aria-label",
+              t("game_details.history.edit"),
+            );
 
             editButton.className =
               "self-start rounded-lg border border-slate-700 " +
@@ -1005,8 +1024,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
                 totalSeconds == null ? "" : totalSeconds % 60;
 
               completionError.hidden = true;
-              completionDialogTitle.textContent = "Edit Completion";
-              completionSave.textContent = "Update Completion";
+              completionDialogTitle.textContent = t(
+                "game_details.history.edit_title",
+              );
+              completionSave.textContent = t("game_details.history.update");
 
               completionDialog.showModal();
             });
@@ -1018,8 +1039,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
             deleteButton.type = "button";
             deleteButton.textContent = "🗑";
-            deleteButton.title = "Delete completion";
-            deleteButton.setAttribute("aria-label", "Delete completion");
+            deleteButton.title = t("game_details.history.delete");
+            deleteButton.setAttribute(
+              "aria-label",
+              t("game_details.history.delete"),
+            );
 
             deleteButton.className =
               "self-start rounded-lg border border-slate-700 " +
@@ -1028,11 +1052,12 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
             deleteButton.addEventListener("click", async () => {
               const confirmed = await confirmDialog({
-                title: "Delete Completion?",
-                message:
-                  `Are you sure you want to delete the completion ` +
-                  `from ${completion.completed_year}?`,
-                confirmText: "Delete Completion",
+                title: t("game_details.history.delete_title"),
+                message: t("game_details.history.delete_message").replace(
+                  "{year}",
+                  completion.completed_year,
+                ),
+                confirmText: t("game_details.history.delete_confirm"),
               });
 
               if (!confirmed) return;
@@ -1048,8 +1073,8 @@ export async function initGameDetails(params = new URLSearchParams()) {
                 console.error("Failed to delete completion:", error);
 
                 await confirmDialog({
-                  title: "Failed to Delete",
-                  message: "Failed to delete completion.",
+                  title: t("game_details.history.delete_failed"),
+                  message: t("game_details.history.delete_failed_message"),
                   alertOnly: true,
                 });
 
@@ -1066,7 +1091,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
     } catch (historyError) {
       console.error("Failed to load completion history:", historyError);
 
-      historyLoading.textContent = "Unable to load completion history.";
+      historyLoading.textContent = t("game_details.history.load_failed");
     }
 
     // ==========================================

@@ -51,11 +51,45 @@
 <div class="mb-6 flex flex-wrap items-center gap-5">
   <!-- Filters: left side -->
   <div id="filter-bar" class="filter-bar !mb-0 !mt-0">
-    <button class="filter-pill selected" data-filter="all">All games</button>
-    <button class="filter-pill" data-filter="completed">Completed</button>
-    <button class="filter-pill" data-filter="in_progress">In Progress</button>
-    <button class="filter-pill" data-filter="not_played">Not Played</button>
-    <button class="filter-pill" data-filter="favorites">Favorites</button>
+    <button
+      class="filter-pill selected"
+      data-filter="all"
+      data-i18n="games.filters.all"
+    >
+      All Games
+    </button>
+
+    <button
+      class="filter-pill"
+      data-filter="completed"
+      data-i18n="games.filters.completed"
+    >
+      Completed
+    </button>
+
+    <button
+      class="filter-pill"
+      data-filter="in_progress"
+      data-i18n="games.filters.in_progress"
+    >
+      In Progress
+    </button>
+
+    <button
+      class="filter-pill"
+      data-filter="not_played"
+      data-i18n="games.filters.not_played"
+    >
+      Not Played
+    </button>
+
+    <button
+      class="filter-pill"
+      data-filter="favorites"
+      data-i18n="games.filters.favorites"
+    >
+      Favorites
+    </button>
   </div>
 
   <!-- Sorting and view: right side -->
@@ -74,11 +108,21 @@
       </button>
 
       <div id="game-sort-menu" class="sort-menu" hidden>
-        <button data-sort="title_asc">Title A–Z</button>
-        <button data-sort="title_desc">Title Z–A</button>
-        <button data-sort="year_desc">Year: Newest</button>
-        <button data-sort="year_asc">Year: Oldest</button>
-        <button data-sort="recent">Recently Added</button>
+        <button data-sort="title_asc" data-i18n="games.sort.title_asc">
+          Title A–Z
+        </button>
+        <button data-sort="title_desc" data-i18n="games.sort.title_desc">
+          Title Z–A
+        </button>
+        <button data-sort="year_desc" data-i18n="games.sort.year_desc">
+          Year: Newest
+        </button>
+        <button data-sort="year_asc" data-i18n="games.sort.year_asc">
+          Year: Oldest
+        </button>
+        <button data-sort="recent" data-i18n="games.sort.recent">
+          Recently Added
+        </button>
       </div>
     </div>
 
@@ -118,9 +162,10 @@
   </div>
   <a
     href="#/admin/add-game"
-    class="btn-primary whitespace-nowrap px-4 py-2 text-sm"
+    class="btn-primary inline-flex items-center gap-2 whitespace-nowrap px-4 py-2 text-sm"
   >
-    + Add Game
+    <i data-lucide="circle-plus" class="h-4 w-4"></i>
+    <span data-i18n="games.add_game">Add Game</span>
   </a>
 </div>
 <section id="game-grid" class="game-grid" aria-label="Games"></section>

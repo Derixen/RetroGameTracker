@@ -14,7 +14,7 @@
   },
   "games": {
     "title": "My Games",
-    "add": "Add Game",
+    "add_game": "Add Game",
     "search": "Search games...",
     "count": "{count} games",
     "views": {
@@ -26,6 +26,24 @@
       "completed": "Completed",
       "in_progress": "In Progress",
       "not_played": "Not Played"
+    },
+    "filters": {
+      "all": "All Games",
+      "completed": "Completed",
+      "in_progress": "In Progress",
+      "not_played": "Not Played",
+      "favorites": "Favorites"
+    },
+    "sort": {
+      "title_asc": "Title A–Z",
+      "title_desc": "Title Z–A",
+      "year_desc": "Year: Newest",
+      "year_asc": "Year: Oldest",
+      "recent": "Recently Added"
+    },
+    "view": {
+      "large": "Large",
+      "small": "Small"
     }
   },
   "nav": {
@@ -416,7 +434,60 @@
       "choose": "Choose an achievement...",
       "add_badge": "Add Badge",
       "title": "My Achievements",
-      "earned_badges": "Earned Badges"
+      "earned_badges": "Earned Badges",
+
+      "complete-story": {
+        "name": "Complete Story",
+        "description": "Complete the main story."
+      },
+      "completion-100": {
+        "name": "100% Completion",
+        "description": "Complete everything in the game."
+      },
+      "hundred-percent": {
+        "name": "100% Completion",
+        "description": "Complete everything in the game."
+      },
+      "true-ending": {
+        "name": "True Ending",
+        "description": "Reach the game's true ending."
+      },
+      "hard-mode": {
+        "name": "Hard Mode",
+        "description": "Complete the game on hard difficulty."
+      },
+      "no-death-run": {
+        "name": "No Death Run",
+        "description": "Complete the game without dying."
+      },
+      "speedrun": {
+        "name": "Speedrun",
+        "description": "Complete the game as quickly as possible."
+      },
+      "secret-hunter": {
+        "name": "Secret Hunter",
+        "description": "Discover the game's hidden secrets."
+      },
+      "collector": {
+        "name": "Collector",
+        "description": "Collect all collectible items in the game."
+      },
+      "high-score": {
+        "name": "High Score",
+        "description": "Achieve an outstanding score."
+      },
+      "perfect-run": {
+        "name": "Perfect Run",
+        "description": "Complete the game flawlessly."
+      },
+      "original-hardware": {
+        "name": "Original Hardware",
+        "description": "Play the game on original hardware."
+      },
+      "couch-coop": {
+        "name": "Couch Co-op",
+        "description": "Play together with others locally."
+      }
     },
     "history": {
       "subtitle": "Your journey with this game",
@@ -586,7 +657,8 @@
     "remove_message_after": " from your platforms?\n\nThis will not delete any games or console models.",
     "remove": "Remove",
     "remove_error_title": "Unable to Remove Platform",
-    "remove_error": "Failed to remove platform. Please try again."
+    "remove_error": "Failed to remove platform. Please try again.",
+    "search_placeholder": "Search platforms..."
   },
 
   "platform_details": {

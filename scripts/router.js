@@ -352,7 +352,7 @@ export async function navigate() {
         subtitleKey: `page_headings.${route}.subtitle`,
         ...(headingConfig.countId
           ? {
-              countLabelKey: `page_headings.${route}.count_label`,
+              countLabelKey: "page_headings.games.count_label",
             }
           : {}),
       });

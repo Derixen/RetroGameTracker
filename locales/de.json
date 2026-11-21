@@ -14,7 +14,7 @@
   },
   "games": {
     "title": "Meine Spiele",
-    "add": "Spiel hinzufügen",
+    "add_game": "Spiel hinzufügen",
     "search": "Spiele suchen ...",
     "count": "{count} Spiele",
     "views": {
@@ -26,6 +26,24 @@
       "completed": "Abgeschlossen",
       "in_progress": "In Bearbeitung",
       "not_played": "Nicht gespielt"
+    },
+    "filters": {
+      "all": "Alle Spiele",
+      "completed": "Abgeschlossen",
+      "in_progress": "In Bearbeitung",
+      "not_played": "Noch nicht gespielt",
+      "favorites": "Favoriten"
+    },
+    "sort": {
+      "title_asc": "Titel A–Z",
+      "title_desc": "Titel Z–A",
+      "year_desc": "Jahr: Neueste",
+      "year_asc": "Jahr: Älteste",
+      "recent": "Zuletzt hinzugefügt"
+    },
+    "view": {
+      "large": "Groß",
+      "small": "Klein"
     }
   },
   "nav": {
@@ -400,7 +418,60 @@
       "choose": "Erfolg auswählen ...",
       "add_badge": "Abzeichen hinzufügen",
       "title": "Meine Erfolge",
-      "earned_badges": "Verdiente Abzeichen"
+      "earned_badges": "Verdiente Abzeichen",
+
+      "complete-story": {
+        "name": "Story abgeschlossen",
+        "description": "Schließe die Hauptgeschichte ab."
+      },
+      "completion-100": {
+        "name": "100 % abgeschlossen",
+        "description": "Schließe alles im Spiel ab."
+      },
+      "hundred-percent": {
+        "name": "100 % abgeschlossen",
+        "description": "Schließe alles im Spiel ab."
+      },
+      "true-ending": {
+        "name": "Wahres Ende",
+        "description": "Erreiche das wahre Ende des Spiels."
+      },
+      "hard-mode": {
+        "name": "Schwerer Modus",
+        "description": "Schließe das Spiel auf dem Schwierigkeitsgrad Schwer ab."
+      },
+      "no-death-run": {
+        "name": "Durchlauf ohne Tod",
+        "description": "Schließe das Spiel ab, ohne zu sterben."
+      },
+      "speedrun": {
+        "name": "Speedrun",
+        "description": "Schließe das Spiel so schnell wie möglich ab."
+      },
+      "secret-hunter": {
+        "name": "Geheimnisjäger",
+        "description": "Entdecke die versteckten Geheimnisse des Spiels."
+      },
+      "collector": {
+        "name": "Sammler",
+        "description": "Sammle alle Sammelgegenstände im Spiel."
+      },
+      "high-score": {
+        "name": "Highscore",
+        "description": "Erreiche eine herausragende Punktzahl."
+      },
+      "perfect-run": {
+        "name": "Perfekter Durchlauf",
+        "description": "Schließe das Spiel fehlerfrei ab."
+      },
+      "original-hardware": {
+        "name": "Originalhardware",
+        "description": "Spiele auf der Originalhardware."
+      },
+      "couch-coop": {
+        "name": "Lokaler Koop-Modus",
+        "description": "Spiele gemeinsam mit anderen vor Ort."
+      }
     },
     "history": {
       "subtitle": "Deine Reise mit diesem Spiel",
@@ -547,6 +618,7 @@
     "empty_description": "Plattformen werden hier angezeigt, sobald sie zur Datenbank hinzugefügt wurden.",
     "error_sign_in": "Du musst angemeldet sein, um Plattformen hinzuzufügen.",
     "select_platform": "Plattform auswählen ...",
+    "search_placeholder": "Plattformen suchen...",
     "error_select_platform": "Bitte wähle eine Plattform aus.",
     "adding": "Wird hinzugefügt ...",
     "error_add_platform": "Plattform konnte nicht hinzugefügt werden.",
