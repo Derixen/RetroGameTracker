@@ -1,5 +1,5 @@
 const DEFAULT_LANGUAGE = "en";
-const SUPPORTED_LANGUAGES = ["en", "hu", "de"];
+const SUPPORTED_LANGUAGES = ["en", "hu", "de", "el"];
 
 let currentLanguage = DEFAULT_LANGUAGE;
 const translations = {};
