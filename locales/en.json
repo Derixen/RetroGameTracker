@@ -1084,7 +1084,11 @@
 
     "cta_title": "Ready to Revisit Your Gaming History?",
     "cta_description": "From your very first game to your latest completed adventure, your gaming history deserves a place of its own.",
-    "cta_button": "Get Started"
+    "cta_button": "Get Started",
+
+    "import_image_alt": "RetroTrack Games game database import",
+    "import_title": "Import Games with Ease",
+    "import_description": "Quickly add games to your collection by searching our game database. Import game details such as titles, cover artwork, release dates, genres, developers, and more — without having to enter everything manually."
   },
 
   "confirm_dialog": {

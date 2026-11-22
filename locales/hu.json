@@ -1010,7 +1010,11 @@
 
     "cta_title": "Készen állsz újra felfedezni a játékos történetedet?",
     "cta_description": "A legelső játékodtól a legutóbb befejezett kalandodig — a játékos történeted megérdemel egy saját helyet.",
-    "cta_button": "Kezdés"
+    "cta_button": "Kezdés",
+
+    "import_image_alt": "RetroTrack Games játékimportálás adatbázisból",
+    "import_title": "Importálj játékokat egyszerűen",
+    "import_description": "Adj hozzá gyorsan játékokat a gyűjteményedhez a játékadatbázisban történő kereséssel. Importáld a játékok adatait, például a címeket, borítóképeket, megjelenési dátumokat, műfajokat, fejlesztőket és még sok mást — anélkül, hogy mindent kézzel kellene megadnod."
   },
   "confirm_dialog": {
     "default_title": "Biztos vagy benne?",

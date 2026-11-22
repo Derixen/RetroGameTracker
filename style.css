@@ -1774,6 +1774,11 @@ video {
   letter-spacing: 0.1em;
 }
 
+.\!text-slate-900 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(15 23 42 / var(--tw-text-opacity, 1)) !important;
+}
+
 .text-amber-400 {
   --tw-text-opacity: 1;
   color: rgb(251 191 36 / var(--tw-text-opacity, 1));
@@ -3939,6 +3944,7 @@ html {
 
 :root:not([data-theme="light"]) [data-i18n="welcome.hero_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.collection_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.import_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.platforms_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.completions_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.memories_title"],
@@ -3966,6 +3972,7 @@ html {
 
 :root[data-theme="light"] [data-i18n="welcome.hero_title"],
 :root[data-theme="light"] [data-i18n="welcome.collection_title"],
+:root[data-theme="light"] [data-i18n="welcome.import_title"],
 :root[data-theme="light"] [data-i18n="welcome.platforms_title"],
 :root[data-theme="light"] [data-i18n="welcome.completions_title"],
 :root[data-theme="light"] [data-i18n="welcome.memories_title"],
@@ -5441,6 +5448,11 @@ html {
 
   .dark\:bg-slate-900\/30 {
     background-color: rgb(15 23 42 / 0.3);
+  }
+
+  .dark\:\!text-white {
+    --tw-text-opacity: 1 !important;
+    color: rgb(255 255 255 / var(--tw-text-opacity, 1)) !important;
   }
 
   .dark\:text-amber-400 {

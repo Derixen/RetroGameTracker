@@ -1044,7 +1044,11 @@
 
     "cta_title": "Bereit, deine Gaming-Geschichte neu zu entdecken?",
     "cta_description": "Von deinem allerersten Spiel bis zu deinem zuletzt abgeschlossenen Abenteuer — deine Gaming-Geschichte verdient ihren eigenen Platz.",
-    "cta_button": "Jetzt starten"
+    "cta_button": "Jetzt starten",
+
+    "import_image_alt": "RetroTrack Games Spieleimport aus der Datenbank",
+    "import_title": "Spiele einfach importieren",
+    "import_description": "Füge deiner Sammlung schnell neue Spiele hinzu, indem du unsere Spieledatenbank durchsuchst. Importiere Spieldetails wie Titel, Coverbilder, Erscheinungsdaten, Genres, Entwickler und vieles mehr — ohne alles manuell eingeben zu müssen."
   },
   "confirm_dialog": {
     "default_title": "Bist du sicher?",

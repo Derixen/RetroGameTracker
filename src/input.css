@@ -1592,6 +1592,7 @@ html {
 /* Dark theme headings */
 :root:not([data-theme="light"]) [data-i18n="welcome.hero_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.collection_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.import_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.platforms_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.completions_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.memories_title"],
@@ -1616,6 +1617,7 @@ html {
 /* Light theme headings */
 :root[data-theme="light"] [data-i18n="welcome.hero_title"],
 :root[data-theme="light"] [data-i18n="welcome.collection_title"],
+:root[data-theme="light"] [data-i18n="welcome.import_title"],
 :root[data-theme="light"] [data-i18n="welcome.platforms_title"],
 :root[data-theme="light"] [data-i18n="welcome.completions_title"],
 :root[data-theme="light"] [data-i18n="welcome.memories_title"],
