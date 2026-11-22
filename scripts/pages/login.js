@@ -1,4 +1,5 @@
 import { supabase } from "../supabase.js";
+import { t, translatePage } from "../i18n.js";
 
 export function initLogin() {
   const form = document.getElementById("login-form");
@@ -13,7 +14,66 @@ export function initLogin() {
   const passwordInput = document.getElementById("login-password");
   const passwordRequirements = document.getElementById("password-requirements");
 
+  if (!form) return;
+
   let isRegistering = false;
+  let isSubmitting = false;
+  let feedback = null;
+
+  function showFeedback(type, key) {
+    feedback = { type, key };
+
+    errorMessage.hidden = type !== "error";
+    successMessage.hidden = type !== "success";
+
+    if (type === "error") {
+      errorMessage.textContent = t(key);
+    } else {
+      successMessage.textContent = t(key);
+    }
+  }
+
+  function updateUI() {
+    title.textContent = isRegistering
+      ? t("login.create_account")
+      : t("login.sign_in");
+
+    description.textContent = isRegistering
+      ? t("login.register_description")
+      : t("login.sign_in_description");
+
+    submitButton.textContent = isSubmitting
+      ? isRegistering
+        ? t("login.creating_account")
+        : t("login.signing_in")
+      : isRegistering
+        ? t("login.create_account")
+        : t("login.sign_in");
+
+    switchText.textContent = isRegistering
+      ? t("login.already_have_account")
+      : t("login.no_account");
+
+    switchButton.textContent = isRegistering
+      ? t("login.sign_in")
+      : t("login.create_account");
+
+    passwordRequirements.hidden = !isRegistering;
+    passwordInput.minLength = isRegistering ? 12 : 0;
+    passwordInput.autocomplete = isRegistering
+      ? "new-password"
+      : "current-password";
+
+    if (feedback) {
+      const message = t(feedback.key);
+
+      if (feedback.type === "error") {
+        errorMessage.textContent = message;
+      } else {
+        successMessage.textContent = message;
+      }
+    }
+  }
 
   async function checkRegistrationStatus() {
     const { data, error } = await supabase
@@ -23,6 +83,7 @@ export function initLogin() {
       .single();
 
     const notice = document.getElementById("registration-disabled-notice");
+
     const registrationSection = switchButton.parentElement;
 
     if (error || data?.value !== true) {
@@ -44,46 +105,46 @@ export function initLogin() {
   // Switch between Sign In and Create Account
   switchButton.addEventListener("click", () => {
     isRegistering = !isRegistering;
-    passwordRequirements.hidden = !isRegistering;
-    passwordInput.minLength = isRegistering ? 12 : 0;
-
-    title.textContent = isRegistering ? "Create Account" : "Sign In";
-
-    description.textContent = isRegistering
-      ? "Create your own retro game collection."
-      : "Sign in to manage your retro game collection.";
-
-    submitButton.textContent = isRegistering ? "Create Account" : "Sign In";
-
-    switchText.textContent = isRegistering
-      ? "Already have an account?"
-      : "Don't have an account?";
-
-    switchButton.textContent = isRegistering ? "Sign In" : "Create Account";
-
-    passwordInput.autocomplete = isRegistering
-      ? "new-password"
-      : "current-password";
+    feedback = null;
 
     errorMessage.hidden = true;
     successMessage.hidden = true;
+
+    updateUI();
   });
+
+  // Update translated content when the language changes
+  const handleLanguageChange = () => {
+    if (!form.isConnected) {
+      document.removeEventListener("languagechange", handleLanguageChange);
+      return;
+    }
+
+    translatePage(form);
+    updateUI();
+  };
+
+  document.addEventListener("languagechange", handleLanguageChange);
+
+  // Apply the selected language immediately
+  updateUI();
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const email = document.getElementById("login-email").value.trim();
+
     const password = passwordInput.value;
 
+    feedback = null;
     errorMessage.hidden = true;
     successMessage.hidden = true;
 
+    isSubmitting = true;
     submitButton.disabled = true;
     switchButton.disabled = true;
 
-    submitButton.textContent = isRegistering
-      ? "Creating account..."
-      : "Signing in...";
+    updateUI();
 
     try {
       if (isRegistering) {
@@ -91,17 +152,16 @@ export function initLogin() {
 
         if (!registrationAllowed) {
           isRegistering = false;
+          updateUI();
 
-          title.textContent = "Sign In";
-          description.textContent =
-            "Sign in to manage your retro game collection.";
-          submitButton.textContent = "Sign In";
-          passwordRequirements.hidden = true;
+          showFeedback("error", "login.registration_disabled_error");
 
-          throw new Error("New account registrations are currently disabled.");
+          return;
         }
+
         if (password.length < 12) {
-          throw new Error("Password must contain at least 12 characters.");
+          showFeedback("error", "login.password_min_length");
+          return;
         }
 
         if (
@@ -110,9 +170,8 @@ export function initLogin() {
           !/[0-9]/.test(password) ||
           !/[^a-zA-Z0-9]/.test(password)
         ) {
-          throw new Error(
-            "Password must include uppercase and lowercase letters, a number, and a special character.",
-          );
+          showFeedback("error", "login.password_complexity");
+          return;
         }
 
         const { error } = await supabase.auth.signUp({
@@ -125,9 +184,7 @@ export function initLogin() {
 
         if (error) throw error;
 
-        successMessage.textContent =
-          "Check your email for a confirmation link to activate your account.";
-        successMessage.hidden = false;
+        showFeedback("success", "login.confirmation_email");
       } else {
         const { error } = await supabase.auth.signInWithPassword({
           email,
@@ -138,6 +195,7 @@ export function initLogin() {
 
         // Cover the page before navigating
         document.getElementById("sidebar")?.classList.add("login-loading");
+
         document
           .getElementById("app-loading-overlay")
           ?.classList.add("full-screen");
@@ -149,13 +207,16 @@ export function initLogin() {
         window.location.hash = "#/games";
       }
     } catch (error) {
-      errorMessage.textContent = error.message;
+      // Supabase errors are provided by the service.
+      feedback = null;
+      errorMessage.textContent = error.message || t("login.generic_error");
       errorMessage.hidden = false;
     } finally {
+      isSubmitting = false;
       submitButton.disabled = false;
       switchButton.disabled = false;
 
-      submitButton.textContent = isRegistering ? "Create Account" : "Sign In";
+      updateUI();
     }
   });
 }

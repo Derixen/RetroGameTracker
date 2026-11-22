@@ -382,7 +382,10 @@
   "developers": {
     "grid_aria_label": "Játékfejlesztők",
     "empty_title": "Nem található fejlesztő",
-    "empty_description": "A fejlesztők akkor jelennek meg itt, amikor játékok kerülnek a gyűjteménybe."
+    "empty_description": "A fejlesztők akkor jelennek meg itt, amikor játékok kerülnek a gyűjteménybe.",
+    "count_label": "FEJLESZTŐ",
+    "game_count": "{count} játék",
+    "game_count_one": "{count} játék"
   },
   "forgot_password": {
     "eyebrow": "FIÓK HELYREÁLLÍTÁSA",
@@ -588,7 +591,10 @@
   "genres": {
     "grid_aria_label": "Játékműfajok",
     "empty_title": "Nem található műfaj",
-    "empty_description": "A műfajok akkor jelennek meg itt, amikor játékok kerülnek a gyűjteménybe."
+    "empty_description": "A műfajok akkor jelennek meg itt, amikor játékok kerülnek a gyűjteménybe.",
+    "count_label": "MŰFAJ",
+    "game_count": "{count} játék",
+    "game_count_one": "{count} játék"
   },
   "home": {
     "stats_games": "Játékok",
@@ -635,7 +641,20 @@
     "switch_to_sign_in_text": "Már van fiókod?",
     "switch_to_sign_in_button": "Bejelentkezés",
     "registration_disabled_title": "A regisztráció átmenetileg nem érhető el",
-    "registration_disabled_description": "Az új fiókok regisztrációja jelenleg szünetel, amíg fejlesztjük a RetroTrack Games szolgáltatást. A meglévő tagok továbbra is bejelentkezhetnek. Kérjük, látogass vissza később."
+    "registration_disabled_description": "Az új fiókok regisztrációja jelenleg szünetel, amíg fejlesztjük a RetroTrack Games szolgáltatást. A meglévő tagok továbbra is bejelentkezhetnek. Kérjük, látogass vissza később.",
+
+    "sign_in": "Anmelden",
+    "create_account": "Konto erstellen",
+    "register_description": "Erstelle deine eigene Retro-Spielesammlung.",
+    "already_have_account": "Du hast bereits ein Konto?",
+    "no_account": "Du hast noch kein Konto?",
+    "creating_account": "Konto wird erstellt...",
+    "signing_in": "Anmeldung läuft...",
+    "registration_disabled_error": "Neue Registrierungen sind derzeit deaktiviert.",
+    "password_min_length": "Das Passwort muss mindestens 12 Zeichen enthalten.",
+    "password_complexity": "Das Passwort muss Groß- und Kleinbuchstaben, eine Zahl und ein Sonderzeichen enthalten.",
+    "confirmation_email": "Prüfe deine E-Mails und bestätige dein Konto über den Bestätigungslink.",
+    "generic_error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
   },
   "not_found": {
     "title": "Az oldal nem található",
@@ -1047,19 +1066,20 @@
       "eyebrow": "JÁTÉKSOROZATOK",
       "title": "Játéksorozatok",
       "subtitle": "Fedezd fel a retro játékgyűjteményem sorozatait",
-      "count_label": "SOROZAT"
+      "count_label": "SOROZAT",
+      "no_description": "Nincs elérhető leírás.",
+      "game_count": "{count} játék",
+      "game_count_one": "{count} játék"
     },
     "developers": {
       "eyebrow": "JÁTÉKSOROZATOK",
       "title": "Játéksorozatok",
-      "subtitle": "Ismerd meg a retro játékgyűjteményem mögött álló fejlesztőstúdiókat",
-      "count_label": "FEJLESZTŐ"
+      "subtitle": "Ismerd meg a retro játékgyűjteményem mögött álló fejlesztőstúdiókat"
     },
     "genres": {
       "eyebrow": "BÖNGÉSZÉS KATEGÓRIA SZERINT",
       "title": "Műfajok",
-      "subtitle": "Böngéssz a retro játékgyűjteményemben műfaj szerint",
-      "count_label": "MŰFAJ"
+      "subtitle": "Böngéssz a retro játékgyűjteményemben műfaj szerint"
     },
     "statistics": {
       "eyebrow": "HALADÁS ÁTTEKINTÉSE",

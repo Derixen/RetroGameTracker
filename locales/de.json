@@ -381,7 +381,10 @@
   "developers": {
     "grid_aria_label": "Spieleentwickler",
     "empty_title": "Keine Entwickler gefunden",
-    "empty_description": "Entwickler werden hier angezeigt, sobald Spiele zur Sammlung hinzugefügt wurden."
+    "empty_description": "Entwickler werden hier angezeigt, sobald Spiele zur Sammlung hinzugefügt wurden.",
+    "count_label": "ENTWICKLER",
+    "game_count": "{count} Spiele",
+    "game_count_one": "{count} Spiel"
   },
   "forgot_password": {
     "eyebrow": "KONTOWIEDERHERSTELLUNG",
@@ -588,7 +591,10 @@
   "genres": {
     "grid_aria_label": "Spielgenres",
     "empty_title": "Keine Genres gefunden",
-    "empty_description": "Genres werden hier angezeigt, sobald Spiele zur Sammlung hinzugefügt wurden."
+    "empty_description": "Genres werden hier angezeigt, sobald Spiele zur Sammlung hinzugefügt wurden.",
+    "count_label": "GENRES",
+    "game_count": "{count} Spiele",
+    "game_count_one": "{count} Spiel"
   },
   "home": {
     "stats_games": "Spiele",
@@ -635,7 +641,19 @@
     "switch_to_sign_in_text": "Bereits ein Konto?",
     "switch_to_sign_in_button": "Anmelden",
     "registration_disabled_title": "Registrierung vorübergehend nicht verfügbar",
-    "registration_disabled_description": "Neue Kontoregistrierungen sind derzeit deaktiviert, während wir RetroTrack Games verbessern. Bestehende Mitglieder können sich weiterhin anmelden. Bitte versuche es später erneut."
+    "registration_disabled_description": "Neue Kontoregistrierungen sind derzeit deaktiviert, während wir RetroTrack Games verbessern. Bestehende Mitglieder können sich weiterhin anmelden. Bitte versuche es später erneut.",
+    "sign_in": "Anmelden",
+    "create_account": "Konto erstellen",
+    "register_description": "Erstelle deine eigene Retro-Spielesammlung.",
+    "already_have_account": "Du hast bereits ein Konto?",
+    "no_account": "Du hast noch kein Konto?",
+    "creating_account": "Konto wird erstellt...",
+    "signing_in": "Anmeldung läuft...",
+    "registration_disabled_error": "Neue Registrierungen sind derzeit deaktiviert.",
+    "password_min_length": "Das Passwort muss mindestens 12 Zeichen enthalten.",
+    "password_complexity": "Das Passwort muss Groß- und Kleinbuchstaben, eine Zahl und ein Sonderzeichen enthalten.",
+    "confirmation_email": "Prüfe deine E-Mails und bestätige dein Konto über den Bestätigungslink.",
+    "generic_error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
   },
   "not_found": {
     "title": "Seite nicht gefunden",
@@ -909,7 +927,11 @@
   "series": {
     "grid_aria_label": "Spielereihen",
     "empty_title": "Keine Spielereihen gefunden",
-    "empty_description": "Spielereihen werden hier angezeigt, sobald sie zur Datenbank hinzugefügt wurden."
+    "empty_description": "Spielereihen werden hier angezeigt, sobald sie zur Datenbank hinzugefügt wurden.",
+    "no_description": "Keine Beschreibung verfügbar.",
+    "game_count": "{count} Spiele",
+    "game_count_one": "{count} Spiel",
+    "count_label": "SPIELEREIHEN"
   },
   "statistics": {
     "games": "Spiele",
@@ -1086,13 +1108,17 @@
       "eyebrow": "DIE SPIELEREIHEN",
       "title": "Spielereihen",
       "subtitle": "Entdecke die Studios hinter meiner Retrospielesammlung",
-      "count_label": "ENTWICKLER"
+      "count_label": "ENTWICKLER",
+      "game_count": "{count} Spiele",
+      "game_count_one": "{count} Spiel"
     },
     "genres": {
+      "grid_aria_label": "Spielgenres",
+      "empty_title": "Keine Genres gefunden",
+      "empty_description": "Genres werden hier angezeigt, sobald Spiele zur Sammlung hinzugefügt wurden.",
       "eyebrow": "NACH KATEGORIE ENTDECKEN",
       "title": "Genres",
-      "subtitle": "Durchstöbere meine Retrospielesammlung nach Genre",
-      "count_label": "GENRES"
+      "subtitle": "Durchstöbere meine Retrospielsammlung nach Genre."
     },
     "statistics": {
       "eyebrow": "FORTSCHRITTSÜBERSICHT",

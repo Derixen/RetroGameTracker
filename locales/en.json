@@ -605,7 +605,10 @@
   "genres": {
     "grid_aria_label": "Game genres",
     "empty_title": "No genres found",
-    "empty_description": "Genres will appear here once games are added to the collection."
+    "empty_description": "Genres will appear here once games are added to the collection.",
+    "count_label": "GENRES",
+    "game_count": "{count} games",
+    "game_count_one": "{count} game"
   },
 
   "home": {
@@ -654,7 +657,19 @@
     "switch_to_sign_in_text": "Already have an account?",
     "switch_to_sign_in_button": "Sign In",
     "registration_disabled_title": "Registration Temporarily Unavailable",
-    "registration_disabled_description": "New account registrations are currently disabled while we make improvements to RetroTrack Games. Existing members can still sign in. Please check back later."
+    "registration_disabled_description": "New account registrations are currently disabled while we make improvements to RetroTrack Games. Existing members can still sign in. Please check back later.",
+    "sign_in": "Sign In",
+    "create_account": "Create Account",
+    "register_description": "Create your own retro game collection.",
+    "already_have_account": "Already have an account?",
+    "no_account": "Don't have an account?",
+    "creating_account": "Creating account...",
+    "signing_in": "Signing in...",
+    "registration_disabled_error": "New account registrations are currently disabled.",
+    "password_min_length": "Password must contain at least 12 characters.",
+    "password_complexity": "Password must include uppercase and lowercase letters, a number, and a special character.",
+    "confirmation_email": "Check your email for a confirmation link to activate your account.",
+    "generic_error": "Something went wrong. Please try again."
   },
 
   "not_found": {
@@ -946,7 +961,11 @@
   "series": {
     "grid_aria_label": "Game series",
     "empty_title": "No game series found",
-    "empty_description": "Game series will appear here once they are added to the database."
+    "empty_description": "Game series will appear here once they are added to the database.",
+    "no_description": "No description available.",
+    "game_count": "{count} games",
+    "game_count_one": "{count} game",
+    "count_label": "SERIES"
   },
 
   "statistics": {
@@ -1128,13 +1147,14 @@
       "eyebrow": "THE FRANCHISES",
       "title": "Game Series",
       "subtitle": "Explore the studios behind my retro game collection",
-      "count_label": "DEVELOPER"
+      "count_label": "DEVELOPER",
+      "game_count": "{count} games",
+      "game_count_one": "{count} game"
     },
     "genres": {
       "eyebrow": "EXPLORE BY CATEGORY",
       "title": "Genres",
-      "subtitle": "Browse my retro game collection by genre",
-      "count_label": "GENRES"
+      "subtitle": "Browse my retro game collection by genre"
     },
     "statistics": {
       "eyebrow": "PROGRESS OVERVIEW",
