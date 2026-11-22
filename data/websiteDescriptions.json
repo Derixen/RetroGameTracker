@@ -1,0 +1,272 @@
+{
+  "50": {
+    "en": "Modern DOS emulator with improved graphics, audio, performance, and compatibility.",
+    "hu": "Modern DOS-emulátor továbbfejlesztett grafikával, hanggal, teljesítménnyel és kompatibilitással.",
+    "de": "Moderner DOS-Emulator mit verbesserter Grafik, Audioausgabe, Leistung und Kompatibilität.",
+    "el": "Σύγχρονος εξομοιωτής DOS με βελτιωμένα γραφικά, ήχο, απόδοση και συμβατότητα."
+  },
+  "36": {
+    "en": "Advanced DOS emulator focused on accurate PC hardware and legacy operating systems.",
+    "hu": "Fejlett DOS-emulátor, amely a PC-hardverek és a régi operációs rendszerek pontos emulációjára összpontosít.",
+    "de": "Erweiterter DOS-Emulator mit Schwerpunkt auf originalgetreuer PC-Hardware und älteren Betriebssystemen.",
+    "el": "Προηγμένος εξομοιωτής DOS με έμφαση στην πιστή εξομοίωση υλικού PC και παλαιότερων λειτουργικών συστημάτων."
+  },
+  "34": {
+    "en": "Low-level emulator for classic IBM PC compatible computers and their hardware.",
+    "hu": "Alacsony szintű emulátor klasszikus IBM PC-kompatibilis számítógépekhez és hardvereikhez.",
+    "de": "Hardware-naher Emulator für klassische IBM-PC-kompatible Computer und deren Hardware.",
+    "el": "Εξομοιωτής χαμηλού επιπέδου για κλασικούς υπολογιστές συμβατούς με IBM PC και το υλικό τους."
+  },
+  "41": {
+    "en": "Run classic adventure games and supported RPGs on modern devices.",
+    "hu": "Klasszikus kalandjátékok és támogatott szerepjátékok futtatása modern eszközökön.",
+    "de": "Klassische Adventures und unterstützte Rollenspiele auf modernen Geräten spielen.",
+    "el": "Εκτέλεση κλασικών παιχνιδιών περιπέτειας και υποστηριζόμενων RPG σε σύγχρονες συσκευές."
+  },
+  "42": {
+    "en": "Community guides for PC game compatibility, fixes, configuration, and enhancements.",
+    "hu": "Közösségi útmutatók PC-játékok kompatibilitásához, javításához, beállításához és továbbfejlesztéséhez.",
+    "de": "Community-Anleitungen zu Kompatibilität, Fehlerbehebungen, Konfiguration und Verbesserungen von PC-Spielen.",
+    "el": "Οδηγοί της κοινότητας για συμβατότητα παιχνιδιών PC, διορθώσεις, ρυθμίσεις και βελτιώσεις."
+  },
+  "44": {
+    "en": "Unified frontend for emulators and game engines using Libretro cores.",
+    "hu": "Egységes kezelőfelület emulátorokhoz és játékmotorokhoz, Libretro-magok használatával.",
+    "de": "Einheitliche Oberfläche für Emulatoren und Spiele-Engines auf Basis von Libretro-Cores.",
+    "el": "Ενιαίο περιβάλλον για εξομοιωτές και μηχανές παιχνιδιών που χρησιμοποιούν πυρήνες Libretro."
+  },
+  "57": {
+    "en": "Preservation-focused emulator for arcade machines and historical computer systems.",
+    "hu": "Az árkádgépek és régi számítógépes rendszerek megőrzésére összpontosító emulátor.",
+    "de": "Auf Bewahrung ausgerichteter Emulator für Arcade-Automaten und historische Computersysteme.",
+    "el": "Εξομοιωτής με έμφαση στη διατήρηση μηχανημάτων arcade και ιστορικών υπολογιστικών συστημάτων."
+  },
+  "28": {
+    "en": "Open-source multi-system emulator with an emphasis on accuracy.",
+    "hu": "Nyílt forráskódú, több rendszert támogató emulátor, amely a pontosságra helyezi a hangsúlyt.",
+    "de": "Quelloffener Multisystem-Emulator mit besonderem Schwerpunkt auf Genauigkeit.",
+    "el": "Εξομοιωτής πολλαπλών συστημάτων ανοιχτού κώδικα με έμφαση στην ακρίβεια."
+  },
+  "58": {
+    "en": "Multi-system emulator featuring tools for recording and tool-assisted speedruns.",
+    "hu": "Több rendszert támogató emulátor felvételkészítő és eszközökkel támogatott speedrun-funkciókkal.",
+    "de": "Multisystem-Emulator mit Werkzeugen für Aufnahmen und Tool-Assisted-Speedruns.",
+    "el": "Εξομοιωτής πολλαπλών συστημάτων με εργαλεία εγγραφής και speedrun με υποβοήθηση εργαλείων."
+  },
+  "62": {
+    "en": "Community reference covering emulators, compatibility, setup, and emulation technology.",
+    "hu": "Közösségi tudásbázis emulátorokról, kompatibilitásról, beállításokról és emulációs technológiákról.",
+    "de": "Community-Nachschlagewerk zu Emulatoren, Kompatibilität, Einrichtung und Emulationstechnologie.",
+    "el": "Κοινοτική πηγή αναφοράς για εξομοιωτές, συμβατότητα, ρυθμίσεις και τεχνολογία εξομοίωσης."
+  },
+  "43": {
+    "en": "Nintendo GameCube and Wii emulator with enhanced rendering and controller support.",
+    "hu": "Nintendo GameCube- és Wii-emulátor továbbfejlesztett képmegjelenítéssel és kontroller-támogatással.",
+    "de": "Nintendo-GameCube- und Wii-Emulator mit verbesserter Grafikdarstellung und Controller-Unterstützung.",
+    "el": "Εξομοιωτής Nintendo GameCube και Wii με βελτιωμένη απόδοση γραφικών και υποστήριξη χειριστηρίων."
+  },
+  "39": {
+    "en": "PlayStation 2 emulator for Windows, Linux, and macOS.",
+    "hu": "PlayStation 2-emulátor Windowsra, Linuxra és macOS-re.",
+    "de": "PlayStation-2-Emulator für Windows, Linux und macOS.",
+    "el": "Εξομοιωτής PlayStation 2 για Windows, Linux και macOS."
+  },
+  "69": {
+    "en": "Open-source PlayStation 3 emulator and debugger.",
+    "hu": "Nyílt forráskódú PlayStation 3-emulátor és hibakereső.",
+    "de": "Quelloffener PlayStation-3-Emulator mit Debugger.",
+    "el": "Εξομοιωτής PlayStation 3 ανοιχτού κώδικα με εργαλείο αποσφαλμάτωσης."
+  },
+  "45": {
+    "en": "PlayStation 1 emulator focused on accuracy, performance, and enhancements.",
+    "hu": "PlayStation 1-emulátor, amely a pontosságra, a teljesítményre és a fejlesztésekre összpontosít.",
+    "de": "PlayStation-1-Emulator mit Fokus auf Genauigkeit, Leistung und Verbesserungen.",
+    "el": "Εξομοιωτής PlayStation 1 με έμφαση στην ακρίβεια, την απόδοση και τις βελτιώσεις."
+  },
+  "56": {
+    "en": "PlayStation Portable emulator with enhanced graphics and cross-platform support.",
+    "hu": "PlayStation Portable-emulátor továbbfejlesztett grafikával és többplatformos támogatással.",
+    "de": "PlayStation-Portable-Emulator mit verbesserter Grafik und plattformübergreifender Unterstützung.",
+    "el": "Εξομοιωτής PlayStation Portable με βελτιωμένα γραφικά και υποστήριξη πολλαπλών πλατφορμών."
+  },
+  "59": {
+    "en": "Open-source emulator for the original Microsoft Xbox.",
+    "hu": "Nyílt forráskódú emulátor az eredeti Microsoft Xbox konzolhoz.",
+    "de": "Quelloffener Emulator für die ursprüngliche Microsoft Xbox.",
+    "el": "Εξομοιωτής ανοιχτού κώδικα για το αρχικό Microsoft Xbox."
+  },
+  "71": {
+    "en": "Emulator for Sega Dreamcast, NAOMI, and Atomiswave systems.",
+    "hu": "Emulátor Sega Dreamcast, NAOMI és Atomiswave rendszerekhez.",
+    "de": "Emulator für Sega Dreamcast, NAOMI und Atomiswave.",
+    "el": "Εξομοιωτής για συστήματα Sega Dreamcast, NAOMI και Atomiswave."
+  },
+  "53": {
+    "en": "Nintendo DS emulator focused on accuracy and hardware features.",
+    "hu": "Nintendo DS-emulátor, amely a pontosságra és a hardverfunkciókra összpontosít.",
+    "de": "Nintendo-DS-Emulator mit Fokus auf Genauigkeit und Hardwarefunktionen.",
+    "el": "Εξομοιωτής Nintendo DS με έμφαση στην ακρίβεια και τις λειτουργίες του υλικού."
+  },
+  "32": {
+    "en": "Extensive video game database with release information, credits, screenshots, and cover art.",
+    "hu": "Átfogó videojáték-adatbázis megjelenési adatokkal, közreműködőkkel, képernyőképekkel és borítókkal.",
+    "de": "Umfangreiche Videospieldatenbank mit Veröffentlichungsdaten, Mitwirkenden, Screenshots und Coverbildern.",
+    "el": "Εκτενής βάση δεδομένων βιντεοπαιχνιδιών με ημερομηνίες κυκλοφορίας, συντελεστές, στιγμιότυπα και εξώφυλλα."
+  },
+  "38": {
+    "en": "Community-driven database of games, platforms, developers, genres, and release information.",
+    "hu": "Közösségi videojáték-adatbázis játékokról, platformokról, fejlesztőkről, műfajokról és megjelenésekről.",
+    "de": "Community-basierte Datenbank zu Spielen, Plattformen, Entwicklern, Genres und Veröffentlichungen.",
+    "el": "Βάση δεδομένων της κοινότητας για παιχνίδια, πλατφόρμες, δημιουργούς, είδη και πληροφορίες κυκλοφορίας."
+  },
+  "40": {
+    "en": "Game guides, walkthroughs, FAQs, cheats, and community discussions.",
+    "hu": "Játékútmutatók, végigjátszások, gyakori kérdések, csaláskódok és közösségi beszélgetések.",
+    "de": "Spielhilfen, Komplettlösungen, FAQs, Cheats und Community-Diskussionen.",
+    "el": "Οδηγοί παιχνιδιών, πλήρεις λύσεις, συχνές ερωτήσεις, κωδικοί εξαπάτησης και συζητήσεις της κοινότητας."
+  },
+  "65": {
+    "en": "Community collection of video game box art and printable cover artwork.",
+    "hu": "Közösségi gyűjtemény videojátékdobozok grafikáiból és nyomtatható borítókból.",
+    "de": "Community-Sammlung von Spieleverpackungen und druckbaren Covervorlagen.",
+    "el": "Κοινοτική συλλογή εξωφύλλων βιντεοπαιχνιδιών και εκτυπώσιμων σχεδίων εξωφύλλων."
+  },
+  "61": {
+    "en": "Documents unused content, hidden features, and development leftovers in video games.",
+    "hu": "Videojátékok fel nem használt tartalmait, rejtett funkcióit és fejlesztésből megmaradt elemeit dokumentálja.",
+    "de": "Dokumentiert ungenutzte Inhalte, versteckte Funktionen und Entwicklungsreste in Videospielen.",
+    "el": "Καταγράφει αχρησιμοποίητο περιεχόμενο, κρυφές λειτουργίες και κατάλοιπα ανάπτυξης σε βιντεοπαιχνίδια."
+  },
+  "52": {
+    "en": "Catalogs and verifies cartridge-based video game dumps using standardized DAT files.",
+    "hu": "Kazettás videojátékok digitális másolatainak katalogizálása és ellenőrzése szabványos DAT-fájlokkal.",
+    "de": "Katalogisiert und überprüft Abbilder von Modulspielen mithilfe standardisierter DAT-Dateien.",
+    "el": "Καταλογογραφεί και επαληθεύει αντίγραφα παιχνιδιών κασετών με τυποποιημένα αρχεία DAT."
+  },
+  "27": {
+    "en": "Database and verification project focused on accurately preserving optical game discs.",
+    "hu": "Adatbázis és ellenőrzési projekt az optikai játéklemezek pontos megőrzésére.",
+    "de": "Datenbank- und Verifizierungsprojekt zur originalgetreuen Bewahrung optischer Spieledatenträger.",
+    "el": "Βάση δεδομένων και έργο επαλήθευσης με στόχο την ακριβή διατήρηση οπτικών δίσκων παιχνιδιών."
+  },
+  "46": {
+    "en": "Cataloging project for historical software, games, firmware, and related media.",
+    "hu": "Katalogizálási projekt régi szoftverekhez, játékokhoz, firmware-ekhez és kapcsolódó adathordozókhoz.",
+    "de": "Katalogisierungsprojekt für historische Software, Spiele, Firmware und zugehörige Medien.",
+    "el": "Έργο καταλογογράφησης ιστορικού λογισμικού, παιχνιδιών, υλικολογισμικού και σχετικών μέσων."
+  },
+  "37": {
+    "en": "Digital library preserving historical software, manuals, books, and other media.",
+    "hu": "Digitális könyvtár, amely régi szoftvereket, kézikönyveket, könyveket és más médiatartalmakat őriz meg.",
+    "de": "Digitale Bibliothek zur Bewahrung historischer Software, Handbücher, Bücher und weiterer Medien.",
+    "el": "Ψηφιακή βιβλιοθήκη που διατηρεί ιστορικό λογισμικό, εγχειρίδια, βιβλία και άλλα μέσα."
+  },
+  "60": {
+    "en": "Nonprofit organization dedicated to preserving and researching video game history.",
+    "hu": "Nonprofit szervezet, amely a videojátékok történetének megőrzésével és kutatásával foglalkozik.",
+    "de": "Gemeinnützige Organisation zur Bewahrung und Erforschung der Videospielgeschichte.",
+    "el": "Μη κερδοσκοπικός οργανισμός αφιερωμένος στη διατήρηση και έρευνα της ιστορίας των βιντεοπαιχνιδιών."
+  },
+  "51": {
+    "en": "Research and preservation of unreleased games, prototypes, and development builds.",
+    "hu": "Meg nem jelent játékok, prototípusok és fejlesztői változatok kutatása és megőrzése.",
+    "de": "Erforschung und Bewahrung unveröffentlichter Spiele, Prototypen und Entwicklungsversionen.",
+    "el": "Έρευνα και διατήρηση ακυκλοφόρητων παιχνιδιών, πρωτοτύπων και εκδόσεων ανάπτυξης."
+  },
+  "33": {
+    "en": "Reviews, setup guides, tutorials, and comparisons for retro gaming handhelds.",
+    "hu": "Tesztelések, beállítási útmutatók, oktatóanyagok és összehasonlítások retro kézikonzolokhoz.",
+    "de": "Tests, Einrichtungsanleitungen, Tutorials und Vergleiche für Retro-Handhelds.",
+    "el": "Κριτικές, οδηγοί ρύθμισης, εκπαιδευτικά άρθρα και συγκρίσεις για φορητές συσκευές ρετρό παιχνιδιών."
+  },
+  "31": {
+    "en": "Emulation setup and configuration tools for Steam Deck and supported desktop systems.",
+    "hu": "Emulációs telepítő- és konfigurációs eszközök Steam Deckhez és támogatott asztali rendszerekhez.",
+    "de": "Einrichtungs- und Konfigurationswerkzeuge für Emulation auf Steam Deck und unterstützten Desktop-Systemen.",
+    "el": "Εργαλεία εγκατάστασης και ρύθμισης εξομοίωσης για Steam Deck και υποστηριζόμενους επιτραπέζιους υπολογιστές."
+  },
+  "55": {
+    "en": "Custom operating system and interface for supported Miyoo Mini handheld devices.",
+    "hu": "Egyedi operációs rendszer és kezelőfelület támogatott Miyoo Mini kézikonzolokhoz.",
+    "de": "Angepasstes Betriebssystem und Benutzeroberfläche für unterstützte Miyoo-Mini-Handhelds.",
+    "el": "Προσαρμοσμένο λειτουργικό σύστημα και περιβάλλον για υποστηριζόμενες φορητές συσκευές Miyoo Mini."
+  },
+  "47": {
+    "en": "Community-developed Linux gaming distribution for supported retro handheld devices.",
+    "hu": "Közösségi fejlesztésű Linux-disztribúció támogatott retro kézikonzolokhoz.",
+    "de": "Von der Community entwickelte Linux-Gaming-Distribution für unterstützte Retro-Handhelds.",
+    "el": "Διανομή Linux για παιχνίδια, ανεπτυγμένη από την κοινότητα, για υποστηριζόμενες φορητές ρετρό συσκευές."
+  },
+  "30": {
+    "en": "Linux-based retro gaming operating system for PCs and supported devices.",
+    "hu": "Linux-alapú retro játékos operációs rendszer PC-khez és támogatott eszközökhöz.",
+    "de": "Linux-basiertes Retro-Gaming-Betriebssystem für PCs und unterstützte Geräte.",
+    "el": "Λειτουργικό σύστημα ρετρό παιχνιδιών βασισμένο σε Linux για PC και υποστηριζόμενες συσκευές."
+  },
+  "54": {
+    "en": "Game library frontend for organizing and launching PC and emulated games.",
+    "hu": "Játékkönyvtár-kezelő felület PC-s és emulált játékok rendszerezéséhez és indításához.",
+    "de": "Spielebibliothek-Oberfläche zum Organisieren und Starten von PC- und emulierten Spielen.",
+    "el": "Περιβάλλον βιβλιοθήκης για οργάνωση και εκκίνηση παιχνιδιών PC και εξομοιωμένων παιχνιδιών."
+  },
+  "67": {
+    "en": "Open-source game library manager combining games from multiple platforms.",
+    "hu": "Nyílt forráskódú játékkönyvtár-kezelő, amely több platform játékait egyesíti.",
+    "de": "Quelloffener Spielebibliotheks-Manager, der Spiele mehrerer Plattformen zusammenführt.",
+    "el": "Διαχειριστής βιβλιοθήκης παιχνιδιών ανοιχτού κώδικα που συγκεντρώνει παιχνίδια από πολλές πλατφόρμες."
+  },
+  "70": {
+    "en": "Self-hosted ROM library manager with metadata and collection organization.",
+    "hu": "Saját szerveren futtatható ROM-könyvtárkezelő metaadatokkal és gyűjteményrendezési funkciókkal.",
+    "de": "Selbst gehosteter ROM-Bibliotheksmanager mit Metadaten und Sammlungsverwaltung.",
+    "el": "Αυτοφιλοξενούμενος διαχειριστής βιβλιοθήκης ROM με μεταδεδομένα και οργάνωση συλλογής."
+  },
+  "68": {
+    "en": "Metadata and artwork scraping utility for retro game libraries.",
+    "hu": "Metaadatokat és borítóképeket begyűjtő segédprogram retro játékkönyvtárakhoz.",
+    "de": "Werkzeug zum Abrufen von Metadaten und Bildern für Retro-Spielebibliotheken.",
+    "el": "Εργαλείο συλλογής μεταδεδομένων και εικόνων για βιβλιοθήκες ρετρό παιχνιδιών."
+  },
+  "49": {
+    "en": "Community database providing game metadata, screenshots, and artwork.",
+    "hu": "Közösségi adatbázis játékok metaadataival, képernyőképeivel és grafikáival.",
+    "de": "Community-Datenbank mit Spielmetadaten, Screenshots und Grafiken.",
+    "el": "Κοινοτική βάση δεδομένων με μεταδεδομένα παιχνιδιών, στιγμιότυπα οθόνης και εικαστικό υλικό."
+  },
+  "66": {
+    "en": "Community achievement system for classic games played through supported emulators.",
+    "hu": "Közösségi teljesítményrendszer támogatott emulátorokon futtatott klasszikus játékokhoz.",
+    "de": "Community-Erfolgssystem für klassische Spiele auf unterstützten Emulatoren.",
+    "el": "Κοινοτικό σύστημα επιτευγμάτων για κλασικά παιχνίδια μέσω υποστηριζόμενων εξομοιωτών."
+  },
+  "48": {
+    "en": "News and technical guides covering classic consoles, video output, and hardware.",
+    "hu": "Hírek és műszaki útmutatók klasszikus konzolokról, videokimenetekről és hardverekről.",
+    "de": "Nachrichten und technische Anleitungen zu klassischen Konsolen, Videoausgabe und Hardware.",
+    "el": "Ειδήσεις και τεχνικοί οδηγοί για κλασικές κονσόλες, έξοδο βίντεο και υλικό."
+  },
+  "64": {
+    "en": "Retro gaming news, reviews, interviews, and historical features.",
+    "hu": "Retro játékos hírek, tesztek, interjúk és játéktörténeti cikkek.",
+    "de": "Retro-Gaming-Nachrichten, Tests, Interviews und historische Hintergrundartikel.",
+    "el": "Ειδήσεις, κριτικές, συνεντεύξεις και ιστορικά αφιερώματα για ρετρό παιχνίδια."
+  },
+  "63": {
+    "en": "Community discussions about classic games, consoles, and retro gaming.",
+    "hu": "Közösségi beszélgetések klasszikus játékokról, konzolokról és retro játékokról.",
+    "de": "Community-Diskussionen über klassische Spiele, Konsolen und Retro-Gaming.",
+    "el": "Συζητήσεις της κοινότητας για κλασικά παιχνίδια, κονσόλες και ρετρό gaming."
+  },
+  "29": {
+    "en": "Community documentation for console modifications, homebrew, and maintenance.",
+    "hu": "Közösségi dokumentáció konzolmódosításokról, homebrew megoldásokról és karbantartásról.",
+    "de": "Community-Dokumentation zu Konsolenmodifikationen, Homebrew und Wartung.",
+    "el": "Τεκμηρίωση της κοινότητας για τροποποιήσεις κονσολών, homebrew και συντήρηση."
+  },
+  "35": {
+    "en": "Repair guides, teardown instructions, and hardware maintenance resources.",
+    "hu": "Javítási útmutatók, szétszerelési leírások és hardverkarbantartási segédanyagok.",
+    "de": "Reparaturanleitungen, Zerlegeanleitungen und Ressourcen zur Hardwarewartung.",
+    "el": "Οδηγοί επισκευής, οδηγίες αποσυναρμολόγησης και πόροι συντήρησης υλικού."
+  }
+}
