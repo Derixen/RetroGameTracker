@@ -503,9 +503,9 @@
       "last_completed": "Last Completed",
       "timeline": "Completion Timeline",
       "loading": "Loading completion history...",
-      "empty": "No completions recorded yet.",
+      "empty": "No completions recorded.",
       "dialog_add_title": "Add Completion",
-      "dialog_description": "Record another chapter of your gaming history.",
+      "dialog_description": "Record another chapter of your gaming journey.",
       "year_required": "Year *",
       "month_optional": "Month (optional)",
       "unknown": "Unknown",
@@ -515,14 +515,29 @@
       "title": "My Gaming History",
       "notes_placeholder": "What do you remember about this playthrough?",
       "dialog_edit_title": "Edit Completion",
+      "add_title": "Add Completion",
       "edit_title": "Edit Completion",
       "update": "Update Completion",
+      "saving": "Saving...",
       "completion_time": "Completion Time",
       "completion_time_optional": "Completion Time (optional)",
       "hours": "Hours",
       "minutes": "Minutes",
       "seconds": "Seconds",
-      "completion_time_hint": "Leave all fields empty if you don't remember your completion time."
+      "completion_time_hint": "Leave all fields empty if you don't remember your completion time.",
+      "personal_best": "Personal Best",
+      "edit": "Edit Completion",
+      "delete": "Delete Completion",
+      "delete_title": "Delete Completion?",
+      "delete_message": "Are you sure you want to delete the completion from {year}?",
+      "delete_confirm": "Delete Completion",
+      "delete_failed": "Deletion Failed",
+      "delete_failed_message": "Could not delete the completion.",
+      "load_failed": "Could not load completion history.",
+      "invalid_time": "Enter a valid completion time.",
+      "time_too_large": "Completion time is too large.",
+      "month_required": "Select a month when entering a day.",
+      "invalid_date": "Enter a valid date."
     },
     "memory": {
       "subtitle": "Some games stay with us forever.",
@@ -563,7 +578,8 @@
       "soundtrack_description": "Listen to the music of this game",
       "walkthrough_description": "Watch a walkthrough of this game",
       "soundtrack_title": "Game Soundtrack",
-      "walkthrough_title": "Game Walkthrough"
+      "walkthrough_title": "Game Walkthrough",
+      "autoplay": "Autoplay"
     },
     "related": {
       "title": "Related Games"

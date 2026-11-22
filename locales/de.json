@@ -480,16 +480,16 @@
       }
     },
     "history": {
-      "subtitle": "Deine Reise mit diesem Spiel",
+      "subtitle": "Deine Geschichte mit diesem Spiel",
       "add_completion": "Abschluss hinzufügen",
       "completions": "Abschlüsse",
       "first_completed": "Erstmals abgeschlossen",
       "last_completed": "Zuletzt abgeschlossen",
-      "timeline": "Abschluss-Zeitleiste",
-      "loading": "Abschlussverlauf wird geladen ...",
+      "timeline": "Abschlussverlauf",
+      "loading": "Abschlussverlauf wird geladen...",
       "empty": "Noch keine Abschlüsse erfasst.",
       "dialog_add_title": "Abschluss hinzufügen",
-      "dialog_description": "Halte ein weiteres Kapitel deiner Spielgeschichte fest.",
+      "dialog_description": "Halte ein weiteres Kapitel deiner Spielerlebnisse fest.",
       "year_required": "Jahr *",
       "month_optional": "Monat (optional)",
       "unknown": "Unbekannt",
@@ -499,14 +499,29 @@
       "title": "Mein Spielverlauf",
       "notes_placeholder": "Woran erinnerst du dich bei diesem Spieldurchlauf?",
       "dialog_edit_title": "Abschluss bearbeiten",
+      "add_title": "Abschluss hinzufügen",
       "edit_title": "Abschluss bearbeiten",
       "update": "Abschluss aktualisieren",
+      "saving": "Wird gespeichert...",
       "completion_time": "Abschlusszeit",
       "completion_time_optional": "Abschlusszeit (optional)",
       "hours": "Stunden",
       "minutes": "Minuten",
       "seconds": "Sekunden",
-      "completion_time_hint": "Lass alle Felder leer, wenn du dich nicht an deine Abschlusszeit erinnerst."
+      "completion_time_hint": "Lass alle Felder leer, wenn du dich nicht an deine Abschlusszeit erinnerst.",
+      "personal_best": "Persönliche Bestzeit",
+      "edit": "Abschluss bearbeiten",
+      "delete": "Abschluss löschen",
+      "delete_title": "Abschluss löschen?",
+      "delete_message": "Möchtest du den Abschluss aus dem Jahr {year} wirklich löschen?",
+      "delete_confirm": "Abschluss löschen",
+      "delete_failed": "Löschen fehlgeschlagen",
+      "delete_failed_message": "Der Abschluss konnte nicht gelöscht werden.",
+      "load_failed": "Der Abschlussverlauf konnte nicht geladen werden.",
+      "invalid_time": "Gib eine gültige Abschlusszeit ein.",
+      "time_too_large": "Die Abschlusszeit ist zu groß.",
+      "month_required": "Wähle einen Monat aus, wenn du einen Tag eingibst.",
+      "invalid_date": "Gib ein gültiges Datum ein."
     },
     "memory": {
       "subtitle": "Manche Spiele bleiben für immer in Erinnerung.",
@@ -547,7 +562,8 @@
       "soundtrack_description": "Höre dir die Musik dieses Spiels an",
       "walkthrough_description": "Sieh dir eine Komplettlösung für dieses Spiel an",
       "soundtrack_title": "Spielsoundtrack",
-      "walkthrough_title": "Komplettlösung"
+      "walkthrough_title": "Komplettlösung",
+      "autoplay": "Automatische Wiedergabe"
     },
     "related": {
       "title": "Ähnliche Spiele"

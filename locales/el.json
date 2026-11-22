@@ -565,7 +565,8 @@
       "soundtrack_description": "Ακούστε τη μουσική αυτού του παιχνιδιού",
       "walkthrough_description": "Παρακολουθήστε έναν οδηγό για αυτό το παιχνίδι",
       "soundtrack_title": "Μουσική παιχνιδιού",
-      "walkthrough_title": "Οδηγός παιχνιδιού"
+      "walkthrough_title": "Οδηγός παιχνιδιού",
+      "autoplay": "Αυτόματη αναπαραγωγή"
     },
     "related": {
       "title": "Σχετικά παιχνίδια"

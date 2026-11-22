@@ -480,16 +480,16 @@
       }
     },
     "history": {
-      "subtitle": "A játékkal közös történeted",
+      "subtitle": "A történeted ezzel a játékkal",
       "add_completion": "Befejezés hozzáadása",
       "completions": "Befejezések",
       "first_completed": "Első befejezés",
-      "last_completed": "Legutóbbi befejezés",
+      "last_completed": "Utolsó befejezés",
       "timeline": "Befejezések idővonala",
       "loading": "Befejezési előzmények betöltése...",
       "empty": "Még nincs rögzített befejezés.",
       "dialog_add_title": "Befejezés hozzáadása",
-      "dialog_description": "Rögzítsd játéktörténeted újabb fejezetét.",
+      "dialog_description": "Rögzíts egy újabb fejezetet a játékos történetedből.",
       "year_required": "Év *",
       "month_optional": "Hónap (nem kötelező)",
       "unknown": "Ismeretlen",
@@ -499,14 +499,29 @@
       "title": "Játéktörténetem",
       "notes_placeholder": "Mire emlékszel ebből a végigjátszásból?",
       "dialog_edit_title": "Befejezés szerkesztése",
+      "add_title": "Befejezés hozzáadása",
       "edit_title": "Befejezés szerkesztése",
       "update": "Befejezés frissítése",
+      "saving": "Mentés...",
       "completion_time": "Teljesítési idő",
       "completion_time_optional": "Teljesítési idő (nem kötelező)",
       "hours": "Óra",
       "minutes": "Perc",
       "seconds": "Másodperc",
-      "completion_time_hint": "Hagyd üresen a mezőket, ha nem emlékszel a teljesítési időre."
+      "completion_time_hint": "Hagyd üresen a mezőket, ha nem emlékszel a teljesítési időre.",
+      "personal_best": "Egyéni legjobb idő",
+      "edit": "Befejezés szerkesztése",
+      "delete": "Befejezés törlése",
+      "delete_title": "Törlöd a befejezést?",
+      "delete_message": "Biztosan törölni szeretnéd a(z) {year}. évi befejezést?",
+      "delete_confirm": "Befejezés törlése",
+      "delete_failed": "Sikertelen törlés",
+      "delete_failed_message": "Nem sikerült törölni a befejezést.",
+      "load_failed": "Nem sikerült betölteni a befejezési előzményeket.",
+      "invalid_time": "Adj meg érvényes teljesítési időt.",
+      "time_too_large": "A teljesítési idő túl nagy.",
+      "month_required": "Ha napot adsz meg, válassz hónapot is.",
+      "invalid_date": "Adj meg érvényes dátumot."
     },
     "memory": {
       "subtitle": "Vannak játékok, amelyek örökre velünk maradnak.",
@@ -547,7 +562,8 @@
       "soundtrack_description": "Hallgasd meg a játék zenéjét",
       "walkthrough_description": "Nézd meg a játék végigjátszását",
       "soundtrack_title": "Játékzene",
-      "walkthrough_title": "Játék végigjátszása"
+      "walkthrough_title": "Játék végigjátszása",
+      "autoplay": "Automatikus lejátszás"
     },
     "related": {
       "title": "Kapcsolódó játékok"

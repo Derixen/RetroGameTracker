@@ -365,10 +365,14 @@ export async function initGameDetails(params = new URLSearchParams()) {
       "game-soundtrack-section",
     );
     const soundtrackPlayer = document.getElementById("game-soundtrack-player");
+    const autoplaySwitch = document.getElementById("game-soundtrack-autoplay");
+    const autoplayKey = "retrotrack_soundtrack_autoplay";
+
     if (game.music_url) {
       try {
         const url = new URL(game.music_url);
         let videoId = null;
+
         if (
           ["youtube.com", "www.youtube.com", "m.youtube.com"].includes(
             url.hostname,
@@ -381,21 +385,56 @@ export async function initGameDetails(params = new URLSearchParams()) {
         } else if (url.hostname === "youtu.be") {
           videoId = url.pathname.slice(1);
         }
+
         if (videoId && /^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
+          // Browser-local preference shared by every Game Details page.
+          // If browser storage is unavailable, autoplay remains off.
+          let autoplay = false;
+          try {
+            autoplay = localStorage.getItem(autoplayKey) === "true";
+          } catch (error) {
+            console.warn(
+              "Unable to read soundtrack autoplay preference:",
+              error,
+            );
+          }
+
+          autoplaySwitch.checked = autoplay;
+
           const iframe = document.createElement("iframe");
-          iframe.src = `https\://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
           iframe.title = `${game.title} Soundtrack`;
           iframe.className = "aspect-video w-full";
           iframe.allow = "autoplay; encrypted-media; picture-in-picture";
           iframe.allowFullscreen = true;
           iframe.loading = "eager";
+
+          function updateSoundtrackAutoplay(enabled) {
+            // Reloading the iframe applies the preference immediately.
+            iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=${enabled ? 1 : 0}`;
+          }
+
+          updateSoundtrackAutoplay(autoplay);
           soundtrackPlayer.replaceChildren(iframe);
           soundtrackSection.hidden = false;
+
+          autoplaySwitch.addEventListener("change", () => {
+            const enabled = autoplaySwitch.checked;
+            try {
+              localStorage.setItem(autoplayKey, String(enabled));
+            } catch (error) {
+              console.warn(
+                "Unable to save soundtrack autoplay preference:",
+                error,
+              );
+            }
+            updateSoundtrackAutoplay(enabled);
+          });
         }
       } catch (error) {
         console.warn("Invalid soundtrack URL:", error);
       }
     }
+
     // ==========================================
     // GAME WALKTHROUGH
     // ==========================================
