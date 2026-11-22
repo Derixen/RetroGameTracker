@@ -398,6 +398,7 @@
     "loading": {
       "game": "Daten werden geladen ..."
     },
+
     "game": {
       "no_cover": "Kein Cover",
       "release_year": "Erscheinungsjahr",
@@ -408,7 +409,12 @@
       "favorite": "Favorit",
       "in_progress": "In Bearbeitung",
       "completed": "Abgeschlossen",
-      "cover_alt": "Spielcover"
+      "cover_alt": "Spielcover",
+      "status": {
+        "favorite": "Favorit",
+        "in_progress": "In Bearbeitung",
+        "completed": "Abgeschlossen"
+      }
     },
     "achievements": {
       "subtitle": "Meilensteine deiner Spielereise",

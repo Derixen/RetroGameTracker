@@ -144,13 +144,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
     let inProgress = game.in_progress;
 
     function updateButtons() {
-      favoriteButton.textContent = favorite ? "♥ Favorite" : "♡ Favorite";
+      favoriteButton.textContent = `${favorite ? "♥" : "♡"} ${t("game_details.game.status.favorite")}`;
 
-      completedButton.textContent = completed ? "✓ Completed" : "○ Completed";
+      completedButton.textContent = `${completed ? "✓" : "○"} ${t("game_details.game.status.completed")}`;
 
-      progressButton.textContent = inProgress
-        ? "◷ In Progress"
-        : "○ In Progress";
+      progressButton.textContent = `${inProgress ? "◷" : "○"} ${t("game_details.game.status.in_progress")}`;
 
       favoriteButton.classList.toggle("text-red-500", favorite);
 
@@ -158,7 +156,6 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
       progressButton.classList.toggle("text-amber-400", inProgress);
     }
-
     updateButtons();
 
     const {

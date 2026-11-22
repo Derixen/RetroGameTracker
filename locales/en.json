@@ -414,6 +414,7 @@
     "loading": {
       "game": "Loading Data..."
     },
+
     "game": {
       "no_cover": "No Cover",
       "release_year": "Release Year",
@@ -424,7 +425,12 @@
       "favorite": "Favorite",
       "in_progress": "In Progress",
       "completed": "Completed",
-      "cover_alt": "Game cover"
+      "cover_alt": "Game cover",
+      "status": {
+        "favorite": "Favorite",
+        "in_progress": "In Progress",
+        "completed": "Completed"
+      }
     },
     "achievements": {
       "subtitle": "Milestones from your gaming journey",

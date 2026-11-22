@@ -399,6 +399,7 @@
     "loading": {
       "game": "Adatok betöltése..."
     },
+
     "game": {
       "no_cover": "Nincs borítókép",
       "release_year": "Megjelenés éve",
@@ -409,7 +410,12 @@
       "favorite": "Kedvenc",
       "in_progress": "Folyamatban",
       "completed": "Befejezve",
-      "cover_alt": "Játékborító"
+      "cover_alt": "Játékborító",
+      "status": {
+        "favorite": "Kedvenc",
+        "in_progress": "Folyamatban",
+        "completed": "Befejezett"
+      }
     },
     "achievements": {
       "subtitle": "Játékos pályafutásod mérföldkövei",
