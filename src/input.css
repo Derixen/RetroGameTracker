@@ -1584,52 +1584,61 @@ html {
 :root[data-theme="light"] #admin-users-table button.text-red-400 {
   color: #dc2626;
 }
+
 /* ========================================
-   WELCOME PAGE - RELIABLE THEME CONTRAST
-   Uses the existing welcome translation attributes,
-   independent of the SPA mount container.
+   WELCOME PAGE - THEME CONTRAST
 ======================================== */
-/* Default / dark theme */
+
+/* Dark theme headings */
 :root:not([data-theme="light"]) [data-i18n="welcome.hero_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.collection_title"],
-:root:not([data-theme="light"]) [data-i18n="welcome.statistics_title"],
-:root:not([data-theme="light"]) [data-i18n="welcome.soundtracks_title"],
-:root:not([data-theme="light"]) [data-i18n="welcome.walkthroughs_title"],
-:root:not([data-theme="light"]) [data-i18n="welcome.game_details_title"],
-:root:not([data-theme="light"]) [data-i18n="welcome.history_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.platforms_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.completions_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.memories_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.media_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.links_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.statistics_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.cta_title"] {
   color: #f8fafc;
 }
+
+/* Dark theme descriptions */
 :root:not([data-theme="light"])
   [data-i18n^="welcome."][class~="text-slate-400"] {
   color: #aebbd0;
 }
+
 /* Hero accent remains pink */
 [data-i18n="welcome.hero_highlight"] {
   color: #ec4899;
 }
-/* Light theme */
+
+/* Light theme headings */
 :root[data-theme="light"] [data-i18n="welcome.hero_title"],
 :root[data-theme="light"] [data-i18n="welcome.collection_title"],
-:root[data-theme="light"] [data-i18n="welcome.statistics_title"],
-:root[data-theme="light"] [data-i18n="welcome.soundtracks_title"],
-:root[data-theme="light"] [data-i18n="welcome.walkthroughs_title"],
-:root[data-theme="light"] [data-i18n="welcome.game_details_title"],
-:root[data-theme="light"] [data-i18n="welcome.history_title"],
 :root[data-theme="light"] [data-i18n="welcome.platforms_title"],
+:root[data-theme="light"] [data-i18n="welcome.completions_title"],
+:root[data-theme="light"] [data-i18n="welcome.memories_title"],
+:root[data-theme="light"] [data-i18n="welcome.media_title"],
+:root[data-theme="light"] [data-i18n="welcome.links_title"],
+:root[data-theme="light"] [data-i18n="welcome.statistics_title"],
 :root[data-theme="light"] [data-i18n="welcome.cta_title"] {
   color: #17243b;
 }
+
+/* Light theme descriptions */
 :root[data-theme="light"] [data-i18n^="welcome."][class~="text-slate-400"] {
   color: #52647e;
 }
+
+/* Light theme hero background */
 :root[data-theme="light"]
   section:has([data-i18n="welcome.hero_title"])
   .bg-slate-900 {
   background-color: #ffffff;
   border-color: #dce4ef;
 }
+
 /* ==========================================
    ADMIN TABLES
    Shared across Games, Series, Platforms, etc.
@@ -2473,4 +2482,16 @@ html {
   border-color: #087f99;
   box-shadow: 0 4px 12px rgba(8, 127, 153, 0.15);
   transform: translateY(-2px);
+}
+/* Welcome page: theme-aware text contrast */
+[data-theme="dark"] .welcome-text {
+  color: #a8b8d4;
+}
+
+[data-theme="light"] .welcome-text {
+  color: #52627b;
+}
+#welcome-language-select {
+  width: auto;
+  min-width: 160px;
 }

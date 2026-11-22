@@ -1,3 +1,5 @@
+import { t } from "../i18n.js";
+
 export function createGameCard(game) {
   const card = document.createElement("article");
   card.className = "game-card flex flex-col";
@@ -48,7 +50,7 @@ export function createGameCard(game) {
     favorite.style.cssText =
       "top: auto; left: auto; bottom: 10px; right: 9px; opacity: 0.8";
     favorite.textContent = "♥ FAV ♥";
-    favorite.title = "Favorite";
+    favorite.title = t("game_details.game.status.favorite");
 
     cover.append(favorite);
   }
@@ -56,12 +58,12 @@ export function createGameCard(game) {
   if (game.completed) {
     const completed = document.createElement("span");
     completed.className = "text-green-400 text-sm font-semibold";
-    completed.textContent = "✓ Completed";
+    completed.textContent = `✓ ${t("game_details.game.status.completed")}`;
     status.append(completed);
   } else if (game.in_progress) {
     const inProgress = document.createElement("span");
     inProgress.className = "text-amber-400 text-sm font-semibold";
-    inProgress.textContent = "◷ In Progress";
+    inProgress.textContent = `◷ ${t("game_details.game.status.in_progress")}`;
     status.append(inProgress);
   } else {
     const notPlayed = document.createElement("span");

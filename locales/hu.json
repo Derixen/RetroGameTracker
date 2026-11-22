@@ -851,7 +851,11 @@
     "change_password": "Jelszó módosítása",
     "danger_zone_title": "Veszélyes műveletek",
     "danger_zone_description": "Fiókod és a hozzá tartozó összes játékgyűjtemény-adat végleges törlése. Ez a művelet nem vonható vissza.",
-    "delete_account": "Fiókom törlése"
+    "delete_account": "Fiókom törlése",
+    "appearance_title": "Megjelenés",
+    "appearance_description": "Válaszd ki a Retro Game Tracker megjelenését.",
+    "theme_dark": "Sötét",
+    "theme_light": "Világos"
   },
   "report_bug": {
     "title": "Hiba bejelentése",
@@ -965,38 +969,49 @@
       "description_after": "oldalt."
     }
   },
+
   "welcome": {
     "logo_alt": "RetroTrack Games",
     "hero_title": "A te játékos utad,",
     "hero_highlight": "A te történeted.",
-    "hero_description": "Építsd fel személyes retrojáték-gyűjteményedet, kövesd a haladásodat, és őrizd meg az emlékeket minden játék mögött, amellyel valaha játszottál. Rendszerezd kedvenceidet, fedezd fel a részletes statisztikákat, és adj hozzá egyszerűen kedvenc játékzenéket és végigjátszásokat közvetlenül a YouTube-ról.",
+    "hero_description": "Építsd fel saját retrojáték-gyűjteményedet, kövesd nyomon az eredményeidet, és őrizd meg a játékokhoz fűződő emlékeidet. A játékaid, a konzoljaid, a történeted — minden egy helyen.",
     "sign_in": "Bejelentkezés / Kezdés",
-    "collection_image_alt": "Retro Game Tracker játékgyűjtemény",
-    "collection_title": "Építsd fel a gyűjteményedet",
-    "collection_description": "Hozd létre saját játékgyűjteményedet. Rendszerezd a játékokat platform, műfaj, fejlesztő és sorozat szerint. Tartsd számon mindazt, amivel játszottál, és fedezd fel újra a gyűjteményedet.",
-    "statistics_image_alt": "Retro Game Tracker statisztikai vezérlőpult",
-    "statistics_title": "Kövesd a haladásodat",
-    "statistics_description": "Jelöld a játékokat befejezettnek, folyamatban lévőnek vagy még nem játszottnak. Rögzítsd a befejezések dátumát, kövesd az eredményeidet, és fedezd fel a statisztikákban, hogyan alakult a játékos pályafutásod.",
-    "soundtracks_image_alt": "Retro Game Tracker YouTube-játékzenék",
-    "soundtracks_title": "Éld át újra a játékzenéket",
-    "soundtracks_description": "Minden nagyszerű játéknak felejthetetlen zenéje van. Add hozzá kedvenc játékzenéidet közvetlenül a YouTube-ról, és hallgasd őket a gyűjteményed mellett. Az ikonikus főcímzenéktől az emlékezetes háttérdallamokig őrizd meg játékos emlékeid hangjait.",
-    "walkthroughs_image_alt": "Retro Game Tracker YouTube-végigjátszások",
-    "walkthroughs_title": "Végigjátszások egy kattintásra",
-    "walkthroughs_description": "Elakadtál egy nehéz pályán, vagy újra átélnél egy klasszikus kalandot? Adj hozzá egyszerűen YouTube-végigjátszásokat a játékaidhoz, és tartsd kéznél a hasznos útmutatókat. Akár titkokat fedezel fel, akár régi kihívásokat élsz át újra, minden a gyűjteményedhez kapcsolódik.",
-    "game_details_image_alt": "Retro Game Tracker játékadatlap",
-    "game_details_title": "Minden játéknak van története",
-    "game_details_description": "Fedezd fel az egyes játékok adatlapjait borítókkal, megjelenési adatokkal, műfajokkal, fejlesztőkkel és személyes teljesítési állapotoddal. Tarts egy helyen minden részletet, amely különlegessé teszi a játékokat.",
-    "history_image_alt": "Retro Game Tracker játéktörténet",
-    "history_title": "A te játéktörténeted",
-    "history_description": "Minden befejezett játék egy újabb fejezet a játékos pályafutásodban. Tekints vissza a végigjátszott játékokra, emlékezz, mikor győzted le a kihívásaikat, és fedezd fel újra a kalandokat, amelyek megszerettették veled a játékokat. A gyűjteményed nem csupán játéklista — a saját történeted.",
-    "platforms_image_alt": "Retro Game Tracker platformok oldala",
+
+    "collection_image_alt": "RetroTrack Games játékgyűjtemény",
+    "collection_title": "Építsd fel a játékgyűjteményedet",
+    "collection_description": "Hozd létre saját játékgyűjteményedet. Rendszerezd a játékokat platform, műfaj, fejlesztő és sorozat szerint. Tartsd számon mindazt, amivel valaha játszottál, és fedezd fel újra a gyűjteményedet.",
+
+    "platforms_image_alt": "RetroTrack Games platformok és hardverek",
     "platforms_title": "Fedezd fel a platformjaidat",
-    "platforms_description": "A legendás otthoni konzoloktól a klasszikus számítógépekig fedezd fel a játékos pályafutásodat meghatározó platformokat. Rendszerezd játékaidat rendszerenként, és fedezd fel újra azokat a címeket, amelyek minden platformot különlegessé tettek.",
-    "cta_title": "Készen állsz újra átélni a játéktörténetedet?",
-    "cta_description": "A legelső játékodtól a legutóbb befejezett kalandodig a játékos múltad megérdemli, hogy saját helye legyen.",
+    "platforms_description": "A legendás konzoloktól a klasszikus számítógépekig: tartsd nyilván a birtokodban lévő eszközöket, beleértve azok modelljét, állapotát, fényképeit és személyes megjegyzéseidet. Rendszerezd játékaidat platformok szerint.",
+
+    "completions_image_alt": "RetroTrack Games végigjátszási előzmények",
+    "completions_title": "Rögzítsd a végigjátszásaidat",
+    "completions_description": "Jegyezd fel, mikor fejeztél be egy játékot, rögzítsd a teljesítési időket, kövesd nyomon személyes rekordjaidat, és ünnepeld a mérföldköveket teljesítményjelvényekkel. Minden befejezett kaland a játékos történeted részévé válik.",
+
+    "memories_image_alt": "RetroTrack Games személyes játékos emlékek",
+    "memories_title": "Őrizd meg a játékos emlékeidet",
+    "memories_description": "Emlékezz vissza azokra a játékokra, amelyek a legtöbbet jelentették számodra. Ments el személyes történeteket, jegyzeteket és fényképeket, hogy megőrizd a kedvenc játékélményeidhez kapcsolódó pillanatokat és embereket.",
+
+    "media_image_alt": "RetroTrack Games játékzenék és végigjátszások",
+    "media_title": "Éld át újra a zenéket és a kalandokat",
+    "media_description": "Mentsd el kedvenc YouTube-játékzenéidet és végigjátszásaidat közvetlenül a játékok mellé. Hallgasd újra a felejthetetlen dallamokat, fedezz fel rejtett titkokat, vagy találj hasznos útmutatókat, amikor szükséged van rájuk.",
+
+    "links_image_alt": "RetroTrack Games játékokhoz tartozó hivatkozások",
+    "links_title": "Mentsd el a kedvenc hivatkozásaidat",
+    "links_description": "Ments el hasznos weboldalakat és hivatkozásokat az egyes játékokhoz, legyen szó útmutatókról, tippekről, rajongói közösségekről vagy más forrásokról, amelyeket később könnyen szeretnél megtalálni.",
+
+    "statistics_image_alt": "RetroTrack Games statisztikai áttekintés",
+    "statistics_title": "Fedezd fel a játékstatisztikáidat",
+    "statistics_description": "Ismerd meg gyűjteményedet részletes statisztikák segítségével. Nézd meg, mely játékokkal játszottál, melyeket fejezted be, és melyeket gyűjtötted össze, valamint fedezd fel, hogyan alakult a játékos utad az évek során.",
+
+    "privacy_title": "A gyűjteményed, a magánszférád",
+    "privacy_description": "A játékgyűjteményed személyes. A RetroTrack Games privátként kezeli a gyűjteményedet, így anélkül rendszerezheted játékaidat, dokumentálhatod konzoljaidat és őrizheted meg emlékeidet, hogy azokat nyilvánosan meg kellene osztanod.",
+
+    "cta_title": "Készen állsz újra felfedezni a játékos történetedet?",
+    "cta_description": "A legelső játékodtól a legutóbb befejezett kalandodig — a játékos történeted megérdemel egy saját helyet.",
     "cta_button": "Kezdés"
   },
-
   "confirm_dialog": {
     "default_title": "Biztos vagy benne?",
     "default_message": "Ez a művelet nem vonható vissza.",

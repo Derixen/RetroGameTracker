@@ -926,7 +926,11 @@
     "change_password": "Change Password",
     "danger_zone_title": "Danger Zone",
     "danger_zone_description": "Permanently delete your account and all associated game collection data. This action cannot be undone.",
-    "delete_account": "Delete My Account"
+    "delete_account": "Delete My Account",
+    "appearance_title": "Appearance",
+    "appearance_description": "Choose how Retro Game Tracker looks.",
+    "theme_dark": "Dark",
+    "theme_light": "Light"
   },
 
   "reset_password": {
@@ -1043,29 +1047,41 @@
     "logo_alt": "RetroTrack Games",
     "hero_title": "Your Gaming Journey,",
     "hero_highlight": "Your History.",
-    "hero_description": "Build your personal retro game collection, track your progress, and preserve the memories behind every game you've played. Organize your favorites, explore detailed statistics, and easily add your favorite soundtracks and walkthroughs directly from YouTube.",
+    "hero_description": "Build your retro gaming collection, track your achievements, and preserve the memories behind every game. Your games, your consoles, your history — all in one place.",
+
     "sign_in": "Sign In / Get Started",
-    "collection_image_alt": "Retro Game Tracker game collection",
-    "collection_title": "Build Your Collection",
-    "collection_description": "Create your own personal gaming library. Organize games by platform, genre, developer, and series. Keep track of everything you've played and discover your collection all over again.",
-    "statistics_image_alt": "Retro Game Tracker statistics dashboard",
-    "statistics_title": "Track Your Progress",
-    "statistics_description": "Mark games as completed, in progress, or not played. Record completion dates, follow your achievements, and explore statistics that show how your gaming journey has evolved.",
-    "soundtracks_image_alt": "Retro Game Tracker YouTube soundtracks",
-    "soundtracks_title": "Relive the Soundtracks",
-    "soundtracks_description": "Every great game has unforgettable music. Easily add your favorite soundtracks directly from YouTube and enjoy them alongside your collection. From iconic title themes to memorable background music, keep the sounds of your gaming memories alive.",
-    "walkthroughs_image_alt": "Retro Game Tracker YouTube walkthroughs",
-    "walkthroughs_title": "Walkthroughs at Your Fingertips",
-    "walkthroughs_description": "Stuck on a difficult level or looking to revisit a classic adventure? Easily add YouTube walkthroughs to your games and keep helpful guides just a click away. Whether you're discovering secrets or reliving old challenges, everything stays connected to your collection.",
-    "game_details_image_alt": "Retro Game Tracker game details",
-    "game_details_title": "Every Game Has a Story",
-    "game_details_description": "Explore individual game pages with cover artwork, release information, genres, developers, and your personal completion status. Keep the details that make each game special together in one place.",
-    "history_image_alt": "Retro Game Tracker gaming history",
-    "history_title": "Your Gaming History",
-    "history_description": "Every completed game is another chapter in your gaming journey. Look back at the games you've finished, remember when you conquered them, and rediscover the adventures that shaped your love for gaming. Your collection isn't just a list of games — it's your personal history.",
-    "platforms_image_alt": "Retro Game Tracker platforms page",
+
+    "collection_image_alt": "RetroTrack Games game collection",
+    "collection_title": "Build Your Game Collection",
+    "collection_description": "Create your own personal gaming library. Organize games by platform, genre, developer, and series. Keep track of everything you have played and rediscover your collection.",
+
+    "platforms_image_alt": "RetroTrack Games platforms and hardware",
     "platforms_title": "Explore Your Platforms",
-    "platforms_description": "From legendary home consoles to classic computers, explore the platforms that defined your gaming journey. Keep your games organized by system and rediscover the titles that made each platform special.",
+    "platforms_description": "From legendary consoles to classic computers, document the hardware you own, including models, condition, photos, and personal notes. Keep your games organized by platform.",
+
+    "completions_image_alt": "RetroTrack Games completion history",
+    "completions_title": "Record Your Completions",
+    "completions_description": "Record when you finished a game, add completion times, track personal bests, and celebrate milestones with achievement badges. Every finished adventure becomes part of your gaming history.",
+
+    "memories_image_alt": "RetroTrack Games personal gaming memories",
+    "memories_title": "Preserve Your Gaming Memories",
+    "memories_description": "Remember the games that meant the most to you. Save personal stories, notes, and photos to capture the moments and people behind your favorite gaming experiences.",
+
+    "media_image_alt": "RetroTrack Games soundtracks and walkthroughs",
+    "media_title": "Relive the Music & Adventures",
+    "media_description": "Keep your favorite YouTube soundtracks and walkthroughs alongside each game. Revisit unforgettable music, discover hidden secrets, or find a helpful guide whenever you need one.",
+
+    "links_image_alt": "RetroTrack Games game links",
+    "links_title": "Keep Your Favorite Links",
+    "links_description": "Save useful websites and links for individual games, whether they are guides, tips, fan communities, or other resources you want to find again.",
+
+    "statistics_image_alt": "RetroTrack Games statistics dashboard",
+    "statistics_title": "Discover Your Gaming Statistics",
+    "statistics_description": "Explore your collection through detailed statistics. See what you have played, completed, and collected, and discover how your gaming journey has evolved over time.",
+
+    "privacy_title": "Your Collection, Your Privacy",
+    "privacy_description": "Your gaming collection is personal. RetroTrack Games keeps your collection private, so you can organize your games, document your consoles, and preserve your gaming memories without sharing them publicly.",
+
     "cta_title": "Ready to Revisit Your Gaming History?",
     "cta_description": "From your very first game to your latest completed adventure, your gaming history deserves a place of its own.",
     "cta_button": "Get Started"

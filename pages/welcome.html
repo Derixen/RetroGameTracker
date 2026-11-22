@@ -1,4 +1,18 @@
 <section class="mx-auto max-w-5xl px-4 py-12">
+  <!-- Language Selector -->
+  <div class="mb-8 flex justify-end">
+    <select
+      id="welcome-language-select"
+      class="theme-select w-auto min-w-40 px-4 py-2 text-sm"
+      aria-label="Select language"
+    >
+      <option value="en">🇬🇧 English</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="hu">🇭🇺 Magyar</option>
+      <option value="el">🇬🇷 Ελληνικά</option>
+    </select>
+  </div>
+
   <!-- Welcome -->
   <div class="text-center">
     <div class="mb-8 flex justify-center">
@@ -13,20 +27,19 @@
     <h1
       class="mb-6 text-4xl font-bold text-slate-900 dark:text-white md:text-6xl"
     >
-      <span data-i18n="welcome.hero_title"> Your Gaming Journey, </span>
+      <span data-i18n="welcome.hero_title">Your Gaming Journey,</span>
       <span class="text-pink-500" data-i18n="welcome.hero_highlight">
         Your History.
       </span>
     </h1>
 
     <p
-      class="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400"
+      class="welcome-text mx-auto mb-10 max-w-2xl text-lg leading-relaxed"
       data-i18n="welcome.hero_description"
     >
-      Build your personal retro game collection, track your progress, and
-      preserve the memories behind every game you've played. Organize your
-      favorites, explore detailed statistics, and easily add your favorite
-      soundtracks and walkthroughs directly from YouTube.
+      Build your retro gaming collection, track your achievements, and preserve
+      the memories behind every game. Your games, your consoles, your history —
+      all in one place.
     </p>
 
     <a
@@ -40,12 +53,12 @@
 
   <!-- Feature Showcase -->
   <div class="mt-16">
-    <!-- Collection -->
+    <!-- Build Your Game Collection -->
     <div class="mb-16 grid items-center gap-8 md:grid-cols-2">
       <div class="rounded-xl border border-slate-700 bg-slate-900 p-6">
         <img
           src="images/screenshots/collection.png"
-          alt="Retro Game Tracker game collection"
+          alt="RetroTrack Games game collection"
           data-i18n-alt="welcome.collection_image_alt"
           class="w-full rounded-lg"
         />
@@ -57,154 +70,90 @@
           class="mb-4 text-2xl font-bold text-slate-900 dark:text-white"
           data-i18n="welcome.collection_title"
         >
-          Build Your Collection
+          Build Your Game Collection
         </h2>
         <p
-          class="leading-relaxed text-slate-600 dark:text-slate-400"
+          class="welcome-text leading-relaxed"
           data-i18n="welcome.collection_description"
         >
           Create your own personal gaming library. Organize games by platform,
-          genre, developer, and series. Keep track of everything you've played
-          and discover your collection all over again.
+          genre, developer, and series. Keep track of everything you have played
+          and rediscover your collection.
         </p>
       </div>
     </div>
 
-    <!-- Statistics -->
+    <!-- Explore Your Platforms -->
     <div class="mb-16 grid items-center gap-8 md:grid-cols-2">
       <div
         class="rounded-xl border border-slate-700 bg-slate-900 p-6 md:order-2"
       >
         <img
-          src="images/screenshots/statistics.png"
-          alt="Retro Game Tracker statistics dashboard"
-          data-i18n-alt="welcome.statistics_image_alt"
+          src="images/screenshots/platforms.png"
+          alt="RetroTrack Games platforms and hardware"
+          data-i18n-alt="welcome.platforms_image_alt"
           class="w-full rounded-lg"
         />
       </div>
 
       <div class="md:order-1">
+        <div class="mb-4 text-3xl">🕹️</div>
+        <h2
+          class="mb-4 text-2xl font-bold text-slate-900 dark:text-white"
+          data-i18n="welcome.platforms_title"
+        >
+          Explore Your Platforms
+        </h2>
+        <p
+          class="welcome-text leading-relaxed"
+          data-i18n="welcome.platforms_description"
+        >
+          From legendary consoles to classic computers, document the hardware
+          you own, including models, condition, photos, and personal notes. Keep
+          your games organized by platform.
+        </p>
+      </div>
+    </div>
+
+    <!-- Record Your Completions -->
+    <div class="mb-16 grid items-center gap-8 md:grid-cols-2">
+      <div class="rounded-xl border border-slate-700 bg-slate-900 p-6">
+        <img
+          src="images/screenshots/history.png"
+          alt="RetroTrack Games completion history"
+          data-i18n-alt="welcome.completions_image_alt"
+          class="w-full rounded-lg"
+        />
+      </div>
+
+      <div>
         <div class="mb-4 text-3xl">🏆</div>
         <h2
           class="mb-4 text-2xl font-bold text-slate-900 dark:text-white"
-          data-i18n="welcome.statistics_title"
+          data-i18n="welcome.completions_title"
         >
-          Track Your Progress
+          Record Your Completions
         </h2>
         <p
-          class="leading-relaxed text-slate-600 dark:text-slate-400"
-          data-i18n="welcome.statistics_description"
+          class="welcome-text leading-relaxed"
+          data-i18n="welcome.completions_description"
         >
-          Mark games as completed, in progress, or not played. Record completion
-          dates, follow your achievements, and explore statistics that show how
-          your gaming journey has evolved.
+          Record when you finished a game, add completion times, track personal
+          bests, and celebrate milestones with achievement badges. Every
+          finished adventure becomes part of your gaming history.
         </p>
       </div>
     </div>
 
-    <!-- Soundtracks -->
-    <div class="mb-16 grid items-center gap-8 md:grid-cols-2">
-      <div class="rounded-xl border border-slate-700 bg-slate-900 p-6">
-        <img
-          src="images/screenshots/soundtracks.png"
-          alt="Retro Game Tracker YouTube soundtracks"
-          data-i18n-alt="welcome.soundtracks_image_alt"
-          class="w-full rounded-lg"
-        />
-      </div>
-
-      <div>
-        <div class="mb-4 text-3xl">🎵</div>
-        <h2
-          class="mb-4 text-2xl font-bold text-slate-900 dark:text-white"
-          data-i18n="welcome.soundtracks_title"
-        >
-          Relive the Soundtracks
-        </h2>
-        <p
-          class="leading-relaxed text-slate-600 dark:text-slate-400"
-          data-i18n="welcome.soundtracks_description"
-        >
-          Every great game has unforgettable music. Easily add your favorite
-          soundtracks directly from YouTube and enjoy them alongside your
-          collection. From iconic title themes to memorable background music,
-          keep the sounds of your gaming memories alive.
-        </p>
-      </div>
-    </div>
-
-    <!-- Walkthroughs -->
+    <!-- Preserve Your Gaming Memories -->
     <div class="mb-16 grid items-center gap-8 md:grid-cols-2">
       <div
         class="rounded-xl border border-slate-700 bg-slate-900 p-6 md:order-2"
       >
-        <img
-          src="images/screenshots/walkthroughs.png"
-          alt="Retro Game Tracker YouTube walkthroughs"
-          data-i18n-alt="welcome.walkthroughs_image_alt"
-          class="w-full rounded-lg"
-        />
-      </div>
-
-      <div class="md:order-1">
-        <div class="mb-4 text-3xl">📺</div>
-        <h2
-          class="mb-4 text-2xl font-bold text-slate-900 dark:text-white"
-          data-i18n="welcome.walkthroughs_title"
-        >
-          Walkthroughs at Your Fingertips
-        </h2>
-        <p
-          class="leading-relaxed text-slate-600 dark:text-slate-400"
-          data-i18n="welcome.walkthroughs_description"
-        >
-          Stuck on a difficult level or looking to revisit a classic adventure?
-          Easily add YouTube walkthroughs to your games and keep helpful guides
-          just a click away. Whether you're discovering secrets or reliving old
-          challenges, everything stays connected to your collection.
-        </p>
-      </div>
-    </div>
-
-    <!-- Game Details -->
-    <div class="mb-16 grid items-center gap-8 md:grid-cols-2">
-      <div class="rounded-xl border border-slate-700 bg-slate-900 p-6">
         <img
           src="images/screenshots/game-details.png"
-          alt="Retro Game Tracker game details"
-          data-i18n-alt="welcome.game_details_image_alt"
-          class="w-full rounded-lg"
-        />
-      </div>
-
-      <div>
-        <div class="mb-4 text-3xl">📚</div>
-        <h2
-          class="mb-4 text-2xl font-bold text-slate-900 dark:text-white"
-          data-i18n="welcome.game_details_title"
-        >
-          Every Game Has a Story
-        </h2>
-        <p
-          class="leading-relaxed text-slate-600 dark:text-slate-400"
-          data-i18n="welcome.game_details_description"
-        >
-          Explore individual game pages with cover artwork, release information,
-          genres, developers, and your personal completion status. Keep the
-          details that make each game special together in one place.
-        </p>
-      </div>
-    </div>
-
-    <!-- Gaming History -->
-    <div class="mb-16 grid items-center gap-8 md:grid-cols-2">
-      <div
-        class="rounded-xl border border-slate-700 bg-slate-900 p-6 md:order-2"
-      >
-        <img
-          src="images/screenshots/history.png"
-          alt="Retro Game Tracker gaming history"
-          data-i18n-alt="welcome.history_image_alt"
+          alt="RetroTrack Games personal gaming memories"
+          data-i18n-alt="welcome.memories_image_alt"
           class="w-full rounded-lg"
         />
       </div>
@@ -213,51 +162,135 @@
         <div class="mb-4 text-3xl">🕰️</div>
         <h2
           class="mb-4 text-2xl font-bold text-slate-900 dark:text-white"
-          data-i18n="welcome.history_title"
+          data-i18n="welcome.memories_title"
         >
-          Your Gaming History
+          Preserve Your Gaming Memories
         </h2>
         <p
-          class="leading-relaxed text-slate-600 dark:text-slate-400"
-          data-i18n="welcome.history_description"
+          class="welcome-text leading-relaxed"
+          data-i18n="welcome.memories_description"
         >
-          Every completed game is another chapter in your gaming journey. Look
-          back at the games you've finished, remember when you conquered them,
-          and rediscover the adventures that shaped your love for gaming. Your
-          collection isn't just a list of games — it's your personal history.
+          Remember the games that meant the most to you. Save personal stories,
+          notes, and photos to capture the moments and people behind your
+          favorite gaming experiences.
+        </p>
+      </div>
+    </div>
+
+    <!-- Relive the Music & Adventures -->
+    <div class="mb-16 grid items-center gap-8 md:grid-cols-2">
+      <div class="rounded-xl border border-slate-700 bg-slate-900 p-6">
+        <img
+          src="images/screenshots/soundtracks.png"
+          alt="RetroTrack Games soundtracks and walkthroughs"
+          data-i18n-alt="welcome.media_image_alt"
+          class="w-full rounded-lg"
+        />
+      </div>
+
+      <div>
+        <div class="mb-4 text-3xl">🎵</div>
+        <h2
+          class="mb-4 text-2xl font-bold text-slate-900 dark:text-white"
+          data-i18n="welcome.media_title"
+        >
+          Relive the Music & Adventures
+        </h2>
+        <p
+          class="welcome-text leading-relaxed"
+          data-i18n="welcome.media_description"
+        >
+          Keep your favorite YouTube soundtracks and walkthroughs alongside each
+          game. Revisit unforgettable music, discover hidden secrets, or find a
+          helpful guide whenever you need one.
+        </p>
+      </div>
+    </div>
+
+    <!-- Keep Your Favorite Links -->
+    <div class="mb-16 grid items-center gap-8 md:grid-cols-2">
+      <div
+        class="rounded-xl border border-slate-700 bg-slate-900 p-6 md:order-2"
+      >
+        <img
+          src="images/screenshots/walkthroughs.png"
+          alt="RetroTrack Games game links"
+          data-i18n-alt="welcome.links_image_alt"
+          class="w-full rounded-lg"
+        />
+      </div>
+
+      <div class="md:order-1">
+        <div class="mb-4 text-3xl">🔗</div>
+        <h2
+          class="mb-4 text-2xl font-bold text-slate-900 dark:text-white"
+          data-i18n="welcome.links_title"
+        >
+          Keep Your Favorite Links
+        </h2>
+        <p
+          class="welcome-text leading-relaxed"
+          data-i18n="welcome.links_description"
+        >
+          Save useful websites and links for individual games, whether they are
+          guides, tips, fan communities, or other resources you want to find
+          again.
+        </p>
+      </div>
+    </div>
+
+    <!-- Discover Your Gaming Statistics -->
+    <div class="mb-16 grid items-center gap-8 md:grid-cols-2">
+      <div class="rounded-xl border border-slate-700 bg-slate-900 p-6">
+        <img
+          src="images/screenshots/statistics.png"
+          alt="RetroTrack Games statistics dashboard"
+          data-i18n-alt="welcome.statistics_image_alt"
+          class="w-full rounded-lg"
+        />
+      </div>
+
+      <div>
+        <div class="mb-4 text-3xl">📊</div>
+        <h2
+          class="mb-4 text-2xl font-bold text-slate-900 dark:text-white"
+          data-i18n="welcome.statistics_title"
+        >
+          Discover Your Gaming Statistics
+        </h2>
+        <p
+          class="welcome-text leading-relaxed"
+          data-i18n="welcome.statistics_description"
+        >
+          Explore your collection through detailed statistics. See what you have
+          played, completed, and collected, and discover how your gaming journey
+          has evolved over time.
         </p>
       </div>
     </div>
   </div>
 
-  <!-- Platforms -->
-  <div class="mb-16 grid items-center gap-8 md:grid-cols-2">
-    <div class="rounded-xl border border-slate-700 bg-slate-900 p-6 md:order-1">
-      <img
-        src="images/screenshots/platforms.png"
-        alt="Retro Game Tracker platforms page"
-        data-i18n-alt="welcome.platforms_image_alt"
-        class="w-full rounded-lg"
-      />
-    </div>
+  <!-- Privacy -->
+  <div
+    class="mb-16 rounded-xl border border-slate-700 bg-slate-900 px-6 py-10 text-center"
+  >
+    <div class="mb-4 text-3xl">🔒</div>
 
-    <div class="md:order-1">
-      <div class="mb-4 text-3xl">🕹️</div>
-      <h2
-        class="mb-4 text-2xl font-bold text-slate-900 dark:text-white"
-        data-i18n="welcome.platforms_title"
-      >
-        Explore Your Platforms
-      </h2>
-      <p
-        class="leading-relaxed text-slate-600 dark:text-slate-400"
-        data-i18n="welcome.platforms_description"
-      >
-        From legendary home consoles to classic computers, explore the platforms
-        that defined your gaming journey. Keep your games organized by system
-        and rediscover the titles that made each platform special.
-      </p>
-    </div>
+    <h2
+      class="mb-4 text-2xl font-bold text-white"
+      data-i18n="welcome.privacy_title"
+    >
+      Your Collection, Your Privacy
+    </h2>
+
+    <p
+      class="mx-auto max-w-2xl leading-relaxed text-slate-300"
+      data-i18n="welcome.privacy_description"
+    >
+      Your gaming collection is personal. RetroTrack Games keeps your collection
+      private, so you can organize your games, document your consoles, and
+      preserve your gaming memories without sharing them publicly.
+    </p>
   </div>
 
   <!-- Bottom CTA -->

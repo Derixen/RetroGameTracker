@@ -19,7 +19,7 @@ import { initAdminDashboard } from "./pages/adminDashboard.js";
 import { initProfile } from "./pages/profile.js";
 import { initResetPassword } from "./pages/resetPassword.js";
 import { initAdminUsers } from "./pages/adminUsers.js";
-import { t, translatePage } from "./i18n.js";
+import { t, translatePage, getLanguage, setLanguage } from "./i18n.js";
 import { initContact } from "./pages/contact.js";
 import { syncThemeControls } from "./theme.js";
 import { initPlatformDetails } from "./pages/platformDetails.js";
@@ -352,7 +352,7 @@ export async function navigate() {
         subtitleKey: `page_headings.${route}.subtitle`,
         ...(headingConfig.countId
           ? {
-              countLabelKey: "page_headings.games.count_label",
+              countLabelKey: `page_headings.${route}.count_label`,
             }
           : {}),
       });
@@ -377,6 +377,26 @@ export async function navigate() {
     });
 
     // Initialize page-specific JavaScript
+    if (route === "welcome") {
+      const languageSelect = document.getElementById("welcome-language-select");
+
+      if (languageSelect) {
+        languageSelect.value = getLanguage();
+
+        languageSelect.addEventListener("change", async () => {
+          languageSelect.disabled = true;
+
+          try {
+            await setLanguage(languageSelect.value);
+          } catch (error) {
+            console.error("Failed to change language:", error);
+            languageSelect.value = getLanguage();
+          } finally {
+            languageSelect.disabled = false;
+          }
+        });
+      }
+    }
     if (route === "games") {
       const cleanup = await initGames(params);
 

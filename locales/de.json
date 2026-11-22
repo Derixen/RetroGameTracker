@@ -891,7 +891,11 @@
     "change_password": "Passwort ändern",
     "danger_zone_title": "Gefahrenbereich",
     "danger_zone_description": "Lösche dein Konto und alle zugehörigen Spielesammlungsdaten dauerhaft. Diese Aktion kann nicht rückgängig gemacht werden.",
-    "delete_account": "Mein Konto löschen"
+    "delete_account": "Mein Konto löschen",
+    "appearance_title": "Darstellung",
+    "appearance_description": "Wähle das Erscheinungsbild von Retro Game Tracker.",
+    "theme_dark": "Dunkel",
+    "theme_light": "Hell"
   },
   "reset_password": {
     "eyebrow": "KONTOSICHERHEIT",
@@ -999,36 +1003,48 @@
       "description_after": "."
     }
   },
+
   "welcome": {
     "logo_alt": "RetroTrack Games",
-    "hero_title": "Deine Spielereise,",
-    "hero_highlight": "deine Geschichte.",
-    "hero_description": "Erstelle deine persönliche Retrospielesammlung, verfolge deinen Fortschritt und bewahre die Erinnerungen an jedes Spiel, das du gespielt hast. Organisiere deine Favoriten, entdecke detaillierte Statistiken und füge deine Lieblingssoundtracks und Komplettlösungen direkt von YouTube hinzu.",
-    "sign_in": "Anmelden / Loslegen",
-    "collection_image_alt": "Spielesammlung von Retro Game Tracker",
-    "collection_title": "Erstelle deine Sammlung",
-    "collection_description": "Erstelle deine persönliche Spielebibliothek. Organisiere Spiele nach Plattform, Genre, Entwickler und Spielereihe. Behalte den Überblick über alles, was du gespielt hast, und entdecke deine Sammlung neu.",
-    "statistics_image_alt": "Verfolge deinen Fortschritt",
-    "statistics_title": "Markiere Spiele als abgeschlossen, in Bearbeitung oder noch nicht gespielt. Erfasse Abschlussdaten, verfolge deine Erfolge und entdecke Statistiken zur Entwicklung deiner Spielereise.",
-    "statistics_description": "Statistik-Dashboard von Retro Game Tracker",
-    "soundtracks_image_alt": "Erlebe die Soundtracks erneut",
-    "soundtracks_title": "Jedes großartige Spiel hat unvergessliche Musik. Füge deine Lieblingssoundtracks direkt von YouTube hinzu und genieße sie zusammen mit deiner Sammlung. Von legendären Titelmelodien bis zu einprägsamer Hintergrundmusik – bewahre die Klänge deiner Spielerinnerungen.",
-    "soundtracks_description": "YouTube-Soundtracks von Retro Game Tracker",
-    "walkthroughs_image_alt": "Komplettlösungen jederzeit griffbereit",
-    "walkthroughs_title": "Steckst du in einem schwierigen Level fest oder möchtest du ein klassisches Abenteuer erneut erleben? Füge deinen Spielen ganz einfach YouTube-Komplettlösungen hinzu und halte hilfreiche Anleitungen nur einen Klick entfernt. Ob du Geheimnisse entdeckst oder alte Herausforderungen erneut meisterst – alles bleibt mit deiner Sammlung verbunden.",
-    "walkthroughs_description": "YouTube-Komplettlösungen von Retro Game Tracker",
-    "game_details_image_alt": "Jedes Spiel erzählt eine Geschichte",
-    "game_details_title": "Entdecke einzelne Spieleseiten mit Covergrafiken, Erscheinungsinformationen, Genres, Entwicklern und deinem persönlichen Abschlussstatus. Bewahre alle Details, die ein Spiel besonders machen, an einem Ort auf.",
-    "game_details_description": "Spieldetails von Retro Game Tracker",
-    "history_image_alt": "Dein Spielverlauf",
-    "history_title": "Jedes abgeschlossene Spiel ist ein weiteres Kapitel deiner Spielereise. Blicke auf deine abgeschlossenen Spiele zurück, erinnere dich daran, wann du sie gemeistert hast, und entdecke die Abenteuer wieder, die deine Begeisterung für Spiele geprägt haben. Deine Sammlung ist nicht nur eine Liste – sie ist deine persönliche Geschichte.",
-    "history_description": "Spielverlauf von Retro Game Tracker",
-    "platforms_image_alt": "Entdecke deine Plattformen",
-    "platforms_title": "Von legendären Heimkonsolen bis zu klassischen Computern: Entdecke die Plattformen, die deine Spielereise geprägt haben. Organisiere deine Spiele nach System und entdecke die Titel wieder, die jede Plattform besonders gemacht haben.",
-    "platforms_description": "Plattformseite von Retro Game Tracker",
-    "cta_title": "Bereit, deine Spielgeschichte wiederzuentdecken?",
-    "cta_description": "Von deinem allerersten Spiel bis zu deinem neuesten abgeschlossenen Abenteuer – deine Spielgeschichte verdient einen eigenen Platz.",
-    "cta_button": "Jetzt loslegen"
+    "hero_title": "Deine Gaming-Reise,",
+    "hero_highlight": "Deine Geschichte.",
+    "hero_description": "Baue deine Retro-Spielesammlung auf, verfolge deine Erfolge und bewahre die Erinnerungen hinter jedem Spiel. Deine Spiele, deine Konsolen, deine Geschichte — alles an einem Ort.",
+    "sign_in": "Anmelden / Jetzt starten",
+
+    "collection_image_alt": "RetroTrack Games Spielesammlung",
+    "collection_title": "Baue deine Spielesammlung auf",
+    "collection_description": "Erstelle deine persönliche Spielebibliothek. Organisiere deine Spiele nach Plattform, Genre, Entwickler und Spielereihe. Behalte den Überblick über alle Spiele, die du gespielt hast, und entdecke deine Sammlung immer wieder neu.",
+
+    "platforms_image_alt": "RetroTrack Games Plattformen und Hardware",
+    "platforms_title": "Entdecke deine Plattformen",
+    "platforms_description": "Von legendären Konsolen bis hin zu klassischen Computern: Dokumentiere deine Hardware mit Modellen, Zustand, Fotos und persönlichen Notizen. Organisiere deine Spiele übersichtlich nach Plattform.",
+
+    "completions_image_alt": "RetroTrack Games Spielabschlussverlauf",
+    "completions_title": "Halte deine Spielabschlüsse fest",
+    "completions_description": "Halte fest, wann du ein Spiel abgeschlossen hast, erfasse deine Spielzeiten, verfolge persönliche Bestzeiten und feiere Meilensteine mit Erfolgsabzeichen. Jedes abgeschlossene Abenteuer wird Teil deiner Gaming-Geschichte.",
+
+    "memories_image_alt": "RetroTrack Games persönliche Spielerinnerungen",
+    "memories_title": "Bewahre deine Spielerinnerungen",
+    "memories_description": "Erinnere dich an die Spiele, die dir besonders viel bedeutet haben. Speichere persönliche Geschichten, Notizen und Fotos, um die besonderen Momente und Menschen hinter deinen liebsten Spielerlebnissen festzuhalten.",
+
+    "media_image_alt": "RetroTrack Games Soundtracks und Komplettlösungen",
+    "media_title": "Erlebe Musik und Abenteuer erneut",
+    "media_description": "Speichere deine liebsten YouTube-Soundtracks und Video-Komplettlösungen direkt bei deinen Spielen. Genieße unvergessliche Musik, entdecke versteckte Geheimnisse oder finde jederzeit eine hilfreiche Anleitung.",
+
+    "links_image_alt": "RetroTrack Games Spielelinks",
+    "links_title": "Speichere deine Lieblingslinks",
+    "links_description": "Speichere nützliche Webseiten und Links zu einzelnen Spielen, egal ob Anleitungen, Tipps, Fan-Communities oder andere Ressourcen, die du später schnell wiederfinden möchtest.",
+
+    "statistics_image_alt": "RetroTrack Games Statistikübersicht",
+    "statistics_title": "Entdecke deine Gaming-Statistiken",
+    "statistics_description": "Erkunde deine Sammlung anhand detaillierter Statistiken. Sieh dir an, welche Spiele du gespielt, abgeschlossen und gesammelt hast, und entdecke, wie sich deine Gaming-Reise im Laufe der Zeit entwickelt hat.",
+
+    "privacy_title": "Deine Sammlung, deine Privatsphäre",
+    "privacy_description": "Deine Spielesammlung ist persönlich. RetroTrack Games hält deine Sammlung privat, damit du deine Spiele organisieren, deine Konsolen dokumentieren und deine Spielerinnerungen bewahren kannst, ohne sie öffentlich teilen zu müssen.",
+
+    "cta_title": "Bereit, deine Gaming-Geschichte neu zu entdecken?",
+    "cta_description": "Von deinem allerersten Spiel bis zu deinem zuletzt abgeschlossenen Abenteuer — deine Gaming-Geschichte verdient ihren eigenen Platz.",
+    "cta_button": "Jetzt starten"
   },
   "confirm_dialog": {
     "default_title": "Bist du sicher?",

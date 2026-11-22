@@ -893,6 +893,10 @@ video {
   width: 2.5rem;
 }
 
+.w-11 {
+  width: 2.75rem;
+}
+
 .w-12 {
   width: 3rem;
 }
@@ -953,16 +957,20 @@ video {
   width: 2.25rem;
 }
 
+.w-auto {
+  width: auto;
+}
+
 .w-full {
   width: 100%;
 }
 
-.w-11 {
-  width: 2.75rem;
-}
-
 .min-w-0 {
   min-width: 0px;
+}
+
+.min-w-40 {
+  min-width: 10rem;
 }
 
 .min-w-\[600px\] {
@@ -1438,6 +1446,11 @@ video {
   background-color: rgb(100 116 139 / 0.1);
 }
 
+.bg-slate-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity, 1));
+}
+
 .bg-slate-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity, 1));
@@ -1484,11 +1497,6 @@ video {
 .bg-slate-950 {
   --tw-bg-opacity: 1;
   background-color: rgb(2 6 23 / var(--tw-bg-opacity, 1));
-}
-
-.bg-slate-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity, 1));
 }
 
 .object-contain {
@@ -3924,24 +3932,24 @@ html {
 }
 
 /* ========================================
-   WELCOME PAGE - RELIABLE THEME CONTRAST
-   Uses the existing welcome translation attributes,
-   independent of the SPA mount container.
+   WELCOME PAGE - THEME CONTRAST
 ======================================== */
 
-/* Default / dark theme */
+/* Dark theme headings */
 
 :root:not([data-theme="light"]) [data-i18n="welcome.hero_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.collection_title"],
-:root:not([data-theme="light"]) [data-i18n="welcome.statistics_title"],
-:root:not([data-theme="light"]) [data-i18n="welcome.soundtracks_title"],
-:root:not([data-theme="light"]) [data-i18n="welcome.walkthroughs_title"],
-:root:not([data-theme="light"]) [data-i18n="welcome.game_details_title"],
-:root:not([data-theme="light"]) [data-i18n="welcome.history_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.platforms_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.completions_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.memories_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.media_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.links_title"],
+:root:not([data-theme="light"]) [data-i18n="welcome.statistics_title"],
 :root:not([data-theme="light"]) [data-i18n="welcome.cta_title"] {
   color: #f8fafc;
 }
+
+/* Dark theme descriptions */
 
 :root:not([data-theme="light"])
   [data-i18n^="welcome."][class~="text-slate-400"] {
@@ -3954,23 +3962,27 @@ html {
   color: #ec4899;
 }
 
-/* Light theme */
+/* Light theme headings */
 
 :root[data-theme="light"] [data-i18n="welcome.hero_title"],
 :root[data-theme="light"] [data-i18n="welcome.collection_title"],
-:root[data-theme="light"] [data-i18n="welcome.statistics_title"],
-:root[data-theme="light"] [data-i18n="welcome.soundtracks_title"],
-:root[data-theme="light"] [data-i18n="welcome.walkthroughs_title"],
-:root[data-theme="light"] [data-i18n="welcome.game_details_title"],
-:root[data-theme="light"] [data-i18n="welcome.history_title"],
 :root[data-theme="light"] [data-i18n="welcome.platforms_title"],
+:root[data-theme="light"] [data-i18n="welcome.completions_title"],
+:root[data-theme="light"] [data-i18n="welcome.memories_title"],
+:root[data-theme="light"] [data-i18n="welcome.media_title"],
+:root[data-theme="light"] [data-i18n="welcome.links_title"],
+:root[data-theme="light"] [data-i18n="welcome.statistics_title"],
 :root[data-theme="light"] [data-i18n="welcome.cta_title"] {
   color: #17243b;
 }
 
+/* Light theme descriptions */
+
 :root[data-theme="light"] [data-i18n^="welcome."][class~="text-slate-400"] {
   color: #52647e;
 }
+
+/* Light theme hero background */
 
 :root[data-theme="light"]
   section:has([data-i18n="welcome.hero_title"])
@@ -4984,6 +4996,21 @@ html {
   border-color: #087f99;
   box-shadow: 0 4px 12px rgba(8, 127, 153, 0.15);
   transform: translateY(-2px);
+}
+
+/* Welcome page: theme-aware text contrast */
+
+[data-theme="dark"] .welcome-text {
+  color: #a8b8d4;
+}
+
+[data-theme="light"] .welcome-text {
+  color: #52627b;
+}
+
+#welcome-language-select {
+  width: auto;
+  min-width: 160px;
 }
 
 .file\:mr-3::file-selector-button {
