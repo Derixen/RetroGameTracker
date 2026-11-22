@@ -492,7 +492,15 @@
       "save": "Befejezés mentése",
       "title": "Játéktörténetem",
       "notes_placeholder": "Mire emlékszel ebből a végigjátszásból?",
-      "dialog_edit_title": "Befejezés szerkesztése"
+      "dialog_edit_title": "Befejezés szerkesztése",
+      "edit_title": "Befejezés szerkesztése",
+      "update": "Befejezés frissítése",
+      "completion_time": "Teljesítési idő",
+      "completion_time_optional": "Teljesítési idő (nem kötelező)",
+      "hours": "Óra",
+      "minutes": "Perc",
+      "seconds": "Másodperc",
+      "completion_time_hint": "Hagyd üresen a mezőket, ha nem emlékszel a teljesítési időre."
     },
     "memory": {
       "subtitle": "Vannak játékok, amelyek örökre velünk maradnak.",

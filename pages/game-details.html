@@ -518,7 +518,11 @@
     </div>
 
     <div>
-      <label for="memory-image" class="mb-2 block text-sm">
+      <label
+        for="memory-image"
+        class="mb-2 block text-sm"
+        data-i18n="game_details.memory.image_optional"
+      >
         Memory Image (optional)
       </label>
 
@@ -529,7 +533,12 @@
         class="block w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-sm text-slate-300 file:mr-3 file:rounded-md file:border-0 file:bg-slate-700 file:px-3 file:py-2 file:text-white hover:file:bg-slate-600"
       />
 
-      <p class="mt-2 text-xs text-slate-400">JPG, PNG or WebP. Maximum 5 MB.</p>
+      <p
+        data-i18n="game_details.memory.image_hint"
+        class="mt-2 text-xs text-slate-400"
+      >
+        JPG, PNG or WebP. Maximum 5 MB.
+      </p>
     </div>
 
     <div id="memory-remove-image-container" hidden>
@@ -568,8 +577,6 @@
     </div>
   </form>
 </dialog>
-
-<!-- Add Completion Dialog -->
 
 <!-- Add Completion Dialog -->
 <dialog

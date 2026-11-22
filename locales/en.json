@@ -508,7 +508,15 @@
       "save": "Save Completion",
       "title": "My Gaming History",
       "notes_placeholder": "What do you remember about this playthrough?",
-      "dialog_edit_title": "Edit Completion"
+      "dialog_edit_title": "Edit Completion",
+      "edit_title": "Edit Completion",
+      "update": "Update Completion",
+      "completion_time": "Completion Time",
+      "completion_time_optional": "Completion Time (optional)",
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "seconds": "Seconds",
+      "completion_time_hint": "Leave all fields empty if you don't remember your completion time."
     },
     "memory": {
       "subtitle": "Some games stay with us forever.",

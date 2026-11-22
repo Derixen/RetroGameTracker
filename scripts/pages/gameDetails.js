@@ -1,36 +1,47 @@
 import { supabase } from "../supabase.js";
+
 import { createGameCard } from "../components/gameCard.js";
+
 import {
   getGameCompletions,
   addGameCompletion,
   updateGameCompletion,
   deleteGameCompletion,
 } from "../api/completions.js";
+
 import { confirmDialog } from "../components/confirmDialog.js";
+
 import { showLoadingOverlay, hideLoadingOverlay } from "../loading.js";
+
 import {
   getGameMemory,
   saveGameMemory,
   deleteGameMemory,
   uploadMemoryImage,
 } from "../api/memories.js";
+
 import { ACHIEVEMENTS } from "../data/achievements.js";
+
 import {
   getGameAchievements,
   addGameAchievement,
   deleteGameAchievement,
 } from "../api/achievements.js";
+
 import {
   getGameLinks,
   addGameLink,
   updateGameLink,
   deleteGameLink,
 } from "../api/gameLinks.js";
+
 import { t } from "../i18n.js";
 
 function formatCompletionTime(totalSeconds) {
   const hours = Math.floor(totalSeconds / 3600);
+
   const minutes = Math.floor((totalSeconds % 3600) / 60);
+
   const seconds = totalSeconds % 60;
 
   return `${hours}h ${String(minutes).padStart(2, "0")}m ${String(seconds).padStart(2, "0")}s`;
@@ -40,23 +51,31 @@ export async function initGameDetails(params = new URLSearchParams()) {
   showLoadingOverlay();
 
   const loading = document.getElementById("game-details-loading");
+
   loading.hidden = true;
 
   const content = document.getElementById("game-details-content");
+
   const errorMessage = document.getElementById("game-details-error");
+
   const gameId = params.get("id");
 
   let editingCompletionId = null;
 
   if (!gameId || !/^\d+$/.test(gameId)) {
     loading.hidden = true;
+
     errorMessage.textContent = "Invalid game ID.";
+
     errorMessage.hidden = false;
+
     hideLoadingOverlay();
+
     return;
   }
 
   const backLink = document.getElementById("back-to-games");
+
   const returnUrl = sessionStorage.getItem("gameDetailsReturnUrl");
 
   if (returnUrl?.startsWith("#/games")) {
@@ -65,49 +84,78 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
   try {
     const { data: game, error } = await supabase
+
       .from("games")
+
       .select(
         `
+
         id,
+
         user_id,
+
         title,
+
         music_url,
+
         walkthrough_url,
+
         release_year,
+
         genre,
+
         developer,
+
         cover_url,
+
         description,
+
         series_id,
+
         platforms (name),
+
         series (name),
+
         favorite,
+
         in_progress,
+
         completed
+
       `,
       )
+
       .eq("id", gameId)
+
       .single();
 
     if (error) throw error;
 
     const favoriteButton = document.getElementById("detail-favorite");
+
     const completedButton = document.getElementById("detail-completed");
+
     const progressButton = document.getElementById("detail-in-progress");
 
     let favorite = game.favorite;
+
     let completed = game.completed;
+
     let inProgress = game.in_progress;
 
     function updateButtons() {
       favoriteButton.textContent = favorite ? "♥ Favorite" : "♡ Favorite";
+
       completedButton.textContent = completed ? "✓ Completed" : "○ Completed";
+
       progressButton.textContent = inProgress
         ? "◷ In Progress"
         : "○ In Progress";
 
       favoriteButton.classList.toggle("text-red-500", favorite);
+
       completedButton.classList.toggle("text-green-400", completed);
+
       progressButton.classList.toggle("text-amber-400", inProgress);
     }
 
@@ -115,6 +163,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
     const {
       data: { user },
+
       error: authError,
     } = await supabase.auth.getUser();
 
@@ -123,7 +172,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
     const canManageGame = user !== null && game.user_id === user.id;
 
     // ==========================================
+
     // GAME COMPLETION HISTORY
+
     // ==========================================
 
     const completionDialogTitle = document.getElementById(
@@ -135,9 +186,13 @@ export async function initGameDetails(params = new URLSearchParams()) {
     );
 
     const completionDialog = document.getElementById("completion-dialog");
+
     const completionForm = document.getElementById("completion-form");
+
     const completionCancel = document.getElementById("completion-cancel");
+
     const completionError = document.getElementById("completion-form-error");
+
     const completionSave = document.getElementById("completion-save");
 
     if (canManageGame) {
@@ -145,10 +200,15 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
       addCompletionButton.addEventListener("click", () => {
         editingCompletionId = null;
+
         completionForm.reset();
+
         completionError.hidden = true;
+
         completionDialogTitle.textContent = t("game_details.history.add_title");
+
         completionSave.textContent = t("game_details.history.save");
+
         completionDialog.showModal();
       });
 
@@ -162,18 +222,24 @@ export async function initGameDetails(params = new URLSearchParams()) {
         const year = Number(document.getElementById("completion-year").value);
 
         const monthValue = document.getElementById("completion-month").value;
+
         const dayValue = document.getElementById("completion-day").value;
+
         const notes = document.getElementById("completion-notes").value.trim();
 
         const month = monthValue ? Number(monthValue) : null;
+
         const day = dayValue ? Number(dayValue) : null;
 
         completionError.hidden = true;
 
         // Optional completion time
+
         const hoursValue = document.getElementById("completion-hours").value;
+
         const minutesValue =
           document.getElementById("completion-minutes").value;
+
         const secondsValue =
           document.getElementById("completion-seconds").value;
 
@@ -181,7 +247,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
           hoursValue !== "" || minutesValue !== "" || secondsValue !== "";
 
         const hours = Number(hoursValue || 0);
+
         const minutes = Number(minutesValue || 0);
+
         const seconds = Number(secondsValue || 0);
 
         if (
@@ -192,7 +260,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
           seconds > 59
         ) {
           completionError.textContent = t("game_details.history.invalid_time");
+
           completionError.hidden = false;
+
           return;
         }
 
@@ -208,7 +278,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
           completionError.textContent = t(
             "game_details.history.time_too_large",
           );
+
           completionError.hidden = false;
+
           return;
         }
 
@@ -216,7 +288,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
           completionError.textContent = t(
             "game_details.history.month_required",
           );
+
           completionError.hidden = false;
+
           return;
         }
 
@@ -231,21 +305,29 @@ export async function initGameDetails(params = new URLSearchParams()) {
             completionError.textContent = t(
               "game_details.history.invalid_date",
             );
+
             completionError.hidden = false;
+
             return;
           }
         }
 
         completionSave.disabled = true;
+
         completionSave.textContent = t("game_details.history.saving");
 
         try {
           const completionData = {
             game_id: game.id,
+
             completed_year: year,
+
             completed_month: month,
+
             completed_day: day,
+
             notes: notes || null,
+
             completion_time_seconds: completionTimeSeconds,
           };
 
@@ -260,10 +342,13 @@ export async function initGameDetails(params = new URLSearchParams()) {
           window.dispatchEvent(new HashChangeEvent("hashchange"));
         } catch (error) {
           console.error("Failed to save completion:", error);
+
           completionError.textContent = error.message;
+
           completionError.hidden = false;
         } finally {
           completionSave.disabled = false;
+
           completionSave.textContent =
             editingCompletionId !== null
               ? t("game_details.history.update")
@@ -273,19 +358,24 @@ export async function initGameDetails(params = new URLSearchParams()) {
     }
 
     // ==========================================
+
     // GAME MANAGEMENT
+
     // ==========================================
 
     if (canManageGame) {
       // Show Edit Game button
+
       const editButton = document.getElementById("detail-edit");
 
       if (editButton) {
         editButton.href = `#/admin/edit-game?id=${game.id}`;
+
         editButton.classList.remove("hidden");
       }
 
       // Show Delete Game button
+
       const deleteButton = document.getElementById("detail-delete");
 
       if (deleteButton) {
@@ -294,7 +384,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
         deleteButton.addEventListener("click", async () => {
           const confirmed = await confirmDialog({
             title: "Delete Game?",
+
             message: `Are you sure you want to permanently delete "${game.title}"? All completion history for this game will also be deleted.`,
+
             confirmText: "Delete Game",
           });
 
@@ -304,9 +396,13 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
           try {
             const { data, error } = await supabase
+
               .from("games")
+
               .delete()
+
               .eq("id", game.id)
+
               .select("id");
 
             if (error) throw error;
@@ -321,7 +417,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
             await confirmDialog({
               title: "Failed to Delete",
+
               message: error.message || "Could not delete the game.",
+
               alertOnly: true,
             });
 
@@ -331,20 +429,30 @@ export async function initGameDetails(params = new URLSearchParams()) {
       }
 
       // Enable status buttons
+
       favoriteButton.disabled = false;
+
       completedButton.disabled = false;
+
       progressButton.disabled = false;
 
       progressButton.classList.add("cursor-pointer");
+
       favoriteButton.classList.add("cursor-pointer");
+
       completedButton.classList.add("cursor-pointer");
 
       async function saveStatus(changes) {
         const { data, error } = await supabase
+
           .from("games")
+
           .update(changes)
+
           .eq("id", game.id)
+
           .select("id")
+
           .single();
 
         if (error) throw error;
@@ -353,6 +461,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
       }
 
       // Favorite
+
       favoriteButton.addEventListener("click", async () => {
         favoriteButton.disabled = true;
 
@@ -360,13 +469,16 @@ export async function initGameDetails(params = new URLSearchParams()) {
           await saveStatus({ favorite: !favorite });
 
           favorite = !favorite;
+
           updateButtons();
         } catch (error) {
           console.error("Failed to update favorite:", error);
 
           await confirmDialog({
             title: "Failed to Update",
+
             message: "Failed to update favorite.",
+
             alertOnly: true,
           });
         } finally {
@@ -375,8 +487,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
       });
 
       // Completed
+
       completedButton.addEventListener("click", async () => {
         completedButton.disabled = true;
+
         progressButton.disabled = true;
 
         try {
@@ -384,6 +498,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
           await saveStatus({
             completed: nextCompleted,
+
             in_progress: nextCompleted ? false : inProgress,
           });
 
@@ -399,18 +514,23 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
           await confirmDialog({
             title: "Failed to Update",
+
             message: "Failed to update completed.",
+
             alertOnly: true,
           });
         } finally {
           completedButton.disabled = false;
+
           progressButton.disabled = false;
         }
       });
 
       // In Progress
+
       progressButton.addEventListener("click", async () => {
         completedButton.disabled = true;
+
         progressButton.disabled = true;
 
         try {
@@ -418,6 +538,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
           await saveStatus({
             in_progress: nextProgress,
+
             completed: nextProgress ? false : completed,
           });
 
@@ -433,28 +554,35 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
           await confirmDialog({
             title: "Failed to Update",
+
             message: "Failed to update progress.",
+
             alertOnly: true,
           });
         } finally {
           completedButton.disabled = false;
+
           progressButton.disabled = false;
         }
       });
     }
 
     // ==========================================
+
     // GAME SOUNDTRACK
+
     // ==========================================
 
     const soundtrackSection = document.getElementById(
       "game-soundtrack-section",
     );
+
     const soundtrackPlayer = document.getElementById("game-soundtrack-player");
 
     if (game.music_url) {
       try {
         const url = new URL(game.music_url);
+
         let videoId = null;
 
         if (
@@ -473,15 +601,20 @@ export async function initGameDetails(params = new URLSearchParams()) {
         if (videoId && /^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
           const iframe = document.createElement("iframe");
 
-          iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
+          iframe.src = `https\://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`;
 
           iframe.title = `${game.title} Soundtrack`;
+
           iframe.className = "aspect-video w-full";
+
           iframe.allow = "autoplay; encrypted-media; picture-in-picture";
+
           iframe.allowFullscreen = true;
+
           iframe.loading = "eager";
 
           soundtrackPlayer.replaceChildren(iframe);
+
           soundtrackSection.hidden = false;
         }
       } catch (error) {
@@ -490,12 +623,15 @@ export async function initGameDetails(params = new URLSearchParams()) {
     }
 
     // ==========================================
+
     // GAME WALKTHROUGH
+
     // ==========================================
 
     const walkthroughSection = document.getElementById(
       "game-walkthrough-section",
     );
+
     const walkthroughPlayer = document.getElementById(
       "game-walkthrough-player",
     );
@@ -503,6 +639,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
     if (game.walkthrough_url) {
       try {
         const url = new URL(game.walkthrough_url);
+
         let embedUrl = null;
 
         if (
@@ -517,15 +654,15 @@ export async function initGameDetails(params = new URLSearchParams()) {
             url.pathname.match(/^\/(?:embed|shorts)\/([^/]+)/)?.[1];
 
           if (playlistId && /^[a-zA-Z0-9_-]+$/.test(playlistId)) {
-            embedUrl = `https://www.youtube-nocookie.com/embed/videoseries?list=${playlistId}`;
+            embedUrl = `https\://www.youtube-nocookie.com/embed/videoseries?list=${playlistId}`;
           } else if (videoId && /^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
-            embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}`;
+            embedUrl = `https\://www.youtube-nocookie.com/embed/${videoId}`;
           }
         } else if (url.hostname === "youtu.be") {
           const videoId = url.pathname.slice(1);
 
           if (/^[a-zA-Z0-9_-]{11}$/.test(videoId)) {
-            embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}`;
+            embedUrl = `https\://www.youtube-nocookie.com/embed/${videoId}`;
           }
         }
 
@@ -533,13 +670,19 @@ export async function initGameDetails(params = new URLSearchParams()) {
           const iframe = document.createElement("iframe");
 
           iframe.src = embedUrl;
+
           iframe.title = `${game.title} Walkthrough`;
+
           iframe.className = "aspect-video w-full";
+
           iframe.allow = "encrypted-media; picture-in-picture";
+
           iframe.allowFullscreen = true;
+
           iframe.loading = "lazy";
 
           walkthroughPlayer.replaceChildren(iframe);
+
           walkthroughSection.hidden = false;
         }
       } catch (error) {
@@ -548,7 +691,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
     }
 
     // ==========================================
+
     // GAME INFORMATION
+
     // ==========================================
 
     document.getElementById("detail-title").textContent = game.title;
@@ -557,15 +702,20 @@ export async function initGameDetails(params = new URLSearchParams()) {
       game.platforms?.name ?? "Unknown Platform";
 
     // Link the platform badge to its details page
+
     const platformBadge = document.getElementById("detail-platform");
 
     const platformName = game.platforms?.name;
 
     if (platformName) {
       const { data: platformData, error: platformError } = await supabase
+
         .from("platforms")
+
         .select("id")
+
         .eq("name", platformName)
+
         .maybeSingle();
 
       if (platformError) {
@@ -597,71 +747,108 @@ export async function initGameDetails(params = new URLSearchParams()) {
       game.description || "No description available.";
 
     // ==========================================
+
     // COVER IMAGE
+
     // ==========================================
 
     const cover = document.getElementById("detail-cover");
+
     const placeholder = document.getElementById("detail-cover-placeholder");
 
     function showPlaceholder() {
       cover.hidden = true;
+
       cover.classList.add("hidden");
+
       cover.classList.remove("block");
+
       cover.removeAttribute("src");
 
       placeholder.hidden = false;
+
       placeholder.classList.remove("hidden");
+
       placeholder.classList.add("flex");
     }
 
     function showCover() {
       cover.hidden = false;
+
       cover.classList.remove("hidden");
+
       cover.classList.add("block");
 
       placeholder.hidden = true;
+
       placeholder.classList.remove("flex");
+
       placeholder.classList.add("hidden");
     }
 
     if (game.cover_url) {
       cover.onload = showCover;
+
       cover.src = game.cover_url;
     } else {
       showPlaceholder();
     }
 
     // ==========================================
+
     // MY ACHIEVEMENTS
+
     // ==========================================
 
     const achievementLoading = document.getElementById("achievements-loading");
+
     const achievementEmpty = document.getElementById("achievements-empty");
+
     const achievementBadges = document.getElementById("achievements-badges");
+
     const achievementCount = document.getElementById("achievement-count");
+
     const achievementControls = document.getElementById(
       "achievement-add-controls",
     );
+
     const achievementSelect = document.getElementById("achievement-select");
+
     const achievementAdd = document.getElementById("achievement-add");
+
     const achievementError = document.getElementById("achievement-error");
 
     const achievementColors = {
       amber: "text-amber-400 border-amber-500/40",
+
       purple: "text-purple-400 border-purple-500/40",
+
       yellow: "text-yellow-400 border-yellow-500/40",
+
       pink: "text-pink-400 border-pink-500/40",
+
       cyan: "text-cyan-400 border-cyan-500/40",
+
       orange: "text-orange-400 border-orange-500/40",
+
       red: "text-red-400 border-red-500/40",
+
       emerald: "text-emerald-400 border-emerald-500/40",
+
       green: "text-green-400 border-green-500/40",
+
       violet: "text-violet-400 border-violet-500/40",
+
       rose: "text-rose-400 border-rose-500/40",
+
       blue: "text-blue-400 border-blue-500/40",
+
       sky: "text-sky-400 border-sky-500/40",
+
       slate: "text-slate-400 border-slate-500/40",
+
       teal: "text-teal-400 border-teal-500/40",
+
       indigo: "text-indigo-400 border-indigo-500/40",
     };
 
@@ -669,9 +856,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
     function renderAchievements() {
       achievementLoading.hidden = true;
+
       achievementBadges.replaceChildren();
 
       achievementCount.textContent = earnedAchievements.length;
+
       achievementEmpty.hidden = earnedAchievements.length > 0;
 
       const earnedIds = new Set(
@@ -686,33 +875,44 @@ export async function initGameDetails(params = new URLSearchParams()) {
         if (!achievement) continue;
 
         const badge = document.createElement("div");
+
         badge.className =
           "flex w-28 flex-col items-center gap-2 p-1 text-center";
 
         const iconCircle = document.createElement("div");
+
         iconCircle.className =
           "flex h-20 w-20 items-center justify-center rounded-full " +
           "transition-transform duration-200 hover:scale-110";
 
         const icon = document.createElement("i");
+
         icon.setAttribute("data-lucide", achievement.icon);
+
         icon.className = "h-9 w-9";
 
         iconCircle.append(icon);
 
         // Automatically look for a custom badge image.
+
         const badgeImage = document.createElement("img");
+
         badgeImage.src = `images/badges/${achievement.id}.png`;
+
         badgeImage.alt = "";
+
         badgeImage.className =
           "hidden h-full w-full rounded-full object-contain";
+
         badgeImage.style.imageRendering = "pixelated";
 
         badgeImage.addEventListener("load", () => {
           icon.hidden = true;
+
           icon.classList.add("hidden");
 
           badgeImage.hidden = false;
+
           badgeImage.classList.remove("hidden");
         });
 
@@ -723,8 +923,10 @@ export async function initGameDetails(params = new URLSearchParams()) {
         iconCircle.append(badgeImage);
 
         const name = document.createElement("p");
+
         name.className =
           "w-full text-center text-xs font-semibold leading-5 text-white";
+
         name.textContent = t(
           `game_details.achievements.${achievement.id}.name`,
         );
@@ -732,26 +934,34 @@ export async function initGameDetails(params = new URLSearchParams()) {
         badge.title = t(
           `game_details.achievements.${achievement.id}.description`,
         );
+
         badge.append(iconCircle, name);
 
         if (canManageGame) {
           badge.classList.add(
             "cursor-pointer",
+
             "transition",
+
             "hover:border-red-500/50",
           );
 
           badge.setAttribute("role", "button");
+
           badge.setAttribute("tabindex", "0");
+
           badge.setAttribute(
             "aria-label",
+
             `Remove ${achievement.name} achievement`,
           );
 
           async function removeBadge() {
             const confirmed = await confirmDialog({
               title: "Remove Achievement?",
+
               message: `Remove "${achievement.name}" from your earned badges?`,
+
               confirmText: "Remove Badge",
             });
 
@@ -772,7 +982,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
               await confirmDialog({
                 title: "Failed to Remove Achievement",
+
                 message: error.message || "Could not remove achievement.",
+
                 alertOnly: true,
               });
 
@@ -785,6 +997,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           badge.addEventListener("keydown", (event) => {
             if (event.key === "Enter" || event.key === " ") {
               event.preventDefault();
+
               removeBadge();
             }
           });
@@ -802,6 +1015,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           achievementSelect.add(
             new Option(
               t(`game_details.achievements.${achievement.id}.name`),
+
               achievement.id,
             ),
           );
@@ -809,6 +1023,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
       }
 
       achievementAdd.disabled = true;
+
       achievementControls.hidden = !canManageGame;
 
       window.lucide?.createIcons();
@@ -822,12 +1037,14 @@ export async function initGameDetails(params = new URLSearchParams()) {
       renderAchievements();
     } catch (error) {
       console.error("Failed to load achievements:", error);
+
       achievementLoading.textContent = "Unable to load achievements.";
     }
 
     if (canManageGame) {
       achievementSelect.addEventListener("change", () => {
         achievementAdd.disabled = !achievementSelect.value;
+
         achievementError.hidden = true;
       });
 
@@ -841,43 +1058,55 @@ export async function initGameDetails(params = new URLSearchParams()) {
         }
 
         achievementAdd.disabled = true;
+
         achievementSelect.disabled = true;
+
         achievementError.hidden = true;
 
         try {
           const newAchievement = await addGameAchievement(
             game.id,
+
             user.id,
+
             achievementId,
           );
 
           earnedAchievements.push(newAchievement);
+
           renderAchievements();
         } catch (error) {
           console.error("Failed to add achievement:", error);
 
           achievementError.textContent =
             error.message || "Could not add achievement.";
+
           achievementError.hidden = false;
         } finally {
           achievementSelect.disabled = false;
+
           achievementAdd.disabled = !achievementSelect.value;
         }
       });
     }
 
     // ==========================================
+
     // GAME COMPLETION HISTORY
+
     // ==========================================
 
     const historyLoading = document.getElementById("history-loading");
+
     const historyEmpty = document.getElementById("history-empty");
+
     const historyTimeline = document.getElementById("history-timeline");
 
     try {
       const completions = await getGameCompletions(game.id);
 
       historyLoading.hidden = true;
+
       historyTimeline.replaceChildren();
 
       document.getElementById("history-total").textContent = completions.length;
@@ -898,7 +1127,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
         );
 
         // Find the fastest recorded completion time.
+
         // Untimed completions are excluded.
+
         const timedCompletions = completions.filter(
           (item) => item.completion_time_seconds != null,
         );
@@ -917,32 +1148,42 @@ export async function initGameDetails(params = new URLSearchParams()) {
             "bg-slate-900/30 p-4";
 
           const icon = document.createElement("span");
+
           icon.className = "text-xl";
+
           icon.textContent = "🏆";
 
           const details = document.createElement("div");
+
           details.className = "min-w-0 flex-1";
 
           // Completion date
+
           const date = document.createElement("p");
+
           date.className = "font-semibold text-white";
 
           const parts = [
             completion.completed_year,
+
             completion.completed_month
               ? String(completion.completed_month).padStart(2, "0")
               : null,
+
             completion.completed_day
               ? String(completion.completed_day).padStart(2, "0")
               : null,
           ].filter(Boolean);
 
           date.textContent = parts.join("-");
+
           details.append(date);
 
           // Completion time
+
           if (completion.completion_time_seconds != null) {
             const time = document.createElement("p");
+
             time.className = "completion-time mt-1 text-sm";
 
             time.textContent = `${t("game_details.history.completion_time")}: ${formatCompletionTime(
@@ -952,6 +1193,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
             details.append(time);
 
             // Personal Best
+
             if (completion.completion_time_seconds === personalBest) {
               const badge = document.createElement("span");
 
@@ -966,12 +1208,14 @@ export async function initGameDetails(params = new URLSearchParams()) {
           }
 
           // Personal memory / notes for this completion
+
           if (completion.notes) {
             const notes = document.createElement("p");
 
             notes.className = "mt-2 whitespace-pre-line text-sm text-slate-400";
 
             notes.textContent = completion.notes;
+
             details.append(notes);
           }
 
@@ -979,13 +1223,18 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
           if (canManageGame) {
             // Edit completion
+
             const editButton = document.createElement("button");
 
             editButton.type = "button";
+
             editButton.textContent = "✎";
+
             editButton.title = t("game_details.history.edit");
+
             editButton.setAttribute(
               "aria-label",
+
               t("game_details.history.edit"),
             );
 
@@ -1010,6 +1259,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
                 completion.notes ?? "";
 
               // Restore recorded completion time when editing.
+
               const totalSeconds = completion.completion_time_seconds;
 
               document.getElementById("completion-hours").value =
@@ -1024,9 +1274,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
                 totalSeconds == null ? "" : totalSeconds % 60;
 
               completionError.hidden = true;
+
               completionDialogTitle.textContent = t(
                 "game_details.history.edit_title",
               );
+
               completionSave.textContent = t("game_details.history.update");
 
               completionDialog.showModal();
@@ -1035,13 +1287,18 @@ export async function initGameDetails(params = new URLSearchParams()) {
             entry.append(editButton);
 
             // Delete completion
+
             const deleteButton = document.createElement("button");
 
             deleteButton.type = "button";
+
             deleteButton.textContent = "🗑";
+
             deleteButton.title = t("game_details.history.delete");
+
             deleteButton.setAttribute(
               "aria-label",
+
               t("game_details.history.delete"),
             );
 
@@ -1053,10 +1310,13 @@ export async function initGameDetails(params = new URLSearchParams()) {
             deleteButton.addEventListener("click", async () => {
               const confirmed = await confirmDialog({
                 title: t("game_details.history.delete_title"),
+
                 message: t("game_details.history.delete_message").replace(
                   "{year}",
+
                   completion.completed_year,
                 ),
+
                 confirmText: t("game_details.history.delete_confirm"),
               });
 
@@ -1068,13 +1328,16 @@ export async function initGameDetails(params = new URLSearchParams()) {
                 await deleteGameCompletion(completion.id);
 
                 // Refresh Game Details
+
                 window.dispatchEvent(new HashChangeEvent("hashchange"));
               } catch (error) {
                 console.error("Failed to delete completion:", error);
 
                 await confirmDialog({
                   title: t("game_details.history.delete_failed"),
+
                   message: t("game_details.history.delete_failed_message"),
+
                   alertOnly: true,
                 });
 
@@ -1095,45 +1358,72 @@ export async function initGameDetails(params = new URLSearchParams()) {
     }
 
     // ==========================================
+
     // PERSONAL MEMORY
+
     // ==========================================
 
     const memoryLoading = document.getElementById("memory-loading");
+
     const memoryEmpty = document.getElementById("memory-empty");
+
     const memoryContent = document.getElementById("memory-content");
+
     const memoryText = document.getElementById("memory-text");
+
     const memoryYear = document.getElementById("memory-year");
+
     const memoryYearText = document.getElementById("memory-year-text");
+
     const memoryAdd = document.getElementById("memory-add");
+
     const memoryEdit = document.getElementById("memory-edit");
+
     const memoryDelete = document.getElementById("memory-delete");
+
     const memoryDialog = document.getElementById("memory-dialog");
+
     const memoryForm = document.getElementById("memory-form");
+
     const memoryCancel = document.getElementById("memory-cancel");
+
     const memorySave = document.getElementById("memory-save");
+
     const memoryError = document.getElementById("memory-error");
+
     const memoryInput = document.getElementById("memory-input");
+
     const memoryPlayedYear = document.getElementById("memory-played-year");
+
     const memoryRemoveImageContainer = document.getElementById(
       "memory-remove-image-container",
     );
+
     const memoryRemoveImage = document.getElementById("memory-remove-image");
+
     const memoryImageContainer = document.getElementById(
       "memory-image-container",
     );
+
     const memoryImageDisplay = document.getElementById("memory-image-display");
 
     let currentMemory = null;
 
     async function renderMemory() {
       memoryLoading.hidden = true;
+
       memoryDelete.hidden = !currentMemory || !canManageGame;
+
       memoryEmpty.hidden = Boolean(currentMemory);
+
       memoryContent.hidden = !currentMemory;
+
       memoryAdd.hidden = !canManageGame || Boolean(currentMemory);
+
       memoryEdit.hidden = !currentMemory || !canManageGame;
 
       memoryImageContainer.hidden = true;
+
       memoryImageDisplay.removeAttribute("src");
 
       if (currentMemory) {
@@ -1147,7 +1437,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
           const imagePath = currentMemory.image_path;
 
           const { data, error } = await supabase.storage
+
             .from("memory-images")
+
             .createSignedUrl(imagePath, 3600);
 
           if (error) {
@@ -1157,6 +1449,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
             data?.signedUrl
           ) {
             memoryImageDisplay.src = data.signedUrl;
+
             memoryImageContainer.hidden = false;
           }
         }
@@ -1171,24 +1464,29 @@ export async function initGameDetails(params = new URLSearchParams()) {
       await renderMemory();
     } catch (error) {
       console.error("Failed to load personal memory:", error);
+
       memoryLoading.textContent = "Unable to load personal memory.";
     }
 
     if (canManageGame) {
       function openMemoryDialog() {
         memoryForm.reset();
+
         memoryError.hidden = true;
 
         memoryInput.value = currentMemory?.memory ?? "";
+
         memoryPlayedYear.value = currentMemory?.played_year ?? "";
 
         memoryRemoveImageContainer.hidden = !currentMemory?.image_path;
 
         memoryRemoveImage.checked = false;
+
         memoryDialog.showModal();
       }
 
       memoryAdd.addEventListener("click", openMemoryDialog);
+
       memoryEdit.addEventListener("click", openMemoryDialog);
 
       memoryCancel.addEventListener("click", () => {
@@ -1199,13 +1497,16 @@ export async function initGameDetails(params = new URLSearchParams()) {
         event.preventDefault();
 
         const text = memoryInput.value.trim();
+
         const year = memoryPlayedYear.value
           ? Number(memoryPlayedYear.value)
           : null;
 
         if (!text) {
           memoryError.textContent = "Please enter a personal memory.";
+
           memoryError.hidden = false;
+
           return;
         }
 
@@ -1219,19 +1520,25 @@ export async function initGameDetails(params = new URLSearchParams()) {
           if (!allowedTypes.includes(imageFile.type)) {
             memoryError.textContent =
               "Please select a JPG, PNG, or WebP image.";
+
             memoryError.hidden = false;
+
             return;
           }
 
           if (imageFile.size > maxSize) {
             memoryError.textContent = "The image must be smaller than 5 MB.";
+
             memoryError.hidden = false;
+
             return;
           }
         }
 
         memorySave.disabled = true;
+
         memorySave.textContent = "Saving...";
+
         memoryError.hidden = true;
 
         try {
@@ -1240,8 +1547,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
           const removeExistingImage = memoryRemoveImage.checked;
 
           // undefined = preserve existing image
+
           // null = remove existing image
+
           // string = save new image path
+
           let imagePath = removeExistingImage ? null : undefined;
 
           if (imageFile) {
@@ -1251,17 +1561,24 @@ export async function initGameDetails(params = new URLSearchParams()) {
           try {
             currentMemory = await saveGameMemory(
               game.id,
+
               user.id,
+
               text,
+
               year,
+
               imagePath,
             );
           } catch (error) {
             // Clean up an uploaded image if saving fails.
+
             if (imagePath) {
               try {
                 await supabase.storage
+
                   .from("memory-images")
+
                   .remove([imagePath]);
               } catch (cleanupError) {
                 console.error("Image cleanup failed:", cleanupError);
@@ -1277,26 +1594,32 @@ export async function initGameDetails(params = new URLSearchParams()) {
             previousImagePath !== imagePath
           ) {
             const { error: cleanupError } = await supabase.storage
+
               .from("memory-images")
+
               .remove([previousImagePath]);
 
             if (cleanupError) {
               console.error(
                 "Failed to remove previous memory image:",
+
                 cleanupError,
               );
             }
           }
 
           await renderMemory();
+
           memoryDialog.close();
         } catch (error) {
           console.error("Failed to save personal memory:", error);
 
           memoryError.textContent = error.message;
+
           memoryError.hidden = false;
         } finally {
           memorySave.disabled = false;
+
           memorySave.textContent = "Save Memory";
         }
       });
@@ -1308,7 +1631,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
         const confirmed = await confirmDialog({
           title: "Delete Personal Memory?",
+
           message: "Are you sure you want to permanently delete this memory?",
+
           confirmText: "Delete Memory",
         });
 
@@ -1322,16 +1647,20 @@ export async function initGameDetails(params = new URLSearchParams()) {
           await deleteGameMemory(currentMemory.id);
 
           currentMemory = null;
+
           await renderMemory();
 
           if (imagePath) {
             const { error: cleanupError } = await supabase.storage
+
               .from("memory-images")
+
               .remove([imagePath]);
 
             if (cleanupError) {
               console.error(
                 "Failed to remove deleted memory image:",
+
                 cleanupError,
               );
             }
@@ -1341,7 +1670,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
           await confirmDialog({
             title: "Failed to Delete",
+
             message: error.message || "Could not delete personal memory.",
+
             alertOnly: true,
           });
         } finally {
@@ -1351,22 +1682,45 @@ export async function initGameDetails(params = new URLSearchParams()) {
     }
 
     // ==========================================
+
     // MY GAME LINKS
+
     // ==========================================
 
     const gameLinksLoading = document.getElementById("game-links-loading");
+
     const gameLinksEmpty = document.getElementById("game-links-empty");
+
     const gameLinksList = document.getElementById("game-links-list");
+
     const gameLinksError = document.getElementById("game-links-error");
+
     const gameLinksAdd = document.getElementById("game-links-add");
 
     let currentGameLinks = [];
+
     let editingGameLinkId = null;
+
+    const gameLinkDialogTitle = document.getElementById(
+      "game-link-dialog-title",
+    );
+
+    function setGameLinkDialogLabels(isEditing) {
+      gameLinkDialogTitle.textContent = t(
+        isEditing
+          ? "game_details.links.dialog_edit_title"
+          : "game_details.links.dialog_add_title",
+      );
+      gameLinkSave.textContent = t(
+        isEditing ? "game_details.links.update" : "game_details.links.save",
+      );
+    }
 
     gameLinksAdd.hidden = !canManageGame;
 
     function renderGameLinks() {
       gameLinksLoading.hidden = true;
+
       gameLinksList.replaceChildren();
 
       gameLinksEmpty.hidden = currentGameLinks.length > 0;
@@ -1382,9 +1736,13 @@ export async function initGameDetails(params = new URLSearchParams()) {
           "bg-slate-800/40 p-4";
 
         const anchor = document.createElement("a");
+
         anchor.href = link.url;
+
         anchor.target = "_blank";
+
         anchor.rel = "noopener noreferrer";
+
         anchor.textContent = link.name;
 
         anchor.className =
@@ -1392,9 +1750,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
           "transition hover:text-sky-300 hover:underline";
 
         const linkInfo = document.createElement("div");
+
         linkInfo.className = "min-w-0 flex-1";
 
         const titleRow = document.createElement("div");
+
         titleRow.className = "flex flex-wrap items-center gap-3";
 
         titleRow.append(anchor);
@@ -1407,23 +1767,31 @@ export async function initGameDetails(params = new URLSearchParams()) {
             "text-xs font-medium text-slate-300";
 
           category.textContent = link.category;
+
           titleRow.append(category);
         }
 
         const urlText = document.createElement("p");
+
         urlText.className = "mt-1 break-all text-xs text-slate-400";
+
         urlText.textContent = link.url;
 
         linkInfo.append(titleRow, urlText);
+
         item.append(linkInfo);
 
         if (canManageGame) {
           const actions = document.createElement("div");
+
           actions.className = "flex shrink-0 items-center gap-2";
 
           // Edit link
+
           const editButton = document.createElement("button");
+
           editButton.type = "button";
+
           editButton.title = "Edit link";
 
           editButton.className =
@@ -1433,32 +1801,39 @@ export async function initGameDetails(params = new URLSearchParams()) {
             "hover:bg-cyan-500/10";
 
           const editIcon = document.createElement("i");
+
           editIcon.setAttribute("data-lucide", "pencil");
+
           editIcon.className = "h-4 w-4";
 
           const editLabel = document.createElement("span");
+
           editLabel.textContent = "Edit";
 
           editButton.append(editIcon, editLabel);
 
           editButton.addEventListener("click", () => {
             editingGameLinkId = link.id;
+
             gameLinkForm.reset();
 
             gameLinkName.value = link.name;
+
             gameLinkUrl.value = link.url;
+
             gameLinkCategory.value = link.category ?? "";
 
-            document.getElementById("game-link-dialog-title").textContent =
-              "Edit Game Link";
+            setGameLinkDialogLabels(true);
 
-            gameLinkSave.textContent = "Update Link";
             gameLinkDialog.showModal();
           });
 
           // Delete link
+
           const deleteButton = document.createElement("button");
+
           deleteButton.type = "button";
+
           deleteButton.title = "Delete link";
 
           deleteButton.className =
@@ -1468,10 +1843,13 @@ export async function initGameDetails(params = new URLSearchParams()) {
             "hover:bg-red-500/10";
 
           const deleteIcon = document.createElement("i");
+
           deleteIcon.setAttribute("data-lucide", "trash-2");
+
           deleteIcon.className = "h-4 w-4";
 
           const deleteLabel = document.createElement("span");
+
           deleteLabel.textContent = "Delete";
 
           deleteButton.append(deleteIcon, deleteLabel);
@@ -1479,9 +1857,11 @@ export async function initGameDetails(params = new URLSearchParams()) {
           deleteButton.addEventListener("click", async () => {
             const confirmed = await confirmDialog({
               title: "Delete Game Link?",
+
               message:
                 `Are you sure you want to permanently ` +
                 `delete "${link.name}"?`,
+
               confirmText: "Delete Link",
             });
 
@@ -1502,7 +1882,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
 
               await confirmDialog({
                 title: "Failed to Delete",
+
                 message: error.message || "Could not delete game link.",
+
                 alertOnly: true,
               });
 
@@ -1511,6 +1893,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           });
 
           actions.append(editButton, deleteButton);
+
           item.append(actions);
         }
 
@@ -1530,31 +1913,40 @@ export async function initGameDetails(params = new URLSearchParams()) {
       console.error("Failed to load game links:", error);
 
       gameLinksLoading.hidden = true;
+
       gameLinksError.textContent = "Unable to load game links.";
+
       gameLinksError.hidden = false;
     }
 
     // ==========================================
+
     // ADD / EDIT GAME LINKS
+
     // ==========================================
 
     const gameLinkDialog = document.getElementById("game-link-dialog");
+
     const gameLinkForm = document.getElementById("game-link-form");
+
     const gameLinkCancel = document.getElementById("game-link-cancel");
+
     const gameLinkSave = document.getElementById("game-link-save");
+
     const gameLinkName = document.getElementById("game-link-name");
+
     const gameLinkUrl = document.getElementById("game-link-url");
+
     const gameLinkCategory = document.getElementById("game-link-category");
 
     if (canManageGame) {
       gameLinksAdd.addEventListener("click", () => {
         editingGameLinkId = null;
+
         gameLinkForm.reset();
 
-        document.getElementById("game-link-dialog-title").textContent =
-          "Add Game Link";
+        setGameLinkDialogLabels(false);
 
-        gameLinkSave.textContent = "Save Link";
         gameLinkDialog.showModal();
       });
 
@@ -1566,21 +1958,28 @@ export async function initGameDetails(params = new URLSearchParams()) {
         event.preventDefault();
 
         const name = gameLinkName.value.trim();
+
         const url = gameLinkUrl.value.trim();
+
         const category = gameLinkCategory.value.trim();
 
         if (!name || !url) return;
 
         gameLinkSave.disabled = true;
-        gameLinkSave.textContent = "Saving...";
+
+        gameLinkSave.textContent = t("game_details.links.saving");
 
         try {
           if (editingGameLinkId !== null) {
             const updatedLink = await updateGameLink(
               editingGameLinkId,
+
               user.id,
+
               name,
+
               url,
+
               category,
             );
 
@@ -1590,9 +1989,13 @@ export async function initGameDetails(params = new URLSearchParams()) {
           } else {
             const newLink = await addGameLink(
               game.id,
+
               user.id,
+
               name,
+
               url,
+
               category,
             );
 
@@ -1600,6 +2003,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           }
 
           renderGameLinks();
+
           gameLinkDialog.close();
         } catch (error) {
           console.error("Failed to save game link:", error);
@@ -1608,40 +2012,57 @@ export async function initGameDetails(params = new URLSearchParams()) {
         } finally {
           gameLinkSave.disabled = false;
 
-          gameLinkSave.textContent =
-            editingGameLinkId !== null ? "Update Link" : "Save Link";
+          setGameLinkDialogLabels(editingGameLinkId !== null);
         }
       });
     }
 
     // ==========================================
+
     // RELATED GAMES
+
     // ==========================================
 
     if (game.series_id !== null) {
       const { data: relatedGames, error: relatedError } = await supabase
+
         .from("games")
+
         .select(
           `
+
             id,
+
             user_id,
+
             title,
+
             release_year,
+
             genre,
+
             developer,
+
             cover_url,
+
             platforms (name)
+
           `,
         )
+
         .eq("series_id", game.series_id)
+
         .neq("id", game.id)
+
         .order("release_year", { ascending: true })
+
         .limit(4);
 
       if (relatedError) {
         console.error("Failed to load related games:", relatedError);
       } else if (relatedGames?.length) {
         const section = document.getElementById("related-games-section");
+
         const list = document.getElementById("related-games-list");
 
         for (const relatedGame of relatedGames) {
@@ -1653,16 +2074,21 @@ export async function initGameDetails(params = new URLSearchParams()) {
     }
 
     // ==========================================
+
     // FINISH LOADING
+
     // ==========================================
 
     loading.hidden = true;
+
     content.hidden = false;
   } catch (error) {
     console.error("Failed to load game details:", error);
 
     loading.hidden = true;
+
     errorMessage.textContent = "Failed to load game details.";
+
     errorMessage.hidden = false;
   } finally {
     hideLoadingOverlay();

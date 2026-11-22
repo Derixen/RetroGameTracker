@@ -492,7 +492,15 @@
       "save": "Abschluss speichern",
       "title": "Mein Spielverlauf",
       "notes_placeholder": "Woran erinnerst du dich bei diesem Spieldurchlauf?",
-      "dialog_edit_title": "Abschluss bearbeiten"
+      "dialog_edit_title": "Abschluss bearbeiten",
+      "edit_title": "Abschluss bearbeiten",
+      "update": "Abschluss aktualisieren",
+      "completion_time": "Abschlusszeit",
+      "completion_time_optional": "Abschlusszeit (optional)",
+      "hours": "Stunden",
+      "minutes": "Minuten",
+      "seconds": "Sekunden",
+      "completion_time_hint": "Lass alle Felder leer, wenn du dich nicht an deine Abschlusszeit erinnerst."
     },
     "memory": {
       "subtitle": "Manche Spiele bleiben für immer in Erinnerung.",
