@@ -43,7 +43,8 @@
     },
     "view": {
       "large": "Nagy",
-      "small": "Kicsi"
+      "small": "Kicsi",
+      "list": "Lista"
     }
   },
   "nav": {
@@ -671,7 +672,16 @@
     "soundtrack_next": "Következő",
     "recent_eyebrow": "LEGÚJABB HOZZÁADÁSOK",
     "recent_heading": "Legutóbb hozzáadott játékok",
-    "recent_description": "A gyűjteményedhez legutóbb hozzáadott játékok"
+    "recent_description": "A gyűjteményedhez legutóbb hozzáadott játékok",
+    "banner_invalid_title": "Érvénytelen borítókép",
+    "banner_invalid_message": "Használj 5 MB-nál kisebb JPG, PNG vagy WebP képet.",
+    "banner_upload_failed": "Sikertelen feltöltés",
+    "banner_remove_title": "Borítókép eltávolítása?",
+    "banner_remove_message": "Biztosan el szeretnéd távolítani a gyűjteményed borítóképét?",
+    "banner_remove_confirm": "Borítókép eltávolítása",
+    "banner_removal_failed": "Sikertelen eltávolítás",
+    "completion_progress": "Teljesítési előrehaladás",
+    "completion_description": "{total} játékból {completed} befejezve"
   },
   "login": {
     "eyebrow": "FIÓKOD",

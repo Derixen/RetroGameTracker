@@ -43,7 +43,8 @@
     },
     "view": {
       "large": "Large",
-      "small": "Small"
+      "small": "Small",
+      "list": "List"
     }
   },
   "nav": {
@@ -689,7 +690,16 @@
     "soundtrack_next": "Next",
     "recent_eyebrow": "LATEST ADDITIONS",
     "recent_heading": "Recently Added Games",
-    "recent_description": "The latest games added to your collection"
+    "recent_description": "The latest games added to your collection",
+    "banner_invalid_title": "Invalid Banner",
+    "banner_invalid_message": "Use a JPG, PNG, or WebP image smaller than 5 MB.",
+    "banner_upload_failed": "Upload Failed",
+    "banner_remove_title": "Remove Banner?",
+    "banner_remove_message": "Are you sure you want to remove your collection banner?",
+    "banner_remove_confirm": "Remove Banner",
+    "banner_removal_failed": "Removal Failed",
+    "completion_progress": "Completion Progress",
+    "completion_description": "{completed} of {total} games completed"
   },
 
   "login": {

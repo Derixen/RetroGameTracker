@@ -1,8 +1,12 @@
 import { getGames } from "../api/games.js";
 import { createGameCard } from "../components/gameCard.js";
 import { t } from "../i18n.js";
+import { initHomeBanner } from "../components/homeBanner.js";
 
 export async function initHome() {
+  initHomeBanner().catch((error) => {
+    console.error("Failed to initialize home banner:", error);
+  });
   const controller = new AbortController();
   const signal = controller.signal;
 
@@ -21,8 +25,7 @@ export async function initHome() {
     const soundtrackSection = document.getElementById(
       "home-soundtrack-section",
     );
-
-    if (soundtrackGames.length > 0) {
+    if (soundtrackSection && soundtrackGames.length > 0) {
       soundtrackSection.hidden = false;
 
       const title = document.getElementById("home-soundtrack-title");
@@ -128,7 +131,9 @@ export async function initHome() {
           "Add more games to discover your next adventure.";
         cover.hidden = true;
         detailsButton.hidden = true;
-        shuffleButton.hidden = true;
+        if (shuffleButton) {
+          shuffleButton.hidden = true;
+        }
         return;
       }
 
@@ -161,8 +166,9 @@ export async function initHome() {
       detailsButton.hidden = false;
       detailsButton.href = `#/game?id=${encodeURIComponent(game.id)}`;
     }
-
-    shuffleButton.addEventListener("click", showRecommendation);
+    if (shuffleButton) {
+      shuffleButton.addEventListener("click", showRecommendation);
+    }
 
     showRecommendation();
 
@@ -179,6 +185,26 @@ export async function initHome() {
     totalGames.textContent = games.length;
 
     const completed = games.filter((game) => game.completed).length;
+
+    const completionPercentage = games.length
+      ? Math.round((completed / games.length) * 100)
+      : 0;
+
+    document.getElementById("home-completion-bar").style.width =
+      `${completionPercentage}%`;
+
+    document.getElementById("home-completion-percentage").textContent =
+      `${completionPercentage}%`;
+
+    const completionDescription = document.getElementById(
+      "home-completion-description",
+    );
+
+    if (completionDescription) {
+      completionDescription.textContent = t("home.completion_description")
+        .replace("{completed}", completed)
+        .replace("{total}", games.length);
+    }
 
     const inProgress = games.filter(
       (game) => game.in_progress && !game.completed,

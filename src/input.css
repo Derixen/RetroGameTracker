@@ -2655,3 +2655,81 @@ html {
 :root[data-theme="light"] .admin-action-delete:hover {
   background: #fee2e2;
 }
+#home-banner-placeholder {
+  background: rgba(30, 41, 59, 0.35);
+  border: 1px dashed rgba(148, 163, 184, 0.3);
+  color: #94a3b8;
+}
+/* Home banner placeholder - Light theme */
+:root[data-theme="light"] #home-banner-placeholder {
+  background: rgba(248, 250, 252, 0.75);
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+/* Home banner placeholder text - Light theme */
+:root[data-theme="light"] #home-banner-placeholder p,
+:root[data-theme="light"] #home-banner-placeholder span {
+  color: #475569;
+}
+/* Home recommendation description - Light theme */
+:root[data-theme="light"] #recommendation-description {
+  color: #475569;
+}
+.home-dashboard-columns {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (min-width: 1100px) {
+  .home-dashboard-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+.home-dashboard-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.home-dashboard-card {
+  flex: 1;
+}
+
+.banner-size-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #64748b66;
+  border-radius: 7px;
+  color: #64748b;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.banner-size-btn:hover {
+  color: #0891b2;
+  border-color: #0891b2;
+}
+
+.banner-size-btn[aria-pressed="true"] {
+  color: #0891b2;
+  border-color: #0891b2;
+  background: rgba(8, 145, 178, 0.12);
+}
+
+.dark .banner-size-btn {
+  color: #94a3b8;
+}
+
+.dark .banner-size-btn:hover,
+.dark .banner-size-btn[aria-pressed="true"] {
+  color: #22d3ee;
+  border-color: #22d3ee;
+}

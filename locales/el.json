@@ -43,7 +43,8 @@
     },
     "view": {
       "large": "Μεγάλο",
-      "small": "Μικρό"
+      "small": "Μικρό",
+      "list": "Λίστα"
     },
     "add_game": "Προσθήκη παιχνιδιού"
   },
@@ -669,7 +670,16 @@
     "soundtrack_next": "Επόμενο",
     "recent_eyebrow": "ΠΡΟΣΦΑΤΕΣ ΠΡΟΣΘΗΚΕΣ",
     "recent_heading": "Παιχνίδια που προστέθηκαν πρόσφατα",
-    "recent_description": "Τα τελευταία παιχνίδια που προστέθηκαν στη συλλογή σας"
+    "recent_description": "Τα τελευταία παιχνίδια που προστέθηκαν στη συλλογή σας",
+    "banner_invalid_title": "Μη έγκυρο banner",
+    "banner_invalid_message": "Χρησιμοποίησε εικόνα JPG, PNG ή WebP μικρότερη από 5 MB.",
+    "banner_upload_failed": "Αποτυχία μεταφόρτωσης",
+    "banner_remove_title": "Αφαίρεση banner;",
+    "banner_remove_message": "Είσαι σίγουρος ότι θέλεις να αφαιρέσεις το banner της συλλογής σου;",
+    "banner_remove_confirm": "Αφαίρεση banner",
+    "banner_removal_failed": "Αποτυχία αφαίρεσης",
+    "completion_progress": "Πρόοδος ολοκλήρωσης",
+    "completion_description": "{completed} από {total} παιχνίδια ολοκληρώθηκαν"
   },
   "login": {
     "eyebrow": "Ο ΛΟΓΑΡΙΑΣΜΟΣ ΣΑΣ",

@@ -43,7 +43,8 @@
     },
     "view": {
       "large": "Groß",
-      "small": "Klein"
+      "small": "Klein",
+      "list": "Liste"
     },
     "add_game": "Spiel hinzufügen"
   },
@@ -669,7 +670,16 @@
     "soundtrack_next": "Weiter",
     "recent_eyebrow": "NEUESTE ZUGÄNGE",
     "recent_heading": "Zuletzt hinzugefügte Spiele",
-    "recent_description": "Die neuesten Spiele in deiner Sammlung"
+    "recent_description": "Die neuesten Spiele in deiner Sammlung",
+    "banner_invalid_title": "Ungültiges Banner",
+    "banner_invalid_message": "Verwende ein JPG-, PNG- oder WebP-Bild mit weniger als 5 MB.",
+    "banner_upload_failed": "Hochladen fehlgeschlagen",
+    "banner_remove_title": "Banner entfernen?",
+    "banner_remove_message": "Möchtest du das Banner deiner Sammlung wirklich entfernen?",
+    "banner_remove_confirm": "Banner entfernen",
+    "banner_removal_failed": "Entfernen fehlgeschlagen",
+    "completion_progress": "Spielfortschritt",
+    "completion_description": "{completed} von {total} Spielen abgeschlossen"
   },
   "login": {
     "eyebrow": "DEIN KONTO",
