@@ -14,7 +14,7 @@
   },
   "games": {
     "title": "Meine Spiele",
-    "add_game": "Spiel hinzufügen",
+    "add": "Spiel hinzufügen",
     "search": "Spiele suchen ...",
     "count": "{count} Spiele",
     "views": {
@@ -27,24 +27,25 @@
       "in_progress": "In Bearbeitung",
       "not_played": "Nicht gespielt"
     },
-    "filters": {
-      "all": "Alle Spiele",
-      "completed": "Abgeschlossen",
-      "in_progress": "In Bearbeitung",
-      "not_played": "Noch nicht gespielt",
-      "favorites": "Favoriten"
-    },
     "sort": {
-      "title_asc": "Titel A–Z",
-      "title_desc": "Titel Z–A",
+      "recent": "Zuletzt hinzugefügt",
       "year_desc": "Jahr: Neueste",
       "year_asc": "Jahr: Älteste",
-      "recent": "Zuletzt hinzugefügt"
+      "title_asc": "Titel A–Z",
+      "title_desc": "Titel Z–A"
+    },
+    "filters": {
+      "favorites": "Favoriten",
+      "not_played": "Noch nicht gespielt",
+      "completed": "Abgeschlossen",
+      "all": "Alle Spiele",
+      "in_progress": "In Bearbeitung"
     },
     "view": {
       "large": "Groß",
       "small": "Klein"
-    }
+    },
+    "add_game": "Spiel hinzufügen"
   },
   "nav": {
     "home": "Startseite",
@@ -149,7 +150,23 @@
     "games_count": "{count} SPIELE",
     "add_existing_game": "Vorhandenes Spiel hinzufügen",
     "search_placeholder": "Sammlung durchsuchen ...",
-    "add_game": "Spiel hinzufügen"
+    "add_game": "Spiel hinzufügen",
+    "edit_title": "Spielereihe bearbeiten",
+    "update_series": "Spielereihe aktualisieren",
+    "no_games": "Dieser Spielereihe sind noch keine Spiele zugeordnet.",
+    "remove": "Entfernen",
+    "remove_title": "Spiel aus der Reihe entfernen?",
+    "remove_message": "\"{name}\" aus dieser Spielereihe entfernen? Das Spiel selbst wird nicht gelöscht.",
+    "remove_failed_title": "Spiel konnte nicht entfernt werden",
+    "check_permissions": "Überprüfe deine Berechtigungen.",
+    "search_required_title": "Suche erforderlich",
+    "search_required_message": "Gib mindestens 2 Zeichen ein, um nach einem Spiel zu suchen.",
+    "search_failed_title": "Suche fehlgeschlagen",
+    "no_search_results": "Keine nicht zugeordneten Spiele gefunden.",
+    "unknown_year": "Unbekanntes Jahr",
+    "add_failed_title": "Spiel konnte nicht hinzugefügt werden",
+    "saving": "Speichern...",
+    "name_required": "Der Name der Spielereihe ist erforderlich."
   },
   "admin_dashboard": {
     "registered_users": "Registrierte Benutzer",
@@ -381,10 +398,7 @@
   "developers": {
     "grid_aria_label": "Spieleentwickler",
     "empty_title": "Keine Entwickler gefunden",
-    "empty_description": "Entwickler werden hier angezeigt, sobald Spiele zur Sammlung hinzugefügt wurden.",
-    "count_label": "ENTWICKLER",
-    "game_count": "{count} Spiele",
-    "game_count_one": "{count} Spiel"
+    "empty_description": "Entwickler werden hier angezeigt, sobald Spiele zur Sammlung hinzugefügt wurden."
   },
   "forgot_password": {
     "eyebrow": "KONTOWIEDERHERSTELLUNG",
@@ -401,7 +415,6 @@
     "loading": {
       "game": "Daten werden geladen ..."
     },
-
     "game": {
       "no_cover": "Kein Cover",
       "release_year": "Erscheinungsjahr",
@@ -414,9 +427,9 @@
       "completed": "Abgeschlossen",
       "cover_alt": "Spielcover",
       "status": {
+        "completed": "Abgeschlossen",
         "favorite": "Favorit",
-        "in_progress": "In Bearbeitung",
-        "completed": "Abgeschlossen"
+        "in_progress": "In Bearbeitung"
       }
     },
     "achievements": {
@@ -428,71 +441,70 @@
       "add_badge": "Abzeichen hinzufügen",
       "title": "Meine Erfolge",
       "earned_badges": "Verdiente Abzeichen",
-
-      "complete-story": {
-        "name": "Story abgeschlossen",
-        "description": "Schließe die Hauptgeschichte ab."
+      "original-hardware": {
+        "description": "Spiele auf der Originalhardware.",
+        "name": "Originalhardware"
       },
-      "completion-100": {
-        "name": "100 % abgeschlossen",
-        "description": "Schließe alles im Spiel ab."
+      "true-ending": {
+        "description": "Erreiche das wahre Ende des Spiels.",
+        "name": "Wahres Ende"
+      },
+      "perfect-run": {
+        "description": "Schließe das Spiel fehlerfrei ab.",
+        "name": "Perfekter Durchlauf"
+      },
+      "collector": {
+        "description": "Sammle alle Sammelgegenstände im Spiel.",
+        "name": "Sammler"
       },
       "hundred-percent": {
         "name": "100 % abgeschlossen",
         "description": "Schließe alles im Spiel ab."
       },
-      "true-ending": {
-        "name": "Wahres Ende",
-        "description": "Erreiche das wahre Ende des Spiels."
-      },
-      "hard-mode": {
-        "name": "Schwerer Modus",
-        "description": "Schließe das Spiel auf dem Schwierigkeitsgrad Schwer ab."
-      },
-      "no-death-run": {
-        "name": "Durchlauf ohne Tod",
-        "description": "Schließe das Spiel ab, ohne zu sterben."
-      },
-      "speedrun": {
-        "name": "Speedrun",
-        "description": "Schließe das Spiel so schnell wie möglich ab."
-      },
-      "secret-hunter": {
-        "name": "Geheimnisjäger",
-        "description": "Entdecke die versteckten Geheimnisse des Spiels."
-      },
-      "collector": {
-        "name": "Sammler",
-        "description": "Sammle alle Sammelgegenstände im Spiel."
-      },
       "high-score": {
         "name": "Highscore",
         "description": "Erreiche eine herausragende Punktzahl."
       },
-      "perfect-run": {
-        "name": "Perfekter Durchlauf",
-        "description": "Schließe das Spiel fehlerfrei ab."
-      },
-      "original-hardware": {
-        "name": "Originalhardware",
-        "description": "Spiele auf der Originalhardware."
-      },
       "couch-coop": {
         "name": "Lokaler Koop-Modus",
         "description": "Spiele gemeinsam mit anderen vor Ort."
+      },
+      "no-death-run": {
+        "description": "Schließe das Spiel ab, ohne zu sterben.",
+        "name": "Durchlauf ohne Tod"
+      },
+      "completion-100": {
+        "description": "Schließe alles im Spiel ab.",
+        "name": "100 % abgeschlossen"
+      },
+      "secret-hunter": {
+        "description": "Entdecke die versteckten Geheimnisse des Spiels.",
+        "name": "Geheimnisjäger"
+      },
+      "hard-mode": {
+        "description": "Schließe das Spiel auf dem Schwierigkeitsgrad Schwer ab.",
+        "name": "Schwerer Modus"
+      },
+      "speedrun": {
+        "description": "Schließe das Spiel so schnell wie möglich ab.",
+        "name": "Speedrun"
+      },
+      "complete-story": {
+        "name": "Story abgeschlossen",
+        "description": "Schließe die Hauptgeschichte ab."
       }
     },
     "history": {
-      "subtitle": "Deine Geschichte mit diesem Spiel",
+      "subtitle": "Deine Reise mit diesem Spiel",
       "add_completion": "Abschluss hinzufügen",
       "completions": "Abschlüsse",
       "first_completed": "Erstmals abgeschlossen",
       "last_completed": "Zuletzt abgeschlossen",
-      "timeline": "Abschlussverlauf",
-      "loading": "Abschlussverlauf wird geladen...",
+      "timeline": "Abschluss-Zeitleiste",
+      "loading": "Abschlussverlauf wird geladen ...",
       "empty": "Noch keine Abschlüsse erfasst.",
       "dialog_add_title": "Abschluss hinzufügen",
-      "dialog_description": "Halte ein weiteres Kapitel deiner Spielerlebnisse fest.",
+      "dialog_description": "Halte ein weiteres Kapitel deiner Spielgeschichte fest.",
       "year_required": "Jahr *",
       "month_optional": "Monat (optional)",
       "unknown": "Unbekannt",
@@ -502,29 +514,29 @@
       "title": "Mein Spielverlauf",
       "notes_placeholder": "Woran erinnerst du dich bei diesem Spieldurchlauf?",
       "dialog_edit_title": "Abschluss bearbeiten",
-      "add_title": "Abschluss hinzufügen",
-      "edit_title": "Abschluss bearbeiten",
-      "update": "Abschluss aktualisieren",
-      "saving": "Wird gespeichert...",
-      "completion_time": "Abschlusszeit",
-      "completion_time_optional": "Abschlusszeit (optional)",
-      "hours": "Stunden",
-      "minutes": "Minuten",
-      "seconds": "Sekunden",
-      "completion_time_hint": "Lass alle Felder leer, wenn du dich nicht an deine Abschlusszeit erinnerst.",
       "personal_best": "Persönliche Bestzeit",
-      "edit": "Abschluss bearbeiten",
-      "delete": "Abschluss löschen",
+      "completion_time": "Abschlusszeit",
+      "hours": "Stunden",
+      "load_failed": "Der Abschlussverlauf konnte nicht geladen werden.",
+      "invalid_date": "Gib ein gültiges Datum ein.",
       "delete_title": "Abschluss löschen?",
       "delete_message": "Möchtest du den Abschluss aus dem Jahr {year} wirklich löschen?",
-      "delete_confirm": "Abschluss löschen",
+      "edit_title": "Abschluss bearbeiten",
       "delete_failed": "Löschen fehlgeschlagen",
-      "delete_failed_message": "Der Abschluss konnte nicht gelöscht werden.",
-      "load_failed": "Der Abschlussverlauf konnte nicht geladen werden.",
-      "invalid_time": "Gib eine gültige Abschlusszeit ein.",
+      "minutes": "Minuten",
+      "delete_confirm": "Abschluss löschen",
+      "seconds": "Sekunden",
       "time_too_large": "Die Abschlusszeit ist zu groß.",
       "month_required": "Wähle einen Monat aus, wenn du einen Tag eingibst.",
-      "invalid_date": "Gib ein gültiges Datum ein."
+      "delete_failed_message": "Der Abschluss konnte nicht gelöscht werden.",
+      "invalid_time": "Gib eine gültige Abschlusszeit ein.",
+      "completion_time_hint": "Lass alle Felder leer, wenn du dich nicht an deine Abschlusszeit erinnerst.",
+      "delete": "Abschluss löschen",
+      "add_title": "Abschluss hinzufügen",
+      "completion_time_optional": "Abschlusszeit (optional)",
+      "saving": "Wird gespeichert...",
+      "edit": "Abschluss bearbeiten",
+      "update": "Abschluss aktualisieren"
     },
     "memory": {
       "subtitle": "Manche Spiele bleiben für immer in Erinnerung.",
@@ -540,7 +552,9 @@
       "edit_title": "Erinnerung bearbeiten",
       "delete_title": "Erinnerung löschen",
       "year_placeholder": "z. B. 1995",
-      "input_placeholder": "Was macht dieses Spiel für dich besonders?"
+      "input_placeholder": "Was macht dieses Spiel für dich besonders?",
+      "delete_message": "Möchtest du diese Erinnerung wirklich dauerhaft löschen?",
+      "delete_confirm": "Erinnerung löschen"
     },
     "common": {
       "edit": "Bearbeiten",
@@ -585,16 +599,20 @@
       "name_placeholder": "z. B. Online spielen",
       "url_placeholder": "https://example.com",
       "category_placeholder": "z. B. Cheats, Anleitung, Online spielen",
-      "dialog_edit_title": "Spielelink bearbeiten"
+      "dialog_edit_title": "Spielelink bearbeiten",
+      "update": "Aktualisieren",
+      "delete_title": "Spielelink löschen?",
+      "delete_message": "Möchtest du den Link „{name}“ wirklich löschen?",
+      "delete_confirm": "Link löschen"
     }
   },
   "genres": {
     "grid_aria_label": "Spielgenres",
     "empty_title": "Keine Genres gefunden",
     "empty_description": "Genres werden hier angezeigt, sobald Spiele zur Sammlung hinzugefügt wurden.",
-    "count_label": "GENRES",
+    "game_count_one": "{count} Spiel",
     "game_count": "{count} Spiele",
-    "game_count_one": "{count} Spiel"
+    "count_label": "GENRES"
   },
   "home": {
     "stats_games": "Spiele",
@@ -642,18 +660,18 @@
     "switch_to_sign_in_button": "Anmelden",
     "registration_disabled_title": "Registrierung vorübergehend nicht verfügbar",
     "registration_disabled_description": "Neue Kontoregistrierungen sind derzeit deaktiviert, während wir RetroTrack Games verbessern. Bestehende Mitglieder können sich weiterhin anmelden. Bitte versuche es später erneut.",
-    "sign_in": "Anmelden",
-    "create_account": "Konto erstellen",
-    "register_description": "Erstelle deine eigene Retro-Spielesammlung.",
-    "already_have_account": "Du hast bereits ein Konto?",
-    "no_account": "Du hast noch kein Konto?",
-    "creating_account": "Konto wird erstellt...",
-    "signing_in": "Anmeldung läuft...",
     "registration_disabled_error": "Neue Registrierungen sind derzeit deaktiviert.",
-    "password_min_length": "Das Passwort muss mindestens 12 Zeichen enthalten.",
+    "signing_in": "Anmeldung läuft...",
+    "generic_error": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "register_description": "Erstelle deine eigene Retro-Spielesammlung.",
+    "sign_in": "Anmelden",
+    "creating_account": "Konto wird erstellt...",
     "password_complexity": "Das Passwort muss Groß- und Kleinbuchstaben, eine Zahl und ein Sonderzeichen enthalten.",
     "confirmation_email": "Prüfe deine E-Mails und bestätige dein Konto über den Bestätigungslink.",
-    "generic_error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+    "password_min_length": "Das Passwort muss mindestens 12 Zeichen enthalten.",
+    "already_have_account": "Du hast bereits ein Konto?",
+    "create_account": "Konto erstellen",
+    "no_account": "Du hast noch kein Konto?"
   },
   "not_found": {
     "title": "Seite nicht gefunden",
@@ -666,7 +684,6 @@
     "empty_description": "Plattformen werden hier angezeigt, sobald sie zur Datenbank hinzugefügt wurden.",
     "error_sign_in": "Du musst angemeldet sein, um Plattformen hinzuzufügen.",
     "select_platform": "Plattform auswählen ...",
-    "search_placeholder": "Plattformen suchen...",
     "error_select_platform": "Bitte wähle eine Plattform aus.",
     "adding": "Wird hinzugefügt ...",
     "error_add_platform": "Plattform konnte nicht hinzugefügt werden.",
@@ -684,7 +701,8 @@
     "remove_message_after": "aus deinen Plattformen entfernen?\\n\\nDadurch werden keine Spiele oder Konsolenmodelle gelöscht.",
     "remove": "Entfernen",
     "remove_error_title": "Plattform konnte nicht entfernt werden",
-    "remove_error": "Die Plattform konnte nicht entfernt werden. Bitte versuche es erneut."
+    "remove_error": "Die Plattform konnte nicht entfernt werden. Bitte versuche es erneut.",
+    "search_placeholder": "Plattformen suchen..."
   },
   "platform_details": {
     "back": "Zurück zu den Plattformen",
@@ -911,9 +929,32 @@
     "danger_zone_description": "Lösche dein Konto und alle zugehörigen Spielesammlungsdaten dauerhaft. Diese Aktion kann nicht rückgängig gemacht werden.",
     "delete_account": "Mein Konto löschen",
     "appearance_title": "Darstellung",
+    "theme_light": "Hell",
     "appearance_description": "Wähle das Erscheinungsbild von Retro Game Tracker.",
     "theme_dark": "Dunkel",
-    "theme_light": "Hell"
+    "user_not_authenticated": "Benutzer nicht angemeldet.",
+    "administrator": "Administrator",
+    "regular_user": "Normaler Benutzer",
+    "unavailable": "Nicht verfügbar",
+    "load_failed_title": "Profil konnte nicht geladen werden",
+    "load_failed_message": "Deine Kontoinformationen konnten nicht geladen werden. Bitte versuche es erneut.",
+    "no_email": "Keine E-Mail-Adresse gefunden.",
+    "reset_email_sent_title": "E-Mail zum Zurücksetzen des Passworts gesendet",
+    "reset_email_sent_message": "Prüfe deine E-Mails auf einen Link zum Ändern deines Passworts.",
+    "reset_failed_title": "Passwortzurücksetzung fehlgeschlagen",
+    "delete_account_title": "Mein Konto löschen",
+    "delete_account_message": "Dadurch werden dein Konto und deine Spielesammlung dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden. Fortfahren?",
+    "delete_account_confirm": "Fortfahren",
+    "delete_account_cancel": "Abbrechen",
+    "confirm_deletion_title": "Kontolöschung bestätigen",
+    "confirm_deletion_message": "Gib dein Kontopasswort ein, um dein Konto dauerhaft zu löschen.",
+    "confirm_deletion_button": "Mein Konto löschen",
+    "too_many_attempts": "Zu viele falsche Versuche. Bitte versuche es in 15 Minuten erneut.",
+    "incorrect_password": "Falsches Passwort oder Kontolöschung nicht erlaubt.",
+    "deletion_failed_message": "Kontolöschung fehlgeschlagen.",
+    "account_deleted_title": "Konto gelöscht",
+    "account_deleted_message": "Dein Konto und deine Spielesammlung wurden gelöscht.",
+    "deletion_failed_title": "Löschen fehlgeschlagen"
   },
   "reset_password": {
     "eyebrow": "KONTOSICHERHEIT",
@@ -928,10 +969,10 @@
     "grid_aria_label": "Spielereihen",
     "empty_title": "Keine Spielereihen gefunden",
     "empty_description": "Spielereihen werden hier angezeigt, sobald sie zur Datenbank hinzugefügt wurden.",
+    "count_label": "SPIELEREIHEN",
     "no_description": "Keine Beschreibung verfügbar.",
-    "game_count": "{count} Spiele",
     "game_count_one": "{count} Spiel",
-    "count_label": "SPIELEREIHEN"
+    "game_count": "{count} Spiele"
   },
   "statistics": {
     "games": "Spiele",
@@ -945,7 +986,9 @@
     "games_by_platform": "Spiele nach Plattform",
     "games_by_genre": "Spiele nach Genre",
     "games_by_developer": "Spiele nach Entwickler",
-    "games_by_release_year": "Spiele nach Erscheinungsjahr"
+    "games_by_release_year": "Spiele nach Erscheinungsjahr",
+    "no_data": "Keine Daten verfügbar.",
+    "completion_description": "{completed} von {total} Spielen abgeschlossen"
   },
   "terms": {
     "title": "Nutzungsbedingungen",
@@ -1025,52 +1068,53 @@
       "description_after": "."
     }
   },
-
   "welcome": {
     "logo_alt": "RetroTrack Games",
-    "hero_title": "Deine Gaming-Reise,",
-    "hero_highlight": "Deine Geschichte.",
-    "hero_description": "Baue deine Retro-Spielesammlung auf, verfolge deine Erfolge und bewahre die Erinnerungen hinter jedem Spiel. Deine Spiele, deine Konsolen, deine Geschichte — alles an einem Ort.",
-    "sign_in": "Anmelden / Jetzt starten",
-
-    "collection_image_alt": "RetroTrack Games Spielesammlung",
-    "collection_title": "Baue deine Spielesammlung auf",
-    "collection_description": "Erstelle deine persönliche Spielebibliothek. Organisiere deine Spiele nach Plattform, Genre, Entwickler und Spielereihe. Behalte den Überblick über alle Spiele, die du gespielt hast, und entdecke deine Sammlung immer wieder neu.",
-
-    "platforms_image_alt": "RetroTrack Games Plattformen und Hardware",
-    "platforms_title": "Entdecke deine Plattformen",
-    "platforms_description": "Von legendären Konsolen bis hin zu klassischen Computern: Dokumentiere deine Hardware mit Modellen, Zustand, Fotos und persönlichen Notizen. Organisiere deine Spiele übersichtlich nach Plattform.",
-
-    "completions_image_alt": "RetroTrack Games Spielabschlussverlauf",
-    "completions_title": "Halte deine Spielabschlüsse fest",
-    "completions_description": "Halte fest, wann du ein Spiel abgeschlossen hast, erfasse deine Spielzeiten, verfolge persönliche Bestzeiten und feiere Meilensteine mit Erfolgsabzeichen. Jedes abgeschlossene Abenteuer wird Teil deiner Gaming-Geschichte.",
-
-    "memories_image_alt": "RetroTrack Games persönliche Spielerinnerungen",
-    "memories_title": "Bewahre deine Spielerinnerungen",
-    "memories_description": "Erinnere dich an die Spiele, die dir besonders viel bedeutet haben. Speichere persönliche Geschichten, Notizen und Fotos, um die besonderen Momente und Menschen hinter deinen liebsten Spielerlebnissen festzuhalten.",
-
-    "media_image_alt": "RetroTrack Games Soundtracks und Komplettlösungen",
-    "media_title": "Erlebe Musik und Abenteuer erneut",
-    "media_description": "Speichere deine liebsten YouTube-Soundtracks und Video-Komplettlösungen direkt bei deinen Spielen. Genieße unvergessliche Musik, entdecke versteckte Geheimnisse oder finde jederzeit eine hilfreiche Anleitung.",
-
-    "links_image_alt": "RetroTrack Games Spielelinks",
-    "links_title": "Speichere deine Lieblingslinks",
+    "hero_title": "Deine Spielereise,",
+    "hero_highlight": "deine Geschichte.",
+    "hero_description": "Erstelle deine persönliche Retrospielesammlung, verfolge deinen Fortschritt und bewahre die Erinnerungen an jedes Spiel, das du gespielt hast. Organisiere deine Favoriten, entdecke detaillierte Statistiken und füge deine Lieblingssoundtracks und Komplettlösungen direkt von YouTube hinzu.",
+    "sign_in": "Anmelden / Loslegen",
+    "collection_image_alt": "Spielesammlung von Retro Game Tracker",
+    "collection_title": "Erstelle deine Sammlung",
+    "collection_description": "Erstelle deine persönliche Spielebibliothek. Organisiere Spiele nach Plattform, Genre, Entwickler und Spielereihe. Behalte den Überblick über alles, was du gespielt hast, und entdecke deine Sammlung neu.",
+    "statistics_image_alt": "Verfolge deinen Fortschritt",
+    "statistics_title": "Markiere Spiele als abgeschlossen, in Bearbeitung oder noch nicht gespielt. Erfasse Abschlussdaten, verfolge deine Erfolge und entdecke Statistiken zur Entwicklung deiner Spielereise.",
+    "statistics_description": "Statistik-Dashboard von Retro Game Tracker",
+    "soundtracks_image_alt": "Erlebe die Soundtracks erneut",
+    "soundtracks_title": "Jedes großartige Spiel hat unvergessliche Musik. Füge deine Lieblingssoundtracks direkt von YouTube hinzu und genieße sie zusammen mit deiner Sammlung. Von legendären Titelmelodien bis zu einprägsamer Hintergrundmusik – bewahre die Klänge deiner Spielerinnerungen.",
+    "soundtracks_description": "YouTube-Soundtracks von Retro Game Tracker",
+    "walkthroughs_image_alt": "Komplettlösungen jederzeit griffbereit",
+    "walkthroughs_title": "Steckst du in einem schwierigen Level fest oder möchtest du ein klassisches Abenteuer erneut erleben? Füge deinen Spielen ganz einfach YouTube-Komplettlösungen hinzu und halte hilfreiche Anleitungen nur einen Klick entfernt. Ob du Geheimnisse entdeckst oder alte Herausforderungen erneut meisterst – alles bleibt mit deiner Sammlung verbunden.",
+    "walkthroughs_description": "YouTube-Komplettlösungen von Retro Game Tracker",
+    "game_details_image_alt": "Jedes Spiel erzählt eine Geschichte",
+    "game_details_title": "Entdecke einzelne Spieleseiten mit Covergrafiken, Erscheinungsinformationen, Genres, Entwicklern und deinem persönlichen Abschlussstatus. Bewahre alle Details, die ein Spiel besonders machen, an einem Ort auf.",
+    "game_details_description": "Spieldetails von Retro Game Tracker",
+    "history_image_alt": "Dein Spielverlauf",
+    "history_title": "Jedes abgeschlossene Spiel ist ein weiteres Kapitel deiner Spielereise. Blicke auf deine abgeschlossenen Spiele zurück, erinnere dich daran, wann du sie gemeistert hast, und entdecke die Abenteuer wieder, die deine Begeisterung für Spiele geprägt haben. Deine Sammlung ist nicht nur eine Liste – sie ist deine persönliche Geschichte.",
+    "history_description": "Spielverlauf von Retro Game Tracker",
+    "platforms_image_alt": "Entdecke deine Plattformen",
+    "platforms_title": "Von legendären Heimkonsolen bis zu klassischen Computern: Entdecke die Plattformen, die deine Spielereise geprägt haben. Organisiere deine Spiele nach System und entdecke die Titel wieder, die jede Plattform besonders gemacht haben.",
+    "platforms_description": "Plattformseite von Retro Game Tracker",
+    "cta_title": "Bereit, deine Spielgeschichte wiederzuentdecken?",
+    "cta_description": "Von deinem allerersten Spiel bis zu deinem neuesten abgeschlossenen Abenteuer – deine Spielgeschichte verdient einen eigenen Platz.",
+    "cta_button": "Jetzt loslegen",
     "links_description": "Speichere nützliche Webseiten und Links zu einzelnen Spielen, egal ob Anleitungen, Tipps, Fan-Communities oder andere Ressourcen, die du später schnell wiederfinden möchtest.",
-
-    "statistics_image_alt": "RetroTrack Games Statistikübersicht",
-    "statistics_title": "Entdecke deine Gaming-Statistiken",
-    "statistics_description": "Erkunde deine Sammlung anhand detaillierter Statistiken. Sieh dir an, welche Spiele du gespielt, abgeschlossen und gesammelt hast, und entdecke, wie sich deine Gaming-Reise im Laufe der Zeit entwickelt hat.",
-
-    "privacy_title": "Deine Sammlung, deine Privatsphäre",
+    "completions_description": "Halte fest, wann du ein Spiel abgeschlossen hast, erfasse deine Spielzeiten, verfolge persönliche Bestzeiten und feiere Meilensteine mit Erfolgsabzeichen. Jedes abgeschlossene Abenteuer wird Teil deiner Gaming-Geschichte.",
+    "memories_image_alt": "RetroTrack Games persönliche Spielerinnerungen",
+    "completions_title": "Halte deine Spielabschlüsse fest",
+    "media_image_alt": "RetroTrack Games Soundtracks und Komplettlösungen",
     "privacy_description": "Deine Spielesammlung ist persönlich. RetroTrack Games hält deine Sammlung privat, damit du deine Spiele organisieren, deine Konsolen dokumentieren und deine Spielerinnerungen bewahren kannst, ohne sie öffentlich teilen zu müssen.",
-
-    "cta_title": "Bereit, deine Gaming-Geschichte neu zu entdecken?",
-    "cta_description": "Von deinem allerersten Spiel bis zu deinem zuletzt abgeschlossenen Abenteuer — deine Gaming-Geschichte verdient ihren eigenen Platz.",
-    "cta_button": "Jetzt starten",
-
+    "memories_title": "Bewahre deine Spielerinnerungen",
+    "media_title": "Erlebe Musik und Abenteuer erneut",
+    "memories_description": "Erinnere dich an die Spiele, die dir besonders viel bedeutet haben. Speichere persönliche Geschichten, Notizen und Fotos, um die besonderen Momente und Menschen hinter deinen liebsten Spielerlebnissen festzuhalten.",
     "import_image_alt": "RetroTrack Games Spieleimport aus der Datenbank",
-    "import_title": "Spiele einfach importieren",
-    "import_description": "Füge deiner Sammlung schnell neue Spiele hinzu, indem du unsere Spieledatenbank durchsuchst. Importiere Spieldetails wie Titel, Coverbilder, Erscheinungsdaten, Genres, Entwickler und vieles mehr — ohne alles manuell eingeben zu müssen."
+    "links_title": "Speichere deine Lieblingslinks",
+    "completions_image_alt": "RetroTrack Games Spielabschlussverlauf",
+    "import_description": "Füge deiner Sammlung schnell neue Spiele hinzu, indem du unsere Spieledatenbank durchsuchst. Importiere Spieldetails wie Titel, Coverbilder, Erscheinungsdaten, Genres, Entwickler und vieles mehr — ohne alles manuell eingeben zu müssen.",
+    "media_description": "Speichere deine liebsten YouTube-Soundtracks und Video-Komplettlösungen direkt bei deinen Spielen. Genieße unvergessliche Musik, entdecke versteckte Geheimnisse oder finde jederzeit eine hilfreiche Anleitung.",
+    "links_image_alt": "RetroTrack Games Spielelinks",
+    "privacy_title": "Deine Sammlung, deine Privatsphäre",
+    "import_title": "Spiele einfach importieren"
   },
   "confirm_dialog": {
     "default_title": "Bist du sicher?",
@@ -1109,16 +1153,14 @@
       "title": "Spielereihen",
       "subtitle": "Entdecke die Studios hinter meiner Retrospielesammlung",
       "count_label": "ENTWICKLER",
-      "game_count": "{count} Spiele",
-      "game_count_one": "{count} Spiel"
+      "game_count_one": "{count} Spiel",
+      "game_count": "{count} Spiele"
     },
     "genres": {
-      "grid_aria_label": "Spielgenres",
-      "empty_title": "Keine Genres gefunden",
-      "empty_description": "Genres werden hier angezeigt, sobald Spiele zur Sammlung hinzugefügt wurden.",
       "eyebrow": "NACH KATEGORIE ENTDECKEN",
       "title": "Genres",
-      "subtitle": "Durchstöbere meine Retrospielsammlung nach Genre."
+      "subtitle": "Durchstöbere meine Retrospielesammlung nach Genre",
+      "count_label": "GENRES"
     },
     "statistics": {
       "eyebrow": "FORTSCHRITTSÜBERSICHT",

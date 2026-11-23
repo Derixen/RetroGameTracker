@@ -1,5 +1,6 @@
 import { supabase } from "../supabase.js";
 import { confirmDialog } from "../components/confirmDialog.js";
+import { t } from "../i18n.js";
 
 export async function initAdminAddSeries(params = new URLSearchParams()) {
   const form = document.getElementById("add-series-form");
@@ -9,9 +10,67 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
   const seriesId = params.get("id");
   const isEditing = seriesId !== null;
 
+  const heading = document.querySelector(".page-heading h1");
+  const gamesSection = document.getElementById("series-games-section");
+  const gamesList = document.getElementById("series-games-list");
+  const gamesCount = document.getElementById("series-games-count");
+
+  let gameCount = 0;
+  let isSaving = false;
+
+  function updateHeading() {
+    if (isEditing) {
+      heading.textContent = t("admin_add_series.edit_title");
+      saveButton.textContent = t("admin_add_series.update_series");
+    }
+  }
+
+  function updateGameCount() {
+    gamesCount.textContent = t("admin_add_series.games_count", {
+      count: gameCount,
+    });
+  }
+
+  function showEmptyMessage() {
+    gamesList.replaceChildren();
+
+    const emptyMessage = document.createElement("p");
+    emptyMessage.className = "py-4 text-sm text-slate-600 dark:text-slate-400";
+    emptyMessage.textContent = t("admin_add_series.no_games");
+    emptyMessage.dataset.seriesEmpty = "true";
+
+    gamesList.append(emptyMessage);
+  }
+
+  function refreshTranslations() {
+    if (!form.isConnected) return;
+
+    updateHeading();
+
+    if (!isSaving) {
+      saveButton.textContent = t(
+        isEditing
+          ? "admin_add_series.update_series"
+          : "admin_add_series.save_series",
+      );
+    }
+
+    if (isEditing) {
+      updateGameCount();
+
+      const emptyMessage = gamesList.querySelector("[data-series-empty]");
+      if (emptyMessage) {
+        emptyMessage.textContent = t("admin_add_series.no_games");
+      }
+
+      gamesList.querySelectorAll("[data-series-remove]").forEach((button) => {
+        button.textContent = t("admin_add_series.remove");
+      });
+    }
+  }
+
   if (isEditing) {
-    document.querySelector(".page-heading h1").textContent = "Edit Game Series";
-    saveButton.textContent = "Update Series";
+    updateHeading();
 
     try {
       const { data: series, error } = await supabase
@@ -26,11 +85,6 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
       document.getElementById("series-description").value =
         series.description ?? "";
 
-      // Show games belonging to this series
-      const gamesSection = document.getElementById("series-games-section");
-      const gamesList = document.getElementById("series-games-list");
-      const gamesCount = document.getElementById("series-games-count");
-
       const { data: games, error: gamesError } = await supabase
         .from("games")
         .select("id, title, release_year, cover_url")
@@ -39,15 +93,13 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
 
       if (gamesError) throw gamesError;
 
-      gamesCount.textContent = `${games.length} GAMES`;
+      gameCount = games.length;
+      updateGameCount();
 
       gamesList.replaceChildren();
 
       if (games.length === 0) {
-        const emptyMessage = document.createElement("p");
-        emptyMessage.className = "py-4 text-sm text-slate-400";
-        emptyMessage.textContent = "No games belong to this series yet.";
-        gamesList.append(emptyMessage);
+        showEmptyMessage();
       }
 
       for (const game of games) {
@@ -77,19 +129,21 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
         details.append(title, year);
         row.append(details);
 
-        // Remove game from this series
         const removeButton = document.createElement("button");
         removeButton.type = "button";
-        removeButton.textContent = "Remove";
+        removeButton.dataset.seriesRemove = "true";
+        removeButton.textContent = t("admin_add_series.remove");
         removeButton.className =
           "rounded-lg border border-red-500/30 px-3 py-2 text-sm " +
           "text-red-400 transition hover:bg-red-500/10";
 
         removeButton.addEventListener("click", async () => {
           const confirmed = await confirmDialog({
-            title: "Remove Game from Series?",
-            message: `Remove "${game.title}" from this series? The game itself will not be deleted.`,
-            confirmText: "Remove",
+            title: t("admin_add_series.remove_title"),
+            message: t("admin_add_series.remove_message", {
+              name: game.title,
+            }),
+            confirmText: t("admin_add_series.remove"),
           });
 
           if (!confirmed) return;
@@ -107,8 +161,9 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
             removeButton.disabled = false;
 
             await confirmDialog({
-              title: "Unable to Remove Game",
-              message: error?.message ?? "Check your permissions.",
+              title: t("admin_add_series.remove_failed_title"),
+              message:
+                error?.message ?? t("admin_add_series.check_permissions"),
               alertOnly: true,
             });
 
@@ -117,14 +172,11 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
 
           row.remove();
 
-          const remaining = gamesList.children.length;
-          gamesCount.textContent = `${remaining} GAMES`;
+          gameCount--;
+          updateGameCount();
 
-          if (remaining === 0) {
-            const emptyMessage = document.createElement("p");
-            emptyMessage.className = "py-4 text-sm text-slate-400";
-            emptyMessage.textContent = "No games belong to this series yet.";
-            gamesList.append(emptyMessage);
+          if (gameCount === 0) {
+            showEmptyMessage();
           }
         });
 
@@ -152,8 +204,8 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
 
       if (query.length < 2) {
         await confirmDialog({
-          title: "Search Required",
-          message: "Enter at least 2 characters to search for a game.",
+          title: t("admin_add_series.search_required_title"),
+          message: t("admin_add_series.search_required_message"),
           alertOnly: true,
         });
         return;
@@ -172,7 +224,7 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
 
       if (error) {
         await confirmDialog({
-          title: "Search Failed",
+          title: t("admin_add_series.search_failed_title"),
           message: error.message,
           alertOnly: true,
         });
@@ -180,7 +232,7 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
       }
 
       if (!games.length) {
-        searchResults.textContent = "No unassigned games found.";
+        searchResults.textContent = t("admin_add_series.no_search_results");
         return;
       }
 
@@ -192,7 +244,7 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
           "border border-slate-700 bg-slate-900 px-4 py-3 text-left " +
           "text-sm text-white hover:border-pink-500";
 
-        button.textContent = `${game.title} (${game.release_year ?? "Unknown year"})`;
+        button.textContent = `${game.title} (${game.release_year ?? t("admin_add_series.unknown_year")})`;
 
         button.addEventListener("click", async () => {
           button.disabled = true;
@@ -208,14 +260,14 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
             button.disabled = false;
 
             await confirmDialog({
-              title: "Unable to Add Game",
-              message: error?.message ?? "Check your permissions.",
+              title: t("admin_add_series.add_failed_title"),
+              message:
+                error?.message ?? t("admin_add_series.check_permissions"),
               alertOnly: true,
             });
             return;
           }
 
-          // Refresh the edit page to display the new member
           window.dispatchEvent(new HashChangeEvent("hashchange"));
         });
 
@@ -229,7 +281,8 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
 
     errorMessage.hidden = true;
     saveButton.disabled = true;
-    saveButton.textContent = "Saving...";
+    isSaving = true;
+    saveButton.textContent = t("admin_add_series.saving");
 
     const name = document.getElementById("series-name").value.trim();
     const description = document
@@ -238,7 +291,7 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
 
     try {
       if (!name) {
-        throw new Error("Series name is required.");
+        throw new Error(t("admin_add_series.name_required"));
       }
 
       const seriesData = {
@@ -273,8 +326,28 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
       errorMessage.textContent = error.message;
       errorMessage.hidden = false;
     } finally {
+      isSaving = false;
       saveButton.disabled = false;
-      saveButton.textContent = isEditing ? "Update Series" : "Save Series";
+      refreshTranslations();
     }
   });
+
+  const controller = new AbortController();
+
+  document.addEventListener("languagechange", refreshTranslations, {
+    signal: controller.signal,
+  });
+
+  const pageContent = document.getElementById("page-content");
+
+  if (pageContent) {
+    const observer = new MutationObserver(() => {
+      if (!form.isConnected) {
+        controller.abort();
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(pageContent, { childList: true });
+  }
 }

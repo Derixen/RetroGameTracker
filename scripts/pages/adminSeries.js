@@ -1,10 +1,12 @@
 import { getSeries } from "../api/series.js";
 import { supabase } from "../supabase.js";
 import { confirmDialog } from "../components/confirmDialog.js";
+import { t } from "../i18n.js";
 
 export async function initAdminSeries() {
   const tableBody = document.getElementById("admin-series-list");
   const emptyMessage = document.getElementById("admin-series-empty");
+
   document.getElementById("admin-add-series").addEventListener("click", () => {
     window.location.hash = "#/admin/add-series";
   });
@@ -31,13 +33,11 @@ export async function initAdminSeries() {
 
     for (const item of series) {
       const row = document.createElement("tr");
-      row.className = "";
 
       const columns = [item.name, item.description || "—"];
 
       for (const value of columns) {
         const cell = document.createElement("td");
-        cell.className = "";
         cell.textContent = value;
         row.append(cell);
       }
@@ -48,26 +48,30 @@ export async function initAdminSeries() {
       row.append(gamesCell);
 
       const actionsCell = document.createElement("td");
-      actionsCell.className = "text-right";
+      actionsCell.className = "w-56 text-right";
+
+      const actions = document.createElement("div");
+      actions.className =
+        "flex items-center justify-end gap-2 whitespace-nowrap";
 
       const editButton = document.createElement("button");
-      editButton.className = "admin-action-edit mr-3";
-      editButton.textContent = "Edit";
-      editButton.classList.add("cursor-pointer");
+      editButton.type = "button";
+      editButton.className = "admin-action-button admin-action-edit";
+      editButton.textContent = t("common.edit");
 
       editButton.addEventListener("click", () => {
         window.location.hash = `#/admin/edit-series?id=${item.id}`;
       });
 
       const deleteButton = document.createElement("button");
-      deleteButton.className = "admin-action-delete";
-      deleteButton.textContent = "Delete";
+      deleteButton.type = "button";
+      deleteButton.className = "admin-action-button admin-action-delete";
+      deleteButton.textContent = t("common.delete");
 
       deleteButton.addEventListener("click", async () => {
         deleteButton.disabled = true;
 
         try {
-          // Check if any games belong to this series
           const { count, error: countError } = await supabase
             .from("games")
             .select("id", { count: "exact", head: true })
@@ -92,7 +96,7 @@ export async function initAdminSeries() {
 
           if (!confirmed) return;
 
-          deleteButton.textContent = "Deleting...";
+          deleteButton.textContent = t("common.deleting");
 
           const { data, error } = await supabase
             .from("series")
@@ -121,11 +125,12 @@ export async function initAdminSeries() {
           });
         } finally {
           deleteButton.disabled = false;
-          deleteButton.textContent = "Delete";
+          deleteButton.textContent = t("common.delete");
         }
       });
 
-      actionsCell.append(editButton, deleteButton);
+      actions.append(editButton, deleteButton);
+      actionsCell.append(actions);
       row.append(actionsCell);
 
       tableBody.append(row);

@@ -2,13 +2,16 @@ import { getGames } from "../api/games.js";
 import { supabase } from "../supabase.js";
 import { deleteOldCover } from "./adminAddGame.js";
 import { confirmDialog } from "../components/confirmDialog.js";
+import { t } from "../i18n.js";
 
 export async function initAdminGames() {
   const tableBody = document.getElementById("admin-games-list");
   const emptyMessage = document.getElementById("admin-games-empty");
+
   document.getElementById("admin-add-game").addEventListener("click", () => {
     window.location.hash = "#/admin/add-game";
   });
+
   try {
     const games = await getGames();
 
@@ -73,7 +76,6 @@ export async function initAdminGames() {
 
       for (const game of games) {
         const row = document.createElement("tr");
-        row.className = "";
 
         const columns = [
           game.title,
@@ -84,24 +86,30 @@ export async function initAdminGames() {
 
         for (const value of columns) {
           const cell = document.createElement("td");
-          cell.className = "";
           cell.textContent = value;
           row.append(cell);
         }
 
         const actionsCell = document.createElement("td");
-        actionsCell.className = "text-right";
+        actionsCell.className = "w-56 text-right";
+
+        const actions = document.createElement("div");
+        actions.className =
+          "flex items-center justify-end gap-2 whitespace-nowrap";
 
         const editButton = document.createElement("button");
-        editButton.className = "admin-action-edit mr-3";
-        editButton.textContent = "Edit";
+        editButton.type = "button";
+        editButton.className = "admin-action-button admin-action-edit";
+        editButton.textContent = t("common.edit");
+
         editButton.addEventListener("click", () => {
           window.location.hash = `#/admin/edit-game?id=${game.id}`;
         });
 
         const deleteButton = document.createElement("button");
-        deleteButton.className = "admin-action-delete";
-        deleteButton.textContent = "Delete";
+        deleteButton.type = "button";
+        deleteButton.className = "admin-action-button admin-action-delete";
+        deleteButton.textContent = t("common.delete");
 
         deleteButton.addEventListener("click", async () => {
           const confirmed = await confirmDialog({
@@ -113,7 +121,7 @@ export async function initAdminGames() {
           if (!confirmed) return;
 
           deleteButton.disabled = true;
-          deleteButton.textContent = "Deleting...";
+          deleteButton.textContent = t("common.deleting");
 
           try {
             const { data, error } = await supabase
@@ -138,6 +146,7 @@ export async function initAdminGames() {
                 );
               }
             }
+
             row.remove();
 
             if (!tableBody.children.length) {
@@ -153,11 +162,12 @@ export async function initAdminGames() {
             });
 
             deleteButton.disabled = false;
-            deleteButton.textContent = "Delete";
+            deleteButton.textContent = t("common.delete");
           }
         });
 
-        actionsCell.append(editButton, deleteButton);
+        actions.append(editButton, deleteButton);
+        actionsCell.append(actions);
         row.append(actionsCell);
 
         tableBody.append(row);

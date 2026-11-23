@@ -149,7 +149,23 @@
     "games_count": "{count} JÁTÉK",
     "add_existing_game": "Meglévő játék hozzáadása",
     "search_placeholder": "Keresés a gyűjteményben...",
-    "add_game": "Játék hozzáadása"
+    "add_game": "Játék hozzáadása",
+    "edit_title": "Játéksorozat szerkesztése",
+    "update_series": "Játéksorozat frissítése",
+    "no_games": "Ehhez a játéksorozathoz még nem tartoznak játékok.",
+    "remove": "Eltávolítás",
+    "remove_title": "Játék eltávolítása a sorozatból?",
+    "remove_message": "Eltávolítod a(z) \"{name}\" játékot ebből a sorozatból? Maga a játék nem lesz törölve.",
+    "remove_failed_title": "Nem sikerült eltávolítani a játékot",
+    "check_permissions": "Ellenőrizd a jogosultságaidat.",
+    "search_required_title": "Keresés szükséges",
+    "search_required_message": "Adj meg legalább 2 karaktert a játék kereséséhez.",
+    "search_failed_title": "A keresés sikertelen",
+    "no_search_results": "Nem található hozzárendeletlen játék.",
+    "unknown_year": "Ismeretlen év",
+    "add_failed_title": "Nem sikerült hozzáadni a játékot",
+    "saving": "Mentés...",
+    "name_required": "A játéksorozat neve kötelező."
   },
   "admin_dashboard": {
     "registered_users": "Regisztrált felhasználók",
@@ -233,7 +249,6 @@
   "changelog": {
     "title": "Változásnapló",
     "subtitle": "A Retro Game Tracker fejlődése",
-
     "v026": {
       "title": "Platformgyűjtemény és lokalizáció",
       "item1": "Személyes platformgyűjtemények bevezetése, automatikus megjelenítéssel a játékok alapján.",
@@ -402,7 +417,6 @@
     "loading": {
       "game": "Adatok betöltése..."
     },
-
     "game": {
       "no_cover": "Nincs borítókép",
       "release_year": "Megjelenés éve",
@@ -538,7 +552,9 @@
       "your_memory": "Az emléked *",
       "save": "Emlék mentése",
       "edit_title": "Emlék szerkesztése",
-      "delete_title": "Emlék törlése",
+      "delete_title": "Személyes emlék törlése?",
+      "delete_message": "Biztosan véglegesen törölni szeretnéd ezt az emléket?",
+      "delete_confirm": "Emlék törlése",
       "year_placeholder": "pl. 1995",
       "input_placeholder": "Mitől különleges számodra ez a játék?"
     },
@@ -585,7 +601,11 @@
       "name_placeholder": "pl. Online játék",
       "url_placeholder": "https://example.com",
       "category_placeholder": "pl. Csalások, Útmutató, Online játék",
-      "dialog_edit_title": "Játéklink szerkesztése"
+      "dialog_edit_title": "Játéklink szerkesztése",
+      "update": "Frissítés",
+      "delete_title": "Játéklink törlése?",
+      "delete_message": "Biztosan törölni szeretnéd a(z) „{name}” linket?",
+      "delete_confirm": "Link törlése"
     }
   },
   "genres": {
@@ -642,19 +662,18 @@
     "switch_to_sign_in_button": "Bejelentkezés",
     "registration_disabled_title": "A regisztráció átmenetileg nem érhető el",
     "registration_disabled_description": "Az új fiókok regisztrációja jelenleg szünetel, amíg fejlesztjük a RetroTrack Games szolgáltatást. A meglévő tagok továbbra is bejelentkezhetnek. Kérjük, látogass vissza később.",
-
-    "sign_in": "Anmelden",
-    "create_account": "Konto erstellen",
-    "register_description": "Erstelle deine eigene Retro-Spielesammlung.",
-    "already_have_account": "Du hast bereits ein Konto?",
-    "no_account": "Du hast noch kein Konto?",
-    "creating_account": "Konto wird erstellt...",
-    "signing_in": "Anmeldung läuft...",
-    "registration_disabled_error": "Neue Registrierungen sind derzeit deaktiviert.",
-    "password_min_length": "Das Passwort muss mindestens 12 Zeichen enthalten.",
-    "password_complexity": "Das Passwort muss Groß- und Kleinbuchstaben, eine Zahl und ein Sonderzeichen enthalten.",
-    "confirmation_email": "Prüfe deine E-Mails und bestätige dein Konto über den Bestätigungslink.",
-    "generic_error": "Etwas ist schiefgelaufen. Bitte versuche es erneut."
+    "sign_in": "Bejelentkezés",
+    "create_account": "Fiók létrehozása",
+    "register_description": "Hozd létre saját retrojáték-gyűjteményedet.",
+    "already_have_account": "Már van fiókod?",
+    "no_account": "Még nincs fiókod?",
+    "creating_account": "Fiók létrehozása...",
+    "signing_in": "Bejelentkezés...",
+    "registration_disabled_error": "Az új regisztrációk jelenleg le vannak tiltva.",
+    "password_min_length": "A jelszónak legalább 12 karakterből kell állnia.",
+    "password_complexity": "A jelszónak tartalmaznia kell kis- és nagybetűt, számot és speciális karaktert.",
+    "confirmation_email": "Ellenőrizd az e-mailjeidet, és aktiváld a fiókodat a megerősítő hivatkozással.",
+    "generic_error": "Hiba történt. Kérjük, próbáld újra."
   },
   "not_found": {
     "title": "Az oldal nem található",
@@ -693,20 +712,17 @@
     "release_year": "Megjelenés éve",
     "manufacturer": "Gyártó",
     "browse_games": "Játékok böngészése",
-
     "models_title": "Konzolmodelljeim",
     "models_description": "Saját konzolgyűjteményed",
     "add_console": "Konzol hozzáadása",
     "models_empty_title": "Még nincsenek konzolmodellek",
     "models_empty_description": "Add hozzá az első konzolmodelledet a gyűjteményedhez.",
-
     "games_title": "Játékaim",
     "games_description": "A gyűjteményedben található játékok ezen a platformon",
     "view_all_games": "Összes játék",
     "games_loading": "Játékok betöltése...",
     "games_empty_title": "Még nincsenek játékok",
     "games_empty_description": "Még nem adtál hozzá játékot ehhez a platformhoz.",
-
     "dialog_add_title": "Konzolmodell hozzáadása",
     "dialog_edit_title": "Konzolmodell szerkesztése",
     "dialog_description": "Adj hozzá egy konzolváltozatot a saját gyűjteményedhez.",
@@ -723,7 +739,6 @@
     "notes": "Személyes megjegyzések (opcionális)",
     "notes_placeholder": "Módosítások, javítások, emlékek...",
     "save_console": "Konzol mentése",
-
     "owned": "Saját tulajdon",
     "wishlist": "Kívánságlista",
     "previously_owned": "Korábban birtokolt",
@@ -733,22 +748,18 @@
     "condition_good": "Jó",
     "condition_fair": "Elfogadható",
     "condition_parts": "Alkatrésznek",
-
     "edit": "Szerkesztés",
     "delete": "Törlés",
     "delete_console_title": "Konzol törlése",
     "delete_console_message": "Biztosan törölni szeretnéd ezt a konzolmodellt? Ez a művelet nem vonható vissza.",
     "delete_console_confirm": "Konzol törlése",
-
     "update_console": "Konzol frissítése",
     "saving": "Mentés...",
-
     "error_model_name": "A modell neve kötelező.",
     "error_image_source": "Válassz egy kép URL-t vagy tölts fel egy képet, de ne mindkettőt.",
     "error_image_type": "Csak JPG, PNG és WebP formátumú képek támogatottak.",
     "error_image_size": "A kép mérete nem haladhatja meg az 5 MB-ot.",
     "error_image_url": "A kép URL-jének https:// előtaggal kell kezdődnie.",
-
     "error_invalid_platform": "Érvénytelen platformazonosító.",
     "error_unknown_manufacturer": "Ismeretlen gyártó",
     "unknown": "Ismeretlen",
@@ -766,7 +777,17 @@
     "count_label": "ERŐFORRÁS",
     "search_placeholder": "Erőforrások keresése...",
     "all_categories": "Összes kategória",
-    "no_results": "Nem található erőforrás."
+    "no_results": "Nem található erőforrás.",
+    "column_category": "Kategória",
+    "column_description": "Leírás",
+    "column_name": "Weboldal",
+    "column_website": "Weboldal",
+    "empty_description": "Nincs a keresésnek vagy a kiválasztott kategóriának megfelelő weboldal.",
+    "empty_title": "Nem található weboldal",
+    "error_loading": "Nem sikerült betölteni a weboldalakat.",
+    "loading": "Weboldalak betöltése...",
+    "results": "{count} weboldal",
+    "visit_website": "Weboldal megnyitása"
   },
   "privacy": {
     "title": "Adatvédelmi szabályzat",
@@ -874,7 +895,30 @@
     "appearance_title": "Megjelenés",
     "appearance_description": "Válaszd ki a Retro Game Tracker megjelenését.",
     "theme_dark": "Sötét",
-    "theme_light": "Világos"
+    "theme_light": "Világos",
+    "user_not_authenticated": "A felhasználó nincs bejelentkezve.",
+    "administrator": "Adminisztrátor",
+    "regular_user": "Normál felhasználó",
+    "unavailable": "Nem elérhető",
+    "load_failed_title": "Nem sikerült betölteni a profilt",
+    "load_failed_message": "Nem sikerült betölteni a fiókadataidat. Kérjük, próbáld újra.",
+    "no_email": "Nem található e-mail-cím.",
+    "reset_email_sent_title": "Jelszó-visszaállító e-mail elküldve",
+    "reset_email_sent_message": "Nézd meg az e-mailjeidet, és kattints a jelszó módosításához kapott hivatkozásra.",
+    "reset_failed_title": "A jelszó visszaállítása sikertelen",
+    "delete_account_title": "Fiókom törlése",
+    "delete_account_message": "Ezzel véglegesen törlöd a fiókodat és a játékgyűjteményedet. Ez a művelet nem vonható vissza. Folytatod?",
+    "delete_account_confirm": "Folytatás",
+    "delete_account_cancel": "Mégse",
+    "confirm_deletion_title": "Fióktörlés megerősítése",
+    "confirm_deletion_message": "Add meg a fiókod jelszavát a végleges törléshez.",
+    "confirm_deletion_button": "Fiókom törlése",
+    "too_many_attempts": "Túl sok hibás próbálkozás. Próbáld újra 15 perc múlva.",
+    "incorrect_password": "Hibás jelszó, vagy a fiók törlése nem engedélyezett.",
+    "deletion_failed_message": "A fiók törlése sikertelen.",
+    "account_deleted_title": "Fiók törölve",
+    "account_deleted_message": "A fiókodat és a játékgyűjteményedet töröltük.",
+    "deletion_failed_title": "A törlés sikertelen"
   },
   "report_bug": {
     "title": "Hiba bejelentése",
@@ -894,7 +938,11 @@
   "series": {
     "grid_aria_label": "Játéksorozatok",
     "empty_title": "Nem található játéksorozat",
-    "empty_description": "A játéksorozatok akkor jelennek meg itt, amikor bekerülnek az adatbázisba."
+    "empty_description": "A játéksorozatok akkor jelennek meg itt, amikor bekerülnek az adatbázisba.",
+    "count_label": "SOROZAT",
+    "game_count": "{count} játék",
+    "game_count_one": "{count} játék",
+    "no_description": "Nincs elérhető leírás."
   },
   "statistics": {
     "games": "Játékok",
@@ -908,7 +956,32 @@
     "games_by_platform": "Játékok platform szerint",
     "games_by_genre": "Játékok műfaj szerint",
     "games_by_developer": "Játékok fejlesztő szerint",
-    "games_by_release_year": "Játékok megjelenési év szerint"
+    "games_by_release_year": "Játékok megjelenési év szerint",
+    "no_data": "Nincs elérhető adat.",
+    "completion_description": "{total} játékból {completed} befejezve",
+    "user_not_authenticated": "A felhasználó nincs bejelentkezve.",
+    "administrator": "Adminisztrátor",
+    "regular_user": "Normál felhasználó",
+    "unavailable": "Nem elérhető",
+    "load_failed_title": "Nem sikerült betölteni a profilt",
+    "load_failed_message": "Nem sikerült betölteni a fiókadataidat. Kérjük, próbáld újra.",
+    "no_email": "Nem található e-mail-cím.",
+    "reset_email_sent_title": "Jelszó-visszaállító e-mail elküldve",
+    "reset_email_sent_message": "Nézd meg az e-mailjeidet, és kattints a jelszó módosításához kapott hivatkozásra.",
+    "reset_failed_title": "A jelszó visszaállítása sikertelen",
+    "delete_account_title": "Fiókom törlése",
+    "delete_account_message": "Ezzel véglegesen törlöd a fiókodat és a játékgyűjteményedet. Ez a művelet nem vonható vissza. Folytatod?",
+    "delete_account_confirm": "Folytatás",
+    "delete_account_cancel": "Mégse",
+    "confirm_deletion_title": "Fióktörlés megerősítése",
+    "confirm_deletion_message": "Add meg a fiókod jelszavát a végleges törléshez.",
+    "confirm_deletion_button": "Fiókom törlése",
+    "too_many_attempts": "Túl sok hibás próbálkozás. Próbáld újra 15 perc múlva.",
+    "incorrect_password": "Hibás jelszó, vagy a fiók törlése nem engedélyezett.",
+    "deletion_failed_message": "A fiók törlése sikertelen.",
+    "account_deleted_title": "Fiók törölve",
+    "account_deleted_message": "A fiókodat és a játékgyűjteményedet töröltük.",
+    "deletion_failed_title": "A törlés sikertelen"
   },
   "terms": {
     "title": "Felhasználási feltételek",
@@ -988,49 +1061,38 @@
       "description_after": "oldalt."
     }
   },
-
   "welcome": {
     "logo_alt": "RetroTrack Games",
     "hero_title": "A te játékos utad,",
     "hero_highlight": "A te történeted.",
     "hero_description": "Építsd fel saját retrojáték-gyűjteményedet, kövesd nyomon az eredményeidet, és őrizd meg a játékokhoz fűződő emlékeidet. A játékaid, a konzoljaid, a történeted — minden egy helyen.",
     "sign_in": "Bejelentkezés / Kezdés",
-
     "collection_image_alt": "RetroTrack Games játékgyűjtemény",
     "collection_title": "Építsd fel a játékgyűjteményedet",
     "collection_description": "Hozd létre saját játékgyűjteményedet. Rendszerezd a játékokat platform, műfaj, fejlesztő és sorozat szerint. Tartsd számon mindazt, amivel valaha játszottál, és fedezd fel újra a gyűjteményedet.",
-
     "platforms_image_alt": "RetroTrack Games platformok és hardverek",
     "platforms_title": "Fedezd fel a platformjaidat",
     "platforms_description": "A legendás konzoloktól a klasszikus számítógépekig: tartsd nyilván a birtokodban lévő eszközöket, beleértve azok modelljét, állapotát, fényképeit és személyes megjegyzéseidet. Rendszerezd játékaidat platformok szerint.",
-
     "completions_image_alt": "RetroTrack Games végigjátszási előzmények",
     "completions_title": "Rögzítsd a végigjátszásaidat",
     "completions_description": "Jegyezd fel, mikor fejeztél be egy játékot, rögzítsd a teljesítési időket, kövesd nyomon személyes rekordjaidat, és ünnepeld a mérföldköveket teljesítményjelvényekkel. Minden befejezett kaland a játékos történeted részévé válik.",
-
     "memories_image_alt": "RetroTrack Games személyes játékos emlékek",
     "memories_title": "Őrizd meg a játékos emlékeidet",
     "memories_description": "Emlékezz vissza azokra a játékokra, amelyek a legtöbbet jelentették számodra. Ments el személyes történeteket, jegyzeteket és fényképeket, hogy megőrizd a kedvenc játékélményeidhez kapcsolódó pillanatokat és embereket.",
-
     "media_image_alt": "RetroTrack Games játékzenék és végigjátszások",
     "media_title": "Éld át újra a zenéket és a kalandokat",
     "media_description": "Mentsd el kedvenc YouTube-játékzenéidet és végigjátszásaidat közvetlenül a játékok mellé. Hallgasd újra a felejthetetlen dallamokat, fedezz fel rejtett titkokat, vagy találj hasznos útmutatókat, amikor szükséged van rájuk.",
-
     "links_image_alt": "RetroTrack Games játékokhoz tartozó hivatkozások",
     "links_title": "Mentsd el a kedvenc hivatkozásaidat",
     "links_description": "Ments el hasznos weboldalakat és hivatkozásokat az egyes játékokhoz, legyen szó útmutatókról, tippekről, rajongói közösségekről vagy más forrásokról, amelyeket később könnyen szeretnél megtalálni.",
-
     "statistics_image_alt": "RetroTrack Games statisztikai áttekintés",
     "statistics_title": "Fedezd fel a játékstatisztikáidat",
     "statistics_description": "Ismerd meg gyűjteményedet részletes statisztikák segítségével. Nézd meg, mely játékokkal játszottál, melyeket fejezted be, és melyeket gyűjtötted össze, valamint fedezd fel, hogyan alakult a játékos utad az évek során.",
-
     "privacy_title": "A gyűjteményed, a magánszférád",
     "privacy_description": "A játékgyűjteményed személyes. A RetroTrack Games privátként kezeli a gyűjteményedet, így anélkül rendszerezheted játékaidat, dokumentálhatod konzoljaidat és őrizheted meg emlékeidet, hogy azokat nyilvánosan meg kellene osztanod.",
-
     "cta_title": "Készen állsz újra felfedezni a játékos történetedet?",
     "cta_description": "A legelső játékodtól a legutóbb befejezett kalandodig — a játékos történeted megérdemel egy saját helyet.",
     "cta_button": "Kezdés",
-
     "import_image_alt": "RetroTrack Games játékimportálás adatbázisból",
     "import_title": "Importálj játékokat egyszerűen",
     "import_description": "Adj hozzá gyorsan játékokat a gyűjteményedhez a játékadatbázisban történő kereséssel. Importáld a játékok adatait, például a címeket, borítóképeket, megjelenési dátumokat, műfajokat, fejlesztőket és még sok mást — anélkül, hogy mindent kézzel kellene megadnod."
@@ -1043,7 +1105,6 @@
     "ok": "OK",
     "password_placeholder": "Add meg a jelszavad"
   },
-
   "page_headings": {
     "home": {
       "eyebrow": "GYŰJTEMÉNY ÁTTEKINTÉSE",
@@ -1074,7 +1135,10 @@
     "developers": {
       "eyebrow": "JÁTÉKSOROZATOK",
       "title": "Játéksorozatok",
-      "subtitle": "Ismerd meg a retro játékgyűjteményem mögött álló fejlesztőstúdiókat"
+      "subtitle": "Ismerd meg a retro játékgyűjteményem mögött álló fejlesztőstúdiókat",
+      "count_label": "FEJLESZTŐ",
+      "game_count": "{count} játék",
+      "game_count_one": "{count} játék"
     },
     "genres": {
       "eyebrow": "BÖNGÉSZÉS KATEGÓRIA SZERINT",
@@ -1141,12 +1205,55 @@
       "eyebrow": "KÖSZÖNETNYILVÁNÍTÁS",
       "title": "Források és közreműködők",
       "subtitle": "A RetroTrack Games mögött álló technológiák, szolgáltatások és erőforrások."
+    },
+    "adminRetroResources": {
+      "eyebrow": "ADMINISZTRÁCIÓ",
+      "subtitle": "A retrojátékos weboldalak gyűjteményének kezelése.",
+      "title": "Weboldalak kezelése"
     }
   },
-
   "router": {
     "error_title": "Hiba történt",
     "error_description": "Nem sikerült betölteni az oldalt. Kérjük, próbáld újra.",
     "retry": "Újrapróbálkozás"
+  },
+  "admin_retro_resources": {
+    "add_resource": "Weboldal hozzáadása",
+    "back_dashboard": "Vissza az adminisztrációs vezérlőpultra",
+    "cancel": "Mégse",
+    "category": "Kategória *",
+    "category_placeholder": "pl. DOS és klasszikus PC",
+    "column_actions": "Műveletek",
+    "column_category": "Kategória",
+    "column_name": "Név",
+    "column_order": "Sorrend",
+    "column_url": "Weboldal URL-címe",
+    "column_visible": "Látható",
+    "delete": "Törlés",
+    "delete_confirm": "Weboldal törlése",
+    "delete_message": "Biztosan törölni szeretnéd a(z) „{name}” weboldalt? Ez a művelet nem vonható vissza.",
+    "delete_title": "Weboldal törlése",
+    "description": "Leírás",
+    "description_placeholder": "Írd le ezt a weboldalt angolul...",
+    "edit": "Szerkesztés",
+    "edit_resource": "Weboldal szerkesztése",
+    "empty": "Nem található weboldal.",
+    "error_deleting": "Nem sikerült törölni a weboldalt.",
+    "error_loading": "Nem sikerült betölteni a weboldalt.",
+    "error_saving": "Nem sikerült menteni a weboldalt.",
+    "hidden_status": "Rejtett",
+    "invalid_url": "A weboldal URL-címének https:// előtaggal kell kezdődnie.",
+    "loading": "Weboldal betöltése...",
+    "name": "Weboldal neve *",
+    "name_placeholder": "pl. DOSBox Staging",
+    "save": "Weboldal mentése",
+    "search_placeholder": "Weboldal keresése...",
+    "sort_order": "Rendezési sorrend",
+    "subtitle": "A retrojátékokhoz kapcsolódó hasznos weboldalak és eszközök kezelése.",
+    "title": "Weboldalak kezelése",
+    "url": "Weboldal URL-címe *",
+    "url_placeholder": "https://example.com",
+    "visible": "Látható a felhasználók számára",
+    "visible_status": "Látható"
   }
 }

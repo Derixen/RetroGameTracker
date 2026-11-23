@@ -152,7 +152,23 @@
     "games_count": "{count} GAMES",
     "add_existing_game": "Add Existing Game",
     "search_placeholder": "Search your collection...",
-    "add_game": "Add Game"
+    "add_game": "Add Game",
+    "edit_title": "Edit Game Series",
+    "update_series": "Update Series",
+    "no_games": "No games belong to this series yet.",
+    "remove": "Remove",
+    "remove_title": "Remove Game from Series?",
+    "remove_message": "Remove \"{name}\" from this series? The game itself will not be deleted.",
+    "remove_failed_title": "Unable to Remove Game",
+    "check_permissions": "Check your permissions.",
+    "search_required_title": "Search Required",
+    "search_required_message": "Enter at least 2 characters to search for a game.",
+    "search_failed_title": "Search Failed",
+    "no_search_results": "No unassigned games found.",
+    "unknown_year": "Unknown year",
+    "add_failed_title": "Unable to Add Game",
+    "saving": "Saving...",
+    "name_required": "Series name is required."
   },
 
   "admin_dashboard": {
@@ -551,7 +567,9 @@
       "your_memory": "Your Memory *",
       "save": "Save Memory",
       "edit_title": "Edit memory",
-      "delete_title": "Delete memory",
+      "delete_title": "Delete Personal Memory?",
+      "delete_message": "Are you sure you want to permanently delete this memory?",
+      "delete_confirm": "Delete Memory",
       "year_placeholder": "e.g. 1995",
       "input_placeholder": "What makes this game special to you?"
     },
@@ -598,7 +616,11 @@
       "name_placeholder": "e.g. Play Online",
       "url_placeholder": "https://example.com",
       "category_placeholder": "e.g. Cheats, Guide, Play Online",
-      "dialog_edit_title": "Edit Game Link"
+      "dialog_edit_title": "Edit Game Link",
+      "update": "Update",
+      "delete_title": "Delete Game Link?",
+      "delete_message": "Are you sure you want to delete the link \"{name}\"?",
+      "delete_confirm": "Delete Link"
     }
   },
 
@@ -945,7 +967,30 @@
     "appearance_title": "Appearance",
     "appearance_description": "Choose how Retro Game Tracker looks.",
     "theme_dark": "Dark",
-    "theme_light": "Light"
+    "theme_light": "Light",
+    "delete_account_title": "Delete My Account",
+    "delete_account_message": "This permanently deletes your account and game collection. This action cannot be undone. Continue?",
+    "delete_account_confirm": "Continue",
+    "delete_account_cancel": "Cancel",
+    "user_not_authenticated": "User not authenticated.",
+    "administrator": "Administrator",
+    "regular_user": "Regular User",
+    "unavailable": "Unavailable",
+    "load_failed_title": "Failed to Load Profile",
+    "load_failed_message": "Your account information could not be loaded. Please try again.",
+    "no_email": "No email address found.",
+    "reset_email_sent_title": "Password Reset Email Sent",
+    "reset_email_sent_message": "Check your email for a link to change your password.",
+    "reset_failed_title": "Password Reset Failed",
+    "confirm_deletion_title": "Confirm Account Deletion",
+    "confirm_deletion_message": "Enter your account password to permanently delete your account.",
+    "confirm_deletion_button": "Delete My Account",
+    "too_many_attempts": "Too many incorrect attempts. Please try again in 15 minutes.",
+    "incorrect_password": "Incorrect password or account deletion not permitted.",
+    "deletion_failed_message": "Account deletion failed.",
+    "account_deleted_title": "Account Deleted",
+    "account_deleted_message": "Your account and game collection have been deleted.",
+    "deletion_failed_title": "Deletion Failed"
   },
 
   "reset_password": {
@@ -980,7 +1025,9 @@
     "games_by_platform": "Games by Platform",
     "games_by_genre": "Games by Genre",
     "games_by_developer": "Games by Developer",
-    "games_by_release_year": "Games by Release Year"
+    "games_by_release_year": "Games by Release Year",
+    "no_data": "No data available.",
+    "completion_description": "{completed} of {total} games completed"
   },
 
   "terms": {

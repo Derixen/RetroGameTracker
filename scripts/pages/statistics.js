@@ -1,4 +1,5 @@
 import { getGames } from "../api/games.js";
+import { t } from "../i18n.js";
 
 function countBy(games, getKey) {
   const counts = new Map();
@@ -21,8 +22,8 @@ function renderChart(containerId, entries) {
 
   if (!entries.length) {
     const message = document.createElement("p");
-    message.className = "text-sm text-slate-400";
-    message.textContent = "No data available.";
+    message.className = "text-sm text-slate-600 dark:text-slate-400";
+    message.textContent = t("statistics.no_data");
     container.append(message);
     return;
   }
@@ -36,11 +37,11 @@ function renderChart(containerId, entries) {
     header.className = "mb-2 flex justify-between gap-3 text-sm";
 
     const name = document.createElement("span");
-    name.className = "truncate text-slate-300";
+    name.className = "truncate text-slate-600 dark:text-slate-300";
     name.textContent = label;
 
     const value = document.createElement("span");
-    value.className = "font-semibold text-pink-400";
+    value.className = "font-semibold text-pink-600 dark:text-pink-400";
     value.textContent = count;
 
     header.append(name, value);
@@ -72,7 +73,9 @@ export async function initStatistics() {
     });
 
     document.getElementById("stat-total-games").textContent = games.length;
+
     const completed = games.filter((game) => game.completed).length;
+
     const percentage = games.length
       ? Math.round((completed / games.length) * 100)
       : 0;
@@ -92,10 +95,10 @@ export async function initStatistics() {
     const donut = document.getElementById("stat-status-donut");
 
     donut.style.background = `conic-gradient(
-  #4ade80 0deg ${completedAngle}deg,
-  #facc15 ${completedAngle}deg ${completedAngle + progressAngle}deg,
-  #c084fc ${completedAngle + progressAngle}deg 360deg
-)`;
+      #4ade80 0deg ${completedAngle}deg,
+      #facc15 ${completedAngle}deg ${completedAngle + progressAngle}deg,
+      #c084fc ${completedAngle + progressAngle}deg 360deg
+    )`;
 
     document.getElementById("stat-status-total").textContent = games.length;
     document.getElementById("stat-not-played-games").textContent = notStarted;
@@ -104,15 +107,16 @@ export async function initStatistics() {
     legend.replaceChildren();
 
     for (const [label, value, color] of [
-      ["Completed", completed, "#4ade80"],
-      ["In Progress", inProgress, "#facc15"],
-      ["Not Started", notStarted, "#c084fc"],
+      [t("statistics.completed"), completed, "#4ade80"],
+      [t("statistics.playing"), inProgress, "#facc15"],
+      [t("statistics.backlog"), notStarted, "#c084fc"],
     ]) {
       const row = document.createElement("div");
       row.className = "flex items-center justify-between gap-5 text-sm";
 
       const name = document.createElement("span");
-      name.className = "flex items-center gap-2 text-slate-300";
+      name.className =
+        "flex items-center gap-2 text-slate-600 dark:text-slate-300";
 
       const dot = document.createElement("span");
       dot.className = "h-3 w-3 rounded-sm";
@@ -122,6 +126,7 @@ export async function initStatistics() {
 
       const count = document.createElement("span");
       count.className = "font-semibold";
+
       const percent = games.length
         ? Math.round((value / games.length) * 100)
         : 0;
@@ -139,8 +144,11 @@ export async function initStatistics() {
     document.getElementById("stat-progress-percent").textContent =
       `${percentage}%`;
 
-    document.getElementById("stat-progress-description").textContent =
-      `${completed} of ${games.length} games completed`;
+    document.getElementById("stat-progress-description").textContent = t(
+      "statistics.completion_description",
+    )
+      .replace("{completed}", completed)
+      .replace("{total}", games.length);
 
     document.getElementById("stat-favorites").textContent = games.filter(
       (game) => game.favorite,

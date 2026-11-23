@@ -1,5 +1,6 @@
 import { supabase } from "../supabase.js";
 import { confirmDialog } from "../components/confirmDialog.js";
+import { t } from "../i18n.js";
 
 export async function initProfile() {
   const emailElement = document.getElementById("profile-email");
@@ -13,7 +14,7 @@ export async function initProfile() {
     } = await supabase.auth.getUser();
 
     if (userError) throw userError;
-    if (!user) throw new Error("User not authenticated.");
+    if (!user) throw new Error(t("profile.user_not_authenticated"));
 
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
@@ -26,10 +27,12 @@ export async function initProfile() {
     emailElement.textContent = user.email ?? "—";
 
     roleElement.textContent =
-      profile.role === "admin" ? "Administrator" : "Regular User";
+      profile.role === "admin"
+        ? t("profile.administrator")
+        : t("profile.regular_user");
 
     createdElement.textContent = new Date(user.created_at).toLocaleDateString(
-      "en-GB",
+      document.documentElement.lang || "en",
       {
         day: "numeric",
         month: "long",
@@ -39,14 +42,13 @@ export async function initProfile() {
   } catch (error) {
     console.error("Failed to load profile:", error);
 
-    emailElement.textContent = "Unavailable";
-    roleElement.textContent = "Unavailable";
-    createdElement.textContent = "Unavailable";
+    emailElement.textContent = t("profile.unavailable");
+    roleElement.textContent = t("profile.unavailable");
+    createdElement.textContent = t("profile.unavailable");
 
     await confirmDialog({
-      title: "Failed to Load Profile",
-      message:
-        "Your account information could not be loaded. Please try again.",
+      title: t("profile.load_failed_title"),
+      message: t("profile.load_failed_message"),
       alertOnly: true,
     });
   }
@@ -66,7 +68,7 @@ export async function initProfile() {
 
       if (userError) throw userError;
       if (!user?.email) {
-        throw new Error("No email address found.");
+        throw new Error(t("profile.no_email"));
       }
 
       const redirectTo = new URL("./", window.location.href.split("#")[0]).href;
@@ -78,15 +80,15 @@ export async function initProfile() {
       if (error) throw error;
 
       await confirmDialog({
-        title: "Password Reset Email Sent",
-        message: "Check your email for a link to change your password.",
+        title: t("profile.reset_email_sent_title"),
+        message: t("profile.reset_email_sent_message"),
         alertOnly: true,
       });
     } catch (error) {
       console.error("Password reset failed:", error);
 
       await confirmDialog({
-        title: "Password Reset Failed",
+        title: t("profile.reset_failed_title"),
         message: error.message,
         alertOnly: true,
       });
@@ -99,21 +101,19 @@ export async function initProfile() {
 
   deleteAccountButton.addEventListener("click", async () => {
     const confirmed = await confirmDialog({
-      title: "Delete My Account",
-      message:
-        "This permanently deletes your account and game collection. This action cannot be undone. Continue?",
-      confirmText: "Continue",
-      cancelText: "Cancel",
+      title: t("profile.delete_account_title"),
+      message: t("profile.delete_account_message"),
+      confirmText: t("profile.delete_account_confirm"),
+      cancelText: t("profile.delete_account_cancel"),
     });
 
     if (!confirmed) return;
 
     const password = await confirmDialog({
-      title: "Confirm Account Deletion",
-      message:
-        "Enter your account password to permanently delete your account.",
-      confirmText: "Delete My Account",
-      cancelText: "Cancel",
+      title: t("profile.confirm_deletion_title"),
+      message: t("profile.confirm_deletion_message"),
+      confirmText: t("profile.confirm_deletion_button"),
+      cancelText: t("profile.delete_account_cancel"),
       passwordInput: true,
     });
 
@@ -131,28 +131,25 @@ export async function initProfile() {
         const response = error.context;
 
         if (response?.status === 429) {
-          throw new Error(
-            "Too many incorrect attempts. Please try again in 15 minutes.",
-          );
+          throw new Error(t("profile.too_many_attempts"));
         }
 
         if (response?.status === 403) {
-          throw new Error(
-            "Incorrect password or account deletion not permitted.",
-          );
+          throw new Error(t("profile.incorrect_password"));
         }
 
         throw error;
       }
+
       if (!data?.success) {
-        throw new Error(data?.error ?? "Account deletion failed.");
+        throw new Error(data?.error ?? t("profile.deletion_failed_message"));
       }
 
       await supabase.auth.signOut();
 
       await confirmDialog({
-        title: "Account Deleted",
-        message: "Your account and game collection have been deleted.",
+        title: t("profile.account_deleted_title"),
+        message: t("profile.account_deleted_message"),
         alertOnly: true,
       });
 
@@ -161,7 +158,7 @@ export async function initProfile() {
       console.error("Account deletion failed:", error);
 
       await confirmDialog({
-        title: "Deletion Failed",
+        title: t("profile.deletion_failed_title"),
         message: error.message,
         alertOnly: true,
       });

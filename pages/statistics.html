@@ -1,47 +1,72 @@
 <section class="grid grid-cols-2 gap-3 lg:grid-cols-5 mb-8">
   <div class="game-card static-card p-3">
-    <p class="text-xs text-slate-400" data-i18n="statistics.games">Games</p>
+    <p
+      class="text-xs text-slate-600 dark:text-slate-400"
+      data-i18n="statistics.games"
+    >
+      Games
+    </p>
     <p id="stat-total-games" class="mt-1 text-2xl font-bold">0</p>
   </div>
 
   <div class="game-card static-card p-3">
-    <p class="text-xs text-green-400" data-i18n="statistics.completed">
+    <p
+      class="text-xs text-green-600 dark:text-green-400"
+      data-i18n="statistics.completed"
+    >
       Completed
     </p>
-    <p id="stat-completed-games" class="mt-1 text-2xl font-bold text-green-400">
+    <p
+      id="stat-completed-games"
+      class="mt-1 text-2xl font-bold text-green-600 dark:text-green-400"
+    >
       0
     </p>
   </div>
 
   <div class="game-card static-card p-3">
-    <p class="text-xs text-yellow-400" data-i18n="statistics.playing">
+    <p
+      class="text-xs text-yellow-600 dark:text-yellow-400"
+      data-i18n="statistics.playing"
+    >
       Playing
     </p>
     <p
       id="stat-in-progress-games"
-      class="mt-1 text-2xl font-bold text-yellow-400"
+      class="mt-1 text-2xl font-bold text-yellow-600 dark:text-yellow-400"
     >
       0
     </p>
   </div>
 
   <div class="game-card static-card p-3">
-    <p class="text-xs text-purple-400" data-i18n="statistics.backlog">
+    <p
+      class="text-xs text-purple-600 dark:text-purple-400"
+      data-i18n="statistics.backlog"
+    >
       Backlog
     </p>
     <p
       id="stat-not-played-games"
-      class="mt-1 text-2xl font-bold text-purple-400"
+      class="mt-1 text-2xl font-bold text-purple-600 dark:text-purple-400"
     >
       0
     </p>
   </div>
 
   <div class="game-card static-card p-3">
-    <p class="text-xs text-red-500" data-i18n="statistics.favorites">
+    <p
+      class="text-xs text-red-600 dark:text-red-400"
+      data-i18n="statistics.favorites"
+    >
       Favorites
     </p>
-    <p id="stat-favorites" class="mt-1 text-2xl font-bold text-red-500">0</p>
+    <p
+      id="stat-favorites"
+      class="mt-1 text-2xl font-bold text-red-600 dark:text-red-400"
+    >
+      0
+    </p>
   </div>
 </section>
 
@@ -60,7 +85,10 @@
           class="stat-donut-center absolute inset-6 flex flex-col items-center justify-center rounded-full"
         >
           <span id="stat-status-total" class="text-3xl font-bold">0</span>
-          <span class="text-xs text-slate-400" data-i18n="statistics.games">
+          <span
+            class="text-xs text-slate-600 dark:text-slate-400"
+            data-i18n="statistics.games"
+          >
             Games
           </span>
         </div>
@@ -90,7 +118,10 @@
       <span id="stat-progress-percent" class="text-3xl font-bold">0%</span>
     </div>
 
-    <p id="stat-progress-description" class="mt-4 text-sm text-slate-400">
+    <p
+      id="stat-progress-description"
+      class="mt-4 text-sm text-slate-600 dark:text-slate-400"
+    >
       0 of 0 games completed
     </p>
   </div>

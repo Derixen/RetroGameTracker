@@ -1080,9 +1080,9 @@ export async function initGameDetails(params = new URLSearchParams()) {
       memoryDelete.addEventListener("click", async () => {
         if (!currentMemory) return;
         const confirmed = await confirmDialog({
-          title: "Delete Personal Memory?",
-          message: "Are you sure you want to permanently delete this memory?",
-          confirmText: "Delete Memory",
+          title: t("game_details.memory.delete_title"),
+          message: t("game_details.memory.delete_message"),
+          confirmText: t("game_details.memory.delete_confirm"),
         });
         if (!confirmed) return;
         memoryDelete.disabled = true;
@@ -1181,7 +1181,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           // Edit link
           const editButton = document.createElement("button");
           editButton.type = "button";
-          editButton.title = "Edit link";
+          editButton.title = t("game_details.common.edit");
           editButton.className =
             "inline-flex items-center gap-2 rounded-lg " +
             "border border-cyan-500/30 px-3 py-2 text-sm " +
@@ -1191,7 +1191,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           editIcon.setAttribute("data-lucide", "pencil");
           editIcon.className = "h-4 w-4";
           const editLabel = document.createElement("span");
-          editLabel.textContent = "Edit";
+          editLabel.textContent = t("game_details.common.edit");
           editButton.append(editIcon, editLabel);
           editButton.addEventListener("click", () => {
             editingGameLinkId = link.id;
@@ -1205,7 +1205,7 @@ export async function initGameDetails(params = new URLSearchParams()) {
           // Delete link
           const deleteButton = document.createElement("button");
           deleteButton.type = "button";
-          deleteButton.title = "Delete link";
+          deleteButton.title = t("game_details.common.delete");
           deleteButton.className =
             "inline-flex items-center gap-2 rounded-lg " +
             "border border-red-500/30 px-3 py-2 text-sm " +
@@ -1215,15 +1215,16 @@ export async function initGameDetails(params = new URLSearchParams()) {
           deleteIcon.setAttribute("data-lucide", "trash-2");
           deleteIcon.className = "h-4 w-4";
           const deleteLabel = document.createElement("span");
-          deleteLabel.textContent = "Delete";
+          deleteLabel.textContent = t("game_details.common.delete");
           deleteButton.append(deleteIcon, deleteLabel);
           deleteButton.addEventListener("click", async () => {
             const confirmed = await confirmDialog({
-              title: "Delete Game Link?",
-              message:
-                `Are you sure you want to permanently ` +
-                `delete "${link.name}"?`,
-              confirmText: "Delete Link",
+              title: t("game_details.links.delete_title"),
+              message: t("game_details.links.delete_message").replace(
+                "{name}",
+                link.name,
+              ),
+              confirmText: t("game_details.links.delete_confirm"),
             });
             if (!confirmed) return;
             deleteButton.disabled = true;
