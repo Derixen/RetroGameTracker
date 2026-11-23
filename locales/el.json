@@ -238,6 +238,7 @@
   "admin_users": {
     "title": "Εγγεγραμμένοι χρήστες",
     "description": "Διαχειριστείτε λογαριασμούς, δικαιώματα και συλλογές χρηστών.",
+    "delete": "Επανάληψη διαγραφής",
     "column_email": "Email",
     "column_registered": "Εγγραφή",
     "column_games": "Παιχνίδια",
@@ -651,6 +652,9 @@
     "breakdown_top_three": "(Κορυφαίες 3)",
     "breakdown_description": "Πώς κατανέμεται η συλλογή σας στις πλατφόρμες",
     "loading_platforms": "Φόρτωση πλατφορμών...",
+    "platform_game_count": "{count} παιχνίδια ({percentage}%)",
+    "recommendation_in_progress": "Παίζεις ήδη αυτό το παιχνίδι. Έτοιμος να συνεχίσεις;",
+    "recommendation_not_started": "Αυτή η περιπέτεια περιμένει να την ανακαλύψεις!",
     "recommendation_eyebrow": "Η ΕΠΟΜΕΝΗ ΣΑΣ ΠΕΡΙΠΕΤΕΙΑ",
     "recommendation_heading": "Τι να παίξω στη συνέχεια;",
     "recommendation_subtitle": "Ανακαλύψτε ξανά ένα παιχνίδι από τη συλλογή σας",

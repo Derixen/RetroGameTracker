@@ -137,8 +137,8 @@ function renderUsersTable(users) {
           : "Permanently delete user";
 
     deleteButton.textContent = user.deletion_started_at
-      ? "Retry Delete"
-      : "Delete";
+      ? t("admin_users.delete")
+      : t("common.delete");
 
     deleteButton.addEventListener("click", async () => {
       const confirmed = await confirmDialog({

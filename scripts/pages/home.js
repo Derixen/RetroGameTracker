@@ -1,5 +1,6 @@
 import { getGames } from "../api/games.js";
 import { createGameCard } from "../components/gameCard.js";
+import { t } from "../i18n.js";
 
 export async function initHome() {
   const controller = new AbortController();
@@ -147,8 +148,8 @@ export async function initHome() {
       year.textContent = game.release_year || "";
 
       description.textContent = game.in_progress
-        ? "You're already playing this one. Ready to continue?"
-        : "This adventure is waiting to be discovered!";
+        ? t("home.recommendation_in_progress")
+        : t("home.recommendation_not_started");
 
       cover.hidden = !game.cover_url;
 
@@ -223,7 +224,10 @@ export async function initHome() {
       name.textContent = platform;
 
       const count = document.createElement("span");
-      count.textContent = `${amount} games (${percentage.toFixed(0)}%)`;
+      count.textContent = t("home.platform_game_count", {
+        count: amount,
+        percentage: percentage.toFixed(0),
+      });
 
       header.append(name, count);
 

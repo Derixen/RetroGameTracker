@@ -246,6 +246,7 @@
   "admin_users": {
     "title": "Registered Users",
     "description": "Manage registered accounts, permissions, and user collections.",
+    "delete": "Retry Delete",
     "column_email": "Email",
     "column_registered": "Registered",
     "column_games": "Games",
@@ -671,6 +672,9 @@
     "breakdown_top_three": "(Top 3)",
     "breakdown_description": "How your collection is distributed across platforms",
     "loading_platforms": "Loading platforms...",
+    "platform_game_count": "{count} games ({percentage}%)",
+    "recommendation_in_progress": "You're already playing this one. Ready to continue?",
+    "recommendation_not_started": "This adventure is waiting to be discovered!",
     "recommendation_eyebrow": "YOUR NEXT ADVENTURE",
     "recommendation_heading": "What Should I Play Next?",
     "recommendation_subtitle": "Rediscover a game from your collection",

@@ -237,6 +237,7 @@
   "admin_users": {
     "title": "Regisztrált felhasználók",
     "description": "Regisztrált fiókok, jogosultságok és felhasználói gyűjtemények kezelése.",
+    "delete": "Törlés újrapróbálása",
     "column_email": "E-mail-cím",
     "column_registered": "Regisztráció",
     "column_games": "Játékok",
@@ -653,6 +654,9 @@
     "breakdown_top_three": "(Top 3)",
     "breakdown_description": "A gyűjteményed megoszlása platformok szerint",
     "loading_platforms": "Platformok betöltése...",
+    "platform_game_count": "{count} játék ({percentage}%)",
+    "recommendation_in_progress": "Ezzel a játékkal már játszol. Készen állsz a folytatásra?",
+    "recommendation_not_started": "Ez a kaland csak arra vár, hogy felfedezd!",
     "recommendation_eyebrow": "A KÖVETKEZŐ KALANDOD",
     "recommendation_heading": "Mivel játsszak legközelebb?",
     "recommendation_subtitle": "Fedezz fel újra egy játékot a gyűjteményedből",
