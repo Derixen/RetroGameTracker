@@ -147,12 +147,13 @@ export async function initGames(params = new URLSearchParams()) {
 
     // Name
     const nameCell = document.createElement("td");
-    nameCell.className = "px-4 py-3 font-semibold text-sky-400";
+    nameCell.className =
+      "px-4 py-3 font-semibold text-sky-600 dark:text-sky-400";
     nameCell.textContent = game.title;
 
     // Platform
     const platformCell = document.createElement("td");
-    platformCell.className = "px-4 py-3 text-slate-300";
+    platformCell.className = "px-4 py-3 text-slate-600 dark:text-slate-300";
     platformCell.textContent = game.platform || "Unknown";
 
     // Status
@@ -164,20 +165,20 @@ export async function initGames(params = new URLSearchParams()) {
 
     if (game.completed) {
       status.textContent = "✓ Completed";
-      status.classList.add("text-green-400");
+      status.classList.add("text-emerald-700", "dark:text-green-400");
     } else if (game.in_progress) {
       status.textContent = "◷ In Progress";
-      status.classList.add("text-amber-400");
+      status.classList.add("text-amber-700", "dark:text-amber-400");
     } else {
       status.textContent = "Not Played";
-      status.classList.add("text-slate-400");
+      status.classList.add("text-slate-500", "dark:text-slate-400");
     }
 
     statusCell.append(status);
 
     // Year
     const yearCell = document.createElement("td");
-    yearCell.className = "px-4 py-3 text-slate-400";
+    yearCell.className = "px-4 py-3 text-slate-600 dark:text-slate-400";
     yearCell.textContent = game.year ?? "—";
 
     row.append(nameCell, platformCell, statusCell, yearCell);
