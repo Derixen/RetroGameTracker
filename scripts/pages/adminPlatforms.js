@@ -18,7 +18,9 @@ export async function initAdminPlatforms() {
     const searchInput = document.getElementById("platform-search");
     let searchQuery = "";
 
-    searchInput.addEventListener("input", () => {
+    searchInput.addEventListener("input", (event) => {
+      if (!event.isTrusted) return;
+
       searchQuery = searchInput.value.trim().toLowerCase();
       renderPlatforms();
     });
