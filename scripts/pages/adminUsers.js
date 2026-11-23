@@ -1,4 +1,6 @@
 import { supabase } from "../supabase.js";
+import { t } from "../i18n.js";
+import { confirmDialog } from "../components/confirmDialog.js";
 
 export async function initAdminUsers() {
   const { data, error } = await supabase.functions.invoke("admin-dashboard");
@@ -62,9 +64,8 @@ function renderUsersTable(users) {
 
     const editButton = document.createElement("button");
     editButton.type = "button";
-    editButton.className =
-      "mr-3 font-semibold text-cyan-400 hover:text-cyan-300";
-    editButton.textContent = "Edit";
+    editButton.className = "btn-table-edit";
+    editButton.textContent = t("admin_users.edit");
     editButton.disabled =
       user.role === "admin" || Boolean(user.deletion_started_at);
     editButton.classList.toggle("opacity-30", editButton.disabled);
@@ -77,11 +78,13 @@ function renderUsersTable(users) {
         : "Promote user to ADMIN";
 
     editButton.addEventListener("click", async () => {
-      const confirmed = confirm(
-        `Promote ${user.email} to ADMIN?\n\n` +
-          "This will grant the user administrative privileges.",
-      );
-
+      const confirmed = await confirmDialog({
+        title: t("admin_users.promote_title"),
+        message: t("admin_users.promote_message", {
+          email: user.email,
+        }),
+        confirmText: t("admin_users.promote_confirm"),
+      });
       if (!confirmed) return;
 
       editButton.disabled = true;
@@ -99,19 +102,29 @@ function renderUsersTable(users) {
 
       if (error || !data?.success) {
         console.error("Promotion failed:", error, data);
-        alert(data?.error || "Failed to promote user.");
+        await confirmDialog({
+          title: t("admin_users.promote_failed_title"),
+          message: data?.error || t("admin_users.promote_failed_message"),
+          alertOnly: true,
+        });
         editButton.disabled = false;
         return;
       }
 
-      alert(`${user.email} is now an ADMIN.`);
+      await confirmDialog({
+        title: t("admin_users.promote_success_title"),
+        message: t("admin_users.promote_success_message", {
+          email: user.email,
+        }),
+        alertOnly: true,
+      });
       await initAdminUsers();
     });
 
     const deleteButton = document.createElement("button");
     deleteButton.type = "button";
-    deleteButton.className = "font-semibold text-red-400 hover:text-red-300";
-    deleteButton.textContent = "Delete";
+    deleteButton.className = "btn-table-delete";
+    deleteButton.textContent = t("common.delete");
     deleteButton.disabled = user.role === "admin";
     deleteButton.classList.toggle("opacity-30", deleteButton.disabled);
     deleteButton.classList.toggle("cursor-not-allowed", deleteButton.disabled);
@@ -128,12 +141,14 @@ function renderUsersTable(users) {
       : "Delete";
 
     deleteButton.addEventListener("click", async () => {
-      const confirmed = confirm(
-        `Permanently delete ${user.email}?\n\n` +
-          `This will delete their account and ${user.games} games, ` +
-          "along with their series and completion records.\n\n" +
-          "THIS CANNOT BE UNDONE.",
-      );
+      const confirmed = await confirmDialog({
+        title: t("admin_users.delete_title"),
+        message: t("admin_users.delete_message", {
+          email: user.email,
+          count: user.games,
+        }),
+        confirmText: t("admin_users.delete_confirm"),
+      });
 
       if (!confirmed) return;
 
@@ -151,18 +166,30 @@ function renderUsersTable(users) {
 
       if (error || !data?.success) {
         console.error("Deletion failed:", error, data);
-        alert(
-          data?.error ||
-            "Account deletion failed or is incomplete. Please retry.",
-        );
+        await confirmDialog({
+          title: t("admin_users.delete_failed_title"),
+          message: data?.error || t("admin_users.delete_failed_message"),
+          alertOnly: true,
+        });
         await initAdminUsers();
         return;
       }
 
-      alert(`${user.email} has been permanently deleted.`);
+      await confirmDialog({
+        title: t("admin_users.delete_success_title"),
+        message: t("admin_users.delete_success_message", {
+          email: user.email,
+        }),
+        alertOnly: true,
+      });
       await initAdminUsers();
     });
 
-    actionsCell.append(editButton, deleteButton);
+    const actions = document.createElement("div");
+    actions.className = "flex items-center justify-end gap-2 whitespace-nowrap";
+
+    actions.append(editButton, deleteButton);
+    actionsCell.append(actions);
+    row.append(actionsCell);
   }
 }

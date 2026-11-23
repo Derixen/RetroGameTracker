@@ -197,7 +197,10 @@
     "column_year": "Jahr",
     "column_developer": "Entwickler",
     "column_actions": "Aktionen",
-    "empty": "Keine Spiele gefunden."
+    "empty": "Keine Spiele gefunden.",
+    "delete_title": "Spiel löschen?",
+    "delete_message": "Möchtest du \"{title}\" wirklich löschen?\n\nDadurch wird auch der Abschlussverlauf gelöscht. Diese Aktion kann nicht rückgängig gemacht werden.",
+    "delete_confirm": "Spiel löschen"
   },
   "admin_platforms": {
     "eyebrow": "SAMMLUNGSVERWALTUNG",
@@ -210,7 +213,10 @@
     "column_release_year": "Erscheinungsjahr",
     "column_cover_image": "Coverbild",
     "column_actions": "Aktionen",
-    "empty": "Keine Plattformen gefunden."
+    "empty": "Keine Plattformen gefunden.",
+    "delete_title": "Plattform löschen?",
+    "delete_message": "Möchtest du \"{name}\" wirklich löschen?\n\nDiese Aktion kann nicht rückgängig gemacht werden.",
+    "delete_confirm": "Plattform löschen"
   },
   "admin_series": {
     "eyebrow": "SAMMLUNGSVERWALTUNG",
@@ -221,7 +227,13 @@
     "column_description": "Beschreibung",
     "column_games": "Spiele",
     "column_actions": "Aktionen",
-    "empty": "Keine Spielereihen gefunden."
+    "empty": "Keine Spielereihen gefunden.",
+    "cannot_delete_title": "Spielereihe kann nicht gelöscht werden",
+    "cannot_delete_message": "\"{name}\" kann nicht gelöscht werden, da {count} Spiel(e) dieser Reihe zugeordnet sind.",
+    "delete_title": "Spielereihe löschen?",
+    "delete_message": "Möchtest du \"{name}\" wirklich löschen?\n\nDiese Aktion kann nicht rückgängig gemacht werden.",
+    "delete_confirm": "Reihe löschen",
+    "delete_failed_title": "Spielereihe konnte nicht gelöscht werden"
   },
   "admin_users": {
     "title": "Registrierte Benutzer",
@@ -231,7 +243,22 @@
     "column_games": "Spiele",
     "column_role": "Rolle",
     "column_actions": "Aktionen",
-    "loading": "Benutzer werden geladen ..."
+    "edit": "Zum Admin machen",
+    "loading": "Benutzer werden geladen ...",
+    "promote_title": "Benutzer zum Administrator machen?",
+    "promote_message": "{email} zum ADMIN ernennen?\n\nDadurch erhält der Benutzer Administratorrechte.",
+    "promote_confirm": "Zum Admin machen",
+    "promote_failed_title": "Ernennung fehlgeschlagen",
+    "promote_failed_message": "Benutzer konnte nicht zum Administrator gemacht werden.",
+    "promote_success_title": "Benutzer ernannt",
+    "promote_success_message": "{email} ist jetzt ADMIN.",
+    "delete_title": "Benutzer dauerhaft löschen?",
+    "delete_message": "{email} dauerhaft löschen?\n\nDadurch werden das Konto und {count} Spiele sowie die Spielereihen und Abschlussdaten gelöscht.\n\nDIES KANN NICHT RÜCKGÄNGIG GEMACHT WERDEN.",
+    "delete_confirm": "Benutzer löschen",
+    "delete_failed_title": "Löschen fehlgeschlagen",
+    "delete_failed_message": "Die Kontolöschung ist fehlgeschlagen oder unvollständig. Bitte versuche es erneut.",
+    "delete_success_title": "Benutzer gelöscht",
+    "delete_success_message": "{email} wurde dauerhaft gelöscht."
   },
   "attributions": {
     "title": "Quellenangaben und Danksagungen",

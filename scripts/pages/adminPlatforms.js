@@ -1,6 +1,7 @@
 import { getPlatforms } from "../api/platforms.js";
 import { supabase } from "../supabase.js";
 import { confirmDialog } from "../components/confirmDialog.js";
+import { t } from "../i18n.js";
 
 export async function initAdminPlatforms() {
   const tableBody = document.getElementById("admin-platforms-list");
@@ -141,16 +142,15 @@ export async function initAdminPlatforms() {
         actionsCell.className = "px-4 py-4 text-right";
 
         const editButton = document.createElement("button");
-        editButton.className = "mr-3 text-pink-400 hover:text-pink-300";
-        editButton.textContent = "Edit";
+        editButton.className = "btn-table-edit";
+        editButton.textContent = t("common.edit");
         editButton.addEventListener("click", () => {
           window.location.hash = `#/admin/edit-platform?id=${platform.id}`;
         });
 
         const deleteButton = document.createElement("button");
-        deleteButton.className =
-          "cursor-pointer text-red-400 hover:text-red-300";
-        deleteButton.textContent = "Delete";
+        deleteButton.className = "btn-table-delete";
+        deleteButton.textContent = t("common.delete");
 
         deleteButton.addEventListener("click", async () => {
           deleteButton.disabled = true;
@@ -174,16 +174,17 @@ export async function initAdminPlatforms() {
             }
 
             const confirmed = await confirmDialog({
-              title: "Delete Platform?",
-              message: `Are you sure you want to delete "${platform.name}"?\n\nThis action cannot be undone.`,
-              confirmText: "Delete Platform",
+              title: t("admin_platforms.delete_title"),
+              message: t("admin_platforms.delete_message", {
+                name: platform.name,
+              }),
+              confirmText: t("admin_platforms.delete_confirm"),
+              cancelText: t("common.cancel"),
             });
 
             if (!confirmed) return;
 
-            if (!confirmed) return;
-
-            deleteButton.textContent = "Deleting...";
+            deleteButton.textContent = t("common.deleting");
 
             const { data, error } = await supabase
               .from("platforms")
@@ -201,9 +202,8 @@ export async function initAdminPlatforms() {
 
             row.remove();
 
-            if (!tableBody.children.length) {
-              emptyMessage.hidden = false;
-            }
+            platforms = platforms.filter((p) => p.id !== platform.id);
+            renderPlatforms();
           } catch (error) {
             console.error("Failed to delete platform:", error);
 
@@ -214,11 +214,16 @@ export async function initAdminPlatforms() {
             });
           } finally {
             deleteButton.disabled = false;
-            deleteButton.textContent = "Delete";
+            deleteButton.textContent = t("common.delete");
           }
         });
 
-        actionsCell.append(editButton, deleteButton);
+        const actions = document.createElement("div");
+        actions.className =
+          "flex items-center justify-end gap-2 whitespace-nowrap";
+
+        actions.append(editButton, deleteButton);
+        actionsCell.append(actions);
         row.append(actionsCell);
 
         tableBody.append(row);

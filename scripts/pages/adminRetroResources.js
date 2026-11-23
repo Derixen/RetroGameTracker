@@ -90,14 +90,14 @@ export async function initAdminRetroResources() {
 
       const editButton = document.createElement("button");
       editButton.type = "button";
-      editButton.className = "btn-secondary px-3 py-2 text-xs";
+      editButton.className = "btn-table-edit";
       editButton.textContent = t("admin_retro_resources.edit");
 
       editButton.addEventListener("click", () => openDialog(resource));
 
       const deleteButton = document.createElement("button");
       deleteButton.type = "button";
-      deleteButton.className = "btn-secondary px-3 py-2 text-xs text-red-400";
+      deleteButton.className = "btn-table-delete";
       deleteButton.textContent = t("admin_retro_resources.delete");
 
       deleteButton.addEventListener("click", async () => {

@@ -56,7 +56,7 @@ export async function initAdminSeries() {
 
       const editButton = document.createElement("button");
       editButton.type = "button";
-      editButton.className = "admin-action-button admin-action-edit";
+      editButton.className = "btn-table-edit";
       editButton.textContent = t("common.edit");
 
       editButton.addEventListener("click", () => {
@@ -65,7 +65,7 @@ export async function initAdminSeries() {
 
       const deleteButton = document.createElement("button");
       deleteButton.type = "button";
-      deleteButton.className = "admin-action-button admin-action-delete";
+      deleteButton.className = "btn-table-delete";
       deleteButton.textContent = t("common.delete");
 
       deleteButton.addEventListener("click", async () => {
@@ -81,19 +81,23 @@ export async function initAdminSeries() {
 
           if (count > 0) {
             await confirmDialog({
-              title: "Cannot Delete Game Series",
-              message: `"${item.name}" cannot be deleted because ${count} game(s) belong to this series.`,
+              title: t("admin_series.cannot_delete_title"),
+              message: t("admin_series.cannot_delete_message", {
+                name: item.name,
+                count,
+              }),
               alertOnly: true,
             });
             return;
           }
 
           const confirmed = await confirmDialog({
-            title: "Delete Game Series?",
-            message: `Are you sure you want to delete "${item.name}"?\n\nThis action cannot be undone.`,
-            confirmText: "Delete Series",
+            title: t("admin_series.delete_title"),
+            message: t("admin_series.delete_message", {
+              name: item.name,
+            }),
+            confirmText: t("admin_series.delete_confirm"),
           });
-
           if (!confirmed) return;
 
           deleteButton.textContent = t("common.deleting");
@@ -119,7 +123,7 @@ export async function initAdminSeries() {
           console.error("Failed to delete series:", error);
 
           await confirmDialog({
-            title: "Failed to Delete Game Series",
+            title: t("admin_series.delete_failed_title"),
             message: error.message,
             alertOnly: true,
           });

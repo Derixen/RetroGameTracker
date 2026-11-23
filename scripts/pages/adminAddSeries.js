@@ -217,7 +217,7 @@ export async function initAdminAddSeries(params = new URLSearchParams()) {
       const { data: games, error } = await supabase
         .from("games")
         .select("id, title, release_year, series_id")
-        .ilike("title", `%${query.replace(/[%_\\]/g, "\\$&")}%`)
+        .ilike("title", `%${query}%`)
         .is("series_id", null)
         .order("title")
         .limit(20);

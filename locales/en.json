@@ -201,7 +201,10 @@
     "column_year": "Year",
     "column_developer": "Developer",
     "column_actions": "Actions",
-    "empty": "No games found."
+    "empty": "No games found.",
+    "delete_title": "Delete Game?",
+    "delete_message": "Are you sure you want to delete \"{title}\"?\n\nThis will also delete its completion history. This action cannot be undone.",
+    "delete_confirm": "Delete Game"
   },
 
   "admin_platforms": {
@@ -215,7 +218,10 @@
     "column_release_year": "Release Year",
     "column_cover_image": "Cover Image",
     "column_actions": "Actions",
-    "empty": "No platforms found."
+    "empty": "No platforms found.",
+    "delete_title": "Delete Platform?",
+    "delete_message": "Are you sure you want to delete \"{name}\"?\n\nThis action cannot be undone.",
+    "delete_confirm": "Delete Platform"
   },
 
   "admin_series": {
@@ -227,7 +233,14 @@
     "column_description": "Description",
     "column_games": "Games",
     "column_actions": "Actions",
-    "empty": "No game series found."
+    "empty": "No game series found.",
+
+    "cannot_delete_title": "Cannot Delete Game Series",
+    "cannot_delete_message": "\"{name}\" cannot be deleted because {count} game(s) belong to this series.",
+    "delete_title": "Delete Game Series?",
+    "delete_message": "Are you sure you want to delete \"{name}\"?\n\nThis action cannot be undone.",
+    "delete_confirm": "Delete Series",
+    "delete_failed_title": "Failed to Delete Game Series"
   },
 
   "admin_users": {
@@ -238,7 +251,22 @@
     "column_games": "Games",
     "column_role": "Role",
     "column_actions": "Actions",
-    "loading": "Loading users..."
+    "edit": "Promote",
+    "loading": "Loading users...",
+    "promote_title": "Promote User?",
+    "promote_message": "Promote {email} to ADMIN?\n\nThis will grant the user administrative privileges.",
+    "promote_confirm": "Promote User",
+    "promote_failed_title": "Promotion Failed",
+    "promote_failed_message": "Failed to promote user.",
+    "promote_success_title": "User Promoted",
+    "promote_success_message": "{email} is now an ADMIN.",
+    "delete_title": "Permanently Delete User?",
+    "delete_message": "Permanently delete {email}?\n\nThis will delete their account and {count} games, along with their series and completion records.\n\nTHIS CANNOT BE UNDONE.",
+    "delete_confirm": "Delete User",
+    "delete_failed_title": "Deletion Failed",
+    "delete_failed_message": "Account deletion failed or is incomplete. Please retry.",
+    "delete_success_title": "User Deleted",
+    "delete_success_message": "{email} has been permanently deleted."
   },
 
   "attributions": {

@@ -99,7 +99,7 @@ export async function initAdminGames() {
 
         const editButton = document.createElement("button");
         editButton.type = "button";
-        editButton.className = "admin-action-button admin-action-edit";
+        editButton.className = "btn-table-edit";
         editButton.textContent = t("common.edit");
 
         editButton.addEventListener("click", () => {
@@ -108,14 +108,16 @@ export async function initAdminGames() {
 
         const deleteButton = document.createElement("button");
         deleteButton.type = "button";
-        deleteButton.className = "admin-action-button admin-action-delete";
+        deleteButton.className = "btn-table-delete";
         deleteButton.textContent = t("common.delete");
 
         deleteButton.addEventListener("click", async () => {
           const confirmed = await confirmDialog({
-            title: "Delete Game?",
-            message: `Are you sure you want to delete "${game.title}"?\n\nThis will also delete its completion history. This action cannot be undone.`,
-            confirmText: "Delete Game",
+            title: t("admin_games.delete_title"),
+            message: t("admin_games.delete_message", {
+              title: game.title,
+            }),
+            confirmText: t("admin_games.delete_confirm"),
           });
 
           if (!confirmed) return;
@@ -156,7 +158,7 @@ export async function initAdminGames() {
             console.error("Failed to delete game:", error);
 
             await confirmDialog({
-              title: "Failed to delete game",
+              title: t("admin_games.delete_failed_title"),
               message: error.message,
               alertOnly: true,
             });

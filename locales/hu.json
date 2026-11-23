@@ -196,7 +196,10 @@
     "column_year": "Év",
     "column_developer": "Fejlesztő",
     "column_actions": "Műveletek",
-    "empty": "Nem található játék."
+    "empty": "Nem található játék.",
+    "delete_title": "Játék törlése?",
+    "delete_message": "Biztosan törölni szeretnéd a(z) \"{title}\" játékot?\n\nEzzel a játék teljesítési előzményei is törlődnek. Ez a művelet nem vonható vissza.",
+    "delete_confirm": "Játék törlése"
   },
   "admin_platforms": {
     "eyebrow": "GYŰJTEMÉNY KEZELÉSE",
@@ -209,7 +212,10 @@
     "column_release_year": "Megjelenés éve",
     "column_cover_image": "Borítókép",
     "column_actions": "Műveletek",
-    "empty": "Nem található platform."
+    "empty": "Nem található platform.",
+    "delete_title": "Platform törlése?",
+    "delete_message": "Biztosan törölni szeretnéd a(z) \"{name}\" platformot?\n\nEz a művelet nem vonható vissza.",
+    "delete_confirm": "Platform törlése"
   },
   "admin_series": {
     "eyebrow": "GYŰJTEMÉNY KEZELÉSE",
@@ -220,7 +226,13 @@
     "column_description": "Leírás",
     "column_games": "Játékok",
     "column_actions": "Műveletek",
-    "empty": "Nem található játéksorozat."
+    "empty": "Nem található játéksorozat.",
+    "cannot_delete_title": "A játéksorozat nem törölhető",
+    "cannot_delete_message": "A(z) \"{name}\" sorozat nem törölhető, mert {count} játék tartozik hozzá.",
+    "delete_title": "Játéksorozat törlése?",
+    "delete_message": "Biztosan törölni szeretnéd a(z) \"{name}\" sorozatot?\n\nEz a művelet nem vonható vissza.",
+    "delete_confirm": "Sorozat törlése",
+    "delete_failed_title": "Nem sikerült törölni a játéksorozatot"
   },
   "admin_users": {
     "title": "Regisztrált felhasználók",
@@ -230,7 +242,22 @@
     "column_games": "Játékok",
     "column_role": "Szerepkör",
     "column_actions": "Műveletek",
-    "loading": "Felhasználók betöltése..."
+    "edit": "Előléptetés",
+    "loading": "Felhasználók betöltése...",
+    "promote_title": "Felhasználó előléptetése?",
+    "promote_message": "Biztosan ADMIN jogosultságot szeretnél adni a(z) {email} felhasználónak?\n\nEzzel rendszergazdai jogosultságokat kap.",
+    "promote_confirm": "Előléptetés",
+    "promote_failed_title": "Sikertelen előléptetés",
+    "promote_failed_message": "Nem sikerült előléptetni a felhasználót.",
+    "promote_success_title": "Felhasználó előléptetve",
+    "promote_success_message": "{email} mostantól ADMIN.",
+    "delete_title": "Felhasználó végleges törlése?",
+    "delete_message": "Biztosan véglegesen törölni szeretnéd a(z) {email} felhasználót?\n\nEzzel törlődik a fiókja, {count} játéka, valamint a sorozatai és a teljesítési előzményei.\n\nEZ A MŰVELET NEM VONHATÓ VISSZA.",
+    "delete_confirm": "Felhasználó törlése",
+    "delete_failed_title": "Sikertelen törlés",
+    "delete_failed_message": "A fiók törlése sikertelen vagy nem fejeződött be. Próbáld újra.",
+    "delete_success_title": "Felhasználó törölve",
+    "delete_success_message": "{email} véglegesen törölve lett."
   },
   "attributions": {
     "title": "Forrásmegjelölések és köszönetnyilvánítás",
