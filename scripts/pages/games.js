@@ -7,7 +7,19 @@ export async function initGames(params = new URLSearchParams()) {
   const controller = new AbortController();
   const signal = controller.signal;
   let games = [];
-  let currentFilter = "all";
+  const requestedFilter = params.get("filter");
+
+  const validFilters = [
+    "all",
+    "completed",
+    "in_progress",
+    "not_played",
+    "favorites",
+  ];
+
+  let currentFilter = validFilters.includes(requestedFilter)
+    ? requestedFilter
+    : "all";
   const selectedPlatform = params.get("platform");
   const selectedSeries = params.get("series");
   const selectedDeveloper = params.get("developer");
@@ -458,6 +470,10 @@ export async function initGames(params = new URLSearchParams()) {
   );
 
   document.querySelectorAll("[data-filter]").forEach((button) => {
+    button.classList.toggle(
+      "selected",
+      button.dataset.filter === currentFilter,
+    );
     button.addEventListener(
       "click",
       () => {

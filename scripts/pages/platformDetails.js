@@ -112,6 +112,17 @@ export async function initPlatformDetails(params = new URLSearchParams()) {
     browseGames.href = `#/games?platform=${encodeURIComponent(platform.name)}`;
 
     // ==========================================
+    // ADD GAME
+    // ==========================================
+
+    const addGameButton = document.getElementById("platform-games-add");
+
+    if (addGameButton) {
+      addGameButton.href =
+        `#/admin/add-game?platform=${encodeURIComponent(platform.id)}` +
+        `&returnUrl=${encodeURIComponent(window.location.hash)}`;
+    }
+    // ==========================================
 
     // CONSOLE MODELS (COMING NEXT)
 
@@ -904,15 +915,11 @@ export async function initPlatformDetails(params = new URLSearchParams()) {
 
       const gamesError = document.getElementById("platform-games-error");
 
-      const browseButton = document.getElementById("platform-games-browse");
-
       gamesLoading.hidden = false;
 
       gamesEmpty.hidden = true;
 
       gamesError.hidden = true;
-
-      browseButton.href = `#/games?platform=${encodeURIComponent(platform.name)}`;
 
       try {
         // Reuse the same API as the main Games page

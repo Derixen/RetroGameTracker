@@ -4,11 +4,21 @@ import { supabase } from "../supabase.js";
 import { confirmDialog } from "../components/confirmDialog.js";
 
 export async function initAdminAddGame(params = new URLSearchParams()) {
+  const returnParams = new URLSearchParams(
+    window.location.hash.split("?")[1] || "",
+  );
+
+  const returnUrl = returnParams.get("returnUrl");
   const platformSelect = document.getElementById("game-platform");
   const seriesSelect = document.getElementById("game-series");
   const errorMessage = document.getElementById("add-game-error");
   const gameId = params.get("id");
+  const preselectedPlatformId = params.get("platform");
   const isEditing = gameId !== null;
+
+  console.log("Current URL:", window.location.hash);
+  console.log("Received parameters:", params.toString());
+
   let pendingIgdbSeries = "";
 
   const igdbSearchInput = document.getElementById("igdb-search-input");
@@ -390,7 +400,9 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
         }
       }
 
-      window.location.hash = "#/games";
+      window.location.hash = returnUrl?.startsWith("#/platform?")
+        ? returnUrl
+        : "#/games";
     } catch (error) {
       console.error("Failed to save game:", error);
 
@@ -492,6 +504,20 @@ export async function initAdminAddGame(params = new URLSearchParams()) {
       filterOption.disabled = platform.igdb_id == null;
 
       igdbPlatformFilter.append(filterOption);
+    }
+    // Preselect platform when adding a game from Platform Details
+    if (!isEditing && preselectedPlatformId) {
+      const selectedPlatform = platforms.find(
+        (platform) => String(platform.id) === preselectedPlatformId,
+      );
+
+      if (selectedPlatform) {
+        platformSelect.value = String(selectedPlatform.id);
+
+        if (selectedPlatform.igdb_id != null) {
+          igdbPlatformFilter.value = String(selectedPlatform.igdb_id);
+        }
+      }
     }
 
     for (const item of series) {

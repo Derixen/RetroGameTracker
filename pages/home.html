@@ -1,34 +1,43 @@
 <!-- Collection Statistics -->
 <section class="grid grid-cols-2 gap-3 md:grid-cols-4">
-  <article class="game-card static-card p-3">
+  <a href="#/games" class="game-card static-card p-3 !cursor-pointer">
     <p class="text-xs text-slate-400" data-i18n="home.stats_games">Games</p>
     <h2 id="total-games" class="mt-1 text-2xl font-bold">0</h2>
-  </article>
+  </a>
 
-  <article class="game-card static-card p-3">
+  <a
+    href="#/games?filter=completed"
+    class="game-card static-card p-3 !cursor-pointer"
+  >
     <p class="text-xs text-green-400" data-i18n="home.stats_completed">
       Completed
     </p>
     <h2 id="total-completed" class="mt-1 text-2xl font-bold text-green-400">
       0
     </h2>
-  </article>
+  </a>
 
-  <article class="game-card static-card p-3">
+  <a
+    href="#/games?filter=in_progress"
+    class="game-card static-card p-3 !cursor-pointer"
+  >
     <p class="text-xs text-yellow-400" data-i18n="home.stats_playing">
       Playing
     </p>
     <h2 id="total-in-progress" class="mt-1 text-2xl font-bold text-yellow-400">
       0
     </h2>
-  </article>
+  </a>
 
-  <article class="game-card static-card p-3">
+  <a
+    href="#/games?filter=not_played"
+    class="game-card static-card p-3 !cursor-pointer"
+  >
     <p class="text-xs text-gray-400" data-i18n="home.stats_backlog">Backlog</p>
     <h2 id="total-not-played" class="mt-1 text-2xl font-bold text-gray-400">
       0
     </h2>
-  </article>
+  </a>
 </section>
 
 <!-- Personal Collection Banner -->

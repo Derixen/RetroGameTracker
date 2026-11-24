@@ -1046,6 +1046,10 @@ video {
   cursor: pointer;
 }
 
+.\!cursor-pointer {
+  cursor: pointer !important;
+}
+
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -2667,12 +2671,17 @@ button {
 
 .platform-badge {
   left: 9px;
+  opacity: 0.8;
   background: #5a2a49;
   color: #ff6488;
 }
 
 .year-badge {
-  right: 9px;
+  top: auto;
+  right: auto;
+  bottom: 10px;
+  left: 9px;
+  opacity: 0.8;
   background: #0c0d18d9;
   color: #e4e7ef;
 }
